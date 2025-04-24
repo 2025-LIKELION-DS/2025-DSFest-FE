@@ -1,0 +1,11 @@
+import * as T from "@timetable/TimeTableStyle";
+
+function TimeTable() {
+  return (
+    <>
+      <T.TimeTable>타임테이블</T.TimeTable>
+    </>
+  );
+}
+
+export default TimeTable;
