@@ -1,6 +1,6 @@
 import * as T from "@components/Topbar/TopbarStyle";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Sidebar from "@components/Sidebar/Sidebar";
 import SidebarAdmin from "@components/Sidebar/SidebarAdmin";
@@ -19,8 +19,49 @@ const Topbar = ({ title }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isVisible, setIsvisible] = useState(false);
   const navigate = useNavigate();
-
+  const { pathname } = useLocation();
   const isAdmin = isAdminLoggedIn();
+
+  if (pathname === "/admin" || pathname === "/admin/menu" || pathname === "/notice/image") {
+    return null;
+  }
+
+  const getTitle = (path) => {
+    const hideTopbar = ["/admin"];
+    if (hideTopbar.includes(path)) return null;
+
+    switch (path) {
+      case "/":
+        return "메인";
+      case "/map":
+        return "지도";
+      case "/puzzle":
+        return "퍼즐게임";
+      case "/review":
+        return "후기";
+      case "/timetable":
+        return "타임테이블";
+      case "/notice":
+        return "공지사항";
+      case "/notice/new":
+        return "공지사항";
+      case "/booth":
+        return "부스 QR 및 비밀번호 목록";
+      case "/booth/new":
+        return "부스 QR 및 비밀번호 생성";
+      default:
+        // 동적 라우팅 처리
+        if (/^\/notice\/\d+$/.test(path)) {
+          return "공지사항";
+        }
+        if (/^\/notice\/\d+\/edit$/.test(path)) {
+          return "공지사항";
+        }
+        return "";
+    }
+  };
+
+  const pageTitle = getTitle(pathname);
 
   const openSidebar = () => {
     setSidebarOpen(true);
@@ -35,15 +76,14 @@ const Topbar = ({ title }) => {
   };
 
   const handleLeft = () => {
-    if (isAdmin) navigate("/admin/menu");
-    else navigate("/");
+    navigate(-1);
   };
 
   return (
     <T.Topbar>
       <T.TopbarSection>
         <T.Img src={Left} alt="뒤로 가기" onClick={handleLeft} />
-        <T.Title>{title}</T.Title>
+        <T.Title>{pageTitle}</T.Title>
       </T.TopbarSection>
 
       <T.Img src={Menu} alt="메뉴" onClick={openSidebar} />

@@ -11,6 +11,7 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
 
   const handleLinkClick = (path) => {
     navigate(path);
+    onClose();
   };
 
   const handleLogout = () => {

@@ -17,6 +17,7 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
 
   const handleLinkClick = (path) => {
     navigate(path);
+    onClose();
   };
 
   return (

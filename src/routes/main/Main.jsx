@@ -4,7 +4,7 @@ import Topbar from "../../components/Topbar/Topbar";
 function Main() {
   return (
     <>
-      <Topbar title={"메인"} />
+      <div>메인</div>
     </>
   );
 }
