@@ -54,8 +54,10 @@ export const Sidebar = styled.div`
   animation: ${(props) => (props.$isSidebarOpen ? slideLeft : slideRight)} 0.4s ease-in-out;
   transition: right 0.4s ease-in-out;
 
-  @media (min-height: 852px) {
-    height: 852px;
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      height: 852px;
+    }
   }
 `;
 
