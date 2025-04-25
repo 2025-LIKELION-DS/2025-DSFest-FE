@@ -18,6 +18,8 @@ export const Topbar = styled.div`
   background-color: ${palette.grayscale.white80};
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+
+  z-index: 999;
 `;
 
 export const TopbarSection = styled.div`

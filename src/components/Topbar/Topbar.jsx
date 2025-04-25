@@ -23,18 +23,14 @@ const Topbar = ({ title, isAdmin }) => {
     <T.Topbar>
       <T.TopbarSection>
         <T.Img src={Left} alt="뒤로 가기" onClick={() => navigate("/")} />
-
         <T.Title>{title}</T.Title>
       </T.TopbarSection>
 
       <T.Img src={Menu} alt="메뉴" onClick={() => setSidebarOpen((prev) => !prev)} />
 
-      {isSidebarOpen && !isAdmin && (
-        <>
-          <Sidebar />
-        </>
-      )}
-      {isSidebarOpen && isAdmin && <SidebarAdmin />}
+      {isSidebarOpen && !isAdmin && <Sidebar isSidebarOpen={isSidebarOpen} />}
+
+      {isSidebarOpen && isAdmin && <SidebarAdmin isSidebarOpen={isSidebarOpen} />}
     </T.Topbar>
   );
 };
