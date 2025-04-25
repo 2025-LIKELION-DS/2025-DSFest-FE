@@ -1,5 +1,6 @@
-import * as H from "@components/Topbar/TopbarStyle";
+import * as T from "@components/Topbar/TopbarStyle";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Sidebar from "@components/Sidebar/Sidebar";
 import SidebarAdmin from "@components/Sidebar/SidebarAdmin";
@@ -16,19 +17,25 @@ import Menu from "@assets/topbar/icon-menu.svg";
 
 const Topbar = ({ title, isAdmin }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <>
-      <div>
-        <img src={Left} alt="뒤로 가기" />
-      </div>
-      <div>{title}</div>
-      <div onClick={() => setSidebarOpen((prev) => !prev)}>
-        <img src={Menu} alt="메뉴" />
-      </div>
-      {isSidebarOpen && !isAdmin && <Sidebar />}
+    <T.Topbar>
+      <T.TopbarSection>
+        <T.Img src={Left} alt="뒤로 가기" onClick={() => navigate("/")} />
+
+        <T.Title>{title}</T.Title>
+      </T.TopbarSection>
+
+      <T.Img src={Menu} alt="메뉴" onClick={() => setSidebarOpen((prev) => !prev)} />
+
+      {isSidebarOpen && !isAdmin && (
+        <>
+          <Sidebar />
+        </>
+      )}
       {isSidebarOpen && isAdmin && <SidebarAdmin />}
-    </>
+    </T.Topbar>
   );
 };
 
