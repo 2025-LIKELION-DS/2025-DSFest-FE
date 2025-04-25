@@ -3,7 +3,7 @@ import palette from "@styles/theme";
 import backImg from "@assets/responsive/pc-background.png";
 
 export const Page = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 100vw;
     height: 100dvh;
     box-sizing: border-box;
@@ -67,7 +67,7 @@ export const Phone = styled.div`
   }
   height: 100dvh;
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 393px;
     background-color: ${palette.grayscale.white};
 
