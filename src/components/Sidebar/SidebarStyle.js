@@ -1,7 +1,29 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import palette from "@styles/theme";
 
 import SidebarBg from "@assets/sidebar/sidebar-background.png";
+
+const slideLeft = keyframes`
+  from {
+    transform: translateX(221px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideRight = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(221px);
+    opacity: 0;
+  }
+`;
 
 export const Overlay = styled.div`
   width: 100%;
@@ -28,6 +50,9 @@ export const Sidebar = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
+
+  animation: ${(props) => (props.$isSidebarOpen ? slideLeft : slideRight)} 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
 `;
 
 export const Close = styled.div`
@@ -56,6 +81,9 @@ export const Menu = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  width: max-content;
+  cursor: pointer;
 `;
 
 export const MenuTitle = styled.p`

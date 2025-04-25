@@ -1,4 +1,5 @@
 import * as S from "@components/Sidebar/SidebarStyle";
+import { useNavigate } from "react-router-dom";
 
 import Close from "@assets/sidebar/icon-close.svg";
 import TimeTable from "@assets/sidebar/icon-timetable.svg";
@@ -11,39 +12,43 @@ import Likelion from "@assets/sidebar/logo-likelion.png";
 import Instagram from "@assets/sidebar/icon-instagram.svg";
 import Kakaotalk from "@assets/sidebar/icon-kakaotalk.svg";
 
-const Sidebar = ({ isSidebarOpen }) => {
-  console.log(isSidebarOpen);
+const Sidebar = ({ isSidebarOpen, onClose }) => {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (path) => {
+    navigate(path);
+  };
 
   return (
     <>
-      {isSidebarOpen && <S.Overlay />}
-      <S.Sidebar>
-        <S.Close>
+      <S.Overlay onClick={onClose} />
+      <S.Sidebar $isSidebarOpen={isSidebarOpen}>
+        <S.Close onClick={onClose}>
           <img src={Close} alt="닫기" />
         </S.Close>
 
         <S.MenuList>
-          <S.Menu>
+          <S.Menu onClick={() => handleLinkClick("timetable")}>
             <img src={TimeTable} alt="타임테이블" />
             <S.MenuTitle>타임테이블</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu>
+          <S.Menu onClick={() => handleLinkClick("map")}>
             <img src={Map} alt="지도" />
             <S.MenuTitle>지도</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu>
+          <S.Menu onClick={() => handleLinkClick("notice")}>
             <img src={Notice} alt="공지사항" />
             <S.MenuTitle>공지사항</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu>
+          <S.Menu onClick={() => handleLinkClick("review")}>
             <img src={Review} alt="후기" />
             <S.MenuTitle>후기</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu>
+          <S.Menu onClick={() => handleLinkClick("puzzle")}>
             <img src={Puzzle} alt="퍼즐게임" />
             <S.MenuTitle>퍼즐게임</S.MenuTitle>
           </S.Menu>

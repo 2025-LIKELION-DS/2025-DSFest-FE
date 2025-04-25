@@ -17,7 +17,20 @@ import Menu from "@assets/topbar/icon-menu.svg";
 
 const Topbar = ({ title, isAdmin }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isVisible, setIsvisible] = useState(false);
   const navigate = useNavigate();
+
+  const openSidebar = () => {
+    setSidebarOpen(true);
+    setIsvisible(true);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+    setTimeout(() => {
+      setIsvisible(false);
+    }, 300);
+  };
 
   return (
     <T.Topbar>
@@ -26,11 +39,11 @@ const Topbar = ({ title, isAdmin }) => {
         <T.Title>{title}</T.Title>
       </T.TopbarSection>
 
-      <T.Img src={Menu} alt="메뉴" onClick={() => setSidebarOpen((prev) => !prev)} />
+      <T.Img src={Menu} alt="메뉴" onClick={openSidebar} />
 
-      {isSidebarOpen && !isAdmin && <Sidebar isSidebarOpen={isSidebarOpen} />}
+      {isVisible && !isAdmin && <Sidebar isSidebarOpen={isSidebarOpen} onClose={closeSidebar} />}
 
-      {isSidebarOpen && isAdmin && <SidebarAdmin isSidebarOpen={isSidebarOpen} />}
+      {isVisible && isAdmin && <SidebarAdmin isSidebarOpen={isSidebarOpen} onClose={closeSidebar} />}
     </T.Topbar>
   );
 };
