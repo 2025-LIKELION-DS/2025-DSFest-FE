@@ -22,7 +22,7 @@ const Topbar = ({ title }) => {
   const { pathname } = useLocation();
   const isAdmin = isAdminLoggedIn();
 
-  if (pathname === "/admin" || pathname === "/admin/menu" || pathname === "/notice/image") {
+  if (pathname === "/admin" || pathname === "/admin/menu" || pathname === "/notice/image" || pathname === "/") {
     return null;
   }
 
