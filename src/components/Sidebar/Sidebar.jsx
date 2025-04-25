@@ -56,10 +56,14 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
         </S.MenuList>
 
         <S.Info>
-          <div>
-            <img src={Unyul} alt="운율" />
-            <img src={Likelion} alt="멋사" />
-          </div>
+          <S.Logo>
+            <S.LogoImg>
+              <img src={Unyul} alt="운율" />
+            </S.LogoImg>
+            <S.LogoImg>
+              <img src={Likelion} alt="멋사" />
+            </S.LogoImg>
+          </S.Logo>
 
           <S.InfoContainer>
             <S.Line></S.Line>

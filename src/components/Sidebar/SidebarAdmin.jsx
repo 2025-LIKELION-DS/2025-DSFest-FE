@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Close from "@assets/sidebar/icon-close.svg";
 import Logout from "@assets/admin/icon-logout.svg";
-import { logoutAdmin } from "../../utils/admin";
+import { logoutAdmin } from "@utils/admin";
 
 const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
   const navigate = useNavigate();

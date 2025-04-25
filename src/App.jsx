@@ -15,7 +15,7 @@ import Home from "@admin/Home";
 import Create from "@admin/Create";
 import BoothList from "@admin/BoothList";
 import ProtectedRoute from "@components/ProtectedRoute";
-import Topbar from "./components/Topbar/Topbar";
+import Topbar from "@components/Topbar/Topbar";
 
 const Layout = () => {
   return (

@@ -7,7 +7,7 @@ import SidebarAdmin from "@components/Sidebar/SidebarAdmin";
 
 import Left from "@assets/topbar/icon-left.svg";
 import Menu from "@assets/topbar/icon-menu.svg";
-import { isAdminLoggedIn } from "../../utils/admin";
+import { isAdminLoggedIn } from "@utils/admin";
 
 /*
  * 페이지의 헤더를 나타내는 컴포넌트입니다.

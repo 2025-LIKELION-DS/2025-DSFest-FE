@@ -175,7 +175,7 @@ export const Name = styled.p`
 export const Footer = styled.div`
   display: flex;
   gap: 22px;
-  margin-top: 38px;
+  margin-top: 26px;
 `;
 
 export const CopyRight = styled.p`
@@ -191,9 +191,21 @@ export const CopyRight = styled.p`
 export const SNSContainer = styled.div`
   display: flex;
   gap: 5px;
+`;
+
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3px;
+`;
+
+export const LogoImg = styled.div`
+  width: 24px;
+  height: 24px;
 
   > img {
-    width: 18px;
-    height: 18px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 `;
