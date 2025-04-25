@@ -4,7 +4,7 @@ import palette from "@styles/theme";
 export const Topbar = styled.div`
   box-sizing: border-box;
 
-  position: fixed;
+  position: sticky;
   top: 0;
 
   display: flex;
@@ -20,6 +20,10 @@ export const Topbar = styled.div`
   backdrop-filter: blur(8px);
 
   z-index: 999;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    width: 393px;
+  }
 `;
 
 export const TopbarSection = styled.div`
