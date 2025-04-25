@@ -14,6 +14,7 @@ import Login from "@admin/Login";
 import Home from "@admin/Home";
 import Create from "@admin/Create";
 import BoothList from "@admin/BoothList";
+import ProtectedRoute from "@components/ProtectedRoute";
 
 function App() {
   return (
@@ -30,12 +31,47 @@ function App() {
         <Route path="/notice/:id" element={<Detail />} />
         <Route path="/notice/image" element={<Image />} />
         {/* 어드민 */}
-        <Route path="/notice/new" element={<Form type="new" />} />
-        <Route path="/notice/:id/edit" element={<Form type="new" />} />
         <Route path="/admin" element={<Login />} />
-        <Route path="/admin/menu" element={<Home />} />
-        <Route path="/booth" element={<BoothList />} />
-        <Route path="/booth/new" element={<Create />} />
+        <Route
+          path="/notice/new"
+          element={
+            <ProtectedRoute>
+              <Form type="new" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notice/:id/edit"
+          element={
+            <ProtectedRoute>
+              <Form type="new" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/menu"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/booth"
+          element={
+            <ProtectedRoute>
+              <BoothList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/booth/new"
+          element={
+            <ProtectedRoute>
+              <Create />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );
