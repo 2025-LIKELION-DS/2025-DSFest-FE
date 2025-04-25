@@ -12,6 +12,9 @@ export const Logout = styled.div`
   gap: 3px;
   margin-left: 28px;
   margin-top: 90px;
+
+  width: max-content;
+  cursor: pointer;
 `;
 
 export const LogoutText = styled.div`

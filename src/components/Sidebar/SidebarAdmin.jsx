@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Close from "@assets/sidebar/icon-close.svg";
 import Logout from "@assets/admin/icon-logout.svg";
+import { logoutAdmin } from "../../utils/admin";
 
 const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
   const navigate = useNavigate();
@@ -11,6 +12,12 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
   const handleLinkClick = (path) => {
     navigate(path);
   };
+
+  const handleLogout = () => {
+    logoutAdmin();
+    navigate("/");
+  };
+
   return (
     <>
       <S.Overlay onClick={onClose} />
@@ -33,7 +40,7 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
           </S.Menu>
         </S.MenuList>
 
-        <S2.Logout>
+        <S2.Logout onClick={handleLogout}>
           <img src={Logout} alt="로그아웃" />
           <S2.LogoutText>로그아웃</S2.LogoutText>
         </S2.Logout>
