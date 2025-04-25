@@ -34,10 +34,15 @@ const Topbar = ({ title }) => {
     }, 300);
   };
 
+  const handleLeft = () => {
+    if (isAdmin) navigate("/admin/menu");
+    else navigate("/");
+  };
+
   return (
     <T.Topbar>
       <T.TopbarSection>
-        <T.Img src={Left} alt="뒤로 가기" onClick={() => navigate("/")} />
+        <T.Img src={Left} alt="뒤로 가기" onClick={handleLeft} />
         <T.Title>{title}</T.Title>
       </T.TopbarSection>
 

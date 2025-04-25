@@ -28,27 +28,27 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
         </S.Close>
 
         <S.MenuList>
-          <S.Menu onClick={() => handleLinkClick("timetable")}>
+          <S.Menu onClick={() => handleLinkClick("/timetable")}>
             <img src={TimeTable} alt="타임테이블" />
             <S.MenuTitle>타임테이블</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("map")}>
+          <S.Menu onClick={() => handleLinkClick("/map")}>
             <img src={Map} alt="지도" />
             <S.MenuTitle>지도</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("notice")}>
+          <S.Menu onClick={() => handleLinkClick("/notice")}>
             <img src={Notice} alt="공지사항" />
             <S.MenuTitle>공지사항</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("review")}>
+          <S.Menu onClick={() => handleLinkClick("/review")}>
             <img src={Review} alt="후기" />
             <S.MenuTitle>후기</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("puzzle")}>
+          <S.Menu onClick={() => handleLinkClick("/puzzle")}>
             <img src={Puzzle} alt="퍼즐게임" />
             <S.MenuTitle>퍼즐게임</S.MenuTitle>
           </S.Menu>
@@ -92,8 +92,13 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
                 <S.CopyRight>all rights reserved.</S.CopyRight>
               </div>
               <S.SNSContainer>
-                <img src={Instagram} alt="인스타그램" />
-                <img src={Kakaotalk} alt="카카오톡" />
+                <a href="https://www.instagram.com/likelion_ds" target="_blank" rel="noopener noreferrer">
+                  <img src={Instagram} alt="인스타그램" />
+                </a>
+
+                <a href="https://open.kakao.com/me/LikelionDS" target="_blank" rel="noopener noreferrer">
+                  <img src={Kakaotalk} alt="카카오톡" />
+                </a>
               </S.SNSContainer>
             </S.Footer>
           </S.NameList>

@@ -27,15 +27,15 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
         </S.Close>
 
         <S.MenuList>
-          <S.Menu onClick={() => handleLinkClick("notice/new")}>
+          <S.Menu onClick={() => handleLinkClick("/notice/new")}>
             <S.MenuTitle>공지사항</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("booth/new")}>
+          <S.Menu onClick={() => handleLinkClick("/booth/new")}>
             <S.MenuTitle>부스 QR 및 비밀번호 생성</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("booth")}>
+          <S.Menu onClick={() => handleLinkClick("/booth")}>
             <S.MenuTitle>부스 QR 및 비밀번호 목록</S.MenuTitle>
           </S.Menu>
         </S.MenuList>
