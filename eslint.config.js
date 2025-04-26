@@ -30,4 +30,10 @@ export default [
       ],
     },
   },
+  {
+    files: ['src/**/*.{js,jsx}'],
+    rules: {
+      'quotes': ['error', 'single'],
+    },
+  },
 ]
