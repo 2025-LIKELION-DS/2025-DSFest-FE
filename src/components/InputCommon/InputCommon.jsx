@@ -9,7 +9,7 @@ import * as I from '@components/InputCommon/InputCommonStyle'
  * @param {string} value -- value 내용
  * ex) <InputCommon placeholder={"부스 비밀번호를 입력해주세요."} height="48px" value={"value"}/>
  * 부스 비밀번호 및 관계자 비밀번호는 height="48px",
- * 부스 이름 입력은 height="56px"로 넘기면 됩니다. 
+ * 부스 이름 입력은 height="56px"로 넘기면 됩니다.
  *
  * @author 김진효
  * **/
