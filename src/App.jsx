@@ -1,21 +1,21 @@
-import { Routes, Route, Outlet } from "react-router-dom";
-import GlobalStyle from "@styles/GlobalStyle";
-import Error from "@routes/Error";
-import Main from "@main/Main";
-import Map from "@map/Map";
-import Puzzle from "@puzzle/Puzzle";
-import Review from "@review/Review";
-import Timetable from "@timetable/Timetable";
-import List from "@notice/List";
-import Detail from "@notice/Detail";
-import Image from "@notice/Image";
-import Form from "@notice/Form";
-import Login from "@admin/Login";
-import Home from "@admin/Home";
-import Create from "@admin/Create";
-import BoothList from "@admin/BoothList";
-import ProtectedRoute from "@components/ProtectedRoute";
-import Topbar from "@components/Topbar/Topbar";
+import { Routes, Route, Outlet } from 'react-router-dom';
+import GlobalStyle from '@styles/GlobalStyle';
+import Error from '@routes/Error';
+import Main from '@main/Main';
+import Map from '@map/Map';
+import Puzzle from '@puzzle/Puzzle';
+import Review from '@review/Review';
+import Timetable from '@timetable/Timetable';
+import List from '@notice/List';
+import Detail from '@notice/Detail';
+import Image from '@notice/Image';
+import Form from '@notice/Form';
+import Login from '@admin/Login';
+import Home from '@admin/Home';
+import Create from '@admin/Create';
+import BoothList from '@admin/BoothList';
+import ProtectedRoute from '@components/ProtectedRoute';
+import Topbar from '@components/Topbar/Topbar';
 
 const Layout = () => {
   return (

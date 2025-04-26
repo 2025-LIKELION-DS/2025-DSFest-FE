@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as L from "@admin/LoginStyle";
-import { loginAdmin } from "@utils/admin";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as L from '@admin/LoginStyle';
+import { loginAdmin } from '@utils/admin';
 
 function Login() {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = () => {
     if (loginAdmin(id, password)) {
-      navigate("/admin/menu", { replace: true });
+      navigate('/admin/menu', { replace: true });
     } else {
-      alert("로그인 실패");
+      alert('로그인 실패');
     }
   };
 

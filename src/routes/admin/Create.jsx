@@ -1,4 +1,4 @@
-import * as C from "@admin/CreateStyle";
+import * as C from '@admin/CreateStyle';
 
 function Create() {
   return (

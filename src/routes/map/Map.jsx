@@ -1,4 +1,4 @@
-import * as M from "@map/MapStyle";
+import * as M from '@map/MapStyle';
 
 function Map() {
   return (

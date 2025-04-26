@@ -18,17 +18,17 @@
 **/
 
 export const isAdminLoggedIn = () => {
-  return localStorage.getItem("isAdmin") === "true";
+  return localStorage.getItem('isAdmin') === 'true';
 };
 
 export const loginAdmin = (id, password) => {
   if (id === `${import.meta.env.VITE_ADMIN_ID}` && password === `${import.meta.env.VITE_ADMIN_PW}`) {
-    localStorage.setItem("isAdmin", "true");
+    localStorage.setItem('isAdmin', 'true');
     return true;
   }
   return false;
 };
 
 export const logoutAdmin = () => {
-  localStorage.removeItem("isAdmin");
+  localStorage.removeItem('isAdmin');
 };

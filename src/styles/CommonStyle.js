@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import palette from "@styles/theme";
-import backImg from "@assets/responsive/pc-background.png";
+import styled from 'styled-components';
+import palette from '@styles/theme';
+import backImg from '@assets/responsive/pc-background.png';
 
 export const Page = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {

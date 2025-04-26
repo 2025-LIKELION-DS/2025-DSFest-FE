@@ -1,14 +1,14 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "@/App.jsx";
-import * as C from "@styles/CommonStyle.js";
-import { register } from "@utils/serviceWorkerRegistration";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from '@/App.jsx';
+import * as C from '@styles/CommonStyle.js';
+import { register } from '@utils/serviceWorkerRegistration';
 
-import YeounLogo from "@assets/responsive/title-yeoun.svg";
-import YeounText from "@assets/responsive/text-yeoun.svg";
+import YeounLogo from '@assets/responsive/title-yeoun.svg';
+import YeounText from '@assets/responsive/text-yeoun.svg';
 
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById('root'));
 
 root.render(
   <StrictMode>

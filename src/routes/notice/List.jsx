@@ -1,4 +1,4 @@
-import * as L from "@notice/ListStyle";
+import * as L from '@notice/ListStyle';
 
 function List() {
   return (

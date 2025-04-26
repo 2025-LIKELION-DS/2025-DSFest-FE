@@ -1,4 +1,4 @@
-import * as P from "@puzzle/PuzzleStyle";
+import * as P from '@puzzle/PuzzleStyle';
 
 function Puzzle() {
   return (

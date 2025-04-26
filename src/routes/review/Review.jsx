@@ -1,4 +1,4 @@
-import * as R from "@review/ReviewStyle";
+import * as R from '@review/ReviewStyle';
 
 function Review() {
   return (

@@ -1,4 +1,4 @@
-import * as D from "@notice/DetailStyle";
+import * as D from '@notice/DetailStyle';
 
 function Detail() {
   return (

@@ -1,7 +1,7 @@
-import styled, { keyframes } from "styled-components";
-import palette from "@styles/theme";
+import styled, { keyframes } from 'styled-components';
+import palette from '@styles/theme';
 
-import SidebarBg from "@assets/sidebar/sidebar-background.png";
+import SidebarBg from '@assets/sidebar/sidebar-background.png';
 
 const slideLeft = keyframes`
   from {

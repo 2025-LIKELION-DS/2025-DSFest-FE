@@ -1,4 +1,4 @@
-import * as I from "@notice/ImageStyle";
+import * as I from '@notice/ImageStyle';
 
 function Image() {
   return (

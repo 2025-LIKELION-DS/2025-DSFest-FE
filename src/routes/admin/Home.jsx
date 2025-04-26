@@ -1,4 +1,4 @@
-import * as H from "@admin/HomeStyle";
+import * as H from '@admin/HomeStyle';
 
 function Home() {
   return (

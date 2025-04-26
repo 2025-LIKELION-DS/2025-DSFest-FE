@@ -1,4 +1,4 @@
-import * as M from "@main/MainStyle";
+import * as M from '@main/MainStyle';
 
 function Main() {
   return (

@@ -1,4 +1,4 @@
-import * as B from "@admin/BoothListStyle";
+import * as B from '@admin/BoothListStyle';
 
 function BoothList() {
   return (

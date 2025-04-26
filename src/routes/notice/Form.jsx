@@ -1,4 +1,4 @@
-import * as F from "@notice/FormStyle";
+import * as F from '@notice/FormStyle';
 
 function Form() {
   return (

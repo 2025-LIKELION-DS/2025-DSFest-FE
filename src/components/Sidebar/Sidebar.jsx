@@ -1,16 +1,16 @@
-import * as S from "@components/Sidebar/SidebarStyle";
-import { useNavigate } from "react-router-dom";
+import * as S from '@components/Sidebar/SidebarStyle';
+import { useNavigate } from 'react-router-dom';
 
-import Close from "@assets/sidebar/icon-close.svg";
-import TimeTable from "@assets/sidebar/icon-timetable.svg";
-import Map from "@assets/sidebar/icon-map.svg";
-import Notice from "@assets/sidebar/icon-notice.svg";
-import Review from "@assets/sidebar/icon-review.svg";
-import Puzzle from "@assets/sidebar/icon-puzzlegame.svg";
-import Unyul from "@assets/sidebar/logo-unyul.png";
-import Likelion from "@assets/sidebar/logo-likelion.png";
-import Instagram from "@assets/sidebar/icon-instagram.svg";
-import Kakaotalk from "@assets/sidebar/icon-kakaotalk.svg";
+import Close from '@assets/sidebar/icon-close.svg';
+import TimeTable from '@assets/sidebar/icon-timetable.svg';
+import Map from '@assets/sidebar/icon-map.svg';
+import Notice from '@assets/sidebar/icon-notice.svg';
+import Review from '@assets/sidebar/icon-review.svg';
+import Puzzle from '@assets/sidebar/icon-puzzlegame.svg';
+import Unyul from '@assets/sidebar/logo-unyul.png';
+import Likelion from '@assets/sidebar/logo-likelion.png';
+import Instagram from '@assets/sidebar/icon-instagram.svg';
+import Kakaotalk from '@assets/sidebar/icon-kakaotalk.svg';
 
 const Sidebar = ({ isSidebarOpen, onClose }) => {
   const navigate = useNavigate();
@@ -29,27 +29,27 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
         </S.Close>
 
         <S.MenuList>
-          <S.Menu onClick={() => handleLinkClick("/timetable")}>
+          <S.Menu onClick={() => handleLinkClick('/timetable')}>
             <img src={TimeTable} alt="타임테이블" />
             <S.MenuTitle>타임테이블</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("/map")}>
+          <S.Menu onClick={() => handleLinkClick('/map')}>
             <img src={Map} alt="지도" />
             <S.MenuTitle>지도</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("/notice")}>
+          <S.Menu onClick={() => handleLinkClick('/notice')}>
             <img src={Notice} alt="공지사항" />
             <S.MenuTitle>공지사항</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("/review")}>
+          <S.Menu onClick={() => handleLinkClick('/review')}>
             <img src={Review} alt="후기" />
             <S.MenuTitle>후기</S.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick("/puzzle")}>
+          <S.Menu onClick={() => handleLinkClick('/puzzle')}>
             <img src={Puzzle} alt="퍼즐게임" />
             <S.MenuTitle>퍼즐게임</S.MenuTitle>
           </S.Menu>
@@ -68,7 +68,7 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
           <S.InfoContainer>
             <S.Line></S.Line>
             <div>
-              <S.InfoTitle>총학생회 {"<운율>"} </S.InfoTitle>
+              <S.InfoTitle>총학생회 {'<운율>'} </S.InfoTitle>
               <S.InfoTitle>덕성여대 멋쟁이사자처럼</S.InfoTitle>
             </div>
           </S.InfoContainer>

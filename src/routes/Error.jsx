@@ -1,4 +1,4 @@
-import * as E from "@routes/ErrorStyle";
+import * as E from '@routes/ErrorStyle';
 
 function Error() {
   return (

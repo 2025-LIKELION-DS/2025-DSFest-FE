@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import palette from "@styles/theme";
+import styled from 'styled-components';
+import palette from '@styles/theme';
 
-import { Sidebar as SidebarOrigin } from "@components/Sidebar/SidebarStyle";
+import { Sidebar as SidebarOrigin } from '@components/Sidebar/SidebarStyle';
 
 export const Sidebar = styled(SidebarOrigin)`
   background-image: none;

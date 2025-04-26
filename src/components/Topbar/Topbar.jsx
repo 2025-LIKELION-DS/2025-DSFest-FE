@@ -1,13 +1,13 @@
-import * as T from "@components/Topbar/TopbarStyle";
-import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import * as T from '@components/Topbar/TopbarStyle';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-import Sidebar from "@components/Sidebar/Sidebar";
-import SidebarAdmin from "@components/Sidebar/SidebarAdmin";
+import Sidebar from '@components/Sidebar/Sidebar';
+import SidebarAdmin from '@components/Sidebar/SidebarAdmin';
 
-import Left from "@assets/topbar/icon-left.svg";
-import Menu from "@assets/topbar/icon-menu.svg";
-import { isAdminLoggedIn } from "@utils/admin";
+import Left from '@assets/topbar/icon-left.svg';
+import Menu from '@assets/topbar/icon-menu.svg';
+import { isAdminLoggedIn } from '@utils/admin';
 
 /*
  * 페이지의 헤더를 나타내는 컴포넌트입니다.
@@ -22,42 +22,42 @@ const Topbar = ({ title }) => {
   const { pathname } = useLocation();
   const isAdmin = isAdminLoggedIn();
 
-  if (pathname === "/admin" || pathname === "/admin/menu" || pathname === "/notice/image" || pathname === "/") {
+  if (pathname === '/admin' || pathname === '/admin/menu' || pathname === '/notice/image' || pathname === '/') {
     return null;
   }
 
   const getTitle = (path) => {
-    const hideTopbar = ["/admin"];
+    const hideTopbar = ['/admin'];
     if (hideTopbar.includes(path)) return null;
 
     switch (path) {
-      case "/":
-        return "메인";
-      case "/map":
-        return "지도";
-      case "/puzzle":
-        return "퍼즐게임";
-      case "/review":
-        return "후기";
-      case "/timetable":
-        return "타임테이블";
-      case "/notice":
-        return "공지사항";
-      case "/notice/new":
-        return "공지사항";
-      case "/booth":
-        return "부스 QR 및 비밀번호 목록";
-      case "/booth/new":
-        return "부스 QR 및 비밀번호 생성";
+      case '/':
+        return '메인';
+      case '/map':
+        return '지도';
+      case '/puzzle':
+        return '퍼즐게임';
+      case '/review':
+        return '후기';
+      case '/timetable':
+        return '타임테이블';
+      case '/notice':
+        return '공지사항';
+      case '/notice/new':
+        return '공지사항';
+      case '/booth':
+        return '부스 QR 및 비밀번호 목록';
+      case '/booth/new':
+        return '부스 QR 및 비밀번호 생성';
       default:
         // 동적 라우팅 처리
         if (/^\/notice\/\d+$/.test(path)) {
-          return "공지사항";
+          return '공지사항';
         }
         if (/^\/notice\/\d+\/edit$/.test(path)) {
-          return "공지사항";
+          return '공지사항';
         }
-        return "";
+        return '';
     }
   };
 

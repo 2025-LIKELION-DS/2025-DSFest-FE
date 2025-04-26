@@ -1,4 +1,4 @@
-import * as T from "@timetable/TimeTableStyle";
+import * as T from '@timetable/TimeTableStyle';
 
 function TimeTable() {
   return (
