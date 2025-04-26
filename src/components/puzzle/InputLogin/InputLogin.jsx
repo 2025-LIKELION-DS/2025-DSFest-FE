@@ -12,18 +12,14 @@ import Close from '@assets/puzzle/icon-password-close.svg'
  * @param {string} placeholder -- placeholder 내용
  * @param {string} type -- input type (text or password)
  * @param {state} value -- value 내용
- * ex) <InputLogin placeholder={"비밀번호를 입력해주세요"} type={"password"} value={pwd}/>
+ * @param {function} onChange -- input의 onChange 함수 
+ * ex) <InputLogin placeholder={"비밀번호를 입력해주세요"} type={"password"} value={value} onChange={(e)=> setValue(e.target.value)}/>
  *
  * @author 김진효
  * **/
 
-const InputLogin = ({placeholder, type, value }) =>{
-  const [inputValue, setInputValue] = useState(value || "");
+const InputLogin = ({placeholder, type, value, onChange }) =>{
   const [showPwd, setShowPwd] = useState(false);
-
-  const handleChange = (e) =>{
-    setInputValue(e.target.value)
-  }
 
   const handleClear = () =>{
     setInputValue("");
@@ -35,7 +31,7 @@ const InputLogin = ({placeholder, type, value }) =>{
 
   return(
     <I.InputContainer>
-      <I.InputLogin placeholder={placeholder} type={type === "password" ? (showPwd ? "text" : "password") : type} value={inputValue} onChange={handleChange}/>
+      <I.InputLogin placeholder={placeholder} type={type === "password" ? (showPwd ? "text" : "password") : type} value={value} onChange={onChange}/>
       <I.PwdIcon src={Cancle} alt='취소' onClick={handleClear}/>
       {type === "password" && <I.PwdClose src={showPwd ? Open : Close} alt="비밀번호 가리기" onClick={handlePwd}/>}
     </I.InputContainer>
