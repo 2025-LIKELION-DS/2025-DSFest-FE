@@ -120,6 +120,7 @@ export const Info = styled.div`
   border-radius: 11px;
   background-color: ${palette.styles.white50};
   backdrop-filter: blur(7.5px);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 
   padding: 9px 15px;
 
