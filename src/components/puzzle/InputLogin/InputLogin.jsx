@@ -22,7 +22,7 @@ const InputLogin = ({placeholder, type, value, onChange }) =>{
   const [showPwd, setShowPwd] = useState(false);
 
   const handleClear = () =>{
-    setInputValue("");
+    setInputValue('');
   }
 
   const handlePwd = () =>{
@@ -31,9 +31,9 @@ const InputLogin = ({placeholder, type, value, onChange }) =>{
 
   return(
     <I.InputContainer>
-      <I.InputLogin placeholder={placeholder} type={type === "password" ? (showPwd ? "text" : "password") : type} value={value} onChange={onChange}/>
+      <I.InputLogin placeholder={placeholder} type={type === 'password' ? (showPwd ? 'text' : 'password') : type} value={value} onChange={onChange}/>
       <I.PwdIcon src={Cancle} alt='취소' onClick={handleClear}/>
-      {type === "password" && <I.PwdClose src={showPwd ? Open : Close} alt="비밀번호 가리기" onClick={handlePwd}/>}
+      {type === 'password' && <I.PwdClose src={showPwd ? Open : Close} alt="비밀번호 가리기" onClick={handlePwd}/>}
     </I.InputContainer>
   )
 }

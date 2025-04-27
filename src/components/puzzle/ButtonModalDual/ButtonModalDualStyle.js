@@ -12,13 +12,14 @@ export const ButtonCommon = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 151px;
+  max-width: 151px;
+  width: 100%;
   height: 48px;  
   border-radius: 29px;
   outline: none;
 
   color: ${(props) => (props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.mainPurple}`)};
-  border: ${(props) => (props.color === `${palette.grayscale.white}` ? `1px solid ${palette.mainPurple}` : "none")};
+  border: ${(props) => (props.color === `${palette.grayscale.white}` ? `1px solid ${palette.mainPurple}` : 'none')};
   background-color: ${(props) => props.color};
 
   font-size: 16px;
