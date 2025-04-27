@@ -11,16 +11,20 @@ export const ModalPuzzleSelect = styled.div`
   background-color: ${palette.grayscale.white};
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 
-  padding: 25px 0px;
+  padding: 24px 0px;
+
+  display: flex;
+  flex-direction: column;
 `
 
 export const ModalContainer = styled.div`
   padding: 0px 33px;
-  margin-bottom: 27px;
   
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  flex: 1;
 `
 
 export const BoothContainer = styled.div`

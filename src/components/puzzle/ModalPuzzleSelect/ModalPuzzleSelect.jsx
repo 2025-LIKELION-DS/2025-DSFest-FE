@@ -1,8 +1,8 @@
 import * as M from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleSelectStyle';
 import { useNavigate } from 'react-router-dom';
 
-import Puzzle from '@assets/puzzle/puzzle-piece-2-grain@3x.png'
-import ButtonModalDual from '../ButtonModalDual/ButtonModalDual';
+import Puzzle from '@assets/puzzle/puzzle-piece-2-grain@3x.png';
+import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual';
 
 /**
  * 퍼즐 페이지에서 사용되는 모달 컴포넌트입니다. 
