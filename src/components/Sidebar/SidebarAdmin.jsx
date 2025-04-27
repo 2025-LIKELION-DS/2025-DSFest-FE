@@ -16,7 +16,7 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
 
   const handleLogout = () => {
     logoutAdmin();
-    navigate('/');
+    navigate('/admin');
   };
 
   return (
@@ -28,17 +28,24 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
         </S.Close>
 
         <S.MenuList>
-          <S.Menu onClick={() => handleLinkClick('/notice/new')}>
-            <S.MenuTitle>공지사항</S.MenuTitle>
+          <S.Menu onClick={() => handleLinkClick('/admin/menu')}>
+            <S2.MenuTitle>축제 관계자 페이지</S2.MenuTitle>
           </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick('/booth/new')}>
-            <S.MenuTitle>부스 QR 및 비밀번호 생성</S.MenuTitle>
-          </S.Menu>
+          <S2.MenuList>
+            <S.Menu onClick={() => handleLinkClick('/notice/new')}>
+              <S.MenuTitle>공지사항</S.MenuTitle>
+            </S.Menu>
 
-          <S.Menu onClick={() => handleLinkClick('/booth')}>
-            <S.MenuTitle>부스 QR 및 비밀번호 목록</S.MenuTitle>
-          </S.Menu>
+            <S.Menu onClick={() => handleLinkClick('/booth/new')}>
+              <S.MenuTitle>부스 QR 및 비밀번호 생성</S.MenuTitle>
+            </S.Menu>
+
+            <S.Menu onClick={() => handleLinkClick('/booth')}>
+              <S.MenuTitle>부스 QR 및 비밀번호 목록</S.MenuTitle>
+            </S.Menu>
+          </S2.MenuList>
+          
         </S.MenuList>
 
         <S2.Logout onClick={handleLogout}>
