@@ -11,6 +11,7 @@ import Unyul from '@assets/sidebar/logo-unyul.png';
 import Likelion from '@assets/sidebar/logo-likelion.png';
 import Instagram from '@assets/sidebar/icon-instagram.svg';
 import Kakaotalk from '@assets/sidebar/icon-kakaotalk.svg';
+import Title from '@assets/sidebar/title-unyul.png';
 
 const Sidebar = ({ isSidebarOpen, onClose }) => {
   const navigate = useNavigate();
@@ -29,10 +30,14 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
         </S.Close>
 
         <S.MenuList>
-          <S.Menu onClick={() => handleLinkClick('/timetable')}>
+          <S.Title onClick={() => handleLinkClick('/')}>
+            <img src={Title} alt='타이틀' />
+          </S.Title>
+
+          <S.FirstMenu onClick={() => handleLinkClick('/timetable')}>
             <img src={TimeTable} alt="타임테이블" />
             <S.MenuTitle>타임테이블</S.MenuTitle>
-          </S.Menu>
+          </S.FirstMenu>
 
           <S.Menu onClick={() => handleLinkClick('/map')}>
             <img src={Map} alt="지도" />

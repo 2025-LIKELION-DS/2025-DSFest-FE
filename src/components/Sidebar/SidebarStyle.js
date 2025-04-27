@@ -76,11 +76,10 @@ export const Close = styled.div`
 export const MenuList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 
   margin-left: 28px;
-
-  margin-top: 43px;
+  margin-top: 24px;
 `;
 
 export const Menu = styled.div`
@@ -216,3 +215,21 @@ export const LogoImg = styled.div`
     object-fit: contain;
   }
 `;
+
+export const Title = styled.div`
+  max-width: 51px;
+  width: 100%;
+  height: 32px;
+
+  cursor: pointer;
+  
+  >img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`
+
+export const FirstMenu = styled(Menu)`
+  margin-top: 9px;
+`
