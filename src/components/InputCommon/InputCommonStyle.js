@@ -3,6 +3,8 @@ import palette from '@styles/theme';
 
 export const InputContainer = styled.div`
   padding: ${(props) => (props.height === '48px' ? '0px 16px' : '0px 25px')}; 
+  width: 100%;
+  box-sizing: border-box;
 `
 
 export const InputCommon = styled.input`
