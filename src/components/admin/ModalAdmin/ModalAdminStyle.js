@@ -17,7 +17,7 @@ export const ModalAdmin = styled.div`
   `
 
 export const Text = styled.div`
-  padding: 30px 38px 23px 38px;
+  padding: 30px 38px 23px;
   white-space: nowrap;
 
   text-align: center;
@@ -47,8 +47,7 @@ export const ColLine = styled.div`
 
 export const ConfirmText = styled.div`
   width:50%;
-  padding-top: 13px;
-  padding-bottom: 17px;
+  padding: 13px 0 17px;
   text-align: center;
 
   color: #606268;

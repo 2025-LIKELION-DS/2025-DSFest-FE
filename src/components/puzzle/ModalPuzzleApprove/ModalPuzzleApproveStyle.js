@@ -11,7 +11,7 @@ export const ModalPuzzleSelect = styled.div`
   background-color: ${palette.grayscale.white};
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 
-  padding: 12px 0px 24px 0px;
+  padding: 12px 0px 24px;
 
   display: flex;
   flex-direction: column;

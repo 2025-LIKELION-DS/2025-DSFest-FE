@@ -20,7 +20,7 @@ export const ModalPuzzleSelect = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  padding: 45px 26px 0px 26px;
+  padding: 45px 26px 0px;
   
   display: flex;
   flex-direction: column;
