@@ -1,4 +1,4 @@
-import * as B from '@components/puzzle/ButtonModalApprove/ButtonModalApproveStyle';
+import * as B from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApproveStyle';
 
 import Complete from '@assets/puzzle/puzzle-piece-black-complete.svg';
 import Glow from '@assets/puzzle/puzzle-piece-glow1_1.svg';
@@ -27,12 +27,14 @@ import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual'
  * @param {function} onClickL -- QR코드 재인증 버튼 누를 때 실행될 함수
  * @param {function} onClickR -- 비밀번호 입력 버튼 누를 때 실행될 함수
  * 
- * ex) <ButtonModalApprove state={false} number={1} boothName={"멋쟁이사자처럼"} onClick={onClick} value={value} onChange={(e)=>setValue(e.target.value)} right={right} onClickL={onclickL} onClickR={onClickR}  />
- *
+ * ex) <ModalPuzzleApprove state={false} number={1} boothName={"멋쟁이사자처럼"} onClick={onClick} value={value} onChange={(e)=>setValue(e.target.value)} right={right} onClickL={onclickL} onClickR={onClickR}  />
+ * state true 일 때 -> state, number, boothName, onClick 넘기면 되고,
+ * false 일 때 -> state, value, onChange, right, onClickL, onClickR 넘기면 됩니다. 
+ * 
  * @author 김진효
  * **/
 
-const ButtonModalApprove = ({state, number, boothName, onClick, value, onChange, right, onClickL, onClickR}) => {
+const ModalPuzzleApprove = ({state, number, boothName, onClick, value, onChange, right, onClickL, onClickR}) => {
   return (
     <>
       {/* 인증 완료 */}
@@ -100,4 +102,4 @@ const ButtonModalApprove = ({state, number, boothName, onClick, value, onChange,
   );
 };
 
-export default ButtonModalApprove;
+export default ModalPuzzleApprove;

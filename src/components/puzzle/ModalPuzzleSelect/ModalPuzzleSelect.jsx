@@ -27,6 +27,7 @@ const ModalPuzzleSelect = ({number, boothName, boothInfo}) =>{
 
   const handleCamera = () =>{
     // 카메라 연결
+    alert('퍼즐 채우기');
   }
   
   return(
