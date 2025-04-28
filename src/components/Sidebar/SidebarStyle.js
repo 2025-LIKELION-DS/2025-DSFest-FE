@@ -54,10 +54,34 @@ export const Sidebar = styled.div`
   animation: ${(props) => (props.$isSidebarOpen ? slideLeft : slideRight)} 0.4s ease-in-out;
   transition: right 0.4s ease-in-out;
 
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     @media (min-height: 852px) {
       height: 852px;
     }
+  }
+
+  @media (max-height: 703px){
+    width: 100%;
+    background-position: bottom right;
+
   }
 `;
 
@@ -76,11 +100,13 @@ export const Close = styled.div`
 export const MenuList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 
   margin-left: 28px;
+  margin-top: 24px;
 
-  margin-top: 43px;
+  flex: 1;
+  min-height: 291px;
 `;
 
 export const Menu = styled.div`
@@ -110,9 +136,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Info = styled.div`
-  /* margin-top: 200px; */
-  position: absolute;
-  bottom: 21px;
+  margin-bottom: 21px;
   margin-left: 19px;
 
   width: 183px;
@@ -120,10 +144,22 @@ export const Info = styled.div`
   border-radius: 11px;
   background-color: ${palette.styles.white50};
   backdrop-filter: blur(7.5px);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 
   padding: 9px 15px;
 
   box-sizing: border-box;
+
+  @media (max-height: 703px){
+    width: 100%;
+    height: 199px;
+    min-height: 200px;
+
+    padding: 15px 18px;
+
+    margin-bottom: 0;
+    margin-left: 0;
+  }
 `;
 
 export const InfoTitle = styled.p`
@@ -131,7 +167,7 @@ export const InfoTitle = styled.p`
 
   color: ${palette.grayscale.text33};
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 703;
   line-height: normal;
   letter-spacing: -0.35px;
 `;
@@ -141,6 +177,10 @@ export const InfoContainer = styled.div`
   align-items: center;
   gap: 9px;
   margin-top: 8px;
+
+  @media (max-height: 703px){
+    flex: 1;
+  }
 `;
 
 export const Line = styled.div`
@@ -163,7 +203,7 @@ export const Part = styled.p`
 
   color: ${palette.grayscale.text33};
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 703;
   line-height: normal;
   letter-spacing: -0.3px;
 `;
@@ -182,6 +222,11 @@ export const Footer = styled.div`
   display: flex;
   gap: 22px;
   margin-top: 26px;
+
+  @media (max-height: 703px){
+    margin-top: 0;
+    padding-right: 6px;
+  }
 `;
 
 export const CopyRight = styled.p`
@@ -215,3 +260,53 @@ export const LogoImg = styled.div`
     object-fit: contain;
   }
 `;
+
+export const Title = styled.div`
+  max-width: 51px;
+  width: 100%;
+  height: 32px;
+
+  cursor: pointer;
+  
+  >img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`
+
+export const FirstMenu = styled(Menu)`
+  margin-top: 9px;
+`
+
+export const InfoDiv = styled.div`
+  @media (max-height: 703px){
+    display: flex;
+    flex-direction: row-reverse;
+  }
+`
+
+export const Names = styled(NameList)`
+  margin-top: 0;
+
+  @media (max-height: 703px){
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: -6px;
+  }
+`
+
+export const CopyRightDiv = styled.div`
+  @media (max-height: 703px){
+    display: flex;
+    gap: 4px;
+    flex: 1;
+  }
+`
+
+export const InfoBox = styled.div`
+  @media (max-height: 703px){
+    padding: 0 20px 20px 20px;
+  }
+`
