@@ -24,7 +24,7 @@ jobs:
       
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install	
+        run: yarn install	
 
       # - name: Set Environment Variables
       #   run: |
@@ -34,7 +34,7 @@ jobs:
       #   run: cat .env
       
       - name: Build
-        run: npm run build --mode production
+        run: yarn build --mode production
       
       - name: Check if dist directory exists
         run: ls -la ./dist
