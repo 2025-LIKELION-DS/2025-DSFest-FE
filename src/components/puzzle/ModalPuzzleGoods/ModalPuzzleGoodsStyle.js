@@ -35,8 +35,8 @@ export const ImgContainer = styled.div`
   height: ${(props) => props.width};
 
   position: absolute;
-  top: ${(props) => props.top};
-  left: ${(props) => props.left};
+  top: ${(props) => props.$top};
+  left: ${(props) => props.$left};
 
   
   >img{

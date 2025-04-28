@@ -36,11 +36,11 @@ const ModalPuzzleGoods = ({value, onChange, onClick}) =>{
     <>
       {!complete && (
         <M.ModalPuzzleSelect>
-        <M.ImgContainer width={"115px"} top={"-5%"} left={"-5%"}>
+        <M.ImgContainer width={"115px"} $top={"-5%"} $left={"-5%"}>
           <img src={Glow1} alt='퍼즐1' />
         </M.ImgContainer>
     
-        <M.ImgContainer width={"75px"} top={"8%"} left={"13%"}>
+        <M.ImgContainer width={"75px"} $top={"8%"} $left={"13%"}>
           <img src={Glow2} alt='퍼즐2' />
         </M.ImgContainer>
         
@@ -56,11 +56,11 @@ const ModalPuzzleGoods = ({value, onChange, onClick}) =>{
 
       {complete && (
         <M.ModalPuzzleSelect>
-          <M.ImgContainer width={"115px"} top={"-5%"} left={"-5%"}>
+          <M.ImgContainer width={"115px"} $top={"-5%"} $left={"-5%"}>
             <img src={Glow1} alt='퍼즐1' />
           </M.ImgContainer>
       
-          <M.ImgContainer width={"75px"} top={"8%"} left={"13%"}>
+          <M.ImgContainer width={"75px"} $top={"8%"} $left={"13%"}>
             <img src={Glow2} alt='퍼즐2' />
           </M.ImgContainer>
           
