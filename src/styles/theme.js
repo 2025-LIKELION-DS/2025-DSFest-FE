@@ -24,6 +24,7 @@ const palette = {
     ef: '#EFEFEF',
     df: '#DFDFDF',
     ca: '#CACACA',
+    dc: '#DCDCDC',
     text88: '#888888',
     text33: '#333333',
   },

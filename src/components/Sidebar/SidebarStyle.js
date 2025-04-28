@@ -109,7 +109,6 @@ export const LogoContainer = styled.div`
 `;
 
 export const Info = styled.div`
-  /* margin-top: 200px; */
   position: absolute;
   bottom: 21px;
   margin-left: 19px;

@@ -23,7 +23,7 @@ export const ButtonCommon = styled.button`
 
   font-size: 20px;
   font-weight: 600;
-  line-height: 130%; /* 26px */
+  line-height: 130%;
   letter-spacing: -0.6px;
 
   >img{

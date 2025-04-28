@@ -29,7 +29,7 @@ export const Text = styled.div`
 export const Line = styled.div`
   width: 261px;
   height: 1px;
-  background-color: #DCDCDC;
+  background-color: ${palette.grayscale.dc};
 `
 
 export const ConfirmContainer = styled.div`
@@ -42,7 +42,7 @@ export const ColLine = styled.div`
   width: 1px;
   height: 29px;
   margin-top: 9px;
-  background-color: #DCDCDC;
+  background-color: ${palette.grayscale.dc};
 `
 
 export const ConfirmText = styled.div`

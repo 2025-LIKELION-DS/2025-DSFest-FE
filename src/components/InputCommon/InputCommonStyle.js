@@ -13,7 +13,6 @@ export const InputCommon = styled.input`
   justify-content: center;
   align-items: center;
 
-  /* max-width: ${(props) => (props.height === '48px' ? '312px' : '342px')}; */
   width: 100%;
   height: ${(props) => props.height};
 
