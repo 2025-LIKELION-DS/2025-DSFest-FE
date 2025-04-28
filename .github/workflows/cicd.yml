@@ -30,8 +30,8 @@ jobs:
       #   run: |
       #     echo "환경변수명=${{ secrets.시크릿변수에 등록한 환경변수명 }}" >> .env
 
-      - name: Check .env file
-        run: cat .env
+      # - name: Check .env file
+      #   run: cat .env
       
       - name: Build
         run: npm run build --mode production
