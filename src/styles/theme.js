@@ -41,6 +41,8 @@ const palette = {
   },
   mainPurple: '#4E31A5',
   mainPurple10: 'rgba(78, 49, 165, 0.10)',
+  darkPurple: '#3B2585',
+  lightPurple: '#EDE8F8',
 };
 
 export default palette;

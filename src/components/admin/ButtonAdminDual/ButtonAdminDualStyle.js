@@ -37,9 +37,9 @@ export const ButtonCommon = styled.button`
   }
 
   &:hover{
-    background-color: ${(props) => (props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.mainPurple}`)};
-    color: ${(props) => (props.color === `${palette.mainPurple}` ? `${palette.mainPurple}` : `${palette.grayscale.white}`)};
-    border: ${(props) => (props.color === `${palette.grayscale.white}` ? `1px solid ${palette.grayscale.white}` : `1px solid ${palette.mainPurple}`)};
+    background-color: ${(props) => (props.color === `${palette.mainPurple}` ? `${palette.darkPurple}` : `${palette.lightPurple}`)};
+    color: ${(props) => (props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.darkPurple}`)};
+    border: ${(props) => (props.color === `${palette.grayscale.white}` && `1px solid ${palette.darkPurple}`)};
   }
   transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 `
