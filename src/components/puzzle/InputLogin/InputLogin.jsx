@@ -21,9 +21,9 @@ import Close from '@assets/puzzle/icon-password-close.svg'
 const InputLogin = ({placeholder, type, value, onChange }) =>{
   const [showPwd, setShowPwd] = useState(false);
 
-  const handleClear = () =>{
-    setInputValue('');
-  }
+  const handleClear = () => {
+    onChange({ target: { value: '' } });
+  };  
 
   const handlePwd = () =>{
     setShowPwd((prev)=> !prev)
