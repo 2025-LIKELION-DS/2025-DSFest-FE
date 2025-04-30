@@ -5,7 +5,7 @@ export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
   max-width: 345px;
   width: 100%;
-  height: 228px;
+  height: 229px;
 
   border-radius: 24px;
   background-color: ${palette.grayscale.white};
@@ -40,7 +40,8 @@ export const Text = styled.p`
   color: ${palette.grayscale.text33};
   font-size: 14px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: normal;
+  letter-spacing: -0.35px;
 `
 
 export const BoothName = styled.span`
@@ -48,7 +49,8 @@ export const BoothName = styled.span`
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  line-height: 140%;
+  line-height: normal;
+  letter-spacing: -0.5px;
 `
 
 export const ImgContainer = styled.div`
@@ -75,5 +77,6 @@ export const Info = styled.div`
   color: ${palette.grayscale.text88};
   font-size: 14px;
   font-weight: 400;
-  line-height: 140%;
+  line-height: normal;
+  letter-spacing: -0.35px;
 `
