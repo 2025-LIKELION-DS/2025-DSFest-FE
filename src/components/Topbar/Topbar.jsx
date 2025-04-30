@@ -49,6 +49,8 @@ const Topbar = ({ title }) => {
         return '퍼즐 QR 및 비밀번호 목록';
       case '/admin/puzzle/new':
         return '퍼즐 QR 및 비밀번호 생성';
+      case '/admin/puzzle/preview':
+        return '퍼즐 QR 및 비밀번호 생성';
       default:
         // 동적 라우팅 처리
         if (/^\/notice\/\d+$/.test(path)) {

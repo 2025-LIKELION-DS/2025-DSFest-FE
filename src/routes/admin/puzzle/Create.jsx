@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as C from '@admin/puzzle/CreateStyle';
 import palette from '@styles/theme';
 import InputCreate from '@admin/components/InputCreate/InputCreate';
@@ -10,6 +11,12 @@ function Create() {
   const [inputPuzzle, setInputPuzzle] = useState('');
   const [inputPuzzleNum, setInputPuzzleNum] = useState('');
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLinkClick = (path) => {
+    navigate(path);
+  };
 
   const isInputComplete = inputPuzzle.trim() && inputPuzzleNum.trim();
   const buttonColor = isErrorVisible
@@ -57,7 +64,8 @@ function Create() {
       // 예시 조건
       setIsErrorVisible(true);
     } else {
-      alert(`${inputPuzzle} 부스 생성`);
+      // API 연동
+      handleLinkClick('/admin/puzzle/preview');
     }
   };
 

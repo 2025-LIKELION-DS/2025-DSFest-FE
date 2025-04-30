@@ -13,6 +13,7 @@ import Form from '@notice/Form';
 import Login from '@admin/Login';
 import Home from '@admin/Home';
 import Create from '@admin/puzzle/Create';
+import Preview from '@admin/puzzle/Preview';
 import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
@@ -81,6 +82,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Create />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/puzzle/preview"
+            element={
+              <ProtectedRoute>
+                <Preview />
               </ProtectedRoute>
             }
           />
