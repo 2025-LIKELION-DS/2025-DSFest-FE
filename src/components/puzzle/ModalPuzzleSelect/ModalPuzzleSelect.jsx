@@ -39,14 +39,14 @@ const ModalPuzzleSelect = ({number, boothName, boothInfo}) =>{
           </M.ImgContainer>
           <div>
             <M.Text>{number}번 퍼즐</M.Text>
-            <M.Text><M.BoothName>{boothName}</M.BoothName> 부스</M.Text>
+            <M.Text><M.BoothName>{boothName}</M.BoothName></M.Text>
           </div>
         </M.BoothContainer>
 
         <M.Info>{boothInfo}</M.Info>
       </M.ModalContainer>
 
-      <ButtonModalDual contentL={'부스 위치 확인'} onClickL={handleMap} contentR={'퍼즐 채우기'} onClickR={handleCamera}/>
+      <ButtonModalDual contentL={'퍼즐 위치 확인'} onClickL={handleMap} contentR={'퍼즐 채우기'} onClickR={handleCamera}/>
 
     </M.ModalPuzzleSelect>
   )

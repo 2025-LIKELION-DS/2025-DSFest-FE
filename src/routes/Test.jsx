@@ -159,7 +159,7 @@ const Test = () =>{
         <ButtonModalSingle text={"입력"} onClick={buttonModalSingleClick}/>
 
         <div>✔️Modal_puzzle_select</div>
-        <ModalPuzzleSelect number={1} boothName={'멋쟁이사자처럼'} boothInfo={'사자들만 모여있는 우리 부스, 올테면 와바. 어흥~ 최대 두 줄로 우리 부스를 소개 중. 기여운 기디사자 기기 끼'}/>
+        <ModalPuzzleSelect number={1} boothName={'총학 제휴 부스'} boothInfo={'장소에 대한 힌트를 총학에서 전달해준다고 합니다. 힌트가 들어가는 영역입니다. 힌트힌트힌트힌트힌트힌트'}/>
         
         <div>✔️Modal_puzzle_approve</div>
         <ModalPuzzleApprove state={true} number={1} boothName={"멋쟁이사자처럼"} onClick={modalPuzzleApproveClick}/>

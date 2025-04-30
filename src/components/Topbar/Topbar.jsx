@@ -80,7 +80,7 @@ const Topbar = ({ title }) => {
   };
 
   return (
-    <T.Topbar>
+    <T.Topbar $pathname={pathname}>
       <T.TopbarSection>
         <T.Img src={Left} alt="뒤로 가기" onClick={handleLeft} />
         <T.Title>{pageTitle}</T.Title>

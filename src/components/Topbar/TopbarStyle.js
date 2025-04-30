@@ -15,9 +15,9 @@ export const Topbar = styled.div`
   height: 56px;
   padding: 0px 20px;
 
-  background-color: ${palette.grayscale.white80};
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+  background-color: ${(props) => props.$pathname === '/map' ? 'rgba(255, 255, 255, 0.10)' : `${palette.grayscale.white80}`  };
 
   z-index: 999;
 
