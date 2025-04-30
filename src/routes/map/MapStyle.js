@@ -7,9 +7,9 @@ export const SlidingPanel = styled(motion.div)`
   bottom: 0;
   left: 0;
   right: 0;
-  height: 490px;          
+  // height: 490px;          
   max-height: 92%;           
-  min-height: 105px; 
+  min-height: 90px; 
   background-color: ${palette.grayscale.white};
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
@@ -38,7 +38,7 @@ export const BarContainer = styled.div`
 display: flex;
 justify-content: center;
 
-margin: 15px 0 25px; 
+margin: 0 0 25px; 
 `
 
 export const Bar = styled.div`
@@ -55,10 +55,13 @@ export const BoothContentArea = styled.div`
 `
 
 export const BoothCard = styled.div`
-  border-top: 1px solid ${palette.grayscale.df};
+  border-bottom: 1px solid ${palette.grayscale.df};
   padding: 16px 0;
   margin: 0 20px;
 
+  &:first-child {
+    border-top: 1px solid ${palette.grayscale.df};
+  }
 `;
 
 export const BoothName = styled.p`
@@ -175,4 +178,45 @@ export const TagFilter = styled.button`
   font-weight: 600;
   white-space: nowrap;
   height: 32px;
+`;
+
+//추가
+export const DateDropdown = styled.div`
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
+  z-index: 100;
+  overflow: hidden;
+`;
+
+export const DateOption = styled.div`
+  border-bottom: 1px solid ${palette.grayscale.ef};
+  cursor: pointer;
+
+  display: flex;
+width: 106px;
+padding: 6px 0px;
+flex-direction: column;
+align-items: center;
+
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+
+  &:hover {
+    background-color: ${palette.grayscale.ef};
+  }
+
+  &:first-child {
+    padding-top : 12px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom : 12px;
+  }
 `;
