@@ -5,6 +5,9 @@ export const ButtonContainer = styled.div`
   padding: 0px 25px;
   display: flex;
   gap: 20px;
+
+  box-sizing: border-box;
+  width: 100%;
 `;
 export const ButtonCommon = styled.button`
   box-sizing: border-box;
@@ -12,7 +15,7 @@ export const ButtonCommon = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 161px;
+  width: calc(50% - 10px);
   height: 56px;
   border-radius: 88px;
   outline: none;
