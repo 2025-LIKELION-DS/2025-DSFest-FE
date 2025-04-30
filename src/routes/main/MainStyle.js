@@ -31,6 +31,8 @@ export const LogoImg = styled.img`
   display: block;
   margin: 0 auto;
   margin-top: 23.71vh;
+
+  cursor: pointer;
 `;
 
 export const CloudImg = styled.img`
@@ -92,8 +94,6 @@ export const ImgDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
-  width: max-content;
 `;
 
 export const ImgEndDiv = styled(ImgDiv)`
@@ -111,10 +111,11 @@ export const ImgTopMarginDiv = styled(ImgDiv)`
 export const Menu = styled.p`
   margin: 0;
   position: absolute;
-  top: 45%;
-  left: 45%;
-  transform: translate(-50%, -50%);
+  top: 40px;
+  left: 38px;
   text-align: center;
+
+  cursor: pointer;
 
   font-family: AppleSDGothicNeoR00;
   font-size: 18px;
@@ -123,7 +124,27 @@ export const Menu = styled.p`
   line-height: normal;
 `;
 
-export const MenuPurple = styled(Menu)`
+export const MapMenu = styled(Menu)`
+  top: 52px;
+  left: 46px;
+`;
+
+export const NoticeMenu = styled(Menu)`
+  top: auto;
+  bottom: 52px;
+  left: 30px;
+`;
+
+export const ReviewMenu = styled(Menu)`
+  top: auto;
+  bottom: 52px;
+  left: 51px;
+`;
+
+export const PuzzleMenu = styled(Menu)`
+  top: 47.5px;
+  left: 77px;
+
   color: #4e3b86;
 `;
 

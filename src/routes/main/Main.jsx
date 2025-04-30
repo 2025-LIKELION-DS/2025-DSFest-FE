@@ -33,25 +33,25 @@ function Main() {
 
           <M.ImgMarginDiv onClick={() => handleMenuClick('/map')}>
             <M.MapImg />
-            <M.Menu>MAP</M.Menu>
+            <M.MapMenu>MAP</M.MapMenu>
           </M.ImgMarginDiv>
         </M.Div>
 
         <M.DivMargin>
           <M.ImgEndDiv onClick={() => handleMenuClick('/notice')}>
             <M.NoticeImg />
-            <M.Menu>NOTICE</M.Menu>
+            <M.NoticeMenu>NOTICE</M.NoticeMenu>
           </M.ImgEndDiv>
 
           <M.ImgEndDiv onClick={() => handleMenuClick('/review')}>
             <M.ReviewImg />
-            <M.Menu>REVIEW</M.Menu>
+            <M.ReviewMenu>REVIEW</M.ReviewMenu>
           </M.ImgEndDiv>
         </M.DivMargin>
 
         <M.ImgTopMarginDiv onClick={() => handleMenuClick('puzzle')}>
           <M.PuzzleGameImg />
-          <M.MenuPurple>PUZZLE GAME</M.MenuPurple>
+          <M.PuzzleMenu>PUZZLE GAME</M.PuzzleMenu>
         </M.ImgTopMarginDiv>
       </M.MainDiv>
     </M.Main>
