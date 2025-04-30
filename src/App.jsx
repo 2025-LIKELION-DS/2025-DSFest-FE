@@ -12,8 +12,8 @@ import Image from '@notice/Image';
 import Form from '@notice/Form';
 import Login from '@admin/Login';
 import Home from '@admin/Home';
-import Create from '@admin/Create';
-import BoothList from '@admin/BoothList';
+import Create from '@admin/puzzle/Create';
+import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
 import Test from '@routes/Test';
@@ -69,15 +69,15 @@ function App() {
             }
           />
           <Route
-            path="/booth"
+            path="/admin/puzzle"
             element={
               <ProtectedRoute>
-                <BoothList />
+                <PuzzleList />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/booth/new"
+            path="/admin/puzzle/new"
             element={
               <ProtectedRoute>
                 <Create />

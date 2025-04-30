@@ -45,10 +45,10 @@ const Topbar = ({ title }) => {
         return '공지사항';
       case '/notice/new':
         return '공지사항';
-      case '/booth':
-        return '부스 QR 및 비밀번호 목록';
-      case '/booth/new':
-        return '부스 QR 및 비밀번호 생성';
+      case '/admin/puzzle':
+        return '퍼즐 QR 및 비밀번호 목록';
+      case '/admin/puzzle/new':
+        return '퍼즐 QR 및 비밀번호 생성';
       default:
         // 동적 라우팅 처리
         if (/^\/notice\/\d+$/.test(path)) {
