@@ -8,7 +8,8 @@ import * as B from '@components/admin/ButtonAdminSingle/ButtonAdminSingleStyle';
  * @param {string} color -- 버튼 배경 색상
  * @param {function} onClick -- 버튼 클릭 시 실행될 함수
  * @param {function} type -- 버튼의 타입
- * ex) <ButtonAdminSingle text={"작성하기"} color={`${palette.mainPurple}`} onClick={handleClick} type={`submit`}/>
+ * ex) <ButtonAdminSingle text="작성하기" color={palette.mainPurple} onClick={handleClick} type='button'/>
+ *
  * 버튼 배경 색상만 넘기면 그 색에 따라 따라 글자 색, 테두리 색이 결정됩니다.
  * 버튼의 기본 타입은 button이며, 필요에 따라 타입을 지정할 수 있습니다.
  *

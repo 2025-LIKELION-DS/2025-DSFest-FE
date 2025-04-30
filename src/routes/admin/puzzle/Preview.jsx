@@ -87,7 +87,7 @@ function Preview() {
             onClickR={buttonShareClick}
           />
           <ButtonAdminSingle
-            text={'목록으로'}
+            text="목록으로"
             color={`${palette.mainPurple}`}
             onClick={() => handleLinkClick('/admin/puzzle')}
           />

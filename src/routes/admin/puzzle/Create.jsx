@@ -114,7 +114,7 @@ function Create() {
             이미 존재하는 장소명입니다.
           </C.WarnContainer>
           <ButtonAdminSingle
-            text={'생성'}
+            text="생성"
             color={buttonColor}
             onClick={buttonCreateClick}
             disabled={!inputPuzzle.trim()}
