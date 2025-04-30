@@ -16,7 +16,7 @@ import Create from '@admin/Create';
 import BoothList from '@admin/BoothList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
-import Test from '@routes/Test'
+import Test from '@routes/Test';
 
 const Layout = () => {
   return (
@@ -85,7 +85,7 @@ function App() {
             }
           />
           {/* 공통 컴포넌트 */}
-          <Route path="/test" element={<Test/>}/>
+          <Route path="/test" element={<Test />} />
         </Route>
       </Routes>
     </>

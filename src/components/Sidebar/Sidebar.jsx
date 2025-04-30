@@ -31,7 +31,7 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
 
         <S.MenuList>
           <S.Title onClick={() => handleLinkClick('/')}>
-            <img src={Title} alt='타이틀' />
+            <img src={Title} alt="타이틀" />
           </S.Title>
 
           <S.FirstMenu onClick={() => handleLinkClick('/timetable')}>
@@ -81,7 +81,6 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
               </S.InfoContainer>
             </S.InfoDiv>
 
-
             <S.NameList>
               <div>
                 <S.Part>Plan&Design</S.Part>
@@ -101,7 +100,6 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
                   <S.Name>장다연 조희원</S.Name>
                 </div>
               </S.Names>
-              
 
               <S.Footer>
                 <S.CopyRightDiv>
@@ -121,7 +119,6 @@ const Sidebar = ({ isSidebarOpen, onClose }) => {
             </S.NameList>
           </S.Info>
         </S.InfoBox>
-
       </S.Sidebar>
     </>
   );

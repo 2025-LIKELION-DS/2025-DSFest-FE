@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import palette from '@styles/theme';
 
 export const InputContainer = styled.div`
-  padding: ${(props) => (props.height === '48px' ? '0px 16px' : '0px 25px')}; 
+  padding: ${(props) => (props.height === '48px' ? '0px 16px' : '0px 25px')};
   width: 100%;
   box-sizing: border-box;
-`
+`;
 
 export const InputCommon = styled.input`
   box-sizing: border-box;
@@ -34,9 +34,9 @@ export const InputCommon = styled.input`
     color: ${palette.grayscale.text88};
 
     font-family: Pretendard;
-    font-size: inherit; 
+    font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
     letter-spacing: -0.35px;
   }
-`
+`;

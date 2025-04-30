@@ -15,26 +15,26 @@ export const ModalPuzzleSelect = styled.div`
 
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const ModalContainer = styled.div`
   padding: 0px 33px;
-  
+
   display: flex;
   flex-direction: column;
   gap: 12px;
 
   flex: 1;
-`
+`;
 
 export const BoothContainer = styled.div`
   display: flex;
   align-items: center;
 
-  p{
+  p {
     margin: 0;
   }
-`
+`;
 
 export const Text = styled.p`
   color: ${palette.grayscale.text33};
@@ -42,7 +42,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.35px;
-`
+`;
 
 export const BoothName = styled.span`
   color: ${palette.grayscale.black};
@@ -51,18 +51,18 @@ export const BoothName = styled.span`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.5px;
-`
+`;
 
 export const ImgContainer = styled.div`
   width: 55px;
   height: 55px;
-  
-  >img{
+
+  > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
 export const Info = styled.div`
   max-width: 280px;
@@ -79,4 +79,4 @@ export const Info = styled.div`
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.35px;
-`
+`;

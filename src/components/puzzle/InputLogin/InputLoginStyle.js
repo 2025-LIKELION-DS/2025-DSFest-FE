@@ -8,7 +8,7 @@ export const InputContainer = styled.div`
 
   display: flex;
   align-items: center;
-`
+`;
 
 export const InputLogin = styled.input`
   box-sizing: border-box;
@@ -41,18 +41,18 @@ export const InputLogin = styled.input`
     line-height: 140%;
     letter-spacing: -0.35px;
   }
-`
+`;
 
 export const PwdIcon = styled.img`
   position: absolute;
   right: 40px;
 
   cursor: pointer;
-`
+`;
 
 export const PwdClose = styled.img`
   position: absolute;
   right: 64px;
 
   cursor: pointer;
-  `
+`;

@@ -78,10 +78,9 @@ export const Sidebar = styled.div`
     }
   }
 
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     width: 100%;
     background-position: bottom right;
-
   }
 `;
 
@@ -150,7 +149,7 @@ export const Info = styled.div`
 
   box-sizing: border-box;
 
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     width: 100%;
     height: 199px;
     min-height: 200px;
@@ -178,7 +177,7 @@ export const InfoContainer = styled.div`
   gap: 9px;
   margin-top: 8px;
 
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     flex: 1;
   }
 `;
@@ -223,7 +222,7 @@ export const Footer = styled.div`
   gap: 22px;
   margin-top: 26px;
 
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     margin-top: 0;
     padding-right: 6px;
   }
@@ -267,46 +266,46 @@ export const Title = styled.div`
   height: 32px;
 
   cursor: pointer;
-  
-  >img{
+
+  > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
 export const FirstMenu = styled(Menu)`
   margin-top: 9px;
-`
+`;
 
 export const InfoDiv = styled.div`
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     display: flex;
     flex-direction: row-reverse;
   }
-`
+`;
 
 export const Names = styled(NameList)`
   margin-top: 0;
 
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     display: flex;
     flex-direction: row;
     gap: 20px;
     margin-top: -6px;
   }
-`
+`;
 
 export const CopyRightDiv = styled.div`
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     display: flex;
     gap: 4px;
     flex: 1;
   }
-`
+`;
 
 export const InfoBox = styled.div`
-  @media (max-height: 703px){
+  @media (max-height: 703px) {
     padding: 0 20px 20px 20px;
   }
-`
+`;
