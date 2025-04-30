@@ -26,6 +26,7 @@ export const Input = styled.input`
   outline: none;
   border: none;
   width: 100%;
+  text-align: center;
 
   font-family: Pretendard;
   font-size: 16px;
@@ -41,4 +42,12 @@ export const Input = styled.input`
     font-weight: 400;
     letter-spacing: -0.48px;
   }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  -moz-appearance: textfield;
 `;

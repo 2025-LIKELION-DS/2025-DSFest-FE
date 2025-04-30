@@ -4,14 +4,33 @@ import palette from '@styles/theme';
 export const Create = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  justify-content: space-between;
+  height: calc(100% - 56px);
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 46px 0 0;
+`;
+
+export const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 48px 32px 0;
+`;
+
+export const PuzzleImg = styled.img`
+  width: 75px;
+  height: 75px;
 `;
 
 export const Title = styled.div`
@@ -20,6 +39,7 @@ export const Title = styled.div`
   font-weight: 600;
   line-height: 140%;
 `;
+
 export const Text = styled.div`
   color: ${palette.grayscale.text33};
   font-size: 14px;
@@ -30,21 +50,16 @@ export const Text = styled.div`
 export const CreateContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-`;
-
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
+  gap: 15px;
+  padding: 40px 0;
 `;
 
 export const WarnContainer = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 9px;
+  width: 100%;
 
   color: ${palette.system.alert};
   text-align: center;
