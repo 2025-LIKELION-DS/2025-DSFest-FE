@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 import palette from '@styles/theme';
+import { motion } from 'framer-motion';
 
+export const SlidingPanel = styled(motion.div)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 490px;          
+  max-height: 92%;           
+  min-height: 105px; 
+  background-color: ${palette.grayscale.white};
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Map = styled.div`
   font-family: Pretendard;
@@ -13,39 +30,7 @@ export const Map = styled.div`
   overflow: hidden;
   `;
 
-export const BoothCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100px;
-  z-index: 0;
-
-
-width: 100%;
-// height: 490px;
-transition: height 0.2s ease;
-${({ panelState }) => `
-    height: ${panelState === 'expanded'
-      ? '92%'
-      : panelState === 'collapsed'
-      ? '93px'
-      : '490px'};
-      overflow-y: ${panelState === 'expanded' ? 'scroll' : 'hidden'};
-  `}
-  ${({ dragOffset }) => `
-    transform: translateY(${dragOffset}px);
-  `}
-will-change: transform;
-
-flex-shrink: 0;
-overflow: hidden;
-
-border-radius: 32px 28px 0px 0px;
-background-color: ${palette.grayscale.white};
-box-shadow: 0px -4px 12px 0px rgba(0, 0, 0, 0.10);
-
-  position: absolute;
-  bottom: 0;
-`
+export const BoothCardContainer = styled.div``
 
 export const TouchSection = styled.div``
 
@@ -65,6 +50,7 @@ border-radius: 2px;
 background: ${palette.grayscale.ef};
 `
 export const BoothContentArea = styled.div`
+  flex: 1;
   overflow-y: auto;
 `
 
