@@ -3,31 +3,51 @@ import BoothCard from './BoothCard';
 import booths from './booths.json';
 import usePanelDrag from './hook/usePanelDrag';
 
+import mapSmall from '../../assets/map/mapSmall.svg';
+import mapBig from '../../assets/map/mapBig.svg';
 import toggleDown from '../../assets/map/toggleDown.svg';
 import Minus from '../../assets/map/minus.svg';
 import Plus from '../../assets/map/plus.svg';
+import MinusB from '../../assets/map/minusblack.svg';
+import PlusB from '../../assets/map/plusblack.svg';
+
+import { useState, useRef, useEffect } from 'react';
 
 function Map() {
+  const [isZoomed, setIsZoomed] = useState(false);
 
-const {
-    panelState,
-    translateY,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-    handleMouseDown,
-  } = usePanelDrag();
+  const {
+      panelState,
+      translateY,
+      handleTouchStart,
+      handleTouchMove,
+      handleTouchEnd,
+      handleMouseDown,
+    } = usePanelDrag();
+
 
 
 
   return (
     <>
-<M.Map>
+{/* <M.Map> */}
+<M.Map $bg={isZoomed ? mapBig : mapSmall}>
   {/* 상단 선택 영역 */}
   <M.MapArea>
     <M.ZoomButtonWrapper>
-      <M.ZoomButton><M.Minus src={Minus} alt="-" /></M.ZoomButton>
-      <M.ZoomButton><M.Plus src={Plus} alt="+" /></M.ZoomButton>
+    <M.ZoomButton
+    onClick={() => setIsZoomed(false)}
+    disabled={!isZoomed}
+  >
+    <M.Minus src={isZoomed ? MinusB : Minus} alt="-" />
+  </M.ZoomButton>
+
+  <M.ZoomButton
+    onClick={() => setIsZoomed(true)}
+    disabled={isZoomed}
+  >
+    <M.Plus src={isZoomed ? Plus : PlusB} alt="+" />
+  </M.ZoomButton>
     </M.ZoomButtonWrapper>
     <M.DateWrapper>
       <M.DaySelectButton>수요일 낮</M.DaySelectButton>
