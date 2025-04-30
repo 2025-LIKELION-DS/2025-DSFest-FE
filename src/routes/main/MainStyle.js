@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import palette from '@styles/theme';
 
 import BackGround from '@assets/main/puzzle-scene-stars-grain.jpg';
+import TimeTable from '@assets/main/time-table.svg?react';
+import Map from '@assets/main/map.svg?react';
+import Notice from '@assets/main/notice.svg?react';
+import Review from '@assets/main/review.svg?react';
+import PuzzleGame from '@assets/main/puzzle-game.svg?react';
 
 export const Main = styled.div`
   width: 100%;
@@ -11,6 +16,9 @@ export const Main = styled.div`
   background-size: cover;
 
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const MoonImg = styled.img`
@@ -22,7 +30,7 @@ export const MoonImg = styled.img`
 export const LogoImg = styled.img`
   display: block;
   margin: 0 auto;
-  padding-top: 23.7%;
+  margin-top: 23.71vh;
 `;
 
 export const CloudImg = styled.img`
@@ -34,4 +42,95 @@ export const TreeImg = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;
+`;
+
+export const TimeTableImg = styled(TimeTable)`
+  g {
+    cursor: pointer;
+  }
+`;
+
+export const MapImg = styled(Map)`
+  g {
+    cursor: pointer;
+  }
+`;
+
+export const NoticeImg = styled(Notice)`
+  g {
+    cursor: pointer;
+  }
+`;
+
+export const ReviewImg = styled(Review)`
+  g {
+    cursor: pointer;
+  }
+`;
+
+export const PuzzleGameImg = styled(PuzzleGame)`
+  g {
+    cursor: pointer;
+  }
+`;
+
+export const MainDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 184px;
+
+  margin-top: 45px;
+
+  flex: 1;
+`;
+
+export const ImgDiv = styled.div`
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: max-content;
+`;
+
+export const ImgEndDiv = styled(ImgDiv)`
+  align-items: flex-end;
+`;
+
+export const ImgMarginDiv = styled(ImgDiv)`
+  margin-left: -6px;
+`;
+
+export const ImgTopMarginDiv = styled(ImgDiv)`
+  margin-top: -6px;
+`;
+
+export const Menu = styled.p`
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  font-family: AppleSDGothicNeoR00;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const MenuPurple = styled(Menu)`
+  color: #4e3b86;
+`;
+
+export const Div = styled.div`
+  display: flex;
+`;
+
+export const DivMargin = styled(Div)`
+  margin-top: -24px;
 `;
