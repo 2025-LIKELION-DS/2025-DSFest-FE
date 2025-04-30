@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import palette from '@styles/theme';
 
 import InputAdmin from '@components/admin/InputAdmin/InputAdmin';
