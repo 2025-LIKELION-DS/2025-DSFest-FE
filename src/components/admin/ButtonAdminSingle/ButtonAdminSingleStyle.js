@@ -15,9 +15,9 @@ export const ButtonCommon = styled.button`
   outline: none;
 
   color: ${(props) =>
-    props.color === `${palette.mainPurple}` || `${palette.grayscale.ca}`
-      ? `${palette.grayscale.white}`
-      : `${palette.mainPurple}`};
+    props.color === palette.mainPurple || props.color === palette.grayscale.ca
+      ? palette.grayscale.white
+      : palette.mainPurple};
   border: ${(props) => props.color === `${palette.grayscale.white}` && `1px solid ${palette.mainPurple}`};
   background-color: ${(props) => props.color};
   transition: 0.3s ease;
