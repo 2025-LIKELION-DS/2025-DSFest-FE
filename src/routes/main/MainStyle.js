@@ -86,6 +86,8 @@ export const MainDiv = styled.div`
   margin-top: 45px;
 
   flex: 1;
+
+  position: relative;
 `;
 
 export const ImgDiv = styled.div`
