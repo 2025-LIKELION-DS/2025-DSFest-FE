@@ -43,10 +43,10 @@ function Main() {
             <M.NoticeMenu>NOTICE</M.NoticeMenu>
           </M.ImgEndDiv>
 
-          <M.ImgEndDiv onClick={() => handleMenuClick('/review')}>
+          <M.ImgEndMarginDiv onClick={() => handleMenuClick('/review')}>
             <M.ReviewImg />
             <M.ReviewMenu>REVIEW</M.ReviewMenu>
-          </M.ImgEndDiv>
+          </M.ImgEndMarginDiv>
         </M.DivMargin>
 
         <M.ImgTopMarginDiv onClick={() => handleMenuClick('puzzle')}>

@@ -100,6 +100,10 @@ export const ImgEndDiv = styled(ImgDiv)`
   align-items: flex-end;
 `;
 
+export const ImgEndMarginDiv = styled(ImgEndDiv)`
+  margin-left: -6px;
+`;
+
 export const ImgMarginDiv = styled(ImgDiv)`
   margin-left: -6px;
 `;
