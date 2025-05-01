@@ -2,12 +2,13 @@ import * as M from '@main/MainStyle';
 import { useNavigate } from 'react-router-dom';
 
 import ToastMsg from '@main/components/ToastMsg';
+import Splash from '@main/components/Splash';
 
 import Moon from '@assets/main/moon-crescent.png';
 import Logo from '@assets/main/title-yeoun.png';
 import Cloud from '@assets/main/cloud-textured-purple_80_.png';
 import Tree from '@assets/main/tree-shadow-grain_80_.png';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const BOOTH = {
   booths: [
@@ -79,22 +80,37 @@ function Main() {
   const randomBooth = BOOTH.booths[Math.floor(Math.random() * BOOTH.booths.length)];
 
   const [showToast, setShowToast] = useState(false);
+  const timeRef = useRef(null);
+
+  const [firstVisit, setFirstVisit] = useState(() => {
+    const hasVisited = localStorage.getItem('hasVisited');
+    return !hasVisited; // 방문한 적 없으면 return true
+  });
 
   const handleMenuClick = (path) => {
     navigate(path);
   };
 
   const handleShowToast = () => {
+    // 이전에 설정된 타이머 있다면 취소
+    if (timeRef.current) {
+      clearTimeout(timeRef.current);
+    }
+
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 1500);
+  };
+
+  const onClickHideSplash = () => {
+    localStorage.setItem('hasVisited', true);
+    setFirstVisit(false);
   };
 
   return (
     <>
       <M.Main>
-        {showToast && <ToastMsg boothName={randomBooth.boothName} />}
+        {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
+
+        {showToast && <ToastMsg boothName={randomBooth.boothName} onClose={() => setShowToast(false)} />}
 
         <M.MoonImg src={Moon} alt="달" />
         <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
