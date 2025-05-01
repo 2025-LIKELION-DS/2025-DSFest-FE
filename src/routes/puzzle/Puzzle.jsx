@@ -31,10 +31,10 @@ function Puzzle() {
   const isLoginEnabled = inputLoginID && inputLoginPWD;
 
   const [authorized, setAuthorized] = useState(true);
-  //퍼즐 완성을 눌렀을 때
-  const [completed, setCompleted] = useState(false);
   //퍼즐 9개를 다 채웠을 때
   const [success, setSuccess] = useState(false);
+  //퍼즐 완성을 눌렀을 때
+  const [completed, setCompleted] = useState(true);
   //경품 수령 완료했을 때
   const [end, setEnd] = useState(false);
 
@@ -79,7 +79,7 @@ function Puzzle() {
               ) : (
                 <>
                   <P.regular14>남은 퍼즐</P.regular14>
-                  <P.semibold14>2개</P.semibold14>
+                  <P.todoPuzzleCount>2개</P.todoPuzzleCount>
                 </>
               )}
             </P.todoPuzzle>
@@ -91,8 +91,8 @@ function Puzzle() {
             </P.regular16>
             <P.puzzleCount>
               <P.glowPuzzleIcon src={glowPuzzleIcon} />
-              <P.semibold36>7</P.semibold36>
-              <P.regular20>개</P.regular20>
+              <P.completedPuzzleCount>7</P.completedPuzzleCount>
+              <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
             </P.puzzleCount>
           </P.completedPuzzleBox>
         </P.completedPuzzle>
@@ -124,16 +124,16 @@ function Puzzle() {
         {authorized ? (
           completed ? (
             <>
-              <P.regular14>
+              <P.presentInfo>
                 <P.goMap>
                   {/* onClick={goMap} */}
                   <P.boothIcon>
                     <img src={boothIcon} alt="총학생회 부스" />
                   </P.boothIcon>
-                  <P.semibold16>총학생회 부스</P.semibold16>
+                  <P.purplesemibold16>총학생회 부스</P.purplesemibold16>
                 </P.goMap>
                 를 방문해 경품을 수령하세요!
-              </P.regular14>
+              </P.presentInfo>
 
               <P.CompletedInfo>
                 <img src={lightIcon} />
