@@ -78,7 +78,7 @@ function PuzzleList() {
           />
         </P.PuzzleItemContainer>
 
-        {showToast && <CopyToast onClose={() => setShowToast(false)} />}
+        {showToast && <CopyToast position="sticky" onClose={() => setShowToast(false)} />}
       </P.PuzzleList>
     </>
   );

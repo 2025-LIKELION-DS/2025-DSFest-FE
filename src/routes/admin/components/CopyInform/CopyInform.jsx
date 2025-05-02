@@ -8,7 +8,8 @@ import Copy from '@assets/admin/icon-copy.svg';
  * @param {string} title -- title 내용
  * @param {string} text -- text 내용
  * @param {string} size -- 내용 속 폰트 크기
- * ex) <CopyInform title={"퍼즐 번호"} text={"1"} size="16px"/>
+ * @param {boolean} onShowToast -- 복사 토스트 메시지 여부
+ * ex) <CopyInform title={"퍼즐 번호"} text={"1"} size="16px" onShowToast={handleShowToast}/>
  *
  * 퍼즐 번호, 장소명은 size="16px",
  * 퍼즐 비밀번호는 size="20px"로 넘기면 됩니다.
@@ -16,11 +17,13 @@ import Copy from '@assets/admin/icon-copy.svg';
  * @author 김서윤
  * **/
 
-const CopyInform = ({ title, text, size }) => {
+const CopyInform = ({ title, text, size, onShowToast }) => {
   const handleCopy = () => {
     navigator.clipboard
       .writeText(text)
-      .then(() => {})
+      .then(() => {
+        onShowToast();
+      })
       .catch((err) => {
         console.error('복사 실패:', err);
       });

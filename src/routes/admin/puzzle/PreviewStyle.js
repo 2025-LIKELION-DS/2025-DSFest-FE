@@ -5,7 +5,8 @@ export const Preview = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 56px);
+  min-height: calc(100% - 56px);
+  position: relative;
 `;
 
 export const Container = styled.div`

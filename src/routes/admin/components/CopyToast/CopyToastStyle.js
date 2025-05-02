@@ -27,7 +27,7 @@ export const ToastContainer = styled.div`
   animation: ${ToastShow} 1.5s ease-in-out forwards;
   transform-origin: center;
 
-  position: sticky;
+  position: ${(props) => props.position};
   bottom: 36px;
 
   width: 100%;

@@ -10,12 +10,13 @@ import { useRef } from 'react';
  *
  * @param {string} title -- title 내용
  * @param {string} uuid -- QR uuid 값
- * ex) <CopyQR title={"퍼즐 QR"} uuid={"e1439392-f7bd-4e4d-b1ed-0efa86c5200e"}/>
+ * @param {boolean} onShowToast -- 복사 토스트 메시지 여부
+ * ex) <CopyQR title={"퍼즐 QR"} uuid={"e1439392-f7bd-4e4d-b1ed-0efa86c5200e"} onShowToast={handleShowToast}/>
  *
  * @author 김서윤
  * **/
 
-const CopyQR = ({ title, uuid }) => {
+const CopyQR = ({ title, uuid, onShowToast }) => {
   const qrContainerRef = useRef(null);
 
   const handleCopy = async () => {
@@ -32,6 +33,7 @@ const CopyQR = ({ title, uuid }) => {
           }),
         ]);
       });
+      onShowToast();
     } catch (err) {
       console.error('복사 실패:', err);
     }

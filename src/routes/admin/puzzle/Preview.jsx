@@ -8,10 +8,13 @@ import CopyQR from '@admin/components/CopyQr/CopyQr';
 import ButtonAdminDual from '@components/admin/ButtonAdminDual/ButtonAdminDual';
 import ButtonAdminSingle from '@components/admin/ButtonAdminSingle/ButtonAdminSingle';
 import QRImage from '@admin/components/QRImage/QRImage';
+import CopyToast from '@admin/components/CopyToast/CopyToast';
 import Down from '@assets/admin/icon-download.svg?react';
 import Send from '@assets/admin/icon-send.svg?react';
 
 function Preview() {
+  const [showToast, setShowToast] = useState(false);
+  const timeRef = useRef(null);
   const qrImageRef = useRef(null);
   const navigate = useNavigate();
 
@@ -25,6 +28,15 @@ function Preview() {
     qrValue: 'e1439392-f7bd-4e4d-b1ed-0efa86c5200e',
     puzzlePassword: 'E2F989',
   });
+
+  const handleShowToast = () => {
+    // 이전에 설정된 타이머 있다면 취소
+    if (timeRef.current) {
+      clearTimeout(timeRef.current);
+    }
+
+    setShowToast(true);
+  };
 
   const buttonDownloadClick = async () => {
     if (!qrImageRef.current) return;
@@ -71,10 +83,15 @@ function Preview() {
     <>
       <P.Preview>
         <P.Container>
-          <CopyInform title={'퍼즐 번호'} text={puzzleData.puzzleNumber} size="16px" />
-          <CopyInform title={'장소명'} text={puzzleData.puzzleName} size="16px" />
-          <CopyQR title={'퍼즐 QR'} uuid={puzzleData.qrValue} />
-          <CopyInform title={'퍼즐 비밀번호'} text={puzzleData.puzzlePassword} size="20px" />
+          <CopyInform title={'퍼즐 번호'} text={puzzleData.puzzleNumber} size="16px" onShowToast={handleShowToast} />
+          <CopyInform title={'장소명'} text={puzzleData.puzzleName} size="16px" onShowToast={handleShowToast} />
+          <CopyQR title={'퍼즐 QR'} uuid={puzzleData.qrValue} onShowToast={handleShowToast} />
+          <CopyInform
+            title={'퍼즐 비밀번호'}
+            text={puzzleData.puzzlePassword}
+            size="20px"
+            onShowToast={handleShowToast}
+          />
         </P.Container>
 
         <P.BottomContainer>
@@ -88,10 +105,11 @@ function Preview() {
           />
           <ButtonAdminSingle
             text="목록으로"
-            color={`${palette.mainPurple}`}
+            color={palette.mainPurple}
             onClick={() => handleLinkClick('/admin/puzzle')}
           />
         </P.BottomContainer>
+        {showToast && <CopyToast position="absolute" onClose={() => setShowToast(false)} />}
       </P.Preview>
 
       {/* 저장되는 이미지, 렌더링 X */}
