@@ -9,7 +9,7 @@ import * as B from '@components/ButtonCommon/ButtonCommonStyle';
  * @param {function} onClick -- 버튼 클릭 시 실행될 함수
  * @param {string} type -- 버튼의 타입
  *
- * ex) <ButtonCommon text={"로그인"} color={`${palette.grayscale.ca}`} onClick={handleClick} type='button'/>
+ * ex) <ButtonCommon text={"로그인"} color={palette.grayscale.ca} onClick={handleClick} type='button'/>
  *
  * 버튼의 기본 타입은 button이며, 필요에 따라 타입을 지정할 수 있습니다.
  *
