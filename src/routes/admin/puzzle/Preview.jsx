@@ -97,10 +97,10 @@ function Preview() {
         <P.BottomContainer>
           <ButtonAdminDual
             contentL={<Down />}
-            colorL={`${palette.grayscale.white}`}
+            colorL={palette.grayscale.white}
             onClickL={buttonDownloadClick}
             contentR={<Send />}
-            colorR={`${palette.grayscale.white}`}
+            colorR={palette.grayscale.white}
             onClickR={buttonShareClick}
           />
           <ButtonAdminSingle

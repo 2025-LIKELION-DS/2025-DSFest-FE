@@ -20,7 +20,7 @@ import Copy from '@assets/admin/icon-copy.svg';
  * @param {string} uuid -- 퍼즐 QR uuid 값
  * @param {string} password -- 퍼즐 비밀번호 값
  * @param {boolean} onShowToast -- 복사 토스트 메시지 여부
- * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" >
+ * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" onShowToast={handleShowToast} >
  *
  * @author 김서윤
  * **/
