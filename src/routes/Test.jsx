@@ -111,36 +111,36 @@ const Test = () => {
         <InputAdmin placeholder={'비밀번호'} type={'password'} value={inputAdminPWD} onChange={inputAdminPWDChange} />
 
         <div>✔️Button_admin_single</div>
-        <ButtonAdminSingle text={'작성하기'} color={`${palette.mainPurple}`} onClick={buttonAdminSingleClick} />
-        <ButtonAdminSingle text={'생성'} color={`${palette.mainPurple}`} onClick={buttonAdminSingleClick} />
-        <ButtonAdminSingle text={'목록에 저장'} color={`${palette.mainPurple}`} onClick={buttonAdminSingleClick} />
-        <ButtonAdminSingle text={'공지사항'} color={`${palette.grayscale.white}`} onClick={buttonAdminSingleClick} />
+        <ButtonAdminSingle text={'작성하기'} color={palette.mainPurple} onClick={buttonAdminSingleClick} />
+        <ButtonAdminSingle text={'생성'} color={palette.mainPurple} onClick={buttonAdminSingleClick} />
+        <ButtonAdminSingle text={'목록에 저장'} color={palette.mainPurple} onClick={buttonAdminSingleClick} />
+        <ButtonAdminSingle text={'공지사항'} color={palette.grayscale.white} onClick={buttonAdminSingleClick} />
         <ButtonAdminSingle
           text={'부스 QR 및 비밀번호 생성'}
-          color={`${palette.grayscale.white}`}
+          color={palette.grayscale.white}
           onClick={buttonAdminSingleClick}
         />
         <ButtonAdminSingle
           text={'부스 QR 및 비밀번호 목록'}
-          color={`${palette.grayscale.white}`}
+          color={palette.grayscale.white}
           onClick={buttonAdminSingleClick}
         />
 
         <div>✔️Button_admin_dual</div>
         <ButtonAdminDual
           contentL={'수정'}
-          colorL={`${palette.grayscale.white}`}
+          colorL={palette.grayscale.white}
           onClickL={buttonAdminDualLeftClick}
           contentR={'삭제'}
-          colorR={`${palette.grayscale.white}`}
+          colorR={palette.grayscale.white}
           onClickR={buttonAdminDualRightClick}
         />
         <ButtonAdminDual
           contentL={<Down />}
-          colorL={`${palette.grayscale.white}`}
+          colorL={palette.grayscale.white}
           onClickL={buttonAdminDualLeftClick}
           contentR={<Send />}
-          colorR={`${palette.grayscale.white}`}
+          colorR={palette.grayscale.white}
           onClickR={buttonAdminDualRightClick}
         />
 

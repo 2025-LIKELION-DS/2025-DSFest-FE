@@ -13,12 +13,14 @@ import Close from '@assets/puzzle/icon-password-close.svg';
  * @param {string} type -- input type (text or password)
  * @param {state} value -- value 내용
  * @param {function} onChange -- input의 onChange 함수
- * ex) <InputLogin placeholder={"비밀번호를 입력해주세요"} type={"password"} value={value} onChange={(e)=> setValue(e.target.value)}/>
+ * @param {function} onKeyDown -- input 입력 후 enter 함수
+ *
+ * ex) <InputLogin placeholder={"비밀번호를 입력해주세요"} type={"password"} value={value} onChange={(e)=> setValue(e.target.value)} onKeyDown={onKeyDown}/>
  *
  * @author 김진효
  * **/
 
-const InputLogin = ({ placeholder, type, value, onChange }) => {
+const InputLogin = ({ placeholder, type, value, onChange, onKeyDown }) => {
   const [showPwd, setShowPwd] = useState(false);
 
   const handleClear = () => {
@@ -36,6 +38,7 @@ const InputLogin = ({ placeholder, type, value, onChange }) => {
         type={type === 'password' ? (showPwd ? 'text' : 'password') : type}
         value={value}
         onChange={onChange}
+        onKeyDown={onKeyDown}
       />
       <I.PwdIcon src={Cancle} alt="취소" onClick={handleClear} />
       {type === 'password' && <I.PwdClose src={showPwd ? Open : Close} alt="비밀번호 가리기" onClick={handlePwd} />}
