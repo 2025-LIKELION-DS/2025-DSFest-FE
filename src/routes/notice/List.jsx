@@ -42,9 +42,9 @@ function List() {
         <L.Contents>
           {/* {contents.map((content) => (
           <Content
-            title={content.id}
-            preview={content.}
-            previewImg={content.}
+            title={content.title}
+            preview={content.content}
+            previewImg={content.thumbnailUrl}
             onClick={() => navigate(`/notice/${content.id}`)}
           />
         ))} */}
