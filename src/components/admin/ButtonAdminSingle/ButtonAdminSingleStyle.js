@@ -27,4 +27,14 @@ export const ButtonCommon = styled.button`
   font-weight: 600;
   line-height: 130%;
   letter-spacing: -0.6px;
+
+  &:hover {
+    background-color: ${(props) => (props.color === palette.mainPurple ? palette.darkPurple : palette.lightPurple)};
+    color: ${(props) => (props.color === palette.mainPurple ? palette.grayscale.white : palette.darkPurple)};
+    border: ${(props) => props.color === palette.grayscale.white && `1px solid ${palette.darkPurple}`};
+  }
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border 0.3s ease;
 `;

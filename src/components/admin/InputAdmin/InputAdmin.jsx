@@ -8,18 +8,20 @@ import * as I from '@components/admin/InputAdmin/InputAdminStyle';
  * @param {string} type -- input type
  * @param {string} value -- value 내용
  * @param {function} onChange -- input의 onChange 함수
- * ex) <InputAdmin placeholder={"아이디"} type={"text"} value={value} onChange={(e) => setValue(e.target.value)}/>
+ * @param {function} onKeyDown -- input 입력 후 enter 함수
+ *
+ * ex) <InputAdmin placeholder={"아이디"} type={"text"} value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={onKeyDown}/>
  *
  * @author 김진효
  * **/
 
-const InputAdmin = ({ placeholder, type, value, onChange }) => {
+const InputAdmin = ({ placeholder, type, value, onChange, onKeyDown }) => {
   return (
     <I.InputContainer>
       <I.InputWrapper>
         <I.Text>{placeholder}</I.Text>
         <I.Line></I.Line>
-        <I.Input placeholder={placeholder} type={type} value={value} onChange={onChange} />
+        <I.Input placeholder={placeholder} type={type} value={value} onChange={onChange} onKeyDown={onKeyDown} />
       </I.InputWrapper>
     </I.InputContainer>
   );
