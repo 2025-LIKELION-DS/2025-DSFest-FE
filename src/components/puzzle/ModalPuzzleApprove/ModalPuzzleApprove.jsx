@@ -96,12 +96,7 @@ const ModalPuzzleApprove = ({ state, number, boothName, onClick, value, onChange
             )}
           </B.InputDiv>
 
-          <ButtonModalDual
-            contentL={'QR코드 재인증'}
-            onClickL={onClickL}
-            contentR={'비밀번호 입력'}
-            onClickR={onClickR}
-          />
+          <ButtonModalDual contentL={'QR코드 재인증'} onClickL={onClickL} contentR={'완료'} onClickR={onClickR} />
         </B.ModalPuzzleSelect>
       )}
     </>
