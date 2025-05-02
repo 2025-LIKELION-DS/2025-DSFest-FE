@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import * as P from '@admin/puzzle/PreviewStyle';
 import palette from '@styles/theme';
 import CopyInform from '@admin/components/CopyInform/CopyInform';
-import CopyQR from '@admin/components/CopyQr/CopyQr';
+import CopyQR from '@admin/components/CopyQR/CopyQR';
 import ButtonAdminDual from '@components/admin/ButtonAdminDual/ButtonAdminDual';
 import ButtonAdminSingle from '@components/admin/ButtonAdminSingle/ButtonAdminSingle';
 import QRImage from '@admin/components/QRImage/QRImage';
