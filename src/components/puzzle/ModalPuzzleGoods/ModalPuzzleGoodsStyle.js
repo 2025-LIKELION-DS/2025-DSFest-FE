@@ -20,13 +20,7 @@ export const ModalPuzzleSelect = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  padding: 45px 26px 0px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-
-  flex: 1;
+  padding: 40px 26px 0px;
 `;
 
 export const ImgContainer = styled.div`
@@ -53,6 +47,10 @@ export const Text = styled.div`
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.4px;
+
+  span {
+    font-weight: 600;
+  }
 `;
 
 export const Ptext = styled.div`
@@ -69,6 +67,8 @@ export const FlexContainer = styled.div`
   justify-content: flex-end;
   flex: 1;
   gap: 14px;
+
+  z-index: 999;
 `;
 
 export const FlexText = styled(Text)`
