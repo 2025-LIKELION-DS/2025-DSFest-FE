@@ -14,9 +14,8 @@ export const ButtonCommon = styled.button`
   border-radius: 88px;
   outline: none;
 
-  color: ${(props) =>
-    props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.mainPurple}`};
-  border: ${(props) => props.color === `${palette.grayscale.white}` && `1px solid ${palette.mainPurple}`};
+  color: ${(props) => (props.color === palette.mainPurple ? palette.grayscale.white : palette.mainPurple)};
+  border: ${(props) => props.color === palette.grayscale.white && `1px solid ${palette.mainPurple}`};
   background-color: ${(props) => props.color};
 
   font-size: 20px;
@@ -24,4 +23,14 @@ export const ButtonCommon = styled.button`
   font-weight: 600;
   line-height: 130%;
   letter-spacing: -0.6px;
+
+  &:hover {
+    background-color: ${(props) => (props.color === palette.mainPurple ? palette.darkPurple : palette.lightPurple)};
+    color: ${(props) => (props.color === palette.mainPurple ? palette.grayscale.white : palette.darkPurple)};
+    border: ${(props) => props.color === palette.grayscale.white && `1px solid ${palette.darkPurple}`};
+  }
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border 0.3s ease;
 `;

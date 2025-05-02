@@ -20,4 +20,10 @@ export const ButtonCommon = styled.button`
   font-size: 16px;
   font-weight: 600;
   line-height: 140%;
+
+  &:hover {
+    background-color: ${palette.darkPurple};
+  }
+
+  transition: background-color 0.3s ease;
 `;
