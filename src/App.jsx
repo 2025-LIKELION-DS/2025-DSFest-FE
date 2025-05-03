@@ -56,7 +56,7 @@ function App() {
             path="/notice/:id/edit"
             element={
               <ProtectedRoute>
-                <Form type="new" />
+                <Form type="edit" />
               </ProtectedRoute>
             }
           />
