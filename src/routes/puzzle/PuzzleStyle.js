@@ -5,11 +5,19 @@ import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
 import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
-  height: calc(100svh - 80px);
-  max-height: 780px;
+  height: calc(100svh - 50px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (hover: hover) and (pointer: fine) {
+    height: calc(100svh - 50px);
+    max-height: 798px;
+  }
+
+  @media (min-height: 1024px) {
+    height: 800px;
+  }
 `;
 
 export const currentPuzzleInfo = styled.div``;
@@ -64,7 +72,11 @@ export const puzzleGame = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 25px;
+  margin: 51px 25px 0 25px;
+
+  @media (max-height: 750px) {
+    margin-top: 30px;
+  }
 `;
 
 export const presentInfo = styled.div`
@@ -76,6 +88,7 @@ export const presentInfo = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: start;
+  margin-top: 47px;
 `;
 
 export const emptyPuzzle = styled.div`
@@ -192,8 +205,6 @@ export const completedPuzzleCountInfo = styled.div`
   font-size: 20px;
 `;
 
-export const endButton = styled.div``;
-
 export const completedPuzzle = styled.div``;
 
 export const glowPuzzleIcon = styled.img`
@@ -269,7 +280,7 @@ export const puzzle = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: 73px 0 34px 0;
+  margin-bottom: 34px;
 `;
 
 export const puzzleGrid = styled.div`
@@ -349,10 +360,14 @@ export const puzzle9 = styled.img`
   left: 12.87em;
 `;
 
+export const celebration = styled.div`
+  margin-bottom: 39px;
+`;
+
 export const semibold20 = styled.div`
   color: ${palette.grayscale.black};
   font-weight: 600;
-  font-size: 14px;
+  font-size: 20px;
 `;
 
 export const regular14 = styled.div`
@@ -398,4 +413,8 @@ export const semibold14 = styled.div`
   color: ${palette.grayscale.black};
   font-weight: 600;
   font-size: 14px;
+`;
+
+export const endButton = styled.div`
+  margin-bottom: 33px;
 `;

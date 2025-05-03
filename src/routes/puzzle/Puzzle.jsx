@@ -62,11 +62,11 @@ function Puzzle() {
 
   const [authorized, setAuthorized] = useState(true);
   //퍼즐 9개를 다 채웠을 때
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
   //퍼즐 완성을 눌렀을 때
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
-  const [end, setEnd] = useState(true);
+  const [end, setEnd] = useState(false);
 
   const [puzzleValue, setPuzzleValue] = useState({
     index1: false,
@@ -105,10 +105,10 @@ function Puzzle() {
       <P.currentPuzzleInfo>
         <P.top>
           {completed ? (
-            <>
+            <P.celebration>
               <P.semibold20>축하드립니다!</P.semibold20>
               <P.semibold20>모든 퍼즐이 완성되었어요.</P.semibold20>
-            </>
+            </P.celebration>
           ) : (
             <>
               <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
