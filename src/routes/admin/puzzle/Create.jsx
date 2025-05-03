@@ -50,7 +50,6 @@ function Create() {
   const inputPuzzleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      console.log('Enter');
       if (inputPuzzle.trim() || inputPuzzleNum.trim()) {
         buttonCreateClick();
       }
