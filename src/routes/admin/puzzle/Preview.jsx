@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import * as P from '@admin/puzzle/PreviewStyle';
 import palette from '@styles/theme';
@@ -14,20 +14,33 @@ import Send from '@assets/admin/icon-send.svg?react';
 
 function Preview() {
   const [showToast, setShowToast] = useState(false);
+  const [puzzleData, setPuzzleData] = useState(null);
   const timeRef = useRef(null);
   const qrImageRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLinkClick = (path) => {
     navigate(path);
   };
 
-  const [puzzleData, setPuzzleData] = useState({
-    puzzleNumber: '1',
-    puzzleName: '총학생회',
-    qrValue: 'e1439392-f7bd-4e4d-b1ed-0efa86c5200e',
-    puzzlePassword: 'E2F989',
-  });
+  useEffect(() => {
+    const data = location.state;
+    if (data) {
+      setPuzzleData({
+        puzzleNumber: data.puzzleIndex.toString(),
+        puzzleName: data.placeName,
+        qrValue: data.qrValue,
+        puzzlePassword: data.placePassword,
+      });
+    } else {
+      // 예외 처리: 직접 접근한 경우 등
+      alert('잘못된 접근입니다.');
+      navigate('/admin/puzzle');
+    }
+  }, [location.state, navigate]);
+
+  if (!puzzleData) return null;
 
   const handleShowToast = () => {
     // 이전에 설정된 타이머 있다면 취소
