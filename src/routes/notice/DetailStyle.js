@@ -44,4 +44,5 @@ export const Image = styled.img`
   height: 190px;
   aspect-ratio: 4/5;
   border-radius: 8px;
+  cursor: pointer;
 `;

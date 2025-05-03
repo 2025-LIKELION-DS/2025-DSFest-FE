@@ -79,16 +79,18 @@ function Detail() {
           <>
             <D.Title>{notice.title}</D.Title>
             <D.Content>{renderContentWithLinks(notice.content)}</D.Content>
-            <D.Images>
-              {notice.images.map((img, index) => (
-                <D.Image key={img.id} src={img.url} alt={`이미지 ${index}`} onClick={() => handleImageClick(index)} />
-              ))}
-            </D.Images>
           </>
         ) : (
           <div>공지를 불러오는 중...</div>
         )}
       </D.Detail>
+      {notice && notice.images.length > 0 && (
+        <D.Images>
+          {notice.images.map((img, index) => (
+            <D.Image key={img.id} src={img.url} alt={`이미지 ${index}`} onClick={() => handleImageClick(index)} />
+          ))}
+        </D.Images>
+      )}
       {isAdminLoggedIn() && (
         <Button
           contentL={'수정'}
