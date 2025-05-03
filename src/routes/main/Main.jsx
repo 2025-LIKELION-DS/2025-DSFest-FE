@@ -5,7 +5,7 @@ import ToastMsg from '@main/components/ToastMsg';
 import Splash from '@main/components/Splash';
 
 import Moon from '@assets/main/moon-crescent.png';
-import Logo from '@assets/main/title-yeoun.png';
+import Logo from '@assets/main/icon-title-yeoun.svg';
 import Cloud from '@assets/main/cloud-textured-purple_80_.png';
 import Tree from '@assets/main/tree-shadow-grain_80_.png';
 import { useRef, useState } from 'react';

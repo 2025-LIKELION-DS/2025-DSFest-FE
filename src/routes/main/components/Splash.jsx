@@ -1,7 +1,7 @@
 import * as S from '@main/components/SplashStyle';
 
 import Close from '@assets/main/icon-x.svg';
-import Logo from '@assets/main/title-yeoun_white.png';
+import Logo from '@assets/main/icon-title-yeoun_white.svg';
 import Arrow from '@assets/main/icon-arrow.svg';
 
 const Splash = ({ onClickHideSplash }) => {
