@@ -28,7 +28,6 @@ function Form({ type }) {
         .get(`${import.meta.env.VITE_API_URL}/notices/${id}`)
         .then((res) => {
           const { title, content, images } = res.data.data;
-          console.log(res.data.data);
           setTitle(title);
           setContent(content);
           setServerImages(images);
