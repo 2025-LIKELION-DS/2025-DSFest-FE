@@ -33,7 +33,7 @@ const SidebarAdmin = ({ isSidebarOpen, onClose }) => {
           </S.Menu>
 
           <S2.MenuList>
-            <S.Menu onClick={() => handleLinkClick('/notice/new')}>
+            <S.Menu onClick={() => handleLinkClick('/notice')}>
               <S.MenuTitle>공지사항</S.MenuTitle>
             </S.Menu>
 
