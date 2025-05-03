@@ -60,17 +60,23 @@ function Form({ type }) {
     }
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const files = Array.from(e.target.files);
     setImageFiles((prev) => [...prev, ...files]);
 
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImages((prev) => [...prev, { id: null, src: reader.result }]);
-      };
-      reader.readAsDataURL(file);
-    });
+    const readFiles = files.map(
+      (file) =>
+        new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve({ id: null, src: reader.result });
+          };
+          reader.readAsDataURL(file);
+        }),
+    );
+
+    const newImages = await Promise.all(readFiles);
+    setImages((prev) => [...prev, ...newImages]);
   };
 
   const handleDeleteImage = (index) => {
@@ -128,7 +134,7 @@ function Form({ type }) {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: '20px' }}>
       <F.Form>
         <F.Input value={title} placeholder="제목을 입력하세요" onChange={(e) => setTitle(e.target.value)} />
         <F.TextArea
@@ -193,7 +199,7 @@ function Form({ type }) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

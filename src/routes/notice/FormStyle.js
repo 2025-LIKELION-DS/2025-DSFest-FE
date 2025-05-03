@@ -10,10 +10,9 @@ export const Form = styled.div`
 
 export const Input = styled.input`
   width: 100%;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  caret-color: ${palette.mainPurple};
   color: ${palette.grayscale.text33};
   text-overflow: ellipsis;
   font-family: Pretendard;
@@ -24,6 +23,7 @@ export const Input = styled.input`
   border: none;
   background: transparent;
   outline: none;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const TextArea = styled.textarea`
