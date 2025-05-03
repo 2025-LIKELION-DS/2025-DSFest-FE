@@ -29,11 +29,11 @@ export const ImgDiv = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 22.5px;
+  margin-top: 23.7%;
 `;
 
 export const LogoImg = styled.img`
   margin: 0 auto;
-  margin-top: 23.71vh;
 `;
 
 export const ArrowImg = styled.img`

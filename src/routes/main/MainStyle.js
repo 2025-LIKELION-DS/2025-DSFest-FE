@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import palette from '@styles/theme';
 
 import BackGround from '@assets/main/puzzle-scene-stars-grain.jpg';
 import TimeTable from '@assets/main/time-table.svg?react';
@@ -30,7 +29,7 @@ export const MoonImg = styled.img`
 export const LogoImg = styled.img`
   display: block;
   margin: 0 auto;
-  margin-top: 23.71vh;
+  margin-top: 23.7%;
 
   cursor: pointer;
 `;

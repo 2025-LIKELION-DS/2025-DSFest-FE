@@ -1,14 +1,14 @@
-import * as M from '@main/MainStyle';
+import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as M from '@main/MainStyle';
 
 import ToastMsg from '@main/components/ToastMsg';
 import Splash from '@main/components/Splash';
 
 import Moon from '@assets/main/moon-crescent.png';
-import Logo from '@assets/main/icon-title-yeoun.svg';
+import Logo from '@assets/main/title-yeoun.png';
 import Cloud from '@assets/main/cloud-textured-purple_80_.png';
 import Tree from '@assets/main/tree-shadow-grain_80_.png';
-import { useRef, useState } from 'react';
 
 const BOOTH = {
   booths: [
@@ -87,6 +87,8 @@ function Main() {
     return !hasVisited; // 방문한 적 없으면 return true
   });
 
+  const [resizeKey, setResizeKey] = useState(0);
+
   const handleMenuClick = (path) => {
     navigate(path);
   };
@@ -105,9 +107,18 @@ function Main() {
     setFirstVisit(false);
   };
 
+  useEffect(() => {
+    // 창 크기 변경시 리렌더링
+    const onResize = () => {
+      setResizeKey((k) => k + 1);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
     <>
-      <M.Main>
+      <M.Main key={resizeKey}>
         {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
 
         {showToast && <ToastMsg boothName={randomBooth.boothName} onClose={() => setShowToast(false)} />}
