@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import * as T from '@components/TimeTable/TimeTableStyle.js';
+import * as B from '@components/TimeTable/BoothBoxStyle.js';
+import BoothBoxGroup from '@components/TimeTable/TTBoxGroup';
+import TimeLineHeader from '@components/TimeTable/TimeLineHeader';
+
+const dates = ['14(WED)', '15(THU)', '16(FRI)']; // 날짜 목록
+
+const TimeTable = () => {
+  const [selectedDate, setSelectedDate] = useState('14(WED)'); // 기본 날짜 선택
+
+  return (
+    <>
+      {/* 타임테이블 헤더 (타임라인 그리드 + 마커 포함) */}
+      <TimeLineHeader selectedDate={selectedDate} />
+
+      {/* 타임테이블 바(요일별) */}
+      <T.DateBar>
+        {dates.map((date) => (
+          <T.DateCell
+            key={date}
+            onClick={() => setSelectedDate(date)}
+            className={selectedDate === date ? 'selected' : ''}>
+            {date}
+          </T.DateCell>
+        ))}
+      </T.DateBar>
+
+      <T.TimeTable>
+        {/* 좌측 시간 표시 */}
+        <T.TableTimeCon>
+          {['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(
+            (time, i) => (
+              <T.TableTime key={time}>{time}</T.TableTime>
+            ),
+          )}
+        </T.TableTimeCon>
+
+        {/* 타임라인 및 일정 박스 */}
+        <T.TableLineCon>
+          <B.BoothCon>
+            {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
+            <BoothBoxGroup selectedDate={selectedDate} />
+          </B.BoothCon>
+
+          {Array.from({ length: 6 }).map((_, idx, arr) => (
+            <T.TableLine key={idx} first={idx === 0} last={idx === arr.length - 1} />
+          ))}
+        </T.TableLineCon>
+      </T.TimeTable>
+
+      {/* 부스 info */}
+      <T.SpaceInfo>
+        <T.SpaceBox>
+          <T.Circle booth />
+          부스 존
+        </T.SpaceBox>
+        <T.SpaceBox>
+          <T.Circle />
+          영근터
+        </T.SpaceBox>
+        <T.SpaceBox>
+          <T.Circle className="ilsimdukche" />
+          일심덕체
+        </T.SpaceBox>
+      </T.SpaceInfo>
+    </>
+  );
+};
+
+export default TimeTable;
