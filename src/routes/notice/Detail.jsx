@@ -75,7 +75,7 @@ function Detail() {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: '20px' }}>
       <D.Detail>
         {notice ? (
           <>
@@ -126,7 +126,7 @@ function Detail() {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
