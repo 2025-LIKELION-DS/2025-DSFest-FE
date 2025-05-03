@@ -32,6 +32,10 @@ export const ToastContainer = styled.div`
 
   width: 100%;
   z-index: 999;
+
+  @media (max-height: 830px) {
+    position: sticky;
+  }
 `;
 
 export const MsgContainer = styled.div`
