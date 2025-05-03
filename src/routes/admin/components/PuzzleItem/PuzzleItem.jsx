@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import palette from '@styles/theme';
 import * as P from '@admin/components/PuzzleItem/PuzzleItemStyle';
 import QRImage from '@admin/components/QRImage/QRImage';
+import Modal from '@components/admin/ModalAdmin/ModalAdmin';
 import Circle from '@assets/admin/icon-circle.svg';
 import Down from '@assets/admin/icon-download.svg';
 import Send from '@assets/admin/icon-send.svg';
@@ -30,6 +31,7 @@ import Copy from '@assets/admin/icon-copy.svg';
 const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
   const controls = useDragControls();
   const [isDeleteShow, setIsDeleteShow] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [animateRef, animate] = useAnimate();
 
   const qrImageRef = useRef(null);
@@ -118,6 +120,10 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
       });
   };
 
+  const handleDelete = () => {
+    setIsDeleteModalOpen(true);
+  };
+
   const handleDeleteClick = async () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/admin/place-auth/${index}`);
@@ -139,7 +145,7 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
             disappear: { opacity: 0 },
           }}
           style={deleteButtonStyle}
-          onClick={handleDeleteClick}>
+          onClick={handleDelete}>
           삭제
         </motion.div>
         <motion.div
@@ -184,6 +190,30 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
           </P.ItemContainer>
         </motion.div>
       </P.PuzzleContainer>
+
+      {isDeleteModalOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 1000,
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Modal
+            text="공지사항을 삭제하시겠습니까?"
+            confirmText="삭제"
+            onClose={() => setIsDeleteModalOpen(false)}
+            onConfirm={handleDeleteClick}
+          />
+        </div>
+      )}
 
       {/* 저장되는 이미지, 렌더링 X */}
       <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
