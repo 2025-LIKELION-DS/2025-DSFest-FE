@@ -27,7 +27,6 @@ import Copy from '@assets/admin/icon-copy.svg';
 
 const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
   const controls = useDragControls();
-  const [draggable, setDraggable] = useState(false);
   const [isDeleteShow, setIsDeleteShow] = useState(false);
   const [animateRef, animate] = useAnimate();
 
@@ -135,7 +134,7 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
           dragConstraints={{ left: -126, right: 0 }}
           dragElastic={0.1}
           dragControls={controls}
-          dragListener={draggable}
+          dragListener={true}
           style={draggableStyle(itemX)}
           onDragEnd={() => {
             const isOverThreshold = itemX.get() < -126 / 2;
@@ -147,10 +146,7 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
             onPointerDown={(e) => {
               e.stopPropagation();
               controls.start(e);
-            }}
-            onMouseEnter={() => setDraggable(true)}
-            onMouseLeave={() => setDraggable(false)}
-            onTouchStart={() => setDraggable(true)}>
+            }}>
             <P.TopContainer>
               <P.LeftContainer>
                 {index}번 퍼즐
