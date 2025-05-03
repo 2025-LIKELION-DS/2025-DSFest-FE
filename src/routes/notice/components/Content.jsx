@@ -8,7 +8,7 @@ function Content({ title, preview, previewImg, onClick }) {
         <C.Title>{title}</C.Title>
         <C.Preview>{preview}</C.Preview>
       </C.Left>
-      <C.Right $img={previewImg} />
+      {previewImg && <C.Right $img={previewImg} />}
     </C.Content>
   );
 }

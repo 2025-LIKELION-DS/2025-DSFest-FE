@@ -18,3 +18,11 @@ export const Contents = styled.div`
   align-items: flex-start;
   border-top: 1px solid ${palette.grayscale.df};
 `;
+
+export const Empty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 60px 0;
+`;
