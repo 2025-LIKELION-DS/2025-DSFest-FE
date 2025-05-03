@@ -20,9 +20,8 @@ export const ButtonCommon = styled.button`
   border-radius: 29px;
   outline: none;
 
-  color: ${(props) =>
-    props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.mainPurple}`};
-  border: ${(props) => (props.color === `${palette.grayscale.white}` ? `1px solid ${palette.mainPurple}` : 'none')};
+  color: ${(props) => (props.color === palette.mainPurple ? palette.grayscale.white : palette.mainPurple)};
+  border: ${(props) => (props.color === palette.grayscale.white ? `1px solid ${palette.mainPurple}` : 'none')};
   background-color: ${(props) => props.color};
 
   font-size: 16px;
@@ -30,11 +29,9 @@ export const ButtonCommon = styled.button`
   line-height: 140%;
 
   &:hover {
-    background-color: ${(props) =>
-      props.color === `${palette.mainPurple}` ? `${palette.darkPurple}` : `${palette.lightPurple}`};
-    color: ${(props) =>
-      props.color === `${palette.mainPurple}` ? `${palette.grayscale.white}` : `${palette.darkPurple}`};
-    border: ${(props) => props.color === `${palette.grayscale.white}` && `1px solid ${palette.darkPurple}`};
+    background-color: ${(props) => (props.color === palette.mainPurple ? palette.darkPurple : palette.lightPurple)};
+    color: ${(props) => (props.color === palette.mainPurple ? palette.grayscale.white : palette.darkPurple)};
+    border: ${(props) => props.color === palette.grayscale.white && `1px solid ${palette.darkPurple}`};
   }
 
   transition:
