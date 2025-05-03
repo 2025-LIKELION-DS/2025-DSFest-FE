@@ -66,16 +66,16 @@ function Puzzle() {
   //퍼즐 완성을 눌렀을 때
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
-  const [end, setEnd] = useState(false);
+  const [end, setEnd] = useState(true);
 
   const [puzzleValue, setPuzzleValue] = useState({
-    index1: false,
-    index2: false,
-    index3: false,
-    index4: false,
+    index1: true,
+    index2: true,
+    index3: true,
+    index4: true,
     index5: true,
     index6: true,
-    index7: false,
+    index7: true,
     index8: true,
     index9: true,
   });
@@ -142,7 +142,7 @@ function Puzzle() {
                 ) : (
                   <>
                     <P.regular14>남은 퍼즐</P.regular14>
-                    <P.todoPuzzleCount>2개</P.todoPuzzleCount>
+                    <P.todoPuzzleCount>0개</P.todoPuzzleCount>
                   </>
                 )}
               </P.todoPuzzle>
@@ -154,7 +154,7 @@ function Puzzle() {
               </P.regular16>
               <P.puzzleCount>
                 <P.glowPuzzleIcon src={glowPuzzleIcon} />
-                <P.completedPuzzleCount>7</P.completedPuzzleCount>
+                <P.completedPuzzleCount>9</P.completedPuzzleCount>
                 <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
               </P.puzzleCount>
             </P.completedPuzzleBox>
