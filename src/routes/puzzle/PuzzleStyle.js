@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import palette from '@styles/theme';
 
-import emptyPuzzleImg from '@assets//puzzle/empty_puzzle.png';
+import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
+import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
+
+export const puzzlePage = styled.div`
+  height: calc(100svh - 87px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const currentPuzzleInfo = styled.div``;
 
 export const top = styled.div`
   margin: 34px 0 24px 28px;
@@ -178,11 +188,100 @@ export const CompletedInfo = styled.div`
   margin-top: 23px;
 `;
 
-export const whiteErrorIcon = styled.img``;
+export const whiteErrorIcon = styled.img`
+  margin-bottom: 6px;
+`;
 
-export const successPuzzle = styled.div``;
+export const successPuzzle = styled.div`
+  width: 90vw;
+  aspect-ratio: 1;
+  background-image: url(${successPuzzleImg});
 
-export const whiteCheck = styled.img``;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const whiteCheck = styled.img`
+  margin-bottom: 6px;
+`;
+
+export const puzzle = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const puzzleGrid = styled.div`
+  width: 100vw;
+  aspect-ratio: 1;
+  position: relative;
+  right: 5px;
+  max-height: 345px;
+  max-width: 345px;
+
+  @media (max-width: 380px) {
+    transform: scale(0.85);
+  }
+`;
+
+export const puzzle1 = styled.img`
+  position: absolute;
+`;
+
+export const puzzle2 = styled.img`
+  position: absolute;
+  top: 0;
+  left: 7.0155em;
+`;
+
+export const puzzle3 = styled.img`
+  position: absolute;
+  top: 0;
+  left: 12.89em;
+`;
+
+export const puzzle4 = styled.img`
+  position: absolute;
+  top: 5.69em;
+  left: 0;
+`;
+
+export const puzzle5 = styled.img`
+  position: absolute;
+  top: 7.0549em;
+  left: 5.7em;
+`;
+
+export const puzzle6 = styled.img`
+  position: absolute;
+  top: 5.68em;
+  left: 14.2em;
+`;
+
+export const puzzle7 = styled.img`
+  position: absolute;
+  top: 14.21em;
+  left: 0;
+`;
+
+export const puzzle8 = styled.img`
+  position: absolute;
+  top: 12.88em;
+  left: 7.038em;
+`;
+
+export const puzzle9 = styled.img`
+  position: absolute;
+  top: 14.2em;
+  left: 12.87em;
+`;
 
 export const semibold20 = styled.div`
   color: ${palette.grayscale.black};
@@ -200,12 +299,15 @@ export const whiteRegular16 = styled.div`
   font-weight: 400;
   color: ${palette.grayscale.white};
   font-size: 16px;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const whiteSemibold16 = styled.div`
   font-weight: 600;
   color: ${palette.grayscale.white};
   font-size: 16px;
+  margin-left: 2px;
 `;
 
 export const bold14 = styled.div`
@@ -232,6 +334,7 @@ export const purpleRegular14 = styled.div`
   color: ${palette.mainPurple};
   font-weight: 400;
   font-size: 14px;
+  margin-left: 2px;
 `;
 
 export const purplesemibold16 = styled.div`
