@@ -11,7 +11,7 @@ export const Logout = styled.div`
   display: flex;
   gap: 3px;
   margin-left: 28px;
-  margin-top: 55vh;
+  margin-bottom: 57px;
 
   width: max-content;
   cursor: pointer;

@@ -27,7 +27,10 @@ export const InputLogin = styled.input`
   border: none;
 
   color: ${palette.grayscale.text33};
+
+  font-family: Pretendard;
   font-size: 14px;
+  font-style: normal;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.35px;
@@ -37,6 +40,7 @@ export const InputLogin = styled.input`
 
     font-family: Pretendard;
     font-size: 14px;
+    font-style: normal;
     font-weight: 400;
     line-height: 140%;
     letter-spacing: -0.35px;

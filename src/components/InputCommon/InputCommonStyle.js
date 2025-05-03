@@ -35,6 +35,7 @@ export const InputCommon = styled.input`
 
     font-family: Pretendard;
     font-size: inherit;
+    font-style: normal;
     font-weight: inherit;
     line-height: inherit;
     letter-spacing: -0.35px;

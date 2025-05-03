@@ -46,17 +46,21 @@ export const Input = styled.input`
   border: none;
   width: 100%;
 
+  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 130%;
   letter-spacing: -0.48px;
 
   background-color: ${palette.grayscale.ef};
 
   &::placeholder {
+    font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    line-height: 130%;
     letter-spacing: -0.48px;
   }
 `;
