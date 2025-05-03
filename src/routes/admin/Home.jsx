@@ -15,12 +15,12 @@ function Home() {
         <Button
           text="퍼즐 QR 및 비밀번호 생성"
           color={palette.grayscale.white}
-          onClick={() => navigate('/admin/puzzle')}
+          onClick={() => navigate('/admin/puzzle/new')}
         />
         <Button
           text="퍼즐 QR 및 비밀번호 목록"
           color={palette.grayscale.white}
-          onClick={() => navigate('/admin/puzzle/new')}
+          onClick={() => navigate('/admin/puzzle')}
         />
       </H.Area>
     </H.Home>
