@@ -9,6 +9,7 @@ export const Form = styled.div`
 `;
 
 export const Input = styled.input`
+  padding: 0;
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
@@ -27,6 +28,7 @@ export const Input = styled.input`
 `;
 
 export const TextArea = styled.textarea`
+  padding: 0;
   width: 100%;
   color: ${palette.grayscale.text33};
   font-family: Pretendard;
