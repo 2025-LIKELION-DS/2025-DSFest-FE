@@ -5,7 +5,8 @@ import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
 import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
-  height: calc(100svh - 87px);
+  height: calc(100svh - 80px);
+  max-height: 780px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,6 +80,7 @@ export const presentInfo = styled.div`
 
 export const emptyPuzzle = styled.div`
   width: 90vw;
+  max-width: 343px;
   aspect-ratio: 1;
   background-image: url(${emptyPuzzleImg});
 
@@ -90,6 +92,24 @@ export const emptyPuzzle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 46px;
+`;
+
+export const loginInfo = styled.div`
+  width: calc(90vw - 20px);
+  max-width: 323px;
+
+  aspect-ratio: 1;
+  background-color: rgb(0, 0, 0, 0.7);
+  border-radius: 10px;
+
+  font-weight: 400;
+  color: ${palette.grayscale.white};
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const boothIcon = styled.div`
@@ -133,6 +153,7 @@ export const completedPuzzleBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  height: 77px;
 `;
 
 export const semibold16 = styled.div`
@@ -193,9 +214,10 @@ export const whiteErrorIcon = styled.img`
 `;
 
 export const successPuzzle = styled.div`
-  width: 90vw;
-  aspect-ratio: 1;
   background-image: url(${successPuzzleImg});
+  width: 90vw;
+  max-width: 343px;
+  aspect-ratio: 1;
 
   background-repeat: no-repeat;
   background-size: contain;
@@ -205,10 +227,40 @@ export const successPuzzle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 34px;
+`;
+
+export const alreadySuccessInfo = styled.div`
+  width: 90vw;
+  max-width: 343px;
+
+  aspect-ratio: 1;
+  background-color: rgb(0, 0, 0, 0.7);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const whiteCheck = styled.img`
   margin-bottom: 6px;
+`;
+
+export const whiteRegular16 = styled.div`
+  font-weight: 400;
+  color: ${palette.grayscale.white};
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const whiteSemibold16 = styled.div`
+  font-weight: 600;
+  color: ${palette.grayscale.white};
+  font-size: 16px;
+  margin-left: 2px;
 `;
 
 export const puzzle = styled.div`
@@ -216,6 +268,8 @@ export const puzzle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin: 73px 0 34px 0;
 `;
 
 export const puzzleGrid = styled.div`
@@ -227,7 +281,19 @@ export const puzzleGrid = styled.div`
   max-width: 345px;
 
   @media (max-width: 380px) {
-    transform: scale(0.85);
+    transform: translate(-0.45rem, -0.45rem) scale(0.95);
+  }
+
+  @media (max-width: 370px) {
+    transform: translate(-1rem, -1rem) scale(0.9);
+  }
+
+  @media (max-width: 360px) {
+    transform: translate(-1.1rem, -1.1rem) scale(0.9);
+  }
+
+  @media (max-width: 350px) {
+    transform: translate(-1.2rem, -1.2rem) scale(0.85);
   }
 `;
 
@@ -293,21 +359,6 @@ export const regular14 = styled.div`
   color: ${palette.grayscale.text33};
   font-weight: 400;
   font-size: 14px;
-`;
-
-export const whiteRegular16 = styled.div`
-  font-weight: 400;
-  color: ${palette.grayscale.white};
-  font-size: 16px;
-  display: flex;
-  flex-direction: row;
-`;
-
-export const whiteSemibold16 = styled.div`
-  font-weight: 600;
-  color: ${palette.grayscale.white};
-  font-size: 16px;
-  margin-left: 2px;
 `;
 
 export const bold14 = styled.div`

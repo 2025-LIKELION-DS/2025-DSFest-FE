@@ -60,9 +60,17 @@ function Puzzle() {
 
   const isLoginEnabled = inputLoginID && inputLoginPWD;
 
+  const [authorized, setAuthorized] = useState(true);
+  //퍼즐 9개를 다 채웠을 때
+  const [success, setSuccess] = useState(false);
+  //퍼즐 완성을 눌렀을 때
+  const [completed, setCompleted] = useState(false);
+  //경품 수령 완료했을 때
+  const [end, setEnd] = useState(true);
+
   const [puzzleValue, setPuzzleValue] = useState({
-    index1: true,
-    index2: true,
+    index1: false,
+    index2: false,
     index3: false,
     index4: false,
     index5: true,
@@ -72,13 +80,25 @@ function Puzzle() {
     index9: true,
   });
 
-  const [authorized, setAuthorized] = useState(true);
-  //퍼즐 9개를 다 채웠을 때
-  const [success, setSuccess] = useState(false);
-  //퍼즐 완성을 눌렀을 때
-  const [completed, setCompleted] = useState(false);
-  //경품 수령 완료했을 때
-  const [end, setEnd] = useState(false);
+  const [isPuzzleHover, setIsPuzzleHover] = useState({
+    index1: false,
+    index2: false,
+    index3: false,
+    index4: false,
+    index5: false,
+    index6: false,
+    index7: false,
+    index8: false,
+    index9: false,
+  });
+
+  const handleMouseOver = (indexKey) => {
+    setIsPuzzleHover((prev) => ({ ...prev, [indexKey]: true }));
+  };
+
+  const handleMouseOut = (indexKey) => {
+    setIsPuzzleHover((prev) => ({ ...prev, [indexKey]: false }));
+  };
 
   return (
     <P.puzzlePage>
@@ -197,49 +217,69 @@ function Puzzle() {
             ) : end ? (
               <>
                 <P.successPuzzle>
-                  <P.whiteCheck src={whiteCheck} />
-                  <P.whiteRegular16>
-                    이미 <P.whiteSemibold16> 완성</P.whiteSemibold16>된 퍼즐입니다.
-                  </P.whiteRegular16>
+                  <P.alreadySuccessInfo>
+                    <P.whiteCheck src={whiteCheck} />
+                    <P.whiteRegular16>
+                      이미 <P.whiteSemibold16> 완성</P.whiteSemibold16>된 퍼즐입니다.
+                    </P.whiteRegular16>
+                  </P.alreadySuccessInfo>
                 </P.successPuzzle>
               </>
             ) : (
               <P.puzzle>
                 <P.puzzleGrid>
                   <P.puzzle1
-                    src={puzzleValue.index1 ? puzzle1Complete : puzzle1Default}
+                    onMouseOver={() => handleMouseOver('index1')}
+                    onMouseOut={() => handleMouseOut('index1')}
+                    src={puzzleValue.index1 ? puzzle1Complete : isPuzzleHover.index1 ? puzzle1Click : puzzle1Default}
                     style={puzzleValue.index1 ? { top: '0.3rem' } : {}}
                   />
                   <P.puzzle2
-                    src={puzzleValue.index2 ? puzzle2Complete : puzzle2Default}
+                    onMouseOver={() => handleMouseOver('index2')}
+                    onMouseOut={() => handleMouseOut('index2')}
+                    src={puzzleValue.index2 ? puzzle2Complete : isPuzzleHover.index2 ? puzzle2Click : puzzle2Default}
                     style={puzzleValue.index2 ? { top: '0.3rem' } : {}}
                   />
                   <P.puzzle3
-                    src={puzzleValue.index3 ? puzzle3Complete : puzzle3Default}
+                    onMouseOver={() => handleMouseOver('index3')}
+                    onMouseOut={() => handleMouseOut('index3')}
+                    src={puzzleValue.index3 ? puzzle3Complete : isPuzzleHover.index3 ? puzzle3Click : puzzle3Default}
                     style={puzzleValue.index3 ? { top: '0.3rem' } : {}}
                   />
                   <P.puzzle4
-                    src={puzzleValue.index4 ? puzzle4Complete : puzzle4Default}
+                    onMouseOver={() => handleMouseOver('index4')}
+                    onMouseOut={() => handleMouseOut('index4')}
+                    src={puzzleValue.index4 ? puzzle4Complete : isPuzzleHover.index4 ? puzzle4Click : puzzle4Default}
                     style={puzzleValue.index4 ? { top: '5.99rem' } : {}}
                   />
                   <P.puzzle5
-                    src={puzzleValue.index5 ? puzzle5Complete : puzzle5Default}
+                    onMouseOver={() => handleMouseOver('index5')}
+                    onMouseOut={() => handleMouseOut('index5')}
+                    src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
                     style={puzzleValue.index5 ? { top: '7.3549rem' } : {}}
                   />
                   <P.puzzle6
-                    src={puzzleValue.index6 ? puzzle6Complete : puzzle6Default}
+                    onMouseOver={() => handleMouseOver('index6')}
+                    onMouseOut={() => handleMouseOut('index6')}
+                    src={puzzleValue.index6 ? puzzle6Complete : isPuzzleHover.index6 ? puzzle6Click : puzzle6Default}
                     style={puzzleValue.index6 ? { top: '5.98rem' } : {}}
                   />
                   <P.puzzle7
-                    src={puzzleValue.index7 ? puzzle7Complete : puzzle7Default}
+                    onMouseOver={() => handleMouseOver('index7')}
+                    onMouseOut={() => handleMouseOut('index7')}
+                    src={puzzleValue.index7 ? puzzle7Complete : isPuzzleHover.index7 ? puzzle7Click : puzzle7Default}
                     style={puzzleValue.index7 ? { top: '14.51rem' } : {}}
                   />
                   <P.puzzle8
-                    src={puzzleValue.index8 ? puzzle8Complete : puzzle8Default}
+                    onMouseOver={() => handleMouseOver('index8')}
+                    onMouseOut={() => handleMouseOut('index8')}
+                    src={puzzleValue.index8 ? puzzle8Complete : isPuzzleHover.index8 ? puzzle8Click : puzzle8Default}
                     style={puzzleValue.index8 ? { top: '13.18rem' } : {}}
                   />
                   <P.puzzle9
-                    src={puzzleValue.index9 ? puzzle9Complete : puzzle9Default}
+                    onMouseOver={() => handleMouseOver('index9')}
+                    onMouseOut={() => handleMouseOut('index9')}
+                    src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
                     style={puzzleValue.index9 ? { top: '14.5rem' } : {}}
                   />
                 </P.puzzleGrid>
@@ -248,8 +288,10 @@ function Puzzle() {
           ) : (
             <>
               <P.emptyPuzzle>
-                <P.whiteErrorIcon src={whiteErrorIcon} />
-                <P.whiteRegular16>로그인 후 이용가능합니다.</P.whiteRegular16>
+                <P.loginInfo>
+                  <P.whiteErrorIcon src={whiteErrorIcon} />
+                  로그인 후 이용가능합니다.
+                </P.loginInfo>
               </P.emptyPuzzle>
             </>
           )}
