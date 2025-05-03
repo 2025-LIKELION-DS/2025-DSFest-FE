@@ -105,7 +105,6 @@ export const emptyPuzzle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 46px;
 `;
 
 export const loginInfo = styled.div`
@@ -238,7 +237,6 @@ export const successPuzzle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 34px;
 `;
 
 export const alreadySuccessInfo = styled.div`

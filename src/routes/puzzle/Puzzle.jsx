@@ -60,7 +60,7 @@ function Puzzle() {
 
   const isLoginEnabled = inputLoginID && inputLoginPWD;
 
-  const [authorized, setAuthorized] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
   //퍼즐 9개를 다 채웠을 때
   const [success, setSuccess] = useState(true);
   //퍼즐 완성을 눌렀을 때
