@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import { motion, useDragControls, useMotionValue, useAnimate } from 'motion/react';
 import QRCode from 'react-qr-code';
@@ -20,12 +21,13 @@ import Copy from '@assets/admin/icon-copy.svg';
  * @param {string} uuid -- 퍼즐 QR uuid 값
  * @param {string} password -- 퍼즐 비밀번호 값
  * @param {boolean} onShowToast -- 복사 토스트 메시지 여부
- * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" onShowToast={handleShowToast} >
+ * @param {function} onDelete -- 삭제 여부 전달
+ * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" onShowToast={handleShowToast} onDelete={handleDelete} >
  *
  * @author 김서윤
  * **/
 
-const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
+const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
   const controls = useDragControls();
   const [isDeleteShow, setIsDeleteShow] = useState(false);
   const [animateRef, animate] = useAnimate();
@@ -116,6 +118,16 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
       });
   };
 
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/place-auth/${index}`);
+      onDelete(index); // 삭제 후 상위 컴포넌트에 알림
+    } catch (err) {
+      console.error('삭제 실패:', err);
+      alert('삭제에 실패했습니다.');
+    }
+  };
+
   return (
     <>
       <P.PuzzleContainer>
@@ -126,7 +138,8 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
             appear: { opacity: 1 },
             disappear: { opacity: 0 },
           }}
-          style={deleteButtonStyle}>
+          style={deleteButtonStyle}
+          onClick={handleDeleteClick}>
           삭제
         </motion.div>
         <motion.div
