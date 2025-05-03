@@ -62,7 +62,7 @@ function Puzzle() {
 
   const [authorized, setAuthorized] = useState(false);
   //퍼즐 9개를 다 채웠을 때
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   //퍼즐 완성을 눌렀을 때
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때

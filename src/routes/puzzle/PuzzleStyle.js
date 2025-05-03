@@ -75,7 +75,7 @@ export const puzzleGame = styled.div`
   margin: 0 25px;
 
   @media (max-height: 750px) {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 `;
 
@@ -89,6 +89,14 @@ export const presentInfo = styled.div`
   align-items: center;
   justify-content: start;
   margin-top: 47px;
+
+  @media (max-height: 750px) {
+    margin-top: 20px;
+  }
+
+  @media (max-height: 700px) {
+    margin-top: 10px;
+  }
 `;
 
 export const emptyPuzzle = styled.div`
@@ -106,12 +114,15 @@ export const emptyPuzzle = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 51px;
+
+  @media (max-height: 750px) {
+    margin-top: 0;
+  }
 `;
 
 export const loginInfo = styled.div`
   width: calc(90vw - 20px);
   max-width: 323px;
-
   aspect-ratio: 1;
   background-color: rgb(0, 0, 0, 0.7);
   border-radius: 10px;
@@ -226,7 +237,7 @@ export const whiteErrorIcon = styled.img`
 
 export const successPuzzle = styled.div`
   background-image: url(${successPuzzleImg});
-  width: 90vw;
+  width: 80vw;
   max-width: 343px;
   aspect-ratio: 1;
 
@@ -239,10 +250,19 @@ export const successPuzzle = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 51px;
+  margin-bottom: 10px;
+
+  @media (max-height: 750px) {
+    margin-top: 20px;
+  }
+
+  @media (max-height: 700px) {
+    margin-top: 0px;
+  }
 `;
 
 export const alreadySuccessInfo = styled.div`
-  width: 90vw;
+  width: 80vw;
   max-width: 343px;
 
   aspect-ratio: 1;
@@ -282,6 +302,15 @@ export const puzzle = styled.div`
   position: relative;
   margin-bottom: 34px;
   margin-top: 51px;
+  margin-bottom: 30px;
+
+  @media (max-height: 750px) {
+    margin-top: 20px;
+  }
+
+  @media (max-height: 700px) {
+    margin-top: 0px;
+  }
 `;
 
 export const puzzleGrid = styled.div`
@@ -297,11 +326,11 @@ export const puzzleGrid = styled.div`
   }
 
   @media (max-width: 370px) {
-    transform: translate(-1rem, -1rem) scale(0.9);
+    transform: translate(-0.8rem, -0.8rem) scale(0.9);
   }
 
   @media (max-width: 360px) {
-    transform: translate(-1.1rem, -1.1rem) scale(0.9);
+    transform: translate(-0.9rem, -0.9rem) scale(0.9);
   }
 
   @media (max-width: 350px) {
@@ -363,6 +392,10 @@ export const puzzle9 = styled.img`
 
 export const celebration = styled.div`
   margin-bottom: 39px;
+
+  @media (max-height: 750px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const semibold20 = styled.div`
