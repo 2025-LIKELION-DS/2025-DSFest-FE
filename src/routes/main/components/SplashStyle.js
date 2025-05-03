@@ -29,7 +29,7 @@ export const ImgDiv = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 22.5px;
-  margin-top: 23.7%;
+  margin-top: min(202px, 23.7vh);
 `;
 
 export const LogoImg = styled.img`

@@ -29,7 +29,7 @@ export const MoonImg = styled.img`
 export const LogoImg = styled.img`
   display: block;
   margin: 0 auto;
-  margin-top: 23.7%;
+  margin-top: min(202px, 23.7vh);
 
   cursor: pointer;
 `;
