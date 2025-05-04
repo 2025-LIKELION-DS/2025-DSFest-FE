@@ -73,10 +73,6 @@ export const puzzleGame = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 25px;
-
-  @media (max-height: 750px) {
-    margin-top: 10px;
-  }
 `;
 
 export const presentInfo = styled.div`
@@ -451,4 +447,17 @@ export const semibold14 = styled.div`
 
 export const endButton = styled.div`
   margin-bottom: 33px;
+`;
+
+export const loginFailed = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+`;
+
+export const loginFailedInfo = styled.div`
+  color: ${palette.system.alert};
+  font-size: 14px;
+  font-weight: 400;
 `;

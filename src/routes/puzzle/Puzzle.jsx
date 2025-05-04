@@ -1,6 +1,8 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
 import { use, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
@@ -8,6 +10,7 @@ import glowPuzzleIcon from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
 import lightIcon from '@assets/puzzle/icon-tip-lightbulb.svg';
 import check from '@assets/puzzle/check.png';
 import whiteCheck from '@assets/puzzle/white_check.png';
+import redErrorIcon from '@assets/puzzle/icon-error-red.svg';
 
 import puzzle1Default from '@assets/puzzle/puzzle_default_1.svg';
 import puzzle2Default from '@assets/puzzle/puzzle_default_2.svg';
@@ -47,7 +50,11 @@ import ModalPuzzleSelect from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleS
 import ModalPuzzleApprove from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApprove';
 import ModalPuzzleGoods from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoods';
 
+const API_KEY = import.meta.env.VITE_API_URL;
+
 function Puzzle() {
+  const navigate = useNavigate();
+
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
     setInputLoginID(e.target.value);
@@ -59,7 +66,9 @@ function Puzzle() {
   };
 
   const isLoginEnabled = inputLoginID && inputLoginPWD;
+  const [loginFailed, setLoginFailed] = useState(false);
 
+  //로그인 됐을 때
   const [authorized, setAuthorized] = useState(false);
   //퍼즐 9개를 다 채웠을 때
   const [success, setSuccess] = useState(false);
@@ -69,15 +78,15 @@ function Puzzle() {
   const [end, setEnd] = useState(true);
 
   const [puzzleValue, setPuzzleValue] = useState({
-    index1: true,
-    index2: true,
-    index3: true,
-    index4: true,
-    index5: true,
-    index6: true,
-    index7: true,
-    index8: true,
-    index9: true,
+    index1: false,
+    index2: false,
+    index3: false,
+    index4: false,
+    index5: false,
+    index6: false,
+    index7: false,
+    index8: false,
+    index9: false,
   });
 
   const [isPuzzleHover, setIsPuzzleHover] = useState({
@@ -98,6 +107,32 @@ function Puzzle() {
 
   const handleMouseOut = (indexKey) => {
     setIsPuzzleHover((prev) => ({ ...prev, [indexKey]: false }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      const url = `${API_KEY}/users/login`;
+
+      const response = await axios.post(
+        url,
+        { username: inputLoginID, password: inputLoginPWD },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      if (response.data.code === 'SUCCESS_LOGIN') {
+        sessionStorage.setItem('token', response.data.data.token);
+        console.log(response.data);
+        setLoginFailed(false);
+        setAuthorized(true);
+      }
+    } catch (error) {
+      console.log(error.response.data.message);
+      setLoginFailed(true);
+    }
   };
 
   return (
@@ -181,8 +216,16 @@ function Puzzle() {
             <ButtonCommon
               text={'로그인'}
               color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
+              onClick={handleLogin}
             />
-            {/*  onClick={handleLogin} */}
+            {loginFailed ? (
+              <P.loginFailed>
+                <img src={redErrorIcon} />
+                <P.loginFailedInfo>중복된 닉네임 혹은 틀린 비밀번호입니다.</P.loginFailedInfo>
+              </P.loginFailed>
+            ) : (
+              <></>
+            )}
           </P.login>
         )}
 
@@ -287,7 +330,7 @@ function Puzzle() {
             )
           ) : (
             <>
-              <P.emptyPuzzle>
+              <P.emptyPuzzle style={loginFailed ? { marginTop: '0' } : {}}>
                 <P.loginInfo>
                   <P.whiteErrorIcon src={whiteErrorIcon} />
                   로그인 후 이용가능합니다.
