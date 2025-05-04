@@ -5,18 +5,21 @@ import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
 import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
-  height: calc(100svh - 50px);
+  height: calc(100svh - 3.5em);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  @media (hover: hover) and (pointer: fine) {
-    height: calc(100svh - 50px);
-    max-height: 798px;
+  @media (min-width: 768px) {
+    max-height: 800px;
   }
 
-  @media (min-height: 1024px) {
-    height: 800px;
+  @media (max-height: 680px) {
+    min-height: 680px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    max-height: 800px;
   }
 `;
 
@@ -307,10 +310,12 @@ export const puzzle = styled.div`
 
   @media (max-height: 750px) {
     margin-top: 20px;
+    margin-bottom: 0px;
   }
 
   @media (max-height: 700px) {
     margin-top: 0px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -466,10 +471,6 @@ export const semibold14 = styled.div`
   font-size: 14px;
 `;
 
-export const endButton = styled.div`
-  margin-bottom: 33px;
-`;
-
 export const loginFailed = styled.div`
   display: flex;
   justify-content: center;
@@ -481,4 +482,8 @@ export const loginFailedInfo = styled.div`
   color: ${palette.system.alert};
   font-size: 14px;
   font-weight: 400;
+`;
+
+export const endButton = styled.div`
+  margin-bottom: 33px;
 `;
