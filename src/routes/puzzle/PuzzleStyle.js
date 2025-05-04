@@ -233,6 +233,10 @@ export const CompletedInfo = styled.div`
   background-color: ${palette.grayscale.ef};
   padding: 18px 17px 28px 17px;
   margin-top: 23px;
+
+  @media (max-height: 800px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const whiteErrorIcon = styled.img`
@@ -432,7 +436,7 @@ export const regular14 = styled.div`
   font-size: 14px;
 `;
 
-export const bold14 = styled.div`
+export const bold14 = styled.span`
   color: ${palette.grayscale.black};
   font-weight: 700;
   font-size: 14px;
