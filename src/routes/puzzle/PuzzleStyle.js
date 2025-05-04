@@ -43,13 +43,16 @@ export const puzzleInfo2 = styled.div`
 `;
 
 export const goMap = styled.button`
+  height: 31px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 6px;
 
   padding: 4px 10px;
   border-radius: 16px;
-  background: var(--Grayscale-White, #fff);
+  background: ${palette.grayscale.white};
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
   margin-right: 4px;
 `;
@@ -165,7 +168,7 @@ export const todoPuzzle = styled.div`
 
 export const completedPuzzleBox = styled.div`
   border-radius: 15px;
-  background: var(--Grayscale-White, #fff);
+  background: ${palette.grayscale.white};
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
   margin: 12px 25px;
 
@@ -217,6 +220,8 @@ export const completedPuzzle = styled.div``;
 export const glowPuzzleIcon = styled.img`
   transform: rotate(19.763deg);
   aspect-ratio: 61.17/60.32;
+  position: relative;
+  left: 20px;
 `;
 
 export const CompletedInfo = styled.div`
@@ -310,12 +315,10 @@ export const puzzle = styled.div`
 `;
 
 export const puzzleGrid = styled.div`
-  width: 100vw;
-  aspect-ratio: 1;
+  height: 345px;
+  width: 345px;
   position: relative;
-  right: 5px;
-  max-height: 345px;
-  max-width: 345px;
+  left: 6px;
 
   @media (max-width: 380px) {
     transform: translate(-0.45rem, -0.45rem) scale(0.95);
@@ -335,55 +338,73 @@ export const puzzleGrid = styled.div`
 `;
 
 export const puzzle1 = styled.img`
+  width: 139.093px;
+  height: 117.981px;
   position: absolute;
 `;
 
 export const puzzle2 = styled.img`
+  width: 121.209px;
+  height: 138.927px;
   position: absolute;
   top: 0;
-  left: 7.0155em;
+  left: 6.6em;
 `;
 
 export const puzzle3 = styled.img`
+  width: 139.093px;
+  height: 117.981px;
   position: absolute;
   top: 0;
-  left: 12.89em;
+  left: 12.1em;
 `;
 
 export const puzzle4 = styled.img`
+  width: 118.229px;
+  height: 162.937px;
   position: absolute;
-  top: 5.69em;
+  top: 5.25em;
   left: 0;
 `;
 
 export const puzzle5 = styled.img`
+  width: 163.103px;
+  height: 121.127px;
   position: absolute;
-  top: 7.0549em;
-  left: 5.7em;
+  top: 6.59em;
+  left: 5.27em;
 `;
 
 export const puzzle6 = styled.img`
+  width: 118.229px;
+  height: 162.937px;
   position: absolute;
-  top: 5.68em;
-  left: 14.2em;
+  top: 5.24em;
+  left: 13.35em;
 `;
 
 export const puzzle7 = styled.img`
+  width: 139.341px;
+  height: 118.56px;
   position: absolute;
-  top: 14.21em;
+  top: 13.3em;
   left: 0;
 `;
 
 export const puzzle8 = styled.img`
+  width: 121.209px;
+  height: 139.59px;
   position: absolute;
-  top: 12.88em;
-  left: 7.038em;
+  top: 12.015em;
+  left: 6.59em;
 `;
 
 export const puzzle9 = styled.img`
+  width: 139.093px;
+  height: 118.643px;
   position: absolute;
-  top: 14.2em;
-  left: 12.87em;
+  top: 13.31em;
+  left: 12.07em;
 `;
 
 export const celebration = styled.div`

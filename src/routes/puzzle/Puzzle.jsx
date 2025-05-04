@@ -1,6 +1,6 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,39 +8,39 @@ import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
 import glowPuzzleIcon from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
 import lightIcon from '@assets/puzzle/icon-tip-lightbulb.svg';
-import check from '@assets/puzzle/check.png';
-import whiteCheck from '@assets/puzzle/white_check.png';
+import check from '@assets/puzzle/icon-check.svg';
+import whiteCheck from '@assets/puzzle/icon-white-check.svg';
 import redErrorIcon from '@assets/puzzle/icon-error-red.svg';
 
-import puzzle1Default from '@assets/puzzle/puzzle_default_1.svg';
-import puzzle2Default from '@assets/puzzle/puzzle_default_2.svg';
-import puzzle3Default from '@assets/puzzle/puzzle_default_3.svg';
-import puzzle4Default from '@assets/puzzle/puzzle_default_4.svg';
-import puzzle5Default from '@assets/puzzle/puzzle_default_5.svg';
-import puzzle6Default from '@assets/puzzle/puzzle_default_6.svg';
-import puzzle7Default from '@assets/puzzle/puzzle_default_7.svg';
-import puzzle8Default from '@assets/puzzle/puzzle_default_8.svg';
-import puzzle9Default from '@assets/puzzle/puzzle_default_9.svg';
+import puzzle1Default from '@assets/puzzle/puzzle_default-1.png';
+import puzzle2Default from '@assets/puzzle/puzzle_default-2.png';
+import puzzle3Default from '@assets/puzzle/puzzle_default-3.png';
+import puzzle4Default from '@assets/puzzle/puzzle_default-4.png';
+import puzzle5Default from '@assets/puzzle/puzzle_default-5.png';
+import puzzle6Default from '@assets/puzzle/puzzle_default-6.png';
+import puzzle7Default from '@assets/puzzle/puzzle_default-7.png';
+import puzzle8Default from '@assets/puzzle/puzzle_default-8.png';
+import puzzle9Default from '@assets/puzzle/puzzle_default-9.png';
 
-import puzzle1Click from '@assets/puzzle/puzzle_click_1.svg';
-import puzzle2Click from '@assets/puzzle/puzzle_click_2.svg';
-import puzzle3Click from '@assets/puzzle/puzzle_click_3.svg';
-import puzzle4Click from '@assets/puzzle/puzzle_click_4.svg';
-import puzzle5Click from '@assets/puzzle/puzzle_click_5.svg';
-import puzzle6Click from '@assets/puzzle/puzzle_click_6.svg';
-import puzzle7Click from '@assets/puzzle/puzzle_click_7.svg';
-import puzzle8Click from '@assets/puzzle/puzzle_click_8.svg';
-import puzzle9Click from '@assets/puzzle/puzzle_click_9.svg';
+import puzzle1Click from '@assets/puzzle/puzzle_click-1.png';
+import puzzle2Click from '@assets/puzzle/puzzle_click-2.png';
+import puzzle3Click from '@assets/puzzle/puzzle_click-3.png';
+import puzzle4Click from '@assets/puzzle/puzzle_click-4.png';
+import puzzle5Click from '@assets/puzzle/puzzle_click-5.png';
+import puzzle6Click from '@assets/puzzle/puzzle_click-6.png';
+import puzzle7Click from '@assets/puzzle/puzzle_click-7.png';
+import puzzle8Click from '@assets/puzzle/puzzle_click-8.png';
+import puzzle9Click from '@assets/puzzle/puzzle_click-9.png';
 
-import puzzle1Complete from '@assets/puzzle/puzzle_complete_1.svg';
-import puzzle2Complete from '@assets/puzzle/puzzle_complete_2.svg';
-import puzzle3Complete from '@assets/puzzle/puzzle_complete_3.svg';
-import puzzle4Complete from '@assets/puzzle/puzzle_complete_4.svg';
-import puzzle5Complete from '@assets/puzzle/puzzle_complete_5.svg';
-import puzzle6Complete from '@assets/puzzle/puzzle_complete_6.svg';
-import puzzle7Complete from '@assets/puzzle/puzzle_complete_7.svg';
-import puzzle8Complete from '@assets/puzzle/puzzle_complete_8.svg';
-import puzzle9Complete from '@assets/puzzle/puzzle_complete_9.svg';
+import puzzle1Complete from '@assets/puzzle/puzzle_complete_1.png';
+import puzzle2Complete from '@assets/puzzle/puzzle_complete_2.png';
+import puzzle3Complete from '@assets/puzzle/puzzle_complete_3.png';
+import puzzle4Complete from '@assets/puzzle/puzzle_complete_4.png';
+import puzzle5Complete from '@assets/puzzle/puzzle_complete_5.png';
+import puzzle6Complete from '@assets/puzzle/puzzle_complete_6.png';
+import puzzle7Complete from '@assets/puzzle/puzzle_complete_7.png';
+import puzzle8Complete from '@assets/puzzle/puzzle_complete_8.png';
+import puzzle9Complete from '@assets/puzzle/puzzle_complete_9.png';
 
 import ButtonCommon from '@components/ButtonCommon/ButtonCommon.jsx';
 import InputLogin from '@components/puzzle/InputLogin/InputLogin';
@@ -69,24 +69,24 @@ function Puzzle() {
   const [loginFailed, setLoginFailed] = useState(false);
 
   //로그인 됐을 때
-  const [authorized, setAuthorized] = useState(false);
+  const [authorized, setAuthorized] = useState(true);
   //퍼즐 9개를 다 채웠을 때
   const [success, setSuccess] = useState(false);
   //퍼즐 완성을 눌렀을 때
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
-  const [end, setEnd] = useState(true);
+  const [end, setEnd] = useState(false);
 
   const [puzzleValue, setPuzzleValue] = useState({
-    index1: false,
-    index2: false,
-    index3: false,
-    index4: false,
+    index1: true,
+    index2: true,
+    index3: true,
+    index4: true,
     index5: false,
     index6: false,
     index7: false,
-    index8: false,
-    index9: false,
+    index8: true,
+    index9: true,
   });
 
   const [isPuzzleHover, setIsPuzzleHover] = useState({
@@ -275,55 +275,55 @@ function Puzzle() {
                     onMouseOver={() => handleMouseOver('index1')}
                     onMouseOut={() => handleMouseOut('index1')}
                     src={puzzleValue.index1 ? puzzle1Complete : isPuzzleHover.index1 ? puzzle1Click : puzzle1Default}
-                    style={puzzleValue.index1 ? { top: '0.3rem' } : {}}
+                    style={puzzleValue.index1 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle2
                     onMouseOver={() => handleMouseOver('index2')}
                     onMouseOut={() => handleMouseOut('index2')}
                     src={puzzleValue.index2 ? puzzle2Complete : isPuzzleHover.index2 ? puzzle2Click : puzzle2Default}
-                    style={puzzleValue.index2 ? { top: '0.3rem' } : {}}
+                    style={puzzleValue.index2 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle3
                     onMouseOver={() => handleMouseOver('index3')}
                     onMouseOut={() => handleMouseOut('index3')}
                     src={puzzleValue.index3 ? puzzle3Complete : isPuzzleHover.index3 ? puzzle3Click : puzzle3Default}
-                    style={puzzleValue.index3 ? { top: '0.3rem' } : {}}
+                    style={puzzleValue.index3 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle4
                     onMouseOver={() => handleMouseOver('index4')}
                     onMouseOut={() => handleMouseOut('index4')}
                     src={puzzleValue.index4 ? puzzle4Complete : isPuzzleHover.index4 ? puzzle4Click : puzzle4Default}
-                    style={puzzleValue.index4 ? { top: '5.99rem' } : {}}
+                    style={puzzleValue.index4 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle5
                     onMouseOver={() => handleMouseOver('index5')}
                     onMouseOut={() => handleMouseOut('index5')}
                     src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
-                    style={puzzleValue.index5 ? { top: '7.3549rem' } : {}}
+                    style={puzzleValue.index5 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle6
                     onMouseOver={() => handleMouseOver('index6')}
                     onMouseOut={() => handleMouseOut('index6')}
                     src={puzzleValue.index6 ? puzzle6Complete : isPuzzleHover.index6 ? puzzle6Click : puzzle6Default}
-                    style={puzzleValue.index6 ? { top: '5.98rem' } : {}}
+                    style={puzzleValue.index6 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle7
                     onMouseOver={() => handleMouseOver('index7')}
                     onMouseOut={() => handleMouseOut('index7')}
                     src={puzzleValue.index7 ? puzzle7Complete : isPuzzleHover.index7 ? puzzle7Click : puzzle7Default}
-                    style={puzzleValue.index7 ? { top: '14.51rem' } : {}}
+                    style={puzzleValue.index7 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle8
                     onMouseOver={() => handleMouseOver('index8')}
                     onMouseOut={() => handleMouseOut('index8')}
                     src={puzzleValue.index8 ? puzzle8Complete : isPuzzleHover.index8 ? puzzle8Click : puzzle8Default}
-                    style={puzzleValue.index8 ? { top: '13.18rem' } : {}}
+                    style={puzzleValue.index8 ? { transform: 'scale(0.935)' } : {}}
                   />
                   <P.puzzle9
                     onMouseOver={() => handleMouseOver('index9')}
                     onMouseOut={() => handleMouseOut('index9')}
                     src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
-                    style={puzzleValue.index9 ? { top: '14.5rem' } : {}}
+                    style={puzzleValue.index9 ? { transform: 'scale(0.93)' } : {}}
                   />
                 </P.puzzleGrid>
               </P.puzzle>
