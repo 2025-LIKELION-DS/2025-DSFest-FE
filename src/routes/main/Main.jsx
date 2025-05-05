@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import * as M from '@main/MainStyle';
 
 import ToastMsg from '@main/components/ToastMsg';
@@ -23,74 +24,8 @@ import BackGroundDay1 from '@assets/main/main-background-day1.png';
 import BackGroundDay2 from '@assets/main/main-background-day2.png';
 import BackGroundDay3 from '@assets/main/main-background-day3.png';
 
-const BOOTH = {
-  booths: [
-    {
-      id: 1,
-      boothName: '부스 이름이 길면 이런식으로 2줄 작성',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: 'https:hihi.site',
-    },
-    {
-      id: 2,
-      boothName: '멋쟁이사자처럼',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE', 'ETC'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: null, // 없으면 null
-    },
-    {
-      id: 3,
-      boothName: '총학생회 수익사업 부스',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE', 'ETC'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: null, // 없으면 null
-    },
-    {
-      id: 4,
-      boothName: '필소굿: 필름소피굿즈 팝니다',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE', 'ETC'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: null, // 없으면 null
-    },
-    {
-      id: 5,
-      boothName: '건축봉사동아리 "지음" 페이스페인팅',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE', 'ETC'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: null, // 없으면 null
-    },
-    {
-      id: 6,
-      boothName: '[Whd발신] 자기야, 농구하러 올래?',
-      boothOperator: 'CLUB',
-      boothIntroduce: '맛있는 핫도그를 판매합니다.',
-      boothType: ['SALE', 'ETC'],
-      boothDay: 'WED',
-      boothTime: 'AFTERNOON',
-      boothSite: null, // 없으면 null
-    },
-  ],
-};
-
 function Main() {
   const navigate = useNavigate();
-  const randomBooth = BOOTH.booths[Math.floor(Math.random() * BOOTH.booths.length)];
 
   const [showToast, setShowToast] = useState(false);
   const timeRef = useRef(null);
@@ -108,6 +43,23 @@ function Main() {
   const [cloudImg, setCloudImg] = useState(CloudDay1);
   const [backgroundImg, setBackgroundImg] = useState(BackGroundDay1);
 
+  const [booths, setBooths] = useState([]);
+  const [random, setRandom] = useState(''); // 랜덤 부스명
+
+  const date = new Date();
+  const festDay1 = new Date(2025, 4, 14);
+  const festDay2 = new Date(2025, 4, 15);
+  const festDay3 = new Date(2025, 4, 16);
+
+  // 00:00:00으로 초기화
+  const toDateOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  // 00:00:00으로 초기화된 날짜
+  const today = toDateOnly(date);
+  const day1 = toDateOnly(festDay1);
+  const day2 = toDateOnly(festDay2);
+  const day3 = toDateOnly(festDay3);
+
   const handleMenuClick = (path) => {
     navigate(path);
   };
@@ -116,6 +68,11 @@ function Main() {
     // 이전에 설정된 타이머 있다면 취소
     if (timeRef.current) {
       clearTimeout(timeRef.current);
+    }
+
+    if (booths.length > 0) {
+      const newRandom = pickRandomBooth(booths);
+      setRandom(newRandom);
     }
 
     setShowToast(true);
@@ -138,18 +95,6 @@ function Main() {
   // 날짜마다 다르게 렌더링
   useEffect(() => {
     const updateImg = () => {
-      const date = new Date();
-      const festDay1 = new Date(2025, 4, 14);
-      const festDay2 = new Date(2025, 4, 15);
-      const festDay3 = new Date(2025, 4, 16);
-
-      const toDateOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-      const today = toDateOnly(date);
-      const day1 = toDateOnly(festDay1);
-      const day2 = toDateOnly(festDay2);
-      const day3 = toDateOnly(festDay3);
-
       if (today.getTime() <= day1.getTime()) {
         // 5월 14일 이전은 Day1 이미지로
         setMoonImg(MoonDay1);
@@ -171,20 +116,69 @@ function Main() {
     };
 
     updateImg();
-
-    const interval = setInterval(() => {
-      updateImg();
-    }, 5000); // 5초마다 반복되게
-
-    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const getBoothList = async () => {
+      try {
+        const boothList = await axios.get(`${import.meta.env.VITE_API_URL}/booths/all`);
+        const boothData = boothList.data.data;
+        setBooths(boothData.booths);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getBoothList();
+  }, []);
+
+  // 요일/시간 리턴
+  const getCurrentLabel = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    let dayLabel = '';
+    let timeLabel = '';
+
+    const isBefore1430 = hour < 14 || (hour === 14 && minute < 30);
+
+    if (today.getTime() === day1.getTime()) {
+      dayLabel = '수요일';
+      timeLabel = isBefore1430 ? '낮' : '밤';
+    } else if (today.getTime() === day2.getTime()) {
+      dayLabel = '목요일';
+      timeLabel = isBefore1430 ? '낮' : '밤';
+    } else if (today.getTime() === day3.getTime()) {
+      dayLabel = '금요일';
+      timeLabel = isBefore1430 ? '낮' : '밤';
+    } else {
+      return null;
+    }
+
+    return { day: dayLabel, time: timeLabel };
+  };
+
+  // 랜덤으로 부스명 리턴
+  const pickRandomBooth = (boothList) => {
+    const current = getCurrentLabel();
+    if (current) {
+      const matched = booths.filter((booth) => {
+        return booth.schedules.some((s) => s.day === current.day && s.time === current.time);
+      });
+      console.log(matched);
+      if (matched.length > 0) {
+        return matched[Math.floor(Math.random() * matched.length)].boothName;
+      }
+    }
+    // 축제 전 or 이후에는 전체 부스 대상으로 랜덤 추천
+    return boothList[Math.floor(Math.random() * boothList.length)].boothName;
+  };
 
   return (
     <>
       <M.Main key={resizeKey} $backgroundImg={backgroundImg}>
         {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
 
-        {showToast && <ToastMsg boothName={randomBooth.boothName} onClose={() => setShowToast(false)} />}
+        {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
 
         <M.MoonImg src={moonImg} alt="달" />
         <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
