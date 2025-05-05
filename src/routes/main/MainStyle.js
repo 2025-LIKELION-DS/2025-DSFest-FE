@@ -94,6 +94,18 @@ export const ImgDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  transform: scale(1);
+  opacity: 1;
+
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+  }
 `;
 
 export const ImgEndDiv = styled(ImgDiv)`
