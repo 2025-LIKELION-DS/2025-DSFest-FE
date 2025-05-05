@@ -258,6 +258,8 @@ export const whiteSemibold16 = styled.div`
 
 export const puzzle = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const puzzleGrid = styled.div`
