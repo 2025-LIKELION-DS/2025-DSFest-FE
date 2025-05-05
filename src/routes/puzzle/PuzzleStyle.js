@@ -407,3 +407,9 @@ export const loginFailedInfo = styled.div`
 export const endButton = styled.div`
   margin-bottom: 33px;
 `;
+
+export const CameraView = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;

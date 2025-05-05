@@ -1,8 +1,9 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import QrScanner from 'qr-scanner';
 
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
@@ -59,6 +60,10 @@ function Puzzle() {
   const [remainPuzzleCount, setRemainPuzzleCount] = useState(9);
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState('');
+  const [qrPage, setQrPage] = useState(false);
+  const videoRef = useRef(null);
+  const qrScannerRef = useRef(null);
+  const [qrInfo, setQrInfo] = useState('');
 
   //로그인 됐을 때
   const [authorized, setAuthorized] = useState(false);
@@ -256,6 +261,35 @@ function Puzzle() {
     getPuzzleInfo();
   }, []);
 
+  //QR
+
+  const showQrCamera = () => {
+    setQrPage(true);
+  };
+
+  const handleScan = (result) => {
+    const data = result.data;
+    setQrInfo({ data });
+    console.log('QR 스캔 결과:', data);
+    setQrPage(false); // 스캔 완료 후 QR 카메라 닫기
+    qrScannerRef.current?.stop(); // 스캐너 멈춤
+  };
+
+  useEffect(() => {
+    if (qrPage && videoRef.current) {
+      const qrScanner = new QrScanner(videoRef.current, handleScan, {
+        returnDetailedScanResult: true,
+      });
+      qrScannerRef.current = qrScanner;
+      qrScanner.start();
+
+      return () => {
+        qrScanner.stop();
+        qrScanner.destroy();
+      };
+    }
+  }, [qrPage]);
+
   return (
     <P.puzzlePage>
       <P.currentPuzzleInfo>
@@ -398,55 +432,73 @@ function Puzzle() {
               <P.puzzle>
                 <P.puzzleGrid>
                   <P.puzzle1
-                    onClick={() => puzzleHandler('index1')}
+                    onClick={() => {
+                      puzzleValue.index1 ? null : puzzleHandler('index1');
+                    }}
                     onMouseOver={() => handleMouseOver('index1')}
                     onMouseOut={() => handleMouseOut('index1')}
                     src={puzzleValue.index1 ? puzzle1Complete : isPuzzleHover.index1 ? puzzle1Click : puzzle1Default}
                   />
                   <P.puzzle2
-                    onClick={() => puzzleHandler('index2')}
+                    onClick={() => {
+                      puzzleValue.index2 ? null : puzzleHandler('index2');
+                    }}
                     onMouseOver={() => handleMouseOver('index2')}
                     onMouseOut={() => handleMouseOut('index2')}
                     src={puzzleValue.index2 ? puzzle2Complete : isPuzzleHover.index2 ? puzzle2Click : puzzle2Default}
                   />
                   <P.puzzle3
-                    onClick={() => puzzleHandler('index3')}
+                    onClick={() => {
+                      puzzleValue.index3 ? null : puzzleHandler('index3');
+                    }}
                     onMouseOver={() => handleMouseOver('index3')}
                     onMouseOut={() => handleMouseOut('index3')}
                     src={puzzleValue.index3 ? puzzle3Complete : isPuzzleHover.index3 ? puzzle3Click : puzzle3Default}
                   />
                   <P.puzzle4
-                    onClick={() => puzzleHandler('index4')}
+                    onClick={() => {
+                      puzzleValue.index4 ? null : puzzleHandler('index4');
+                    }}
                     onMouseOver={() => handleMouseOver('index4')}
                     onMouseOut={() => handleMouseOut('index4')}
                     src={puzzleValue.index4 ? puzzle4Complete : isPuzzleHover.index4 ? puzzle4Click : puzzle4Default}
                   />
                   <P.puzzle5
-                    onClick={() => puzzleHandler('index5')}
+                    onClick={() => {
+                      puzzleValue.index5 ? null : puzzleHandler('index5');
+                    }}
                     onMouseOver={() => handleMouseOver('index5')}
                     onMouseOut={() => handleMouseOut('index5')}
                     src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
                   />
                   <P.puzzle6
-                    onClick={() => puzzleHandler('index6')}
+                    onClick={() => {
+                      puzzleValue.index6 ? null : puzzleHandler('index6');
+                    }}
                     onMouseOver={() => handleMouseOver('index6')}
                     onMouseOut={() => handleMouseOut('index6')}
                     src={puzzleValue.index6 ? puzzle6Complete : isPuzzleHover.index6 ? puzzle6Click : puzzle6Default}
                   />
                   <P.puzzle7
-                    onClick={() => puzzleHandler('index7')}
+                    onClick={() => {
+                      puzzleValue.index7 ? null : puzzleHandler('index7');
+                    }}
                     onMouseOver={() => handleMouseOver('index7')}
                     onMouseOut={() => handleMouseOut('index7')}
                     src={puzzleValue.index7 ? puzzle7Complete : isPuzzleHover.index7 ? puzzle7Click : puzzle7Default}
                   />
                   <P.puzzle8
-                    onClick={() => puzzleHandler('index8')}
+                    onClick={() => {
+                      puzzleValue.index8 ? null : puzzleHandler('index8');
+                    }}
                     onMouseOver={() => handleMouseOver('index8')}
                     onMouseOut={() => handleMouseOut('index8')}
                     src={puzzleValue.index8 ? puzzle8Complete : isPuzzleHover.index8 ? puzzle8Click : puzzle8Default}
                   />
                   <P.puzzle9
-                    onClick={() => puzzleHandler('index9')}
+                    onClick={() => {
+                      puzzleValue.index9 ? null : puzzleHandler('index9');
+                    }}
                     onMouseOver={() => handleMouseOver('index9')}
                     onMouseOut={() => handleMouseOut('index9')}
                     src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
@@ -458,6 +510,7 @@ function Puzzle() {
                     number={modalProps.number}
                     boothName={modalProps.boothName}
                     boothInfo={modalProps.boothInfo}
+                    onClickR={showQrCamera}
                   />
                 )}
               </P.puzzle>
@@ -486,6 +539,7 @@ function Puzzle() {
           <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
         )}
       </P.endButton>
+      {qrPage && <P.CameraView ref={videoRef} />}
     </P.puzzlePage>
   );
 }
