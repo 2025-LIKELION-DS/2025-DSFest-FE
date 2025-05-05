@@ -6,10 +6,8 @@ export const SlidingPanel = styled(motion.div)`
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  // height: 490px;          
+  right: 0;   
   max-height: 92%;           
-  min-height: 90px; 
   background-color: ${palette.grayscale.white};
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
@@ -19,18 +17,36 @@ export const SlidingPanel = styled(motion.div)`
   flex-direction: column;
 `;
 
+export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const DraggableMapImage = styled(motion.img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  pointer-events: all;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 export const Map = styled.div`
   font-family: Pretendard;
   margin: 0;
   padding: 0;
   position: relative;
   height: 94%;
-  background-image: url(${(props) => props.$bg});
   background-position: center -40px;
   overflow: hidden;
+  background: #F4EEF5;
   `;
 
-export const BoothCardContainer = styled.div``
+
 
 export const TouchSection = styled.div``
 
@@ -38,7 +54,7 @@ export const BarContainer = styled.div`
 display: flex;
 justify-content: center;
 
-margin: 0 0 25px; 
+margin: 0 0 23px; 
 `
 
 export const Bar = styled.div`
@@ -102,6 +118,7 @@ export const Tag = styled.span`
 // 추가
 export const ToggleImage = styled.img`
   width: 15px;
+
 `;
 
 export const DateWrapper = styled.div`
@@ -115,6 +132,7 @@ export const DateWrapper = styled.div`
   background-color: ${palette.grayscale.white};
   font-weight: bold;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
+    z-index : 4;
 
 
 justify-content: flex-end;
@@ -123,11 +141,7 @@ gap: 2px;
 flex-shrink: 0;
 `
 
-export const MapArea = styled.div`
-  position: relative;
-  width: 100%;
-  height: auto;
-`;
+
 
 export const ZoomButtonWrapper = styled.div`
   position: absolute;
@@ -135,6 +149,7 @@ export const ZoomButtonWrapper = styled.div`
   left: 18px;
   display: flex;
   gap: 8px;
+    z-index : 4;
 `;
 
 export const ZoomButton = styled.button`
@@ -144,7 +159,7 @@ export const ZoomButton = styled.button`
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
   background-color: ${palette.grayscale.white};
   padding: 8px;
-  
+  color : ${palette.grayscale.black};
 `;
 
 export const Minus = styled.img``
@@ -152,18 +167,20 @@ export const Plus = styled.img``
 
 export const DaySelectButton = styled.button`
   font-family: Pretendard;
-font-size: 12px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-letter-spacing: -0.3px;
-padding : 0 5px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  padding : 0 5px;
+  color : ${palette.grayscale.black};
+
 `;
 
 export const TagFilterContainer = styled.div`
   display: flex;
   gap: 10px;
-  padding: 0 18px 16px;
+  padding: 4px 18px 16px;
   overflow-x : scroll;
   overflow-y : hidden;
   align-items: center;
@@ -172,12 +189,18 @@ export const TagFilterContainer = styled.div`
 export const TagFilter = styled.button`
   padding: 8px 16px;
   border-radius: 16px;
-  background-color: ${palette.grayscale.white};
-  border: 1px solid ${palette.grayscale.ca};
+  border: 1px solid ${({ $selected }) =>
+    $selected ? palette.mainPurple : palette.grayscale.ca};
+  background: ${({ $selected }) =>
+    $selected ? palette.mainPurple10 : palette.grayscale.white};
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
   height: 32px;
+  color : ${palette.grayscale.black};
+  align-items : center;
+  text-align : center;
+  display:flex;
 `;
 
 //추가
@@ -188,7 +211,7 @@ export const DateDropdown = styled.div`
   background-color: white;
   border-radius: 12px;
   box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
-  z-index: 100;
+  z-index: 10;
   overflow: hidden;
 `;
 
@@ -219,4 +242,29 @@ font-weight: 400;
     border-bottom: none;
     padding-bottom : 12px;
   }
+`;
+
+// 이미지
+export const Marker = styled.img`
+  position: absolute;
+  width: 12px;
+  height: 12px;
+`;
+
+export const Food = styled.img`
+  position: absolute;
+  width: 20px;
+  height: 150px;
+`;
+
+//추가
+
+export const DraggableGroup = styled(motion.div)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  pointer-events: all;
+  
 `;

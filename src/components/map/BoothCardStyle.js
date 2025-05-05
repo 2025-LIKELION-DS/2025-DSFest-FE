@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import palette from '@styles/theme';
 
 export const BoothCard = styled.div`
-  border-top: 1px solid ${palette.grayscale.df};
+  border-bottom: 1px solid ${palette.grayscale.df};
   padding: 16px 0;
   margin: 0 20px;
 
+    &:first-child {
+      border-top: 1px solid ${palette.grayscale.df};
+    }
 `;
 
 export const BoothName = styled.p`
@@ -41,3 +44,4 @@ export const Tag = styled.span`
   line-height: normal;
   letter-spacing: -0.3px;
 `;
+

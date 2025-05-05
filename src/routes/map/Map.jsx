@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import * as M from '@map/MapStyle';
-import BoothCard from './BoothCard';
-// import booths from './booths.json';
+import BoothDetailModal from '../../components/map/BoothDetailModal.jsx';
+import SlidingPanelSection from '../../components/map/Sliding.jsx';
+import Moving from '../../components/map/Moving.jsx';
+
 import axios from 'axios';
+import { useDragControls } from 'framer-motion';
 
 import mapSmall from '../../assets/map/mapSmall.svg';
 import mapBig from '../../assets/map/mapBig.svg';
@@ -13,30 +16,66 @@ import Plus from '../../assets/map/plus.svg';
 import MinusB from '../../assets/map/minusblack.svg';
 import PlusB from '../../assets/map/plusblack.svg';
 
-import { motion, useDragControls } from 'framer-motion';
+
 
 function Map() {
   const [isZoomed, setIsZoomed] = useState(false);
   const controls = useDragControls();
-  const [panelHeight, setPanelHeight] = useState(window.innerHeight * 0.522);
+  const isMobile = window.innerWidth <= 768;
+  const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.55 : 490);
+
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+
+  const imageWidth = 676;
+  const imageHeight = 852;
+
 
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState('수요일 낮');
-  
+
+  const [selectedTags, setSelectedTags] = useState(['전체']);
+  const handleTagClick = (tag) => {
+    if (tag === '전체') {
+      setSelectedTags(['전체']);
+    } else {
+      setSelectedTags((prev) => {
+        const withoutAll = prev.filter((t) => t !== '전체');
+        if (prev.includes(tag)) {
+          const next = withoutAll.filter((t) => t !== tag);
+          return next.length === 0 ? ['전체'] : next;
+        } else {
+          return [...withoutAll, tag];
+        }
+      });
+    }
+  };
 
   const [booths, setBooths] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const filteredBooths = booths.filter(
-    (booth) =>
-      Array.isArray(booth.times) &&
-      (booth.times.some((t) => t.includes('매일')) || booth.times.includes(selectedDay))
-  );
+
+  const filteredBooths = booths
+    .filter((booth) => {
+      const [dayKor, timeKor] = selectedDay.split(' ');
+      return booth.schedules?.some(
+        (schedule) =>
+          (schedule.day === dayKor || booth.scheduleDescription?.includes('매일')) &&
+          schedule.time === timeKor
+      );
+    })
+    .filter((booth) => {
+      if (selectedTags.includes('전체')) return true;
+
+      const matchesType = Array.isArray(booth.boothType) && booth.boothType.some((type) => selectedTags.includes(type));
+      const matchesOperator = booth.boothOperator && selectedTags.includes(booth.boothOperator);
+
+      return matchesType || matchesOperator;
+    });
 
   useEffect(() => {
-    axios.get('/booths.json') 
+    axios.get('/booths.json')
       .then((res) => {
-        console.log('👉 res.data:', res.data);
-        setBooths(res.data);
+        const boothData = res.data?.data?.booths || [];
+        setBooths(boothData);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -44,102 +83,119 @@ function Map() {
       });
   }, []);
 
+  const [selectedBooth, setSelectedBooth] = useState(null);
+  const [activeMarkerId, setActiveMarkerId] = useState(null);
+  const [showPanel, setShowPanel] = useState(true);
+  const [isFoodTruckActive, setIsFoodTruckActive] = useState(false);
+
+  useEffect(() => {
+    if (!isZoomed) {
+      setIsFoodTruckActive(false);
+    }
+  }, [isZoomed]);
+
+  const handleBoothClick = (boothId, boothRole) => {
+    if (boothRole === 'FOOD_TRUCK') {
+      setIsFoodTruckActive(true);
+      setSelectedBooth(null);
+      setActiveMarkerId(null);
+      setShowPanel(false);
+    } else {
+      const target = booths.find((b) => b.id === boothId);
+      if (target) {
+        setSelectedBooth(target);
+        setActiveMarkerId(boothId);
+        setIsFoodTruckActive(false);
+        setShowPanel(false);
+      }
+    }
+  };
+
+  const closeDetail = () => {
+    setSelectedBooth(null);
+    setActiveMarkerId(null);
+    setIsFoodTruckActive(null);
+    setShowPanel(true);
+  };
+
   return (
-    <M.Map $bg={isZoomed ? mapBig : mapSmall}>
-      {/* 상단 선택 영역 */}
-      <M.MapArea>
-        <M.ZoomButtonWrapper>
-          <M.ZoomButton
-            onClick={() => setIsZoomed(false)}
-            disabled={!isZoomed}
-          >
+    <M.Map >
+        <Moving
+          isZoomed={isZoomed}
+          mapSmall={mapSmall}
+          mapBig={mapBig}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          activeMarkerId={activeMarkerId}
+          setActiveMarkerId={setActiveMarkerId}
+          handleBoothClick={handleBoothClick}
+          setDragOffset={setDragOffset}
+          dragOffset={dragOffset}
+          closeDetail={closeDetail}
+          booths={booths}
+          isFoodTruckActive={isFoodTruckActive}
+          setIsFoodTruckActive={setIsFoodTruckActive}
+        />
+      <>
+        <M.ZoomButtonWrapper onClick={closeDetail}>
+          <M.ZoomButton onClick={() => setIsZoomed(false)} disabled={!isZoomed}>
             <M.Minus src={isZoomed ? MinusB : Minus} alt="-" />
           </M.ZoomButton>
 
-          <M.ZoomButton
-            onClick={() => setIsZoomed(true)}
-            disabled={isZoomed}
-          >
+          <M.ZoomButton onClick={() => setIsZoomed(true)} disabled={isZoomed}>
             <M.Plus src={isZoomed ? Plus : PlusB} alt="+" />
           </M.ZoomButton>
         </M.ZoomButtonWrapper>
 
         <M.DateWrapper onClick={() => setIsDateOpen((prev) => !prev)}>
           <M.DaySelectButton>{selectedDay}</M.DaySelectButton>
-          <M.ToggleImage
-            src={isDateOpen ? toggleUp : toggleDown}
-            alt="토글"
-          />
+          <M.ToggleImage src={isDateOpen ? toggleUp : toggleDown} alt="토글" />
         </M.DateWrapper>
 
-{isDateOpen && (
-  <M.DateDropdown>
-    {['수요일 낮', '수요일 밤', '목요일 낮', '목요일 밤', '금요일 낮', '금요일 밤'].map((day) => (
-      <M.DateOption
-        key={day}
-        onClick={() => {
-          setSelectedDay(day);
-          setIsDateOpen(false);
-        }}
-        style={{
-          fontWeight: selectedDay === day ? 600 : 400,
-        }}
-      >
-        {day}
-      </M.DateOption>
-    ))}
-  </M.DateDropdown>
-)}
-</M.MapArea>
-
-      {/* 드래그 가능한 패널 */}
-      <M.SlidingPanel
-        drag="y"
-        dragConstraints={{ top: 0, bottom: 0 }}
-        dragElastic={0}
-        animate={{ height: panelHeight }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        onDrag={(e, info) => {
-          const deltaY = info.delta.y;
-          const newHeight = Math.min(
-            window.innerHeight * 0.92,
-            Math.max(93, panelHeight - deltaY)
-          );
-          setPanelHeight(newHeight);
-        }}
-        onDragEnd={() => {
-          console.log('드래그 종료됨, 높이:', panelHeight);
-          if (panelHeight > 600) setPanelHeight(window.innerHeight * 0.92);
-          else if (panelHeight < 200) setPanelHeight(93);
-          else setPanelHeight(window.innerHeight * 0.522);
-        }}
-      >
-        <M.TouchSection
-          onPointerDown={(e) => controls.start(e)}
-          style={{ cursor: 'grab', paddingTop: 15 }}
-        >
-          <M.BarContainer>
-            <M.Bar />
-          </M.BarContainer>
-
-          {/* 태그 필터 */}
-          <M.TagFilterContainer>
-            {['전체', '체험부스', '판매부스', '푸드트럭', '기타'].map((tag) => (
-              <M.TagFilter key={tag}>{tag}</M.TagFilter>
+        {isDateOpen && (
+          <M.DateDropdown onClick={closeDetail}>
+            {['수요일 낮', '수요일 밤', '목요일 낮', '목요일 밤', '금요일 낮', '금요일 밤'].map((day) => (
+              <M.DateOption
+                key={day}
+                onClick={() => {
+                  setSelectedDay(day);
+                  setIsDateOpen(false);
+                }}
+                style={{ fontWeight: selectedDay === day ? 600 : 400 }}
+              >
+                {day}
+              </M.DateOption>
             ))}
-          </M.TagFilterContainer>
-        </M.TouchSection>
+          </M.DateDropdown>
+        )}
+      </>
 
-        {/* 부스 카드 */}
-        <M.BoothContentArea>
-          {/* {booths.map((booth, index) => (
-            <BoothCard key={index} booth={booth} />
-          ))} */}
-          {filteredBooths.map((booth, index) => (
-            <BoothCard key={index} booth={booth} />
-          ))}
-        </M.BoothContentArea>
-        </M.SlidingPanel>
+      {showPanel && (
+        <SlidingPanelSection
+          panelHeight={panelHeight}
+          setPanelHeight={setPanelHeight}
+          controls={controls}
+          selectedTags={selectedTags}
+          handleTagClick={handleTagClick}
+          filteredBooths={filteredBooths}
+        />
+      )}
+
+      {selectedBooth && (
+        <BoothDetailModal
+          booth={{
+            id: selectedBooth?.id,
+            name: selectedBooth?.boothName,
+            owner: selectedBooth?.boothOperator,
+            types: selectedBooth?.boothType,
+            times: selectedBooth?.schedules.map((s) => `${s.day} ${s.time}`),
+            details: selectedBooth?.boothIntroduce,
+            link: selectedBooth?.boothSite,
+          }}
+          isHint={selectedBooth?.boothRole === 'HINT'}
+          onClose={closeDetail}
+        />
+      )}
     </M.Map>
   );
 }
