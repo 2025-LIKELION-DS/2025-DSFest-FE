@@ -11,7 +11,7 @@ export const Logout = styled.div`
   display: flex;
   gap: 3px;
   margin-left: 28px;
-  margin-top: 55vh;
+  margin-bottom: 57px;
 
   width: max-content;
   cursor: pointer;
@@ -37,6 +37,6 @@ export const MenuList = styled.div`
   flex-direction: column;
   gap: 20px;
 
-  border-left: 1px solid rgba(78, 49, 165, 0.10);
+  border-left: 1px solid rgba(78, 49, 165, 0.1);
   padding-left: 20px;
 `;

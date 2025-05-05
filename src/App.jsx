@@ -12,11 +12,12 @@ import Image from '@notice/Image';
 import Form from '@notice/Form';
 import Login from '@admin/Login';
 import Home from '@admin/Home';
-import Create from '@admin/Create';
-import BoothList from '@admin/BoothList';
+import Create from '@admin/puzzle/Create';
+import Preview from '@admin/puzzle/Preview';
+import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
-import Test from '@routes/Test'
+import Test from '@routes/Test';
 
 const Layout = () => {
   return (
@@ -33,7 +34,6 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/*" element={<Error />} />
           <Route path="/" element={<Main />} />
           <Route path="/map" element={<Map />} />
           <Route path="/puzzle" element={<Puzzle />} />
@@ -56,7 +56,7 @@ function App() {
             path="/notice/:id/edit"
             element={
               <ProtectedRoute>
-                <Form type="new" />
+                <Form type="edit" />
               </ProtectedRoute>
             }
           />
@@ -69,24 +69,33 @@ function App() {
             }
           />
           <Route
-            path="/booth"
+            path="/admin/puzzle"
             element={
               <ProtectedRoute>
-                <BoothList />
+                <PuzzleList />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/booth/new"
+            path="/admin/puzzle/new"
             element={
               <ProtectedRoute>
                 <Create />
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin/puzzle/preview"
+            element={
+              <ProtectedRoute>
+                <Preview />
+              </ProtectedRoute>
+            }
+          />
           {/* 공통 컴포넌트 */}
-          <Route path="/test" element={<Test/>}/>
+          <Route path="/test" element={<Test />} />
         </Route>
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );

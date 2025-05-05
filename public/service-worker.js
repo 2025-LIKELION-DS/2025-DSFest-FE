@@ -7,7 +7,7 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[SW] Caching files');
       return cache.addAll(urlsToCache);
-    })
+    }),
   );
   self.skipWaiting();
 });
@@ -22,9 +22,9 @@ self.addEventListener('activate', (event) => {
             console.log('[SW] Deleting old cache:', cache);
             return caches.delete(cache);
           }
-        })
+        }),
       );
-    })
+    }),
   );
 });
 
@@ -37,6 +37,6 @@ self.addEventListener('fetch', (event) => {
       }
       console.log('[SW] Fetching from network:', event.request.url);
       return fetch(event.request);
-    })
+    }),
   );
 });

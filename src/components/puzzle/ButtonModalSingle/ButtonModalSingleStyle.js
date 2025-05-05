@@ -3,14 +3,14 @@ import palette from '@styles/theme';
 
 export const ButtonContainer = styled.div`
   padding: 0px 16px;
-`
+`;
 export const ButtonCommon = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 100%;
-  height: 48px;  
+  height: 48px;
   border-radius: 29px;
   outline: none;
 
@@ -19,5 +19,11 @@ export const ButtonCommon = styled.button`
 
   font-size: 16px;
   font-weight: 600;
-  line-height: 140%; 
-`
+  line-height: 140%;
+
+  &:hover {
+    background-color: ${palette.darkPurple};
+  }
+
+  transition: background-color 0.3s ease;
+`;

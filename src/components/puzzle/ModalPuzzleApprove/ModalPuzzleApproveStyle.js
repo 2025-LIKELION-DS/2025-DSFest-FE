@@ -15,39 +15,39 @@ export const ModalPuzzleSelect = styled.div`
 
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const ModalContainer = styled.div`
   padding: 0px 16px;
-  
+
   display: flex;
   flex-direction: column;
   gap: 10px;
-`
+`;
 
 export const ModalFlex = styled(ModalContainer)`
   flex: 1;
-`
+`;
 
 export const BoothContainer = styled.div`
   display: flex;
   align-items: center;
 
-  p{
+  p {
     margin: 0;
   }
-`
+`;
 
 export const PaddingContainer = styled(BoothContainer)`
   padding: 0px 13px;
-`
+`;
 
 export const Text = styled.p`
   color: ${palette.grayscale.text33};
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;
-`
+`;
 
 export const BoothName = styled.span`
   color: ${palette.grayscale.black};
@@ -55,26 +55,26 @@ export const BoothName = styled.span`
   font-size: 20px;
   font-weight: 600;
   line-height: 140%;
-`
+`;
 
 export const ImgContainer = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.width};
-  
-  >img{
+
+  > img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-`
+`;
 
 export const ImgMargin = styled(ImgContainer)`
   margin-left: -5px;
-`
+`;
 
 export const Div = styled.div`
   margin-left: -5px;
-`
+`;
 
 export const Info = styled.div`
   max-width: 280px;
@@ -90,20 +90,20 @@ export const Info = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 140%;
-`
+`;
 
 export const ColLine = styled.div`
   width: 3px;
   height: 46px;
-  background-color: ${palette.grayscale.black50}
-`
+  background-color: ${palette.grayscale.black50};
+`;
 
 export const Complete = styled.p`
   color: ${palette.grayscale.black};
   font-size: 16px;
   font-weight: 600;
   line-height: 140%;
-`
+`;
 
 export const InputDiv = styled.div`
   flex: 1;
@@ -114,16 +114,16 @@ export const InputDiv = styled.div`
   gap: 7px;
 
   margin-top: 5px;
-`
+`;
 
 export const Warning = styled.div`
   padding: 0px 16px;
 
   display: flex;
   align-items: center;
-  gap:4px;
+  gap: 4px;
 
-  p{
+  p {
     color: ${palette.system.alert};
     font-size: 14px;
     font-weight: 400;
@@ -131,4 +131,4 @@ export const Warning = styled.div`
     letter-spacing: -0.35px;
     margin: 0;
   }
-`
+`;
