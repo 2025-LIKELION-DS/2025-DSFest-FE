@@ -19,6 +19,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.2.6"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-react-refresh: "npm:^0.4.19"
+    framer-motion: "npm:^12.9.4"
     globals: "npm:^16.0.0"
     html2canvas: "npm:^1.4.1"
     motion: "npm:^12.9.4"

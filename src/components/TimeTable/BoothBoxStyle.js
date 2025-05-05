@@ -1,11 +1,23 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import palette from '@styles/theme';
+
+// 타임테이블이 아래에서 위로 올라오는 애니메이션
+const slideUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const BoxCon = styled.div.attrs((props) => ({
   style: {
     top: `${props.top}px`,
     height: `${props.height}px`,
-    left: `${props.left}px`,
+    left: `${props.left}%`,
   },
 }))`
   position: absolute;
@@ -13,20 +25,27 @@ export const BoxCon = styled.div.attrs((props) => ({
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 126px;
+  width: 48%;
   display: flex;
   flex-direction: column;
   gap: 4px;
 
   /* 투명도 배경 설정 */
-  background: var(--white-20, rgba(255, 255, 255, 0.2));
+  background: ${palette.styles.white20};
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px); /* Safari 지원 */
 
   /* 조건부 렌더링 */
   border-left: 5px solid ${(props) => props.borderColor || palette.violet.violet200};
-  padding: ${(props) => (props.compact ? '0 0 0 8px' : '8px 0 0 13px')};
+  padding: ${({ compact, special }) => (special ? '1px 0 0 8px' : compact ? '0 0 0 8px' : '8px 0 0 13px')};
   justify-content: ${(props) => (props.compact ? 'center' : 'flex-start')};
+
+  /* 아래에서 위로 올라오는 애니메이션 */
+  ${({ animate }) =>
+    animate &&
+    css`
+      animation: ${slideUp} 0.8s ease-out forwards;
+    `}
 
   h2 {
     margin: 0;

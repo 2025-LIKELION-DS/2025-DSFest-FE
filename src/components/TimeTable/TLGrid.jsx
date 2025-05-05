@@ -1,4 +1,3 @@
-import React from 'react';
 import palette from '@styles/theme';
 
 // 피그마 상 35px로 되어있지만, 점선 하나당 좌우 5px씩 추가되어있어서 -> 45px

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import palette from '@styles/theme';
 
 const ScheduleBox = styled.div`
   position: absolute;
@@ -9,7 +10,7 @@ const ScheduleBox = styled.div`
   height: 48px;
   border-radius: 10px;
   background-color: ${(props) => props.color};
-  color: white;
+  color: ${palette.grayscale.white};
   font-size: 13px;
   font-weight: 600;
   display: flex;

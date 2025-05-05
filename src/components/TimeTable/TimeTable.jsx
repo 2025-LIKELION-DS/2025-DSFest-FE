@@ -4,15 +4,15 @@ import * as B from '@components/TimeTable/BoothBoxStyle.js';
 import BoothBoxGroup from '@components/TimeTable/TTBoxGroup';
 import TimeLineHeader from '@components/TimeTable/TimeLineHeader';
 
-const dates = ['14(WED)', '15(THU)', '16(FRI)']; // 날짜 목록
-
 const TimeTable = () => {
+  const dates = ['14(WED)', '15(THU)', '16(FRI)']; // 날짜 목록
   const [selectedDate, setSelectedDate] = useState('14(WED)'); // 기본 날짜 선택
 
   return (
     <>
-      {/* 타임테이블 헤더 (타임라인 그리드 + 마커 포함) */}
+      {/* 타임라인 헤더 (타임라인 그리드 + 마커 포함) */}
       <TimeLineHeader selectedDate={selectedDate} />
+      <T.TimeTableH2>타임 테이블</T.TimeTableH2>
 
       {/* 타임테이블 바(요일별) */}
       <T.DateBar>
@@ -26,6 +26,7 @@ const TimeTable = () => {
         ))}
       </T.DateBar>
 
+      {/* 타임테이블 */}
       <T.TimeTable>
         {/* 좌측 시간 표시 */}
         <T.TableTimeCon>
@@ -35,10 +36,9 @@ const TimeTable = () => {
             ),
           )}
         </T.TableTimeCon>
-
         {/* 타임라인 및 일정 박스 */}
         <T.TableLineCon>
-          <B.BoothCon>
+          <B.BoothCon key={selectedDate} animate={true}>
             {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
             <BoothBoxGroup selectedDate={selectedDate} />
           </B.BoothCon>
@@ -57,12 +57,14 @@ const TimeTable = () => {
         </T.SpaceBox>
         <T.SpaceBox>
           <T.Circle />
-          영근터
+          중앙 무대
         </T.SpaceBox>
-        <T.SpaceBox>
-          <T.Circle className="ilsimdukche" />
-          일심덕체
-        </T.SpaceBox>
+        {selectedDate === '15(THU)' && (
+          <T.SpaceBox>
+            <T.Circle className="ilsimdukche" />
+            일심덕체
+          </T.SpaceBox>
+        )}
       </T.SpaceInfo>
     </>
   );

@@ -1,11 +1,25 @@
 // @components/TimeTable/BoothBox.jsx
-import { useState } from 'react';
+
 import * as B from '@components/TimeTable/BoothBoxStyle.js';
 import TimeIcon from '@components/TimeTable/img/Time.svg';
 
-const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColor, compact }) => {
+const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColor, compact, special }) => {
+  const getLeftPercent = (side) => {
+    if (side === 'left') return 0;
+    if (side === 'right') return 50;
+    return 0;
+  };
+
   return (
-    <B.BoxCon top={top} height={height} left={left} width={width} borderColor={borderColor} compact={compact}>
+    <B.BoxCon
+      top={top}
+      height={height}
+      left={left}
+      width={width}
+      borderColor={borderColor}
+      compact={compact}
+      special={special}
+      animate={true}>
       {title.split('\n').map((line, idx) => (
         <h2 key={idx}>{line}</h2>
       ))}

@@ -5,6 +5,7 @@ import TimeLineGrid from '@components/TimeTable/TLGrid';
 import TLMarker from '@components/TimeTable/TLMarker';
 import TimeLineScheduleBox from '@components/TimeTable/TLSchedule';
 import scheduleData from '@components/TimeTable/ScheduleData';
+import Lock from '@components/TimeTable/img/Lock.svg';
 
 const TimeLineHeader = ({ selectedDate }) => {
   const scrollRef = useRef(null);
@@ -34,6 +35,16 @@ const TimeLineHeader = ({ selectedDate }) => {
     }
   }, [markerLeft]);
 
+  //축제 기간 아닐 때 잠근 오버레이
+  const isFestivalTime = () => {
+    const now = new Date();
+
+    const start = new Date('2025-05-14T09:30:00');
+    const end = new Date('2025-05-16T23:00:00');
+
+    return now >= start && now <= end;
+  };
+
   return (
     <L.LineHeader>
       <L.HeaderCon>
@@ -45,15 +56,24 @@ const TimeLineHeader = ({ selectedDate }) => {
           <img src={Button} />
         </L.Button>
       </L.HeaderCon>
-      <L.ScrollCon>
+
+      <L.ScrollCon style={{ position: 'relative' }}>
         <L.TimeLineGridWrapper ref={scrollRef}>
           <TimeLineGrid />
           {/* TLMarker 렌더링 */}
           <TLMarker onUpdate={setMarkerLeft} />
-
           {/* Schedule box 렌더링 */}
           {selectedDate && scheduleData[selectedDate]?.map((item, idx) => <TimeLineScheduleBox key={idx} {...item} />)}
         </L.TimeLineGridWrapper>
+
+        {!isFestivalTime() && (
+          <L.LockOverlay>
+            <img src={Lock} alt="Lock" />
+            <span>축제 운영 시간이 아닙니다.</span>
+            <small>5/14(수) - 5/16(금)</small>
+            <small>09:30 - 23:00</small>
+          </L.LockOverlay>
+        )}
       </L.ScrollCon>
     </L.LineHeader>
   );
