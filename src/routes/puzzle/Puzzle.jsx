@@ -90,10 +90,7 @@ function Puzzle() {
               Authorization: `Bearer ${token}`,
             },
           });
-
-          if (response.data.code === 'FOUND_LOGINUSER') {
-            setUsername(response.data.data.username);
-          }
+          setUsername(response.data.data.username);
         } catch (error) {
           console.error(error);
         }
