@@ -49,7 +49,6 @@ import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalS
 import ModalPuzzleSelect from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleSelect';
 import ModalPuzzleApprove from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApprove';
 import ModalPuzzleGoods from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoods';
-import { puzzleCount } from './PuzzleStyle';
 
 const API_KEY = import.meta.env.VITE_API_URL;
 
@@ -58,6 +57,23 @@ function Puzzle() {
   const [username, setUsername] = useState('');
   const [userPuzzleCount, setPuzzleCount] = useState(0);
   const [remainPuzzleCount, setRemainPuzzleCount] = useState(9);
+
+  //로그인 됐을 때
+  const [authorized, setAuthorized] = useState(false);
+  //퍼즐 9개를 다 채웠을 때
+  const [success, setSuccess] = useState(false);
+  //퍼즐 완성을 눌렀을 때
+  const [completed, setCompleted] = useState(false);
+  //경품 수령 완료했을 때
+  const [end, setEnd] = useState(false);
+
+  //새로고침해도 로그인 유지
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setAuthorized(true);
+    }
+  }, []);
 
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
@@ -71,15 +87,6 @@ function Puzzle() {
 
   const isLoginEnabled = inputLoginID && inputLoginPWD;
   const [loginFailed, setLoginFailed] = useState(false);
-
-  //로그인 됐을 때
-  const [authorized, setAuthorized] = useState(false);
-  //퍼즐 9개를 다 채웠을 때
-  const [success, setSuccess] = useState(false);
-  //퍼즐 완성을 눌렀을 때
-  const [completed, setCompleted] = useState(false);
-  //경품 수령 완료했을 때
-  const [end, setEnd] = useState(false);
 
   const [puzzleValue, setPuzzleValue] = useState({
     index1: false,
@@ -127,7 +134,7 @@ function Puzzle() {
       );
 
       if (response.data.code === 'SUCCESS_LOGIN') {
-        sessionStorage.setItem('token', response.data.data.token);
+        localStorage.setItem('token', response.data.data.token);
         setUsername(response.data.data.user.username);
         console.log(response.data);
         setLoginFailed(false);
@@ -143,13 +150,14 @@ function Puzzle() {
   useEffect(() => {
     const getPuzzleInfo = async () => {
       try {
-        const token = sessionStorage.getItem('token');
+        const token = localStorage.getItem('token');
         const response = await axios.get(`${API_KEY}/bingo/user`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         if (response.data.code === 'SUCCESS_USER_BINGO_STATUS') {
+          setAuthorized(true);
           console.log(response.data.message);
           setPuzzleCount(response.data.data.filledCount);
           setRemainPuzzleCount(response.data.data.remainingCount);
