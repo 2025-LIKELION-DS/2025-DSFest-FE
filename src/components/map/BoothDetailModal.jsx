@@ -23,4 +23,3 @@ function BoothDetailModal({ booth, isHint }) {
 }
 
 export default BoothDetailModal;
-// 

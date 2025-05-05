@@ -71,5 +71,3 @@ export const Tag = styled.span`
   line-height: normal;
   letter-spacing: -0.3px;
 `;
-
-// 

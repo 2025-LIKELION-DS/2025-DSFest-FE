@@ -29,4 +29,3 @@ function BoothCard({ booth }) {
 }
 
 export default BoothCard;
-// 

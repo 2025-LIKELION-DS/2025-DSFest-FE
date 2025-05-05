@@ -60,4 +60,3 @@ function SlidingPanelSection({ panelHeight, setPanelHeight, controls, selectedTa
 }
 
 export default SlidingPanelSection;
-// 
