@@ -413,3 +413,9 @@ export const CameraView = styled.video`
   height: 100%;
   object-fit: cover;
 `;
+
+export const modal = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 33px;
+`;

@@ -63,7 +63,10 @@ function Puzzle() {
   const [qrPage, setQrPage] = useState(false);
   const videoRef = useRef(null);
   const qrScannerRef = useRef(null);
-  const [qrInfo, setQrInfo] = useState('');
+  const [qrSuccess, setQrSuccess] = useState(false);
+  //qr 인증 성공 or 실패 모달 props
+  const [value, setValue] = useState('');
+  const [right, setRight] = useState(true);
 
   //로그인 됐을 때
   const [authorized, setAuthorized] = useState(false);
@@ -197,7 +200,7 @@ function Puzzle() {
     };
 
     setModalProps(puzzleData[index]);
-    setShowModal(true);
+    setShowModal('hintModal');
   };
 
   //로그인
@@ -262,17 +265,17 @@ function Puzzle() {
   }, []);
 
   //QR
-
   const showQrCamera = () => {
     setQrPage(true);
   };
 
   const handleScan = (result) => {
-    const data = result.data;
-    setQrInfo({ data });
+    const data = result?.data;
+    if (!data) return;
     console.log('QR 스캔 결과:', data);
     setQrPage(false); // 스캔 완료 후 QR 카메라 닫기
     qrScannerRef.current?.stop(); // 스캐너 멈춤
+    qrCheck(data);
   };
 
   useEffect(() => {
@@ -289,6 +292,87 @@ function Puzzle() {
       };
     }
   }, [qrPage]);
+
+  const qrCheck = async (scannedData) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `${API_KEY}/bingo/qr`,
+        { value: { data: scannedData } },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response.data);
+      if (response.data.code === 'SUCCESS_BINGO_FILL') {
+        setQrSuccess(true);
+        setModalProps({
+          state: true,
+          number: response.data.data.puzzleIndex,
+          boothName: response.data.data.placeName,
+        });
+        setShowModal('qrCheckModal');
+      }
+      if (response.data.isSuccess === false) {
+        setQrSuccess(false);
+        setModalProps({
+          state: false,
+        });
+        setShowModal('qrCheckModal');
+      }
+    } catch (error) {
+      console.log('qrCheck 실패함');
+      console.log(error);
+      setQrSuccess(false);
+      setModalProps({
+        state: false,
+      });
+      setShowModal('qrCheckModal');
+    }
+  };
+
+  // 미션 성공 시 퍼즐 이미지 변경
+  const puzzleSuccessHandler = (i) => {
+    setPuzzleValue((prev) => ({
+      ...prev,
+      [`index${i}`]: true,
+    }));
+  };
+
+  //비밀번호 입력시
+  const boothCheckHandler = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `${API_KEY}/bingo/password`,
+        { value },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (response.data.code === 'SUCCESS_BINGO_FILL') {
+        setQrSuccess(true);
+        setModalProps({
+          state: true,
+          number: response.data.data.puzzleIndex,
+          boothName: response.data.data.placeName,
+        });
+        setShowModal('qrCheckModal');
+      }
+    } catch (error) {
+      console.log(error.response.data.message);
+      setQrSuccess(false);
+      setRight(false);
+      setModalProps({
+        state: false,
+      });
+      setShowModal('qrCheckModal');
+    }
+  };
 
   return (
     <P.puzzlePage>
@@ -504,15 +588,6 @@ function Puzzle() {
                     src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
                   />
                 </P.puzzleGrid>
-
-                {showModal && modalProps && (
-                  <ModalPuzzleSelect
-                    number={modalProps.number}
-                    boothName={modalProps.boothName}
-                    boothInfo={modalProps.boothInfo}
-                    onClickR={showQrCamera}
-                  />
-                )}
               </P.puzzle>
             )
           ) : (
@@ -540,6 +615,38 @@ function Puzzle() {
         )}
       </P.endButton>
       {qrPage && <P.CameraView ref={videoRef} />}
+
+      <P.modal>
+        {/* 퍼즐 눌렀을 때 힌트 모달창 */}
+        {showModal === 'hintModal' && modalProps && (
+          <ModalPuzzleSelect
+            number={modalProps.number}
+            boothName={modalProps.boothName}
+            boothInfo={modalProps.boothInfo}
+            onClickR={showQrCamera}
+          />
+        )}
+        {/* qr 인증 성공 or 실패 모달 */}
+        {showModal === 'qrCheckModal' &&
+          modalProps &&
+          (qrSuccess ? (
+            <ModalPuzzleApprove
+              state={true}
+              number={modalProps.number}
+              boothName={modalProps.boothName}
+              onClick={puzzleSuccessHandler(modalProps.number)}
+            />
+          ) : (
+            <ModalPuzzleApprove
+              state={false}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              right={right}
+              onClickL={showQrCamera}
+              onClickR={boothCheckHandler}
+            />
+          ))}
+      </P.modal>
     </P.puzzlePage>
   );
 }

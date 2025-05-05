@@ -15,6 +15,9 @@ export const ModalPuzzleSelect = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  position: absolute;
+  bottom: 33px;
 `;
 
 export const ModalContainer = styled.div`
