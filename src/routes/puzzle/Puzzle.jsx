@@ -1,6 +1,6 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -49,11 +49,15 @@ import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalS
 import ModalPuzzleSelect from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleSelect';
 import ModalPuzzleApprove from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApprove';
 import ModalPuzzleGoods from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoods';
+import { puzzleCount } from './PuzzleStyle';
 
 const API_KEY = import.meta.env.VITE_API_URL;
 
 function Puzzle() {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [userPuzzleCount, setPuzzleCount] = useState(0);
+  const [remainPuzzleCount, setRemainPuzzleCount] = useState(9);
 
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
@@ -69,24 +73,24 @@ function Puzzle() {
   const [loginFailed, setLoginFailed] = useState(false);
 
   //로그인 됐을 때
-  const [authorized, setAuthorized] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
   //퍼즐 9개를 다 채웠을 때
   const [success, setSuccess] = useState(false);
   //퍼즐 완성을 눌렀을 때
-  const [completed, setCompleted] = useState(true);
+  const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
   const [end, setEnd] = useState(false);
 
   const [puzzleValue, setPuzzleValue] = useState({
-    index1: true,
-    index2: true,
-    index3: true,
-    index4: true,
+    index1: false,
+    index2: false,
+    index3: false,
+    index4: false,
     index5: false,
     index6: false,
     index7: false,
-    index8: true,
-    index9: true,
+    index8: false,
+    index9: false,
   });
 
   const [isPuzzleHover, setIsPuzzleHover] = useState({
@@ -109,12 +113,11 @@ function Puzzle() {
     setIsPuzzleHover((prev) => ({ ...prev, [indexKey]: false }));
   };
 
+  //로그인
   const handleLogin = async () => {
     try {
-      const url = `${API_KEY}/users/login`;
-
       const response = await axios.post(
-        url,
+        `${API_KEY}/users/login`,
         { username: inputLoginID, password: inputLoginPWD },
         {
           headers: {
@@ -125,6 +128,7 @@ function Puzzle() {
 
       if (response.data.code === 'SUCCESS_LOGIN') {
         sessionStorage.setItem('token', response.data.data.token);
+        setUsername(response.data.data.user.username);
         console.log(response.data);
         setLoginFailed(false);
         setAuthorized(true);
@@ -134,6 +138,40 @@ function Puzzle() {
       setLoginFailed(true);
     }
   };
+
+  //퍼즐 상태 조회
+  useEffect(() => {
+    const getPuzzleInfo = async () => {
+      try {
+        const token = sessionStorage.getItem('token');
+        const response = await axios.get(`${API_KEY}/bingo/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.data.code === 'SUCCESS_USER_BINGO_STATUS') {
+          console.log(response.data.message);
+          setPuzzleCount(response.data.data.filledCount);
+          setRemainPuzzleCount(response.data.data.remainingCount);
+          const filledIndex = response.data.data.filledIndexes;
+
+          setPuzzleValue((prev) => {
+            const updated = { ...prev };
+            for (let i = 1; i < 10; i++) {
+              if (filledIndex.includes(i)) {
+                updated[`index${i}`] = true;
+              }
+            }
+            return updated;
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching puzzle info:', error);
+      }
+    };
+
+    getPuzzleInfo();
+  }, []);
 
   return (
     <P.puzzlePage>
@@ -165,7 +203,7 @@ function Puzzle() {
           <P.completedPuzzle>
             <P.completedTitle>
               <P.userInfo>
-                <P.userName>은지송</P.userName>
+                <P.userName>{username}</P.userName>
                 <P.regular16>님의 퍼즐</P.regular16>
               </P.userInfo>
               <P.todoPuzzle>
@@ -177,7 +215,7 @@ function Puzzle() {
                 ) : (
                   <>
                     <P.regular14>남은 퍼즐</P.regular14>
-                    <P.todoPuzzleCount>0개</P.todoPuzzleCount>
+                    <P.todoPuzzleCount>{remainPuzzleCount}개</P.todoPuzzleCount>
                   </>
                 )}
               </P.todoPuzzle>
@@ -189,7 +227,7 @@ function Puzzle() {
               </P.regular16>
               <P.puzzleCount>
                 <P.glowPuzzleIcon src={glowPuzzleIcon} />
-                <P.completedPuzzleCount>9</P.completedPuzzleCount>
+                <P.completedPuzzleCount>{userPuzzleCount}</P.completedPuzzleCount>
                 <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
               </P.puzzleCount>
             </P.completedPuzzleBox>
@@ -302,7 +340,10 @@ function Puzzle() {
                     onMouseOver={() => handleMouseOver('index5')}
                     onMouseOut={() => handleMouseOut('index5')}
                     src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
-                    style={puzzleValue.index5 ? { transform: 'scale(0.935)' } : {}}
+                    style={{
+                      transform: puzzleValue.index5 ? 'scale(0.935)' : ' ',
+                      transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
+                    }}
                   />
                   <P.puzzle6
                     onMouseOver={() => handleMouseOver('index6')}
