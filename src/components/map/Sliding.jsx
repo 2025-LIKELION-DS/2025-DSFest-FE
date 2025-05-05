@@ -10,7 +10,7 @@ function SlidingPanelSection({ panelHeight, setPanelHeight, controls, selectedTa
       dragElastic={0}
       animate={{ height: panelHeight }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      onDrag={(info) => {
+      onDrag={(e, info) => {
         const deltaY = info.delta.y;
         const newHeight = Math.min(window.innerHeight * 0.92, Math.max(93, panelHeight - deltaY));
         setPanelHeight(newHeight);

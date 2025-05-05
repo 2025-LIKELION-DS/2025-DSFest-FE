@@ -1,0 +1,34 @@
+{
+  "status": 201,
+  "code": "SUCCESS_RETRIEVE_BOOTH",
+  "message": "부스를 성공적으로 조회했습니다.",
+  "data": {
+      "id": 5,
+      "boothName": "나폴리맛피자",
+      "scheduleDescription": [
+          "수요일",
+          "금요일"
+      ],
+      "boothRole": "FOOD_TRUCK",
+      "boothType": [
+          "푸드트럭"
+      ],
+      "menus": [
+          {
+              "id": 4,
+              "menu": "야채곱창/양념막창/막창소금구이",
+              "price": "13,000원 - 17,000원"  
+          },
+          {
+              "id": 5,
+              "menu": "(비건) 새우초밥(10pc)",
+              "price": "10,000원"
+          },
+          {
+              "id": 6,
+              "menu": "(비건) 새우초밥(10pc)",
+              "price": "10,000원"
+          }
+      ]
+  }
+}

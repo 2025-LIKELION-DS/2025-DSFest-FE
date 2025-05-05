@@ -10,7 +10,8 @@ function BoothDetailModal({ booth, isHint }) {
         <M.Detail>{booth.details}</M.Detail>
         {booth.link && (
           <M.Link href={booth.link}>
-            {booth.link}
+            {/* {booth.link} */}
+            홍보 링크 바로가기
           </M.Link>
         )}
         <M.BoothTags>
