@@ -19,7 +19,7 @@ export const Title = styled.div`
 
 export const Content = styled.div`
   color: ${palette.grayscale.text33};
-  text-align: justify;
+  text-align: left;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
@@ -44,4 +44,5 @@ export const Image = styled.img`
   height: 190px;
   aspect-ratio: 4/5;
   border-radius: 8px;
+  cursor: pointer;
 `;

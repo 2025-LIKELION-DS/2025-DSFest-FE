@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import * as C from '@admin/puzzle/CreateStyle';
 import palette from '@styles/theme';
 import InputCreate from '@admin/components/InputCreate/InputCreate';
@@ -11,12 +12,9 @@ function Create() {
   const [inputPuzzle, setInputPuzzle] = useState('');
   const [inputPuzzleNum, setInputPuzzleNum] = useState('');
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
-
-  const handleLinkClick = (path) => {
-    navigate(path);
-  };
 
   const isInputComplete = inputPuzzle.trim() && inputPuzzleNum.trim();
   const buttonColor = isErrorVisible
@@ -50,22 +48,33 @@ function Create() {
   const inputPuzzleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      console.log('Enter');
       if (inputPuzzle.trim() || inputPuzzleNum.trim()) {
         buttonCreateClick();
       }
     }
   };
 
-  const buttonCreateClick = () => {
+  const buttonCreateClick = async () => {
     if (!inputPuzzle.trim() || !inputPuzzleNum.trim()) return;
 
-    if (inputPuzzle === '총학생회') {
-      // 예시 조건
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/admin/place-auth`, {
+        placeName: inputPuzzle.trim(),
+        puzzleIndex: Number(inputPuzzleNum.trim()),
+      });
+
+      if (response.data?.data) {
+        navigate('/admin/puzzle/preview', {
+          state: response.data.data,
+        });
+      } else {
+        setIsErrorVisible(true);
+        setErrorMessage('알 수 없는 오류가 발생했습니다.');
+      }
+    } catch (err) {
+      const message = err?.response?.data?.message || '오류가 발생했습니다.';
       setIsErrorVisible(true);
-    } else {
-      // API 연동
-      handleLinkClick('/admin/puzzle/preview');
+      setErrorMessage(message);
     }
   };
 
@@ -111,7 +120,7 @@ function Create() {
         <C.CreateContainer>
           <C.WarnContainer visible={isErrorVisible}>
             <C.ErrorIcon src={error} alt="에러" />
-            이미 존재하는 장소명입니다.
+            {errorMessage}
           </C.WarnContainer>
           <ButtonAdminSingle
             text="생성"

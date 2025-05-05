@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import { motion, useDragControls, useMotionValue, useAnimate } from 'motion/react';
 import QRCode from 'react-qr-code';
@@ -6,6 +7,7 @@ import html2canvas from 'html2canvas';
 import palette from '@styles/theme';
 import * as P from '@admin/components/PuzzleItem/PuzzleItemStyle';
 import QRImage from '@admin/components/QRImage/QRImage';
+import Modal from '@components/admin/ModalAdmin/ModalAdmin';
 import Circle from '@assets/admin/icon-circle.svg';
 import Down from '@assets/admin/icon-download.svg';
 import Send from '@assets/admin/icon-send.svg';
@@ -20,15 +22,16 @@ import Copy from '@assets/admin/icon-copy.svg';
  * @param {string} uuid -- 퍼즐 QR uuid 값
  * @param {string} password -- 퍼즐 비밀번호 값
  * @param {boolean} onShowToast -- 복사 토스트 메시지 여부
- * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" onShowToast={handleShowToast} >
+ * @param {function} onDelete -- 삭제 여부 전달
+ * ex) <PuzzleItem index="1" name="멋쟁이사자처럼" uuid="e1439392-f7bd-4e4d-b1ed-0efa86c5200e" password="E2F989" onShowToast={handleShowToast} onDelete={handleDelete} >
  *
  * @author 김서윤
  * **/
 
-const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
+const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
   const controls = useDragControls();
-  const [draggable, setDraggable] = useState(false);
   const [isDeleteShow, setIsDeleteShow] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [animateRef, animate] = useAnimate();
 
   const qrImageRef = useRef(null);
@@ -117,6 +120,20 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
       });
   };
 
+  const handleDelete = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDeleteClick = async () => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/place-auth/${index}`);
+      onDelete(index); // 삭제 후 상위 컴포넌트에 알림
+    } catch (err) {
+      console.error('삭제 실패:', err);
+      alert('삭제에 실패했습니다.');
+    }
+  };
+
   return (
     <>
       <P.PuzzleContainer>
@@ -127,7 +144,8 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
             appear: { opacity: 1 },
             disappear: { opacity: 0 },
           }}
-          style={deleteButtonStyle}>
+          style={deleteButtonStyle}
+          onClick={handleDelete}>
           삭제
         </motion.div>
         <motion.div
@@ -135,7 +153,7 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
           dragConstraints={{ left: -126, right: 0 }}
           dragElastic={0.1}
           dragControls={controls}
-          dragListener={draggable}
+          dragListener={true}
           style={draggableStyle(itemX)}
           onDragEnd={() => {
             const isOverThreshold = itemX.get() < -126 / 2;
@@ -147,10 +165,7 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
             onPointerDown={(e) => {
               e.stopPropagation();
               controls.start(e);
-            }}
-            onMouseEnter={() => setDraggable(true)}
-            onMouseLeave={() => setDraggable(false)}
-            onTouchStart={() => setDraggable(true)}>
+            }}>
             <P.TopContainer>
               <P.LeftContainer>
                 {index}번 퍼즐
@@ -175,6 +190,30 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast }) => {
           </P.ItemContainer>
         </motion.div>
       </P.PuzzleContainer>
+
+      {isDeleteModalOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 1000,
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Modal
+            text="공지사항을 삭제하시겠습니까?"
+            confirmText="삭제"
+            onClose={() => setIsDeleteModalOpen(false)}
+            onConfirm={handleDeleteClick}
+          />
+        </div>
+      )}
 
       {/* 저장되는 이미지, 렌더링 X */}
       <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
