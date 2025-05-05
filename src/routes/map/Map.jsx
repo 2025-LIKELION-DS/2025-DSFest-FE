@@ -16,8 +16,6 @@ import Plus from '../../assets/map/plus.svg';
 import MinusB from '../../assets/map/minusblack.svg';
 import PlusB from '../../assets/map/plusblack.svg';
 
-
-
 function Map() {
   const [isZoomed, setIsZoomed] = useState(false);
   const controls = useDragControls();
@@ -28,7 +26,6 @@ function Map() {
 
   const imageWidth = 676;
   const imageHeight = 852;
-
 
   const [isDateOpen, setIsDateOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState('수요일 낮');
@@ -53,13 +50,14 @@ function Map() {
   const [booths, setBooths] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [foodTruckData, setFoodTruckData] = useState(null);
+
   const filteredBooths = booths
     .filter((booth) => {
       const [dayKor, timeKor] = selectedDay.split(' ');
       return booth.schedules?.some(
         (schedule) =>
-          (schedule.day === dayKor || booth.scheduleDescription?.includes('매일')) &&
-          schedule.time === timeKor
+          (schedule.day === dayKor || booth.scheduleDescription?.includes('매일')) && schedule.time === timeKor,
       );
     })
     .filter((booth) => {
@@ -72,7 +70,8 @@ function Map() {
     });
 
   useEffect(() => {
-    axios.get('/booths.json')
+    axios
+      .get('/booths.json')
       .then((res) => {
         const boothData = res.data?.data?.booths || [];
         setBooths(boothData);
@@ -80,6 +79,19 @@ function Map() {
       })
       .catch((err) => {
         console.error('부스 데이터 불러오기 실패:', err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get('/food.json')
+      .then((res) => {
+        console.log('푸드트럭 데이터:', res.data);
+        const foodData = res.data?.data || [];
+        setFoodTruckData(foodData);
+      })
+      .catch((err) => {
+        console.error('푸드트럭 데이터 불러오기 실패:', err);
       });
   }, []);
 
@@ -99,14 +111,14 @@ function Map() {
       setIsFoodTruckActive(true);
       setSelectedBooth(null);
       setActiveMarkerId(null);
-      setShowPanel(false);
+      setShowPanel(true);
     } else {
       const target = booths.find((b) => b.id === boothId);
       if (target) {
         setSelectedBooth(target);
         setActiveMarkerId(boothId);
         setIsFoodTruckActive(false);
-        setShowPanel(false);
+        setShowPanel(false); // Hide panel for regular booths
       }
     }
   };
@@ -119,23 +131,23 @@ function Map() {
   };
 
   return (
-    <M.Map >
-        <Moving
-          isZoomed={isZoomed}
-          mapSmall={mapSmall}
-          mapBig={mapBig}
-          imageWidth={imageWidth}
-          imageHeight={imageHeight}
-          activeMarkerId={activeMarkerId}
-          setActiveMarkerId={setActiveMarkerId}
-          handleBoothClick={handleBoothClick}
-          setDragOffset={setDragOffset}
-          dragOffset={dragOffset}
-          closeDetail={closeDetail}
-          booths={booths}
-          isFoodTruckActive={isFoodTruckActive}
-          setIsFoodTruckActive={setIsFoodTruckActive}
-        />
+    <M.Map>
+      <Moving
+        isZoomed={isZoomed}
+        mapSmall={mapSmall}
+        mapBig={mapBig}
+        imageWidth={imageWidth}
+        imageHeight={imageHeight}
+        activeMarkerId={activeMarkerId}
+        setActiveMarkerId={setActiveMarkerId}
+        handleBoothClick={handleBoothClick}
+        setDragOffset={setDragOffset}
+        dragOffset={dragOffset}
+        closeDetail={closeDetail}
+        booths={booths}
+        isFoodTruckActive={isFoodTruckActive}
+        setIsFoodTruckActive={setIsFoodTruckActive}
+      />
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>
           <M.ZoomButton onClick={() => setIsZoomed(false)} disabled={!isZoomed}>
@@ -161,8 +173,7 @@ function Map() {
                   setSelectedDay(day);
                   setIsDateOpen(false);
                 }}
-                style={{ fontWeight: selectedDay === day ? 600 : 400 }}
-              >
+                style={{ fontWeight: selectedDay === day ? 600 : 400 }}>
                 {day}
               </M.DateOption>
             ))}
@@ -177,7 +188,9 @@ function Map() {
           controls={controls}
           selectedTags={selectedTags}
           handleTagClick={handleTagClick}
-          filteredBooths={filteredBooths}
+          filteredBooths={isFoodTruckActive ? [] : filteredBooths}
+          foodTruckData={isFoodTruckActive ? foodTruckData : null}
+          isFoodTruckActive={isFoodTruckActive}
         />
       )}
 

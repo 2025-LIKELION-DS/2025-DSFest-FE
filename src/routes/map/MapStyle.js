@@ -6,8 +6,8 @@ export const SlidingPanel = styled(motion.div)`
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;   
-  max-height: 92%;           
+  right: 0;
+  max-height: 92%;
   background-color: ${palette.grayscale.white};
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
@@ -20,8 +20,8 @@ export const SlidingPanel = styled(motion.div)`
 export const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
+  position: absolute;
+  margin-top: -50px;
 `;
 
 export const DraggableMapImage = styled(motion.img)`
@@ -41,34 +41,30 @@ export const Map = styled.div`
   padding: 0;
   position: relative;
   height: 94%;
-  background-position: center -40px;
-  overflow: hidden;
-  background: #F4EEF5;
-  `;
+  background: #f4eef5;
+`;
 
-
-
-export const TouchSection = styled.div``
+export const TouchSection = styled.div``;
 
 export const BarContainer = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 
-margin: 0 0 23px; 
-`
+  margin: 0 0 23px;
+`;
 
 export const Bar = styled.div`
-width: 103px;
-height: 4px;
-flex-shrink: 0;
+  width: 103px;
+  height: 4px;
+  flex-shrink: 0;
 
-border-radius: 2px;
-background: ${palette.grayscale.ef};
-`
+  border-radius: 2px;
+  background: ${palette.grayscale.ef};
+`;
 export const BoothContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
-`
+`;
 
 export const BoothCard = styled.div`
   border-bottom: 1px solid ${palette.grayscale.df};
@@ -87,7 +83,7 @@ export const BoothName = styled.p`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.4px;
-  margin:0 0 8px;
+  margin: 0 0 8px;
 `;
 
 export const BoothTags = styled.div`
@@ -114,17 +110,15 @@ export const Tag = styled.span`
   letter-spacing: -0.3px;
 `;
 
-
 // 추가
 export const ToggleImage = styled.img`
   width: 15px;
-
 `;
 
 export const DateWrapper = styled.div`
-  display:flex;
-    height: 32px;
-    position: absolute;
+  display: flex;
+  height: 32px;
+  position: absolute;
   top: 15px;
   right: 20px;
   padding: 0 12px;
@@ -132,16 +126,13 @@ export const DateWrapper = styled.div`
   background-color: ${palette.grayscale.white};
   font-weight: bold;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
-    z-index : 4;
+  z-index: 4;
 
-
-justify-content: flex-end;
-align-items: center;
-gap: 2px;
-flex-shrink: 0;
-`
-
-
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+`;
 
 export const ZoomButtonWrapper = styled.div`
   position: absolute;
@@ -149,7 +140,7 @@ export const ZoomButtonWrapper = styled.div`
   left: 18px;
   display: flex;
   gap: 8px;
-    z-index : 4;
+  z-index: 4;
 `;
 
 export const ZoomButton = styled.button`
@@ -159,11 +150,11 @@ export const ZoomButton = styled.button`
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
   background-color: ${palette.grayscale.white};
   padding: 8px;
-  color : ${palette.grayscale.black};
+  color: ${palette.grayscale.black};
 `;
 
-export const Minus = styled.img``
-export const Plus = styled.img``
+export const Minus = styled.img``;
+export const Plus = styled.img``;
 
 export const DaySelectButton = styled.button`
   font-family: Pretendard;
@@ -172,35 +163,32 @@ export const DaySelectButton = styled.button`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.3px;
-  padding : 0 5px;
-  color : ${palette.grayscale.black};
-
+  padding: 0 5px;
+  color: ${palette.grayscale.black};
 `;
 
 export const TagFilterContainer = styled.div`
   display: flex;
   gap: 10px;
   padding: 4px 18px 16px;
-  overflow-x : scroll;
-  overflow-y : hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   align-items: center;
-  `;
+`;
 
 export const TagFilter = styled.button`
   padding: 8px 16px;
   border-radius: 16px;
-  border: 1px solid ${({ $selected }) =>
-    $selected ? palette.mainPurple : palette.grayscale.ca};
-  background: ${({ $selected }) =>
-    $selected ? palette.mainPurple10 : palette.grayscale.white};
+  border: 1px solid ${({ $selected }) => ($selected ? palette.mainPurple : palette.grayscale.ca)};
+  background: ${({ $selected }) => ($selected ? palette.mainPurple10 : palette.grayscale.white)};
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
   height: 32px;
-  color : ${palette.grayscale.black};
-  align-items : center;
-  text-align : center;
-  display:flex;
+  color: ${palette.grayscale.black};
+  align-items: center;
+  text-align: center;
+  display: flex;
 `;
 
 //추가
@@ -210,7 +198,7 @@ export const DateDropdown = styled.div`
   right: 20px;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
   z-index: 10;
   overflow: hidden;
 `;
@@ -220,27 +208,27 @@ export const DateOption = styled.div`
   cursor: pointer;
 
   display: flex;
-width: 106px;
-padding: 6px 0px;
-flex-direction: column;
-align-items: center;
+  width: 106px;
+  padding: 6px 0px;
+  flex-direction: column;
+  align-items: center;
 
-font-family: Pretendard;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
 
   &:hover {
     background-color: ${palette.grayscale.ef};
   }
 
   &:first-child {
-    padding-top : 12px;
+    padding-top: 12px;
   }
 
   &:last-child {
     border-bottom: none;
-    padding-bottom : 12px;
+    padding-bottom: 12px;
   }
 `;
 
@@ -266,5 +254,4 @@ export const DraggableGroup = styled(motion.div)`
   transform: translate(-50%, -50%);
   user-select: none;
   pointer-events: all;
-  
 `;

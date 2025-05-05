@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as M from '@map/MapStyle';
 import BoothCard from './BoothCard';
+import FoodCard from './FoodCard';
 
-function SlidingPanelSection({ panelHeight, setPanelHeight, controls, selectedTags, handleTagClick, filteredBooths }) {
+function SlidingPanelSection({
+  panelHeight,
+  setPanelHeight,
+  controls,
+  selectedTags,
+  handleTagClick,
+  filteredBooths,
+  isFoodTruckActive,
+  foodTruckData,
+}) {
+  useEffect(() => {
+    if (isFoodTruckActive) {
+      setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+    }
+  }, [isFoodTruckActive]);
   return (
     <M.SlidingPanel
       drag="y"
@@ -18,42 +33,47 @@ function SlidingPanelSection({ panelHeight, setPanelHeight, controls, selectedTa
       onDragEnd={() => {
         if (panelHeight > 500) {
           setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
-        }
-        else if (panelHeight < 200) setPanelHeight(window.innerWidth <= 768 ? 105 : 93);
+        } else if (panelHeight < 200) setPanelHeight(window.innerWidth <= 768 ? 105 : 93);
         else {
           setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
         }
-      }}
-    >
+      }}>
       <M.TouchSection onPointerDown={(e) => controls.start(e)} style={{ cursor: 'grab', paddingTop: 15 }}>
         <M.BarContainer>
           <M.Bar />
         </M.BarContainer>
-
-        <M.TagFilterContainer>
-          {['전체', '체험부스', '판매부스', '푸드트럭', '기타'].map((tag) => (
-            <M.TagFilter key={tag} $selected={selectedTags.includes(tag)} onClick={() => handleTagClick(tag)}>
-              {tag}
-            </M.TagFilter>
-          ))}
-        </M.TagFilterContainer>
       </M.TouchSection>
 
       <M.BoothContentArea>
-        {filteredBooths.map((booth, index) => (
-          <BoothCard
-            key={index}
-            booth={{
-              id: booth.id,
-              name: booth.boothName,
-              owner: booth.boothOperator,
-              types: booth.boothType,
-              times: booth.schedules.map((s) => `${s.day} ${s.time}`),
-              details: booth.boothIntroduce,
-              link: booth.boothSite,
-            }}
-          />
-        ))}
+        {console.log('푸드트럭 데이터:', foodTruckData)}
+        {isFoodTruckActive && Array.isArray(foodTruckData) && foodTruckData.length > 0 ? (
+          foodTruckData.map((booth) => <FoodCard key={booth.id} foodBooth={booth} />)
+        ) : (
+          <>
+            <M.TagFilterContainer>
+              {['전체', '체험부스', '판매부스', '푸드트럭', '기타'].map((tag) => (
+                <M.TagFilter key={tag} $selected={selectedTags.includes(tag)} onClick={() => handleTagClick(tag)}>
+                  {tag}
+                </M.TagFilter>
+              ))}
+            </M.TagFilterContainer>
+
+            {filteredBooths.map((booth, index) => (
+              <BoothCard
+                key={index}
+                booth={{
+                  id: booth.id,
+                  name: booth.boothName,
+                  owner: booth.boothOperator,
+                  types: booth.boothType,
+                  times: booth.schedules.map((s) => `${s.day} ${s.time}`),
+                  details: booth.boothIntroduce,
+                  link: booth.boothSite,
+                }}
+              />
+            ))}
+          </>
+        )}
       </M.BoothContentArea>
     </M.SlidingPanel>
   );
