@@ -52,6 +52,12 @@ function Map() {
 
   const [foodTruckData, setFoodTruckData] = useState(null);
 
+  const boothsByRole = {
+    FOOD_TRUCK: booths.filter((b) => b.boothRole === 'FOOD_TRUCK'),
+    BOOTH: booths.filter((b) => b.boothRole === 'BOOTH'),
+    HINT: booths.filter((b) => b.boothRole === 'HINT'),
+  };
+
   const filteredBooths = booths
     .filter((booth) => {
       const [dayKor, timeKor] = selectedDay.split(' ');
@@ -71,7 +77,8 @@ function Map() {
 
   useEffect(() => {
     axios
-      .get('/booths.json')
+      .get(`${import.meta.env.VITE_API_URL}/booths/all`)
+
       .then((res) => {
         const boothData = res.data?.data?.booths || [];
         setBooths(boothData);
@@ -84,10 +91,11 @@ function Map() {
 
   useEffect(() => {
     axios
-      .get('/food.json')
+      .get(`${import.meta.env.VITE_API_URL}/booths/food-truck`)
+
       .then((res) => {
         console.log('푸드트럭 데이터:', res.data);
-        const foodData = res.data?.data || [];
+        const foodData = res.data?.data?.foodTrucks || [];
         setFoodTruckData(foodData);
       })
       .catch((err) => {
@@ -118,7 +126,7 @@ function Map() {
         setSelectedBooth(target);
         setActiveMarkerId(boothId);
         setIsFoodTruckActive(false);
-        setShowPanel(false); // Hide panel for regular booths
+        setShowPanel(false);
       }
     }
   };
@@ -144,9 +152,11 @@ function Map() {
         setDragOffset={setDragOffset}
         dragOffset={dragOffset}
         closeDetail={closeDetail}
+        boothsByRole={boothsByRole}
         booths={booths}
         isFoodTruckActive={isFoodTruckActive}
         setIsFoodTruckActive={setIsFoodTruckActive}
+        onBoothSelect={() => {}}
       />
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>

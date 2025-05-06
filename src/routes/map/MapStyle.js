@@ -22,6 +22,9 @@ export const ImageWrapper = styled.div`
   height: 100%;
   position: absolute;
   margin-top: -50px;
+  overflow: hidden;
+  // background-color: ${palette.grayscale.white};
+  background-color: #f4eef5;
 `;
 
 export const DraggableMapImage = styled(motion.img)`

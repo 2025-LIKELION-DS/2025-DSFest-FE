@@ -6,8 +6,14 @@ export const DetailModal = styled.div`
   animation: fadeIn 0.2s ease-in-out;
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   position: absolute;
@@ -24,19 +30,40 @@ export const DetailModal = styled.div`
   padding: 24px 20px;
 `;
 
-
 export const Link = styled.a`
-color: #89A6FF;
-margin : 12px 0 16px;
-`
+  color: #89a6ff;
+  text-align: justify;
+
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.3px;
+`;
+
+export const LinkWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`;
 
 export const Detail = styled.p`
-margin : 0;
-// height : 58px;
-overflow : hidden;
-display: flex;
-align-items: center;
-`
+  // height : 58px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 0 12px 3px;
+
+  color: ${palette.grayscale.text33});
+  text-align: justify;
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.35px;
+`;
 
 export const BoothName = styled.p`
   font-family: Pretendard;
@@ -45,13 +72,14 @@ export const BoothName = styled.p`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.4px;
-  margin:0 0 12px;
+  margin: 0 3px 12px;
 `;
 
 export const BoothTags = styled.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin: 12px 0 0;
 `;
 
 export const Tag = styled.span`

@@ -42,6 +42,7 @@ function CustomMarker({ id, activeId, top, left, right, onClick, boothRole }) {
 }
 
 function Moving({
+  booths,
   isZoomed,
   imageWidth,
   imageHeight,
@@ -53,6 +54,8 @@ function Moving({
   handleBoothClick,
   isFoodTruckActive,
   setIsFoodTruckActive,
+  boothsByRole, // new prop
+  onBoothSelect,
 }) {
   const isMobile = window.innerWidth <= 768;
 
@@ -79,6 +82,9 @@ function Moving({
       setActiveMarkerId(id);
     }
     handleBoothClick(id, boothRole);
+    if (onBoothSelect) {
+      onBoothSelect(id);
+    }
   };
 
   const handleBackgroundClick = () => {
@@ -88,6 +94,69 @@ function Moving({
     closeDetail();
   };
 
+  // mapping: booth id -> array of marker position objects
+  const boothMarkerPositions = {
+    // BOOTH markers
+    66: [{ top: '185px', right: '290px' }],
+    50: [{ top: '259px', right: '290px' }],
+    68: [{ top: '222px', right: '290px' }],
+    7: [{ top: '302px', left: '195px' }],
+    8: [{ top: '302px', left: '240px' }],
+    11: [{ top: '302px', left: '285px' }],
+    12: [{ top: '348px', left: '285px' }],
+    13: [{ top: '375px', left: '285px' }],
+    14: [{ top: '402px', left: '285px' }],
+    15: [{ top: '429px', left: '285px' }],
+    16: [{ top: '456px', left: '285px' }],
+    17: [{ top: '483px', left: '285px' }],
+    18: [{ top: '510px', left: '285px' }],
+    20: [{ top: '537px', left: '285px' }],
+    21: [{ top: '564px', left: '285px' }],
+    23: [{ top: '655px', left: '210px' }],
+    24: [{ top: '348px', right: '270px' }],
+    25: [{ top: '348px', right: '242px' }],
+    27: [{ top: '348px', right: '214px' }],
+    28: [{ top: '348px', right: '186px' }],
+    29: [{ top: '348px', right: '158px' }],
+    30: [{ top: '538px', right: '270px' }],
+    31: [{ top: '538px', right: '242px' }],
+    35: [{ top: '538px', right: '214px' }],
+    47: [
+      { top: '538px', right: '186px' },
+      { top: '538px', right: '158px' },
+      { top: '368px', right: '290px' },
+      { top: '393px', right: '290px' },
+      { top: '417px', right: '290px' },
+      { top: '442px', right: '290px' },
+      { top: '467px', right: '290px' },
+      { top: '492px', right: '290px' },
+      { top: '517px', right: '290px' },
+    ],
+    // FOOD_TRUCK markers
+    72: [{ top: '353px', left: '140px' }],
+    73: [{ top: '376px', left: '140px' }],
+    74: [{ top: '399px', left: '140px' }],
+    75: [{ top: '422px', left: '140px' }],
+    76: [{ top: '445px', left: '140px' }],
+    77: [{ top: '468px', left: '140px' }],
+    78: [{ top: '491px', left: '140px' }],
+    79: [{ top: '514px', left: '140px' }],
+    80: [{ top: '537px', left: '140px' }],
+    81: [{ top: '560px', left: '140px' }],
+    // HINT markers
+    92: [{ top: '170px', left: '115px' }],
+    93: [{ top: '185px', right: '240px' }],
+    94: [{ top: '302px', right: '240px' }],
+    95: [{ top: '417px', left: '332px' }],
+    96: [{ top: '498px', left: '332px' }],
+    97: [{ top: '545px', left: '240px' }],
+    98: [{ top: '610px', left: '240px' }],
+    99: [{ top: '610px', left: '140px' }],
+    100: [{ top: '655px', left: '240px' }],
+  };
+
+  // 콘솔에 boothsByRole['HINT'] 값 출력
+  console.log('힌트 부스:', boothsByRole?.['HINT']);
   return (
     <>
       <M.ImageWrapper>
@@ -107,387 +176,56 @@ function Moving({
           />
           {isZoomed && (
             <>
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="185px"
-                right="290px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="259px"
-                right="290px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="302px"
-                left="195px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="302px"
-                left="240px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="302px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="375px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="402px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="429px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="456px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="483px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="510px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="537px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="564px"
-                left="285px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="655px"
-                left="210px"
-                onClick={() => handleMarkerClick(1)}
-              />
-
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                right="270px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                right="242px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                right="214px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                right="186px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="348px"
-                right="158px"
-                onClick={() => handleMarkerClick(1)}
-              />
-
-              <CustomMarker
-                id={2}
-                activeId={activeMarkerId}
-                top="368px"
-                right="290px"
-                onClick={() => handleMarkerClick(2)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="393px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="417px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="442px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="467px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="492px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-              <CustomMarker
-                id={5}
-                activeId={activeMarkerId}
-                top="517px"
-                right="290px"
-                onClick={() => handleMarkerClick(5)}
-              />
-
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="538px"
-                right="270px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="538px"
-                right="242px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="538px"
-                right="214px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="538px"
-                right="186px"
-                onClick={() => handleMarkerClick(1)}
-              />
-              <CustomMarker
-                id={1}
-                activeId={activeMarkerId}
-                top="538px"
-                right="158px"
-                onClick={() => handleMarkerClick(1)}
-              />
-
-              {/* 푸드트럭 */}
-              <CustomMarker
-                id={4}
-                top="353px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="376px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="399px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="422px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="445px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="468px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="491px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="514px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="537px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              <CustomMarker
-                id={4}
-                top="560px"
-                left="140px"
-                onClick={() => handleMarkerClick(4, 'FOOD_TRUCK')}
-                boothRole="FOOD_TRUCK"
-              />
-              {/* 힌트 */}
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="170px"
-                left="115px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="185px"
-                right="240px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="222px"
-                right="290px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="302px"
-                right="240px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="417px"
-                left="332px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="498px"
-                left="332px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="545px"
-                left="240px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="610px"
-                left="240px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="610px"
-                left="140px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
-              <CustomMarker
-                id={3}
-                activeId={activeMarkerId}
-                top="655px"
-                left="240px"
-                onClick={() => handleMarkerClick(3, 'HINT')}
-                boothRole="HINT"
-              />
+              {/* Render BOOTH markers */}
+              {boothsByRole &&
+                boothsByRole['BOOTH'] &&
+                boothsByRole['BOOTH'].flatMap((booth) =>
+                  (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
+                    <CustomMarker
+                      key={`booth-${booth.id}-${idx}`}
+                      id={booth.id}
+                      activeId={activeMarkerId}
+                      top={pos.top}
+                      left={pos.left}
+                      right={pos.right}
+                      onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
+                      boothRole={booth.boothRole}
+                    />
+                  )),
+                )}
+              {/* Render FOOD_TRUCK markers */}
+              {boothsByRole &&
+                boothsByRole['FOOD_TRUCK'] &&
+                boothsByRole['FOOD_TRUCK'].flatMap((booth) =>
+                  (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
+                    <CustomMarker
+                      key={`foodtruck-${booth.id}-${idx}`}
+                      id={booth.id}
+                      top={pos.top}
+                      left={pos.left}
+                      right={pos.right}
+                      onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
+                      boothRole={booth.boothRole}
+                    />
+                  )),
+                )}
+              {/* Render HINT markers */}
+              {boothsByRole &&
+                boothsByRole['HINT'] &&
+                boothsByRole['HINT'].flatMap((booth) =>
+                  (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
+                    <CustomMarker
+                      key={`hint-${booth.id}-${idx}`}
+                      id={booth.id}
+                      activeId={activeMarkerId}
+                      top={pos.top}
+                      left={pos.left}
+                      right={pos.right}
+                      onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
+                      boothRole={booth.boothRole}
+                    />
+                  )),
+                )}
             </>
           )}
           {isZoomed && isFoodTruckActive && (

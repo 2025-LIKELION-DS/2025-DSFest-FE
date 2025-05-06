@@ -27,7 +27,8 @@ function SlidingPanelSection({
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       onDrag={(e, info) => {
         const deltaY = info.delta.y;
-        const newHeight = Math.min(window.innerHeight * 0.92, Math.max(93, panelHeight - deltaY));
+        const minHeight = isFoodTruckActive ? (window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490) : 93;
+        const newHeight = Math.min(window.innerHeight * 0.92, Math.max(minHeight, panelHeight - deltaY));
         setPanelHeight(newHeight);
       }}
       onDragEnd={() => {
@@ -46,8 +47,8 @@ function SlidingPanelSection({
 
       <M.BoothContentArea>
         {console.log('푸드트럭 데이터:', foodTruckData)}
-        {isFoodTruckActive && Array.isArray(foodTruckData) && foodTruckData.length > 0 ? (
-          foodTruckData.map((booth) => <FoodCard key={booth.id} foodBooth={booth} />)
+        {isFoodTruckActive && foodTruckData?.length > 0 ? (
+          <FoodCard foodBooth={foodTruckData} />
         ) : (
           <>
             <M.TagFilterContainer>
