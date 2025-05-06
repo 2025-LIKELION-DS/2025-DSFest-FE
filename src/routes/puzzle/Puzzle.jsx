@@ -57,7 +57,7 @@ function Puzzle() {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const qrData = location.state?.qrData;
+  const qrData = location.state?.qrData ?? null;
 
   const [username, setUsername] = useState('');
   const [userPuzzleCount, setPuzzleCount] = useState(0);
@@ -77,6 +77,10 @@ function Puzzle() {
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
   const [end, setEnd] = useState(false);
+
+  if ((userPuzzleCount = 9)) {
+    setSuccess(true);
+  }
 
   //새로고침해도 로그인 유지
   useEffect(() => {
@@ -232,12 +236,12 @@ function Puzzle() {
   }, [qrData]);
 
   //qr 인증
-  const qrCheck = async (scannedData) => {
+  const qrCheck = async (qrData) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
         `${API_KEY}/bingo/qr`,
-        { value: { data: scannedData } },
+        { value: qrData },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -322,7 +326,7 @@ function Puzzle() {
       <P.currentPuzzleInfo>
         <P.TopContainer>
           <P.top>
-            {completed ? (
+            {completed || end ? (
               <P.celebration>
                 <P.semibold20>축하드립니다!</P.semibold20>
                 <P.semibold20>모든 퍼즐이 완성되었어요.</P.semibold20>
@@ -377,7 +381,12 @@ function Puzzle() {
               </P.completedPuzzleBox>
             </P.completedPuzzle>
           ) : (
-            <P.login>
+            <P.login
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && isLoginEnabled) {
+                  handleLogin();
+                }
+              }}>
               <P.inputNickname>
                 <InputLogin
                   placeholder={'닉네임을 입력해주세요'}

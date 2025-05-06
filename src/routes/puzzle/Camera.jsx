@@ -6,10 +6,13 @@ function Camera() {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const qrScannerRef = useRef(null);
+  const hasScannedRef = useRef(false);
 
   const handleScan = (result) => {
     const data = result?.data;
     if (!data) return;
+
+    hasScannedRef.current = true;
     console.log('QR 스캔 결과:', data);
     qrScannerRef.current?.stop(); // 스캐너 멈춤
     navigate('/puzzle', { state: { qrData: data } });
@@ -28,7 +31,7 @@ function Camera() {
         qrScanner.destroy();
       };
     }
-  });
+  }, []);
 
   return (
     <>
