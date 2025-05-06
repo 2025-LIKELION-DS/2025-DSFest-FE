@@ -87,7 +87,6 @@ function Map() {
       .get(`${import.meta.env.VITE_API_URL}/booths/all`)
 
       .then((res) => {
-        console.log('부스 데이터:', res.data);
         const boothData = res.data?.data?.booths || [];
         setBooths(boothData);
         setIsLoading(false);
@@ -102,7 +101,6 @@ function Map() {
       .get(`${import.meta.env.VITE_API_URL}/booths/food-truck`)
 
       .then((res) => {
-        // console.log('푸드트럭 데이터:', res.data);
         const foodData = res.data?.data?.foodTrucks || [];
         setFoodTruckData(foodData);
       })
@@ -168,6 +166,7 @@ function Map() {
         setIsFoodTruckActive={setIsFoodTruckActive}
         onBoothSelect={() => {}}
         selectedDayTime={selectedDay}
+        selectedTags={selectedTags}
       />
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>
@@ -214,6 +213,8 @@ function Map() {
           isFoodTruckActive={isFoodTruckActive}
           setIsZoomed={setIsZoomed}
           handleBoothClick={handleBoothClick}
+          setActiveMarkerId={setActiveMarkerId}
+          setIsFoodTruckActive={setIsFoodTruckActive}
         />
       )}
 
@@ -237,4 +238,3 @@ function Map() {
 }
 
 export default Map;
-//

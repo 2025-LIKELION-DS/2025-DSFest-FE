@@ -340,6 +340,7 @@ function Moving({
   boothsByRole,
   onBoothSelect,
   selectedDayTime,
+  selectedTags,
 }) {
   const isMobile = window.innerWidth <= 768;
 
@@ -431,8 +432,35 @@ function Moving({
                 return Object.entries(fixedMarkers).map(([markerId, pos]) => {
                   const boothId = mapping[markerId];
                   if (!boothId) return null;
+
                   const booth = booths.find((b) => b.id === boothId);
-                  const boothRole = booth ? booth.boothRole : undefined;
+                  const boothRole = booth?.boothRole;
+                  const boothTypes = booth?.boothType || [];
+
+                  const isHint = boothRole === 'HINT';
+                  const isFood = boothRole === 'FOOD_TRUCK';
+                  const isExperience = boothTypes.includes('체험부스');
+                  const isSale = boothTypes.includes('판매부스');
+
+                  const isEtc = !isHint && !isFood && !isExperience && !isSale;
+
+                  const selected = selectedTags || [];
+                  const isAllSelected = selected.length === 0 || selected.includes('전체');
+                  const isEtcSelected = selected.includes('기타');
+                  const isFoodSelected = selected.includes('푸드트럭');
+                  const isExpSelected = selected.includes('체험부스');
+                  const isSaleSelected = selected.includes('판매부스');
+
+                  const shouldRender =
+                    isHint ||
+                    isAllSelected ||
+                    (isEtcSelected && isEtc) ||
+                    (isFoodSelected && isFood) ||
+                    (isExpSelected && isExperience) ||
+                    (isSaleSelected && isSale);
+
+                  if (!shouldRender) return null;
+
                   return (
                     <CustomMarker
                       key={`fixedmarker-${markerId}`}
@@ -449,20 +477,24 @@ function Moving({
               })()}
               {boothsByRole &&
                 boothsByRole['FOOD_TRUCK'] &&
-                boothsByRole['FOOD_TRUCK'].flatMap((booth) =>
-                  (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
-                    <CustomMarker
-                      key={`foodtruck-${booth.id}-${idx}`}
-                      id={booth.id}
-                      top={pos.top}
-                      left={pos.left}
-                      right={pos.right}
-                      onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
-                      boothRole={booth.boothRole}
-                    />
-                  )),
-                )}
-              {/* Render HINT markers */}
+                boothsByRole['FOOD_TRUCK']
+                  .filter((booth) => {
+                    if (!selectedTags?.length || selectedTags.includes('전체')) return true;
+                    return selectedTags.includes('푸드트럭');
+                  })
+                  .flatMap((booth) =>
+                    (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
+                      <CustomMarker
+                        key={`foodtruck-${booth.id}-${idx}`}
+                        id={booth.id}
+                        top={pos.top}
+                        left={pos.left}
+                        right={pos.right}
+                        onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
+                        boothRole={booth.boothRole}
+                      />
+                    )),
+                  )}
               {boothsByRole &&
                 boothsByRole['HINT'] &&
                 boothsByRole['HINT'].flatMap((booth) =>

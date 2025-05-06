@@ -2,7 +2,6 @@ import React from 'react';
 import * as M from './FoodCardStyle';
 
 function FoodCard({ foodBooth }) {
-  // console.log('FoodCard 받은 데이터:', foodBooth);
   if (!foodBooth) return null;
 
   const renderCard = (booth) => {
@@ -42,4 +41,3 @@ function FoodCard({ foodBooth }) {
 }
 
 export default FoodCard;
-//
