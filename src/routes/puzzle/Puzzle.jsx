@@ -1,6 +1,6 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import puzzleData from '../../data/puzzleData.json';
@@ -58,6 +58,7 @@ function Puzzle() {
 
   const location = useLocation();
   const qrData = location.state?.qrData;
+  const hasCheckedRef = useRef(false);
 
   const [username, setUsername] = useState('');
   const [userPuzzleCount, setPuzzleCount] = useState(0);
@@ -225,10 +226,11 @@ function Puzzle() {
 
   //qr 데이터 받아오기
   useEffect(() => {
-    if (qrData) {
-      console.log('받은 QR 데이터:', qrData);
-      qrCheck(qrData); // 인증 함수 호출
-    }
+    if (!qrData || hasCheckedRef.current) return;
+    hasCheckedRef.current = true;
+
+    console.log('받은 QR 데이터:', qrData);
+    qrCheck(qrData);
   }, [qrData]);
 
   //qr 인증
