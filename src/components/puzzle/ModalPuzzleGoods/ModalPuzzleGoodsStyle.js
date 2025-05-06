@@ -65,8 +65,6 @@ export const FlexContainer = styled.div`
   justify-content: flex-end;
   flex: 1;
   gap: 7px;
-
-  z-index: 999;
 `;
 
 export const FlexText = styled(Text)`
