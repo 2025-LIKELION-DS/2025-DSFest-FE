@@ -5,7 +5,7 @@ export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
   max-width: 345px;
   width: 100%;
-  height: 229px;
+  /* height: 229px; */
 
   border-radius: 24px;
   background-color: ${palette.grayscale.white};
@@ -19,6 +19,7 @@ export const ModalPuzzleSelect = styled.div`
 
 export const ModalContainer = styled.div`
   padding: 0px 33px;
+  margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
@@ -68,15 +69,25 @@ export const Info = styled.div`
   max-width: 280px;
   width: 100%;
 
-  overflow: hidden;
+  /* overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
 
+  color: ${palette.grayscale.text33};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.35px;
+`;
+
+export const Hint = styled(Info)`
   color: ${palette.grayscale.text88};
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.35px;
+
+  margin-top: -8px;
 `;
