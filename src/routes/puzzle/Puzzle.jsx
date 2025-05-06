@@ -1,9 +1,8 @@
 import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
-import { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import QrScanner from 'qr-scanner';
 import puzzleData from '../../data/puzzleData.json';
 
 import boothIcon from '@assets/puzzle/icon-booth.svg';
@@ -56,14 +55,15 @@ const API_KEY = import.meta.env.VITE_API_URL;
 
 function Puzzle() {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const qrData = location.state?.qrData;
+
   const [username, setUsername] = useState('');
   const [userPuzzleCount, setPuzzleCount] = useState(0);
   const [remainPuzzleCount, setRemainPuzzleCount] = useState(9);
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState('');
-  const [qrPage, setQrPage] = useState(false);
-  const videoRef = useRef(null);
-  const qrScannerRef = useRef(null);
   const [qrSuccess, setQrSuccess] = useState(false);
   //qr 인증 성공 or 실패 모달 props
   const [value, setValue] = useState('');
@@ -220,32 +220,16 @@ function Puzzle() {
 
   //QR
   const showQrCamera = () => {
-    setQrPage(true);
+    navigate('/camera');
   };
 
-  const handleScan = (result) => {
-    const data = result?.data;
-    if (!data) return;
-    console.log('QR 스캔 결과:', data);
-    setQrPage(false); // 스캔 완료 후 QR 카메라 닫기
-    qrScannerRef.current?.stop(); // 스캐너 멈춤
-    qrCheck(data);
-  };
-
+  //qr 데이터 받아오기
   useEffect(() => {
-    if (qrPage && videoRef.current) {
-      const qrScanner = new QrScanner(videoRef.current, handleScan, {
-        returnDetailedScanResult: true,
-      });
-      qrScannerRef.current = qrScanner;
-      qrScanner.start();
-
-      return () => {
-        qrScanner.stop();
-        qrScanner.destroy();
-      };
+    if (qrData) {
+      console.log('받은 QR 데이터:', qrData);
+      qrCheck(qrData); // 인증 함수 호출
     }
-  }, [qrPage]);
+  }, [qrData]);
 
   //qr 인증
   const qrCheck = async (scannedData) => {
@@ -328,6 +312,11 @@ function Puzzle() {
     }));
   };
 
+  //지도 이동
+  const goMap = () => {
+    navigate('/map');
+  };
+
   return (
     <P.puzzlePage onClick={showModal ? modalOffHandler : undefined}>
       <P.currentPuzzleInfo>
@@ -342,8 +331,7 @@ function Puzzle() {
               <>
                 <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
                 <P.puzzleInfo2>
-                  <P.goMap>
-                    {/* onClick={goMap} */}
+                  <P.goMap onClick={goMap}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -429,8 +417,7 @@ function Puzzle() {
             completed ? (
               <>
                 <P.presentInfo>
-                  <P.goMap>
-                    {/* onClick={goMap} */}
+                  <P.goMap onClick={goMap}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -568,7 +555,6 @@ function Puzzle() {
           <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
         )}
       </P.endButton>
-      {qrPage && <P.CameraView ref={videoRef} />}
 
       <P.modal>
         {/* 퍼즐 눌렀을 때 힌트 모달창 */}

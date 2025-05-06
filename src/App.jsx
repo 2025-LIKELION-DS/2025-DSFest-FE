@@ -4,6 +4,7 @@ import Error from '@routes/Error';
 import Main from '@main/Main';
 import Map from '@map/Map';
 import Puzzle from '@puzzle/Puzzle';
+import Camera from '@puzzle/Camera';
 import Review from '@review/Review';
 import Timetable from '@timetable/Timetable';
 import List from '@notice/List';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/map" element={<Map />} />
           <Route path="/puzzle" element={<Puzzle />} />
+          <Route path="/camera" element={<Camera />} />
           <Route path="/review" element={<Review />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/notice" element={<List />} />
