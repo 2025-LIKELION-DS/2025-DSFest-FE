@@ -57,7 +57,7 @@ function Puzzle() {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const qrData = location.state?.qrData ?? null;
+  const qrData = location.state?.qrData;
 
   const [username, setUsername] = useState('');
   const [userPuzzleCount, setPuzzleCount] = useState(0);
@@ -77,10 +77,6 @@ function Puzzle() {
   const [completed, setCompleted] = useState(false);
   //경품 수령 완료했을 때
   const [end, setEnd] = useState(false);
-
-  if ((userPuzzleCount = 9)) {
-    setSuccess(true);
-  }
 
   //새로고침해도 로그인 유지
   useEffect(() => {
@@ -322,7 +318,7 @@ function Puzzle() {
   };
 
   return (
-    <P.puzzlePage onClick={showModal ? modalOffHandler : undefined}>
+    <P.puzzlePage onClick={() => (showModal ? modalOffHandler : undefined)}>
       <P.currentPuzzleInfo>
         <P.TopContainer>
           <P.top>
@@ -335,7 +331,7 @@ function Puzzle() {
               <>
                 <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
                 <P.puzzleInfo2>
-                  <P.goMap onClick={goMap}>
+                  <P.goMap onClick={() => goMap}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -407,7 +403,7 @@ function Puzzle() {
               <ButtonCommon
                 text={'로그인'}
                 color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-                onClick={handleLogin}
+                onClick={() => handleLogin}
               />
               {loginFailed ? (
                 <P.loginFailed>
@@ -426,7 +422,7 @@ function Puzzle() {
             completed ? (
               <>
                 <P.presentInfo>
-                  <P.goMap onClick={goMap}>
+                  <P.goMap onClick={() => goMap}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -583,7 +579,7 @@ function Puzzle() {
               state={true}
               number={modalProps.number}
               boothName={modalProps.boothName}
-              onClick={puzzleSuccessHandler(modalProps.number)}
+              onClick={() => puzzleSuccessHandler(modalProps.number)}
             />
           ) : (
             <ModalPuzzleApprove
