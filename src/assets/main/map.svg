@@ -1,0 +1,35 @@
+<svg width="130" height="148" viewBox="11 11 130 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="228" height="246" x="-38" y="-38">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(25px);clip-path:url(#a);height:100%;width:100%"/>
+  </foreignObject>
+  <g data-figma-bg-blur-radius="50" filter="url(#b)">
+    <mask id="e" fill="#fff">
+      <path d="M140 124c0 8.837-7.163 16-16 16h-21.841C98.1333 150.525 87.9405 158 76 158c-11.9404 0-22.1322-7.475-26.1582-18H28c-8.8366 0-16-7.163-16-16v-16.235C22.5249 102.876 30 90.499 30 76c0-14.499-7.4751-26.876-18-31.7647V28c0-8.8366 7.1634-16 16-16h96c8.837 0 16 7.1634 16 16v96Z"/>
+    </mask>
+    <path fill="url(#c)" d="M140 124c0 8.837-7.163 16-16 16h-21.841C98.1333 150.525 87.9405 158 76 158c-11.9404 0-22.1322-7.475-26.1582-18H28c-8.8366 0-16-7.163-16-16v-16.235C22.5249 102.876 30 90.499 30 76c0-14.499-7.4751-26.876-18-31.7647V28c0-8.8366 7.1634-16 16-16h96c8.837 0 16 7.1634 16 16v96Z" shape-rendering="crispEdges"/>
+    <path fill="url(#d)" d="M140 124h1-1Zm-16 16v1-1Zm-21.841 0v-1h-.688l-.246.643.934.357ZM76 158v1-1Zm-26.1582-18 .934-.357-.2459-.643h-.6881v1ZM12 107.765l-.4213-.907-.5787.269v.638h1ZM30 76h1-1ZM12 44.2353h-1v.6382l.5787.2688.4213-.907ZM124 12v-1 1Zm16 16h-1 1Zm0 96h-1c0 8.284-6.716 15-15 15v2c9.389 0 17-7.611 17-17h-1Zm-16 16v-1h-21.841v2H124v-1Zm-21.841 0-.934-.357C97.3424 149.794 87.5123 157 76 157v2c12.3686 0 22.9242-7.744 27.093-18.643l-.934-.357ZM76 158v-1c-11.5122 0-21.3413-7.206-25.2242-17.357l-.934.357-.934.357C53.0769 151.256 63.6314 159 76 159v-1Zm-26.1582-18v-1H28v2h21.8418v-1ZM28 140v-1c-8.2843 0-15-6.716-15-15h-2c0 9.389 7.6112 17 17 17v-1Zm-16-16h1v-16.235h-2V124h1Zm0-16.235.4213.907C23.3608 103.59 31 90.8153 31 76h-2c0 14.1827-7.311 26.162-17.4213 30.858l.4213.907ZM30 76h1c0-14.8153-7.6392-27.5903-18.5787-32.6716L12 44.2353l-.4213.907C21.689 49.8384 29 61.8172 29 76h1ZM12 44.2353h1V28h-2v16.2353h1ZM12 28h1c0-8.2843 6.7157-15 15-15v-2c-9.3888 0-17 7.6112-17 17h1Zm16-16v1h96v-2H28v1Zm96 0v1c8.284 0 15 6.7157 15 15h2c0-9.3888-7.611-17-17-17v1Zm16 16h-1v96h2V28h-1Z" mask="url(#e)"/>
+  </g>
+  <defs>
+    <linearGradient id="c" x1="76" x2="76" y1="12" y2="87.0563" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".4"/>
+    </linearGradient>
+    <linearGradient id="d" x1="76" x2="76" y1="12" y2="87.0563" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <clipPath id="a" transform="translate(38 38)">
+      <path d="M140 124c0 8.837-7.163 16-16 16h-21.841C98.1333 150.525 87.9405 158 76 158c-11.9404 0-22.1322-7.475-26.1582-18H28c-8.8366 0-16-7.163-16-16v-16.235C22.5249 102.876 30 90.499 30 76c0-14.499-7.4751-26.876-18-31.7647V28c0-8.8366 7.1634-16 16-16h96c8.837 0 16 7.1634 16 16v96Z"/>
+    </clipPath>
+    <filter id="b" width="228" height="246" x="-38" y="-38" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset/>
+      <feGaussianBlur stdDeviation="6"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_533_542"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow_533_542" result="shape"/>
+    </filter>
+  </defs>
+</svg>
