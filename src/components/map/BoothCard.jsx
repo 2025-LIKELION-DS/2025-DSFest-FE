@@ -1,8 +1,8 @@
 import * as M from './BoothCardStyle';
 
-function BoothCard({ booth }) {
+function BoothCard({ booth, onClick }) {
   return (
-    <M.BoothCard>
+    <M.BoothCard onClick={() => onClick?.(booth.id, booth.role)}>
       <M.BoothName>{booth.name}</M.BoothName>
       <M.BoothTags>
         {booth.owner && <M.Tag>{booth.owner}</M.Tag>}
@@ -22,9 +22,7 @@ function BoothCard({ booth }) {
               return acc;
             }, {});
             const order = { 수요일: 1, 목요일: 2, 금요일: 3 };
-            const sorted = Object.entries(grouped)
-              .sort(([a], [b]) => order[a] - order[b])
-              .map(([day, times]) => [day, times.sort((a, b) => (a === '낮' ? -1 : 1))]);
+
             const isEveryDay = isFoodTruck
               ? days.every((day) => grouped[day] !== undefined)
               : days.every((day) => grouped[day]?.includes('낮') && grouped[day]?.includes('밤'));

@@ -367,7 +367,7 @@ function Moving({
     }
     handleBoothClick(id, boothRole);
     if (onBoothSelect) {
-      onBoothSelect(id);
+      onBoothSelect(id, boothRole);
     }
   };
 

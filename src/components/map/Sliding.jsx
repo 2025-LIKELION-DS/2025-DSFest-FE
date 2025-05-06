@@ -12,6 +12,10 @@ function SlidingPanelSection({
   filteredBooths,
   isFoodTruckActive,
   foodTruckData,
+  handleBoothClick,
+  setActiveMarkerId,
+  setIsFoodTruckActive,
+  setIsZoomed,
 }) {
   useEffect(() => {
     if (isFoodTruckActive) {
@@ -76,6 +80,12 @@ function SlidingPanelSection({
                   details: booth.boothIntroduce,
                   link: booth.boothSite,
                   role: booth.boothRole,
+                }}
+                onClick={() => {
+                  handleBoothClick(booth.id, booth.boothRole);
+                  setActiveMarkerId(booth.id);
+                  setIsFoodTruckActive(booth.boothRole === 'FOOD_TRUCK');
+                  setIsZoomed(true);
                 }}
               />
             ))}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import palette from '@styles/theme';
 
 export const DetailModal = styled.div`
-  z-index: 1000;
+  z-index: 10;
   animation: fadeIn 0.2s ease-in-out;
 
   @keyframes fadeIn {

@@ -124,6 +124,7 @@ function Map() {
 
   const handleBoothClick = (boothId, boothRole) => {
     if (boothRole === 'FOOD_TRUCK') {
+      setIsZoomed(true);
       setIsFoodTruckActive(true);
       setSelectedBooth(null);
       setActiveMarkerId(null);
@@ -131,6 +132,7 @@ function Map() {
     } else {
       const target = booths.find((b) => b.id === boothId);
       if (target) {
+        setIsZoomed(true);
         setSelectedBooth(target);
         setActiveMarkerId(boothId);
         setIsFoodTruckActive(false);
@@ -210,6 +212,8 @@ function Map() {
           filteredBooths={isFoodTruckActive ? [] : filteredBooths}
           foodTruckData={isFoodTruckActive ? foodTruckData : null}
           isFoodTruckActive={isFoodTruckActive}
+          setIsZoomed={setIsZoomed}
+          handleBoothClick={handleBoothClick}
         />
       )}
 
