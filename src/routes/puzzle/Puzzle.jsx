@@ -318,7 +318,7 @@ function Puzzle() {
   };
 
   return (
-    <P.puzzlePage onClick={() => (showModal ? modalOffHandler : undefined)}>
+    <P.puzzlePage onClick={() => (showModal ? modalOffHandler() : undefined)}>
       <P.currentPuzzleInfo>
         <P.TopContainer>
           <P.top>
@@ -403,7 +403,7 @@ function Puzzle() {
               <ButtonCommon
                 text={'로그인'}
                 color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-                onClick={() => handleLogin}
+                onClick={() => handleLogin()}
               />
               {loginFailed ? (
                 <P.loginFailed>
@@ -568,7 +568,7 @@ function Puzzle() {
             number={modalProps.number}
             boothName={modalProps.boothName}
             boothInfo={modalProps.boothInfo}
-            onClickR={showQrCamera}
+            onClickR={() => showQrCamera()}
           />
         )}
         {/* qr 인증 성공 or 실패 모달 */}
@@ -587,8 +587,8 @@ function Puzzle() {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               right={right}
-              onClickL={showQrCamera}
-              onClickR={boothCheckHandler}
+              onClickL={() => showQrCamera()}
+              onClickR={() => boothCheckHandler()}
             />
           ))}
       </P.modal>
