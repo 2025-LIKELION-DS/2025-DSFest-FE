@@ -123,7 +123,10 @@ function Main() {
       try {
         const boothList = await axios.get(`${import.meta.env.VITE_API_URL}/booths/all`);
         const boothData = boothList.data.data;
-        setBooths(boothData.booths);
+        const boothNameList = boothData.booths.filter((booth) => {
+          return booth.boothRole === 'BOOTH';
+        });
+        setBooths(boothNameList);
       } catch (error) {
         console.error(error);
       }
@@ -164,7 +167,6 @@ function Main() {
       const matched = booths.filter((booth) => {
         return booth.schedules.some((s) => s.day === current.day && s.time === current.time);
       });
-      console.log(matched);
       if (matched.length > 0) {
         return matched[Math.floor(Math.random() * matched.length)].boothName;
       }
