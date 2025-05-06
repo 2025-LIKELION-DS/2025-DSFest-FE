@@ -55,7 +55,7 @@ const ModalPuzzleSelect = ({ number, boothName, boothInfo, boothHint = '', onCli
           onClickR={onClickR}
         />
       )}
-      {number === 9 && <ButtonModalSingle text={'완료'} onClick={onClickR} />}
+      {number === 9 && <ButtonModalSingle text={'퍼즐 채우기'} onClick={onClickR} />}
     </M.ModalPuzzleSelect>
   );
 };

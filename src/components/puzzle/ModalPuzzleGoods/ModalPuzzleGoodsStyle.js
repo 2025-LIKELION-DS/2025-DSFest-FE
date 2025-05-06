@@ -20,7 +20,7 @@ export const ModalPuzzleSelect = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  padding: 40px 26px 0px;
+  padding: 20px 26px 0px;
 `;
 
 export const ImgContainer = styled.div`
@@ -31,6 +31,8 @@ export const ImgContainer = styled.div`
   position: absolute;
   top: ${(props) => props.$top};
   left: ${(props) => props.$left};
+
+  opacity: 0.4;
 
   > img {
     width: 100%;
@@ -47,10 +49,6 @@ export const Text = styled.div`
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.4px;
-
-  span {
-    font-weight: 600;
-  }
 `;
 
 export const Ptext = styled.div`
@@ -66,15 +64,12 @@ export const FlexContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   flex: 1;
-  gap: 14px;
+  gap: 7px;
 
   z-index: 999;
 `;
 
 export const FlexText = styled(Text)`
   width: 100%;
-  flex: 1;
-
-  display: flex;
-  align-items: flex-end;
+  margin-bottom: 7px;
 `;

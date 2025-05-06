@@ -245,7 +245,7 @@ const Test = () => {
         />
 
         <div>✔️Modal_puzzle_approve</div>
-        <ModalPuzzleApprove state={true} number={1} boothName={'멋쟁이사자처럼'} onClick={modalPuzzleApproveClick} />
+        <ModalPuzzleApprove state={true} number={1} boothName={'총학 제휴 부스'} onClick={modalPuzzleApproveClick} />
         <ModalPuzzleApprove
           state={false}
           value={modalPuzzleApprove}
