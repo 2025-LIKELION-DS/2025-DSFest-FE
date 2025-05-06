@@ -44,9 +44,7 @@ export const Text = styled.p`
   color: ${palette.grayscale.white};
   text-align: center;
 
-  font-family: Pretendard;
   font-size: 20px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.5px;
@@ -54,9 +52,7 @@ export const Text = styled.p`
   span {
     color: ${palette.violet.violet100};
 
-    font-family: Pretendard;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
     line-height: normal;
     letter-spacing: -0.5px;

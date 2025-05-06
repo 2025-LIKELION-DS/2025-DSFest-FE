@@ -44,9 +44,7 @@ export const MsgDiv = styled.div`
   border-radius: 40px;
   background-color: ${palette.styles.white50};
 
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.4px;
@@ -58,9 +56,7 @@ export const MsgDiv = styled.div`
 export const BoothName = styled.span`
   color: #4e3b86;
 
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.4px;
