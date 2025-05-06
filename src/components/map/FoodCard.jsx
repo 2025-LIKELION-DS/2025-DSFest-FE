@@ -2,7 +2,7 @@ import React from 'react';
 import * as M from './FoodCardStyle';
 
 function FoodCard({ foodBooth }) {
-  console.log('FoodCard 받은 데이터:', foodBooth);
+  // console.log('FoodCard 받은 데이터:', foodBooth);
   if (!foodBooth) return null;
 
   const renderCard = (booth) => {
@@ -21,11 +21,17 @@ function FoodCard({ foodBooth }) {
           {boothType.filter(Boolean).length > 0 && <M.Tag>{boothType.join(' · ')}</M.Tag>}
           {scheduleDescription.filter(Boolean).length > 0 &&
             (() => {
-              const hasAllDays = ['수요일', '목요일', '금요일'].every((day) => scheduleDescription.includes(day));
-              if (hasAllDays) {
+              if (scheduleDescription.includes('매일')) {
                 return <M.Tag>매일</M.Tag>;
               }
-              return <M.Tag>{scheduleDescription.join(' · ')}</M.Tag>;
+
+              const days = ['수요일', '목요일', '금요일'];
+
+              const uniqueDays = Array.from(
+                new Set(scheduleDescription.flatMap((desc) => days.filter((day) => desc.includes(day)))),
+              );
+
+              return <M.Tag>{uniqueDays.join(' · ')}</M.Tag>;
             })()}
         </M.BoothTags>
       </M.FoodCard>

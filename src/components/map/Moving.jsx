@@ -1,4 +1,287 @@
-import { React, useEffect, useState } from 'react';
+const fixedMarkers = {
+  1: { top: '185px', right: '290px' },
+  2: { top: '259px', right: '290px' },
+  3: { top: '222px', right: '290px' },
+
+  4: { top: '302px', left: '195px' },
+  5: { top: '302px', left: '240px' },
+  6: { top: '302px', left: '285px' },
+
+  7: { top: '348px', left: '285px' },
+  8: { top: '375px', left: '285px' },
+  9: { top: '402px', left: '285px' },
+  10: { top: '429px', left: '285px' },
+  11: { top: '456px', left: '285px' },
+  12: { top: '483px', left: '285px' },
+  13: { top: '510px', left: '285px' },
+  14: { top: '537px', left: '285px' },
+  15: { top: '564px', left: '285px' },
+
+  16: { top: '655px', left: '210px' },
+
+  17: { top: '348px', right: '270px' },
+  18: { top: '348px', right: '242px' },
+  19: { top: '348px', right: '214px' },
+  20: { top: '348px', right: '186px' },
+  21: { top: '348px', right: '158px' },
+
+  22: { top: '538px', right: '270px' },
+  23: { top: '538px', right: '242px' },
+  24: { top: '538px', right: '214px' },
+  25: { top: '538px', right: '186px' },
+  26: { top: '538px', right: '158px' },
+
+  28: { top: '393px', right: '290px' },
+  29: { top: '417px', right: '290px' },
+  30: { top: '442px', right: '290px' },
+  31: { top: '467px', right: '290px' },
+  32: { top: '492px', right: '290px' },
+  33: { top: '517px', right: '290px' },
+};
+
+const boothMappingByTime = {
+  '수요일 낮': {
+    1: 34,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 16,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 45,
+    11: 26,
+    12: 48,
+    13: 41,
+    14: 61,
+    15: 42,
+
+    16: 4,
+
+    17: 71,
+    18: 70,
+    19: 67,
+    20: 69,
+    21: 27,
+
+    22: 53,
+    23: 37,
+    24: 2,
+    25: 24,
+    26: 1,
+
+    28: 3,
+    29: 29,
+    30: 50,
+    31: 10,
+    32: 12,
+    33: 5,
+  },
+  '수요일 밤': {
+    1: 34,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 16,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 19,
+    11: 40,
+    12: 7,
+    13: 41,
+    14: 10,
+    15: 45,
+
+    16: 0,
+
+    17: 25,
+    18: 28,
+    19: 17,
+    20: 31,
+    21: 66,
+
+    22: 68,
+    23: 14,
+    24: 60,
+    25: 43,
+    26: 1,
+
+    28: 62,
+    29: 61,
+    30: 59,
+    31: 35,
+    32: 30,
+    33: 37,
+  },
+  '목요일 낮': {
+    1: 0,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 22,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 9,
+    11: 46,
+    12: 19,
+    13: 48,
+    14: 54,
+    15: 61,
+
+    16: 34,
+
+    17: 27,
+    18: 15,
+    19: 6,
+    20: 36,
+    21: 28,
+
+    22: 42,
+    23: 65,
+    24: 13,
+    25: 43,
+    26: 1,
+
+    28: 3,
+    29: 56,
+    30: 68,
+    31: 30,
+    32: 52,
+    33: 18,
+  },
+  '목요일 밤': {
+    1: 0,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 22,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 29,
+    11: 24,
+    12: 35,
+    13: 62,
+    14: 19,
+    15: 43,
+
+    16: 34,
+
+    17: 69,
+    18: 66,
+    19: 31,
+    20: 70,
+    21: 6,
+
+    22: 23,
+    23: 25,
+    24: 2,
+    25: 63,
+    26: 1,
+
+    28: 14,
+    29: 21,
+    30: 12,
+    31: 60,
+    32: 65,
+    33: 18,
+  },
+  '금요일 낮': {
+    1: 0,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 16,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 42,
+    11: 3,
+    12: 50,
+    13: 5,
+    14: 60,
+    15: 20,
+
+    16: 34,
+
+    17: 12,
+    18: 71,
+    19: 67,
+    20: 25,
+    21: 55,
+
+    22: 39,
+    23: 53,
+    24: 47,
+    25: 38,
+    26: 1,
+
+    28: 30,
+    29: 29,
+    30: 57,
+    31: 58,
+    32: 49,
+    33: 18,
+  },
+  '금요일 밤': {
+    1: 0,
+    2: 44,
+    3: 51,
+
+    4: 16,
+    5: 16,
+    6: 16,
+
+    7: 11,
+    8: 33,
+    9: 8,
+    10: 14,
+    11: 38,
+    12: 26,
+    13: 49,
+    14: 54,
+    15: 29,
+
+    16: 34,
+
+    17: 28,
+    18: 15,
+    19: 17,
+    20: 64,
+    21: 36,
+
+    22: 47,
+    23: 58,
+    24: 2,
+    25: 40,
+    26: 1,
+
+    28: 62,
+    29: 57,
+    30: 21,
+    31: 20,
+    32: 52,
+    33: 32,
+  },
+};
+import { React } from 'react';
 import { motion } from 'framer-motion';
 import * as M from '@map/MapStyle';
 import MarkerIcon from '../../assets/map/marker.svg';
@@ -54,8 +337,9 @@ function Moving({
   handleBoothClick,
   isFoodTruckActive,
   setIsFoodTruckActive,
-  boothsByRole, // new prop
+  boothsByRole,
   onBoothSelect,
+  selectedDayTime,
 }) {
   const isMobile = window.innerWidth <= 768;
 
@@ -94,44 +378,7 @@ function Moving({
     closeDetail();
   };
 
-  // mapping: booth id -> array of marker position objects
   const boothMarkerPositions = {
-    // BOOTH markers
-    66: [{ top: '185px', right: '290px' }],
-    50: [{ top: '259px', right: '290px' }],
-    68: [{ top: '222px', right: '290px' }],
-    7: [{ top: '302px', left: '195px' }],
-    8: [{ top: '302px', left: '240px' }],
-    11: [{ top: '302px', left: '285px' }],
-    12: [{ top: '348px', left: '285px' }],
-    13: [{ top: '375px', left: '285px' }],
-    14: [{ top: '402px', left: '285px' }],
-    15: [{ top: '429px', left: '285px' }],
-    16: [{ top: '456px', left: '285px' }],
-    17: [{ top: '483px', left: '285px' }],
-    18: [{ top: '510px', left: '285px' }],
-    20: [{ top: '537px', left: '285px' }],
-    21: [{ top: '564px', left: '285px' }],
-    23: [{ top: '655px', left: '210px' }],
-    24: [{ top: '348px', right: '270px' }],
-    25: [{ top: '348px', right: '242px' }],
-    27: [{ top: '348px', right: '214px' }],
-    28: [{ top: '348px', right: '186px' }],
-    29: [{ top: '348px', right: '158px' }],
-    30: [{ top: '538px', right: '270px' }],
-    31: [{ top: '538px', right: '242px' }],
-    35: [{ top: '538px', right: '214px' }],
-    47: [
-      { top: '538px', right: '186px' },
-      { top: '538px', right: '158px' },
-      { top: '368px', right: '290px' },
-      { top: '393px', right: '290px' },
-      { top: '417px', right: '290px' },
-      { top: '442px', right: '290px' },
-      { top: '467px', right: '290px' },
-      { top: '492px', right: '290px' },
-      { top: '517px', right: '290px' },
-    ],
     // FOOD_TRUCK markers
     72: [{ top: '353px', left: '140px' }],
     73: [{ top: '376px', left: '140px' }],
@@ -144,19 +391,22 @@ function Moving({
     80: [{ top: '537px', left: '140px' }],
     81: [{ top: '560px', left: '140px' }],
     // HINT markers
-    92: [{ top: '170px', left: '115px' }],
-    93: [{ top: '185px', right: '240px' }],
-    94: [{ top: '302px', right: '240px' }],
-    95: [{ top: '417px', left: '332px' }],
-    96: [{ top: '498px', left: '332px' }],
-    97: [{ top: '545px', left: '240px' }],
-    98: [{ top: '610px', left: '240px' }],
-    99: [{ top: '610px', left: '140px' }],
-    100: [{ top: '655px', left: '240px' }],
+    98: [
+      { top: '170px', left: '115px' },
+      { top: '610px', left: '240px' },
+    ],
+    99: [{ top: '185px', right: '240px' }],
+    92: [{ top: '302px', right: '240px' }],
+    93: [{ top: '368px', right: '290px' }],
+    96: [
+      { top: '417px', left: '332px' },
+      { top: '498px', left: '332px' },
+    ],
+    95: [{ top: '545px', left: '240px' }],
+    97: [{ top: '610px', left: '140px' }],
+    94: [{ top: '655px', left: '240px' }],
   };
 
-  // 콘솔에 boothsByRole['HINT'] 값 출력
-  console.log('힌트 부스:', boothsByRole?.['HINT']);
   return (
     <>
       <M.ImageWrapper>
@@ -176,24 +426,27 @@ function Moving({
           />
           {isZoomed && (
             <>
-              {/* Render BOOTH markers */}
-              {boothsByRole &&
-                boothsByRole['BOOTH'] &&
-                boothsByRole['BOOTH'].flatMap((booth) =>
-                  (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
+              {(() => {
+                const mapping = boothMappingByTime[selectedDayTime] || {};
+                return Object.entries(fixedMarkers).map(([markerId, pos]) => {
+                  const boothId = mapping[markerId];
+                  if (!boothId) return null;
+                  const booth = booths.find((b) => b.id === boothId);
+                  const boothRole = booth ? booth.boothRole : undefined;
+                  return (
                     <CustomMarker
-                      key={`booth-${booth.id}-${idx}`}
-                      id={booth.id}
+                      key={`fixedmarker-${markerId}`}
+                      id={boothId}
                       activeId={activeMarkerId}
                       top={pos.top}
                       left={pos.left}
                       right={pos.right}
-                      onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
-                      boothRole={booth.boothRole}
+                      onClick={() => handleMarkerClick(boothId, boothRole)}
+                      boothRole={boothRole}
                     />
-                  )),
-                )}
-              {/* Render FOOD_TRUCK markers */}
+                  );
+                });
+              })()}
               {boothsByRole &&
                 boothsByRole['FOOD_TRUCK'] &&
                 boothsByRole['FOOD_TRUCK'].flatMap((booth) =>
@@ -248,4 +501,3 @@ function Moving({
 }
 
 export default Moving;
-//

@@ -46,7 +46,7 @@ function SlidingPanelSection({
       </M.TouchSection>
 
       <M.BoothContentArea>
-        {console.log('푸드트럭 데이터:', foodTruckData)}
+        {/* {console.log('푸드트럭 데이터:', foodTruckData)} */}
         {isFoodTruckActive && foodTruckData?.length > 0 ? (
           <FoodCard foodBooth={foodTruckData} />
         ) : (
@@ -66,10 +66,16 @@ function SlidingPanelSection({
                   id: booth.id,
                   name: booth.boothName,
                   owner: booth.boothOperator,
-                  types: booth.boothType,
-                  times: booth.schedules.map((s) => `${s.day} ${s.time}`),
+                  types:
+                    booth.boothRole !== 'HINT' &&
+                    booth.boothRole !== 'FOOD_TRUCK' &&
+                    (!Array.isArray(booth.boothType) || booth.boothType.length === 0)
+                      ? ['기타']
+                      : booth.boothType,
+                  times: booth.schedules.map((s) => (booth.boothRole === 'FOOD_TRUCK' ? s.day : `${s.day} ${s.time}`)),
                   details: booth.boothIntroduce,
                   link: booth.boothSite,
+                  role: booth.boothRole,
                 }}
               />
             ))}
@@ -81,4 +87,3 @@ function SlidingPanelSection({
 }
 
 export default SlidingPanelSection;
-//

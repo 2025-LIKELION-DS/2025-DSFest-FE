@@ -69,7 +69,14 @@ function Map() {
     .filter((booth) => {
       if (selectedTags.includes('전체')) return true;
 
-      const matchesType = Array.isArray(booth.boothType) && booth.boothType.some((type) => selectedTags.includes(type));
+      const boothTypes =
+        booth.boothRole !== 'HINT' && booth.boothRole !== 'FOOD_TRUCK'
+          ? Array.isArray(booth.boothType) && booth.boothType.length > 0
+            ? booth.boothType
+            : ['기타']
+          : booth.boothType || [];
+
+      const matchesType = boothTypes.some((type) => selectedTags.includes(type));
       const matchesOperator = booth.boothOperator && selectedTags.includes(booth.boothOperator);
 
       return matchesType || matchesOperator;
@@ -80,6 +87,7 @@ function Map() {
       .get(`${import.meta.env.VITE_API_URL}/booths/all`)
 
       .then((res) => {
+        console.log('부스 데이터:', res.data);
         const boothData = res.data?.data?.booths || [];
         setBooths(boothData);
         setIsLoading(false);
@@ -94,7 +102,7 @@ function Map() {
       .get(`${import.meta.env.VITE_API_URL}/booths/food-truck`)
 
       .then((res) => {
-        console.log('푸드트럭 데이터:', res.data);
+        // console.log('푸드트럭 데이터:', res.data);
         const foodData = res.data?.data?.foodTrucks || [];
         setFoodTruckData(foodData);
       })
@@ -157,6 +165,7 @@ function Map() {
         isFoodTruckActive={isFoodTruckActive}
         setIsFoodTruckActive={setIsFoodTruckActive}
         onBoothSelect={() => {}}
+        selectedDayTime={selectedDay}
       />
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>
