@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import QrScanner from 'qr-scanner';
+import puzzleData from '../../data/puzzleData.json';
 
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
@@ -145,59 +146,15 @@ function Puzzle() {
     setIsPuzzleHover((prev) => ({ ...prev, [indexKey]: false }));
   };
 
+  //부스 힌트 모달
   const puzzleHandler = (index) => {
-    const puzzleData = {
-      index1: { number: 1, boothName: '총학 중앙본부', boothInfo: '우리의 목소리를 모아, 단절 없는 흐름을 그리다' },
-      index2: {
-        number: 2,
-        boothName: '총학 수익사업 부스',
-        boothInfo:
-          '덕우가 뭘 좋아할지 몰라서 다 준비했어. \n ※구매하지 않아도 퍼즐 수집이 가능합니다. 자유롭게 구경해 주세요!',
-      },
-      index3: {
-        number: 3,
-        boothName: '포토부스',
-        boothInfo:
-          '여운을 종이로 남기고 싶은 순간(✌️ 🧀 😁) \n ※ 사진을 찍기 위해 줄을 서 있을 경우 질서를 유지할 수 있게 도와주세요. 퍼즐을 수집하는 경우 스태프의 안내에 따라 옆쪽에서 QR 코드를 찾아 주세요!',
-      },
-      index4: {
-        number: 4,
-        boothName: '정문 덕새 엉덩이(혹은 등)',
-        boothInfo: '소원을 들어주는 흰까치 엉덩이 \n ※ 먼저 흰까치와 함께하는 학우분이 계시다면 조금 기다려 주세요!',
-      },
-      index5: {
-        number: 5,
-        boothName: '정문~학관 게시판',
-        boothInfo: '부스와 길을 따라 걷다 보면 보이는 여운의 흔적 \n ※ 부착된 포스터, QR 코드 등을 훼손하지 마세요.',
-      },
-      index6: {
-        number: 6,
-        boothName: '근화제 포토월',
-        boothInfo:
-          '여운을 추억할 수 있는 조각 제작소 \n ※ 사진을 찍고 있는 학우분들이 계시다면, 조금만 기다려 주세요! 순서에 따라 서로 배려해 주세요.',
-      },
-      index7: {
-        number: 7,
-        boothName: '손목띠 부스',
-        boothInfo:
-          '근화제 여운을 즐기기 위해 반드시 거쳐야 하는 곳 \n ※ 인파가 자주 몰리는 만큼, 혼잡하지 않도록 유의해 주세요. 손목띠 착용에 피해가 가지 않도록 옆쪽에서 퍼즐을 수집해 주세요.',
-      },
-      index8: {
-        number: 8,
-        boothName: '간식마을(취식존)',
-        boothInfo:
-          '한가로운 소영근터에 마을이 생겼다고요? \n ※ 돗자리를 깔고 쉴 수 있는 마을에서 잠시 쉬었다 가셔도 좋습니다!',
-      },
-      index9: {
-        number: 9,
-        boothName: '부스 전체',
-        boothInfo:
-          '부스 마을로 놀러 오세요! \n ※ 모든 부스에서 동일한 퍼즐 한 조각만을 모을 수 있습니다. 가급적이면 부스를 잘 즐긴 후 퍼즐을 수집해 주세요!',
-      },
-    };
-
     setModalProps(puzzleData[index]);
     setShowModal('hintModal');
+  };
+
+  //모달 외의 공간 누르면 모달 닫기
+  const modalOffHandler = () => {
+    setShowModal('');
   };
 
   //로그인
@@ -290,6 +247,7 @@ function Puzzle() {
     }
   }, [qrPage]);
 
+  //qr 인증
   const qrCheck = async (scannedData) => {
     try {
       const token = localStorage.getItem('token');
@@ -320,7 +278,6 @@ function Puzzle() {
         setShowModal('qrCheckModal');
       }
     } catch (error) {
-      console.log('qrCheck 실패함');
       console.log(error);
       setQrSuccess(false);
       setModalProps({
@@ -330,15 +287,7 @@ function Puzzle() {
     }
   };
 
-  // 미션 성공 시 퍼즐 이미지 변경
-  const puzzleSuccessHandler = (i) => {
-    setPuzzleValue((prev) => ({
-      ...prev,
-      [`index${i}`]: true,
-    }));
-  };
-
-  //비밀번호 입력시
+  //비밀번호 인증
   const boothCheckHandler = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -371,8 +320,16 @@ function Puzzle() {
     }
   };
 
+  // 미션 성공 시 퍼즐 이미지 변경
+  const puzzleSuccessHandler = (i) => {
+    setPuzzleValue((prev) => ({
+      ...prev,
+      [`index${i}`]: true,
+    }));
+  };
+
   return (
-    <P.puzzlePage>
+    <P.puzzlePage onClick={showModal ? modalOffHandler : undefined}>
       <P.currentPuzzleInfo>
         <P.TopContainer>
           <P.top>
@@ -514,7 +471,7 @@ function Puzzle() {
                 <P.puzzleGrid>
                   <P.puzzle1
                     onClick={() => {
-                      puzzleValue.index1 ? null : puzzleHandler('index1');
+                      puzzleValue.index1 ? null : puzzleHandler(0);
                     }}
                     onMouseOver={() => handleMouseOver('index1')}
                     onMouseOut={() => handleMouseOut('index1')}
@@ -522,7 +479,7 @@ function Puzzle() {
                   />
                   <P.puzzle2
                     onClick={() => {
-                      puzzleValue.index2 ? null : puzzleHandler('index2');
+                      puzzleValue.index2 ? null : puzzleHandler(1);
                     }}
                     onMouseOver={() => handleMouseOver('index2')}
                     onMouseOut={() => handleMouseOut('index2')}
@@ -530,7 +487,7 @@ function Puzzle() {
                   />
                   <P.puzzle3
                     onClick={() => {
-                      puzzleValue.index3 ? null : puzzleHandler('index3');
+                      puzzleValue.index3 ? null : puzzleHandler(2);
                     }}
                     onMouseOver={() => handleMouseOver('index3')}
                     onMouseOut={() => handleMouseOut('index3')}
@@ -538,7 +495,7 @@ function Puzzle() {
                   />
                   <P.puzzle4
                     onClick={() => {
-                      puzzleValue.index4 ? null : puzzleHandler('index4');
+                      puzzleValue.index4 ? null : puzzleHandler(3);
                     }}
                     onMouseOver={() => handleMouseOver('index4')}
                     onMouseOut={() => handleMouseOut('index4')}
@@ -546,7 +503,7 @@ function Puzzle() {
                   />
                   <P.puzzle5
                     onClick={() => {
-                      puzzleValue.index5 ? null : puzzleHandler('index5');
+                      puzzleValue.index5 ? null : puzzleHandler(4);
                     }}
                     onMouseOver={() => handleMouseOver('index5')}
                     onMouseOut={() => handleMouseOut('index5')}
@@ -554,7 +511,7 @@ function Puzzle() {
                   />
                   <P.puzzle6
                     onClick={() => {
-                      puzzleValue.index6 ? null : puzzleHandler('index6');
+                      puzzleValue.index6 ? null : puzzleHandler(5);
                     }}
                     onMouseOver={() => handleMouseOver('index6')}
                     onMouseOut={() => handleMouseOut('index6')}
@@ -562,7 +519,7 @@ function Puzzle() {
                   />
                   <P.puzzle7
                     onClick={() => {
-                      puzzleValue.index7 ? null : puzzleHandler('index7');
+                      puzzleValue.index7 ? null : puzzleHandler(6);
                     }}
                     onMouseOver={() => handleMouseOver('index7')}
                     onMouseOut={() => handleMouseOut('index7')}
@@ -570,7 +527,7 @@ function Puzzle() {
                   />
                   <P.puzzle8
                     onClick={() => {
-                      puzzleValue.index8 ? null : puzzleHandler('index8');
+                      puzzleValue.index8 ? null : puzzleHandler(7);
                     }}
                     onMouseOver={() => handleMouseOver('index8')}
                     onMouseOut={() => handleMouseOut('index8')}
@@ -578,7 +535,7 @@ function Puzzle() {
                   />
                   <P.puzzle9
                     onClick={() => {
-                      puzzleValue.index9 ? null : puzzleHandler('index9');
+                      puzzleValue.index9 ? null : puzzleHandler(8);
                     }}
                     onMouseOver={() => handleMouseOver('index9')}
                     onMouseOut={() => handleMouseOut('index9')}

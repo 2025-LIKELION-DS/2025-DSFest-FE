@@ -10,6 +10,13 @@ export const puzzlePage = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 46px;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      position: relative;
+      height: 852px;
+    }
+  }
 `;
 
 export const currentPuzzleInfo = styled.div`
@@ -417,5 +424,4 @@ export const CameraView = styled.video`
 export const modal = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 33px;
 `;
