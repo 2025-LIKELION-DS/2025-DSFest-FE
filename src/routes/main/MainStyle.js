@@ -17,6 +17,7 @@ export const Main = styled.div`
 
   display: flex;
   flex-direction: column;
+  isolation: isolate;
 `;
 
 export const MoonImg = styled.img`
@@ -102,8 +103,12 @@ export const ImgDiv = styled.div`
     transform 0.5s ease-in-out,
     opacity 0.5s ease-in-out;
 
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateZ(0);
     opacity: 0.95;
   }
 `;
