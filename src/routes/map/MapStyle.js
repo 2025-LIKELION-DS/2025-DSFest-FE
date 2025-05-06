@@ -248,8 +248,6 @@ export const Food = styled.img`
   height: 150px;
 `;
 
-//추가
-
 export const DraggableGroup = styled(motion.div)`
   position: absolute;
   top: 50%;

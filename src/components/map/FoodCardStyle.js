@@ -68,3 +68,4 @@ export const Menu = styled.div`
 export const Price = styled.div`
   display: flex;
 `;
+//

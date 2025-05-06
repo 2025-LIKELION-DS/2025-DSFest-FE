@@ -36,3 +36,4 @@ function FoodCard({ foodBooth }) {
 }
 
 export default FoodCard;
+//
