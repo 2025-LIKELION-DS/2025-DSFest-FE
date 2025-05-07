@@ -139,7 +139,6 @@ export const Info = styled.div`
   margin-left: 19px;
 
   width: 183px;
-  /* height: 41vh; */
   border-radius: 11px;
   background-color: ${palette.styles.white50};
   backdrop-filter: blur(7.5px);
@@ -167,7 +166,6 @@ export const InfoTitle = styled.p`
   color: ${palette.grayscale.text33};
   font-size: 12px;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.35px;
 `;
 
@@ -204,7 +202,6 @@ export const Part = styled.p`
   color: ${palette.grayscale.text33};
   font-size: 12px;
   font-weight: 500;
-  line-height: normal;
   letter-spacing: -0.3px;
 `;
 
@@ -307,6 +304,6 @@ export const CopyRightDiv = styled.div`
 
 export const InfoBox = styled.div`
   @media (max-height: 639px) {
-    padding: 0 20px 20px 20px;
+    padding: 0 20px 20px;
   }
 `;

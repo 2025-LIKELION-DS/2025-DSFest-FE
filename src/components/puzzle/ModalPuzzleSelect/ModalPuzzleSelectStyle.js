@@ -75,7 +75,6 @@ export const Info = styled.div`
   color: ${palette.grayscale.text33};
   font-size: 14px;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.35px;
 `;
 
@@ -83,7 +82,6 @@ export const Hint = styled(Info)`
   color: ${palette.grayscale.text88};
   font-size: 14px;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.35px;
 
   margin-top: -1px;
