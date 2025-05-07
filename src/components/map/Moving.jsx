@@ -1,328 +1,11 @@
-const fixedMarkers = {
-  1: { top: '185px', right: '290px' },
-  2: { top: '259px', right: '290px' },
-  3: { top: '222px', right: '290px' },
-
-  4: { top: '302px', left: '195px' },
-  5: { top: '302px', left: '240px' },
-  6: { top: '302px', left: '285px' },
-
-  7: { top: '348px', left: '285px' },
-  8: { top: '375px', left: '285px' },
-  9: { top: '402px', left: '285px' },
-  10: { top: '429px', left: '285px' },
-  11: { top: '456px', left: '285px' },
-  12: { top: '483px', left: '285px' },
-  13: { top: '510px', left: '285px' },
-  14: { top: '537px', left: '285px' },
-  15: { top: '564px', left: '285px' },
-
-  16: { top: '655px', left: '210px' },
-
-  17: { top: '348px', right: '270px' },
-  18: { top: '348px', right: '242px' },
-  19: { top: '348px', right: '214px' },
-  20: { top: '348px', right: '186px' },
-  21: { top: '348px', right: '158px' },
-
-  22: { top: '538px', right: '270px' },
-  23: { top: '538px', right: '242px' },
-  24: { top: '538px', right: '214px' },
-  25: { top: '538px', right: '186px' },
-  26: { top: '538px', right: '158px' },
-
-  28: { top: '393px', right: '290px' },
-  29: { top: '417px', right: '290px' },
-  30: { top: '442px', right: '290px' },
-  31: { top: '467px', right: '290px' },
-  32: { top: '492px', right: '290px' },
-  33: { top: '517px', right: '290px' },
-};
-
-const boothMappingByTime = {
-  '수요일 낮': {
-    1: 34,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 16,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 45,
-    11: 26,
-    12: 48,
-    13: 41,
-    14: 61,
-    15: 42,
-
-    16: 4,
-
-    17: 71,
-    18: 70,
-    19: 67,
-    20: 69,
-    21: 27,
-
-    22: 53,
-    23: 37,
-    24: 2,
-    25: 24,
-    26: 1,
-
-    28: 3,
-    29: 29,
-    30: 50,
-    31: 10,
-    32: 12,
-    33: 5,
-  },
-  '수요일 밤': {
-    1: 34,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 16,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 19,
-    11: 40,
-    12: 7,
-    13: 41,
-    14: 10,
-    15: 45,
-
-    16: 0,
-
-    17: 25,
-    18: 28,
-    19: 17,
-    20: 31,
-    21: 66,
-
-    22: 68,
-    23: 14,
-    24: 60,
-    25: 43,
-    26: 1,
-
-    28: 62,
-    29: 61,
-    30: 59,
-    31: 35,
-    32: 30,
-    33: 37,
-  },
-  '목요일 낮': {
-    1: 0,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 22,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 9,
-    11: 46,
-    12: 19,
-    13: 48,
-    14: 54,
-    15: 61,
-
-    16: 34,
-
-    17: 27,
-    18: 15,
-    19: 6,
-    20: 36,
-    21: 28,
-
-    22: 42,
-    23: 65,
-    24: 13,
-    25: 43,
-    26: 1,
-
-    28: 3,
-    29: 56,
-    30: 68,
-    31: 30,
-    32: 52,
-    33: 18,
-  },
-  '목요일 밤': {
-    1: 0,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 22,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 29,
-    11: 24,
-    12: 35,
-    13: 62,
-    14: 19,
-    15: 43,
-
-    16: 34,
-
-    17: 69,
-    18: 66,
-    19: 31,
-    20: 70,
-    21: 6,
-
-    22: 23,
-    23: 25,
-    24: 2,
-    25: 63,
-    26: 1,
-
-    28: 14,
-    29: 21,
-    30: 12,
-    31: 60,
-    32: 65,
-    33: 18,
-  },
-  '금요일 낮': {
-    1: 0,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 16,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 42,
-    11: 3,
-    12: 50,
-    13: 5,
-    14: 60,
-    15: 20,
-
-    16: 34,
-
-    17: 12,
-    18: 71,
-    19: 67,
-    20: 25,
-    21: 55,
-
-    22: 39,
-    23: 53,
-    24: 47,
-    25: 38,
-    26: 1,
-
-    28: 30,
-    29: 29,
-    30: 57,
-    31: 58,
-    32: 49,
-    33: 18,
-  },
-  '금요일 밤': {
-    1: 0,
-    2: 44,
-    3: 51,
-
-    4: 16,
-    5: 16,
-    6: 16,
-
-    7: 11,
-    8: 33,
-    9: 8,
-    10: 14,
-    11: 38,
-    12: 26,
-    13: 49,
-    14: 54,
-    15: 29,
-
-    16: 34,
-
-    17: 28,
-    18: 15,
-    19: 17,
-    20: 64,
-    21: 36,
-
-    22: 47,
-    23: 58,
-    24: 2,
-    25: 40,
-    26: 1,
-
-    28: 62,
-    29: 57,
-    30: 21,
-    31: 20,
-    32: 52,
-    33: 32,
-  },
-};
 import { React } from 'react';
 import { motion } from 'framer-motion';
 import * as M from '@map/MapStyle';
-import MarkerIcon from '../../assets/map/marker.svg';
-import BoothIcon from '../../assets/map/boothactive.svg';
-import FoodIcon from '../../assets/map/foodactive.svg';
-import HintIcon from '../../assets/map/hintactive.svg';
-import FoodMarker from '../../assets/map/food_marker.svg';
-import HintMarker from '../../assets/map/hintmarker.svg';
+import CustomMarker from './CustomMarker';
 import mapSmall from '../../assets/map/mapSmall.svg';
 import mapBig from '../../assets/map/mapBig.svg';
-
-function getMarkerIcon(boothRole, id, activeId) {
-  const isActive = id === activeId;
-  if (boothRole === 'FOOD_TRUCK') {
-    return { iconSrc: isActive ? FoodIcon : FoodMarker, iconAlt: 'food marker' };
-  } else if (boothRole === 'HINT') {
-    return { iconSrc: isActive ? HintIcon : HintMarker, iconAlt: 'hint marker' };
-  } else if (isActive) {
-    return { iconSrc: BoothIcon, iconAlt: 'active booth marker' };
-  }
-  return { iconSrc: MarkerIcon, iconAlt: 'marker' };
-}
-
-function CustomMarker({ id, activeId, top, left, right, onClick, boothRole }) {
-  const isActive = id === activeId;
-
-  const style = {
-    position: 'absolute',
-    top: top ? `calc(${top} + ${isActive ? '-7px' : '0px'})` : undefined,
-    left: left ? `calc(${left} + ${isActive ? '-7px' : '0px'})` : undefined,
-    right: right ? `calc(${right} + ${isActive ? '-7px' : '0px'})` : undefined,
-    zIndex: isActive ? 2 : undefined,
-    cursor: 'pointer',
-    userSelect: 'none',
-    pointerEvents: 'auto',
-  };
-
-  const { iconSrc, iconAlt } = getMarkerIcon(boothRole, id, activeId);
-
-  return <img src={iconSrc} alt={iconAlt} style={style} onClick={() => onClick && onClick(id)} draggable={false} />;
-}
+import FoodIcon from '../../assets/map/foodactive.svg';
+import { fixedMarkers, boothMappingByTime } from './MarkerMapping';
 
 function Moving({
   booths,
@@ -434,6 +117,7 @@ function Moving({
                   if (!boothId) return null;
 
                   const booth = booths.find((b) => b.id === boothId);
+
                   const boothRole = booth?.boothRole;
                   const boothTypes = booth?.boothType || [];
 
@@ -471,6 +155,8 @@ function Moving({
                       right={pos.right}
                       onClick={() => handleMarkerClick(boothId, boothRole)}
                       boothRole={boothRole}
+                      boothName={booth?.boothName}
+                      isHint={boothRole === 'HINT'}
                     />
                   );
                 });
@@ -492,6 +178,7 @@ function Moving({
                         right={pos.right}
                         onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
                         boothRole={booth.boothRole}
+                        isHint={booth.boothRole === 'HINT'}
                       />
                     )),
                   )}
@@ -508,6 +195,8 @@ function Moving({
                       right={pos.right}
                       onClick={() => handleMarkerClick(booth.id, booth.boothRole)}
                       boothRole={booth.boothRole}
+                      boothName={booth?.boothName}
+                      isHint={booth.boothRole === 'HINT'}
                     />
                   )),
                 )}

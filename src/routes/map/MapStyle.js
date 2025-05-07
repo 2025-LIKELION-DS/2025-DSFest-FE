@@ -177,6 +177,13 @@ export const TagFilterContainer = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
   align-items: center;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const TagFilter = styled.button`
