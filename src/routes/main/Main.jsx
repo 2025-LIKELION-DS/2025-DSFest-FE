@@ -188,7 +188,7 @@ function Main() {
 
         <M.MainDiv>
           <M.LogoDiv>
-            <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} ref={logoRef} />
+            <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
           </M.LogoDiv>
           <M.Div>
             <M.ImgDiv onClick={() => handleMenuClick('/timetable')}>
