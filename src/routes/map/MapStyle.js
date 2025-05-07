@@ -23,7 +23,6 @@ export const ImageWrapper = styled.div`
   position: absolute;
   margin-top: -50px;
   overflow: hidden;
-  // background-color: ${palette.grayscale.white};
   background-color: #f4eef5;
 `;
 
@@ -113,7 +112,6 @@ export const Tag = styled.span`
   letter-spacing: -0.3px;
 `;
 
-// 추가
 export const ToggleImage = styled.img`
   width: 15px;
 `;
@@ -201,7 +199,6 @@ export const TagFilter = styled.button`
   display: flex;
 `;
 
-//추가
 export const DateDropdown = styled.div`
   position: absolute;
   top: 60px;
@@ -242,7 +239,6 @@ export const DateOption = styled.div`
   }
 `;
 
-// 이미지
 export const Marker = styled.img`
   position: absolute;
   width: 12px;
