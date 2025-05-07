@@ -111,6 +111,7 @@ function Puzzle() {
   //새로고침해도 로그인 유지
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       setAuthorized(true);
       const userInfo = async () => {
@@ -124,6 +125,8 @@ function Puzzle() {
           await getPuzzleInfo();
         } catch (error) {
           console.error(error);
+          setAuthorized(false);
+          localStorage.removeItem('token');
         }
       };
 
@@ -301,6 +304,8 @@ function Puzzle() {
         state: false,
       });
       setShowModal('qrCheckModal');
+    } finally {
+      navigate(location.pathname, { replace: true, state: {} });
     }
   };
 
