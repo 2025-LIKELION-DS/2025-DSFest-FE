@@ -1,5 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import * as P from '@admin/puzzle/PuzzleListStyle';
 import palette from '@styles/theme';
 import ButtonAdminSingle from '@components/admin/ButtonAdminSingle/ButtonAdminSingle';
@@ -8,6 +9,7 @@ import CopyToast from '@admin/components/CopyToast/CopyToast';
 
 function PuzzleList() {
   const [showToast, setShowToast] = useState(false);
+  const [puzzleList, setPuzzleList] = useState([]);
   const timeRef = useRef(null);
 
   const navigate = useNavigate();
@@ -25,12 +27,24 @@ function PuzzleList() {
     setShowToast(true);
   };
 
-  const [puzzleData, setPuzzleData] = useState({
-    puzzleNumber: '1',
-    puzzleName: '총학생회',
-    qrValue: 'e1439392-f7bd-4e4d-b1ed-0efa86c5200e',
-    puzzlePassword: 'E2F989',
-  });
+  useEffect(() => {
+    const fetchPuzzleList = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/place-auth`);
+        if (response.data?.data) {
+          setPuzzleList(response.data.data);
+        }
+      } catch (error) {
+        console.error('퍼즐 리스트 조회 실패:', error);
+      }
+    };
+
+    fetchPuzzleList();
+  }, []);
+
+  const handleDelete = (deletedIndex) => {
+    setPuzzleList((prev) => prev.filter((item) => item.puzzleIndex.toString() !== deletedIndex));
+  };
 
   return (
     <>
@@ -41,41 +55,17 @@ function PuzzleList() {
           onClick={() => handleLinkClick('/admin/puzzle/new')}
         />
         <P.PuzzleItemContainer>
-          <PuzzleItem
-            index={puzzleData.puzzleNumber}
-            name={puzzleData.puzzleName}
-            uuid={puzzleData.qrValue}
-            password={puzzleData.puzzlePassword}
-            onShowToast={handleShowToast}
-          />
-          <PuzzleItem
-            index={puzzleData.puzzleNumber}
-            name={puzzleData.puzzleName}
-            uuid={puzzleData.qrValue}
-            password={puzzleData.puzzlePassword}
-            onShowToast={handleShowToast}
-          />
-          <PuzzleItem
-            index={puzzleData.puzzleNumber}
-            name={puzzleData.puzzleName}
-            uuid={puzzleData.qrValue}
-            password={puzzleData.puzzlePassword}
-            onShowToast={handleShowToast}
-          />
-          <PuzzleItem
-            index={puzzleData.puzzleNumber}
-            name={puzzleData.puzzleName}
-            uuid={puzzleData.qrValue}
-            password={puzzleData.puzzlePassword}
-            onShowToast={handleShowToast}
-          />
-          <PuzzleItem
-            index={puzzleData.puzzleNumber}
-            name={puzzleData.puzzleName}
-            uuid={puzzleData.qrValue}
-            password={puzzleData.puzzlePassword}
-            onShowToast={handleShowToast}
-          />
+          {puzzleList.map((item) => (
+            <PuzzleItem
+              key={item.qrValue}
+              index={item.puzzleIndex.toString()}
+              name={item.placeName}
+              uuid={item.qrValue}
+              password={item.placePassword}
+              onShowToast={handleShowToast}
+              onDelete={handleDelete}
+            />
+          ))}
         </P.PuzzleItemContainer>
 
         {showToast && <CopyToast position="sticky" onClose={() => setShowToast(false)} />}

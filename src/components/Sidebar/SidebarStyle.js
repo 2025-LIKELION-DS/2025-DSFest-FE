@@ -78,7 +78,7 @@ export const Sidebar = styled.div`
     }
   }
 
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     width: 100%;
     background-position: bottom right;
   }
@@ -99,13 +99,13 @@ export const Close = styled.div`
 export const MenuList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2vh;
 
   margin-left: 28px;
   margin-top: 24px;
 
   flex: 1;
-  min-height: 291px;
+  min-height: 232px;
 `;
 
 export const Menu = styled.div`
@@ -139,17 +139,16 @@ export const Info = styled.div`
   margin-left: 19px;
 
   width: 183px;
-  height: 328px;
   border-radius: 11px;
   background-color: ${palette.styles.white50};
   backdrop-filter: blur(7.5px);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 
-  padding: 9px 15px;
+  padding: 9px 15px 19px;
 
   box-sizing: border-box;
 
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     width: 100%;
     height: 199px;
     min-height: 200px;
@@ -165,9 +164,8 @@ export const InfoTitle = styled.p`
   margin: 0;
 
   color: ${palette.grayscale.text33};
-  font-size: 14px;
-  font-weight: 703;
-  line-height: normal;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: -0.35px;
 `;
 
@@ -177,8 +175,9 @@ export const InfoContainer = styled.div`
   gap: 9px;
   margin-top: 8px;
 
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     flex: 1;
+    gap: 15px;
   }
 `;
 
@@ -194,7 +193,7 @@ export const NameList = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  margin-top: 19px;
+  margin-top: 21px;
 `;
 
 export const Part = styled.p`
@@ -202,8 +201,7 @@ export const Part = styled.p`
 
   color: ${palette.grayscale.text33};
   font-size: 12px;
-  font-weight: 703;
-  line-height: normal;
+  font-weight: 500;
   letter-spacing: -0.3px;
 `;
 
@@ -220,9 +218,9 @@ export const Name = styled.p`
 export const Footer = styled.div`
   display: flex;
   gap: 22px;
-  margin-top: 26px;
+  margin-top: 3vh;
 
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     margin-top: 0;
     padding-right: 6px;
   }
@@ -279,7 +277,7 @@ export const FirstMenu = styled(Menu)`
 `;
 
 export const InfoDiv = styled.div`
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     display: flex;
     flex-direction: row-reverse;
   }
@@ -288,7 +286,7 @@ export const InfoDiv = styled.div`
 export const Names = styled(NameList)`
   margin-top: 0;
 
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -297,7 +295,7 @@ export const Names = styled(NameList)`
 `;
 
 export const CopyRightDiv = styled.div`
-  @media (max-height: 703px) {
+  @media (max-height: 639px) {
     display: flex;
     gap: 4px;
     flex: 1;
@@ -305,7 +303,7 @@ export const CopyRightDiv = styled.div`
 `;
 
 export const InfoBox = styled.div`
-  @media (max-height: 703px) {
-    padding: 0 20px 20px 20px;
+  @media (max-height: 639px) {
+    padding: 0 20px 20px;
   }
 `;

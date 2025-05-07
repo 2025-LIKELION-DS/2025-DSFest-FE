@@ -34,7 +34,6 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/*" element={<Error />} />
           <Route path="/" element={<Main />} />
           <Route path="/map" element={<Map />} />
           <Route path="/puzzle" element={<Puzzle />} />
@@ -57,7 +56,7 @@ function App() {
             path="/notice/:id/edit"
             element={
               <ProtectedRoute>
-                <Form type="new" />
+                <Form type="edit" />
               </ProtectedRoute>
             }
           />
@@ -96,6 +95,7 @@ function App() {
           {/* 공통 컴포넌트 */}
           <Route path="/test" element={<Test />} />
         </Route>
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );

@@ -58,7 +58,7 @@ const ModalPuzzleApprove = ({ state, number, boothName, onClick, value, onChange
               <B.Div>
                 <B.Text>{number}번 퍼즐</B.Text>
                 <B.Text>
-                  <B.BoothName>{boothName}</B.BoothName> 부스
+                  <B.BoothName>{boothName}</B.BoothName>
                 </B.Text>
               </B.Div>
             </B.PaddingContainer>

@@ -5,7 +5,6 @@ export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
   max-width: 345px;
   width: 100%;
-  height: 229px;
 
   border-radius: 24px;
   background-color: ${palette.grayscale.white};
@@ -18,11 +17,12 @@ export const ModalPuzzleSelect = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  padding: 0px 33px;
+  padding: 0px 27px;
+  margin-bottom: 20px;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 9px;
 
   flex: 1;
 `;
@@ -30,6 +30,8 @@ export const ModalContainer = styled.div`
 export const BoothContainer = styled.div`
   display: flex;
   align-items: center;
+
+  gap: 3.5px;
 
   p {
     margin: 0;
@@ -68,15 +70,19 @@ export const Info = styled.div`
   max-width: 280px;
   width: 100%;
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  padding: 0 6px;
 
+  color: ${palette.grayscale.text33};
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.35px;
+`;
+
+export const Hint = styled(Info)`
   color: ${palette.grayscale.text88};
   font-size: 14px;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.35px;
+
+  margin-top: -1px;
 `;

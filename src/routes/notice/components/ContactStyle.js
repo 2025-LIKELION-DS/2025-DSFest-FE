@@ -57,6 +57,7 @@ export const Btn = styled.div`
     width: 11px;
     height: 10px;
   }
+  cursor: pointer;
 `;
 
 export const BtnText = styled.div`
