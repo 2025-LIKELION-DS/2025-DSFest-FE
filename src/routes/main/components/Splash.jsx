@@ -15,13 +15,15 @@ const Splash = ({ onClickHideSplash }) => {
         <S.LogoDiv>
           <S.LogoImg src={Logo} alt="로고" />
         </S.LogoDiv>
-        <div>
-          <S.ArrowImg src={Arrow} alt="화살표" />
-        </div>
-        <S.Text>
-          축제 로고를 눌러
-          <br /> <span>랜덤으로 부스를 추천</span>받아보세요
-        </S.Text>
+        <S.CenterDiv>
+          <S.ArrowDiv>
+            <img src={Arrow} alt="화살표" />
+          </S.ArrowDiv>
+          <S.Text>
+            축제 로고를 눌러
+            <br /> <span>랜덤으로 부스를 추천</span>받아보세요
+          </S.Text>
+        </S.CenterDiv>
       </S.ImgDiv>
     </S.Splash>
   );

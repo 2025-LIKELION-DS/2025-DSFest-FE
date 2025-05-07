@@ -30,7 +30,7 @@ export const LogoDiv = styled.div`
   width: 90px;
   height: 57px;
   margin: 0 auto;
-  margin-top: min(202px, 23.7vh);
+  margin-bottom: 45px;
 `;
 
 export const LogoImg = styled.img`
@@ -85,10 +85,7 @@ export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 184px;
-
-  margin-top: 45px;
+  justify-content: center;
 
   flex: 1;
 

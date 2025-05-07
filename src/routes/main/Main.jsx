@@ -183,13 +183,13 @@ function Main() {
         {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
 
         <M.MoonImg src={moonImg} alt="달" />
-        <M.LogoDiv>
-          <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
-        </M.LogoDiv>
         <M.TreeImg src={treeImg} alt="나무" />
         <M.CloudImg src={cloudImg} alt="구름" />
 
         <M.MainDiv>
+          <M.LogoDiv>
+            <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} ref={logoRef} />
+          </M.LogoDiv>
           <M.Div>
             <M.ImgDiv onClick={() => handleMenuClick('/timetable')}>
               <M.TimeTableImg />
