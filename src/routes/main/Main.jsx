@@ -10,7 +10,7 @@ import MoonDay1 from '@assets/main/main-moon-day1.png';
 import MoonDay2 from '@assets/main/main-moon-day2.png';
 import MoonDay3 from '@assets/main/main-moon-day3.png';
 
-import Logo from '@assets/main/icon-title-yeoun.svg';
+import Logo from '@assets/main/title-yeoun.png';
 
 import CloudDay1 from '@assets/main/main-cloud-day1.png';
 import CloudDay2 from '@assets/main/main-cloud-day2.png';
@@ -183,7 +183,9 @@ function Main() {
         {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
 
         <M.MoonImg src={moonImg} alt="달" />
-        <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
+        <M.LogoDiv>
+          <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
+        </M.LogoDiv>
         <M.TreeImg src={treeImg} alt="나무" />
         <M.CloudImg src={cloudImg} alt="구름" />
 

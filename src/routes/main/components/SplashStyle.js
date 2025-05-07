@@ -32,8 +32,17 @@ export const ImgDiv = styled.div`
   margin-top: min(202px, 23.7vh);
 `;
 
+export const LogoDiv = styled.div`
+  width: 90px;
+  height: 57px;
+`;
+
 export const LogoImg = styled.img`
   margin: 0 auto;
+
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const ArrowImg = styled.img`

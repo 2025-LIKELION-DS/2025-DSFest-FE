@@ -26,12 +26,18 @@ export const MoonImg = styled.img`
   right: 27px;
 `;
 
-export const LogoImg = styled.img`
-  display: block;
+export const LogoDiv = styled.div`
+  width: 90px;
+  height: 57px;
   margin: 0 auto;
   margin-top: min(202px, 23.7vh);
+`;
 
+export const LogoImg = styled.img`
   cursor: pointer;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const CloudImg = styled.img`

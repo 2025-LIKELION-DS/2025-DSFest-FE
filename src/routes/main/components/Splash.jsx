@@ -1,7 +1,7 @@
 import * as S from '@main/components/SplashStyle';
 
 import Close from '@assets/main/icon-x.svg';
-import Logo from '@assets/main/icon-title-yeoun_white.svg';
+import Logo from '@assets/main/title-yeoun-white.png';
 import Arrow from '@assets/main/icon-arrow.svg';
 
 const Splash = ({ onClickHideSplash }) => {
@@ -12,9 +12,9 @@ const Splash = ({ onClickHideSplash }) => {
       </div>
 
       <S.ImgDiv>
-        <div>
+        <S.LogoDiv>
           <S.LogoImg src={Logo} alt="로고" />
-        </div>
+        </S.LogoDiv>
         <div>
           <S.ArrowImg src={Arrow} alt="화살표" />
         </div>
