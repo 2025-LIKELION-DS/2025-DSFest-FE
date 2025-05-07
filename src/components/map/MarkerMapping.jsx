@@ -33,6 +33,35 @@ export const fixedMarkers = {
   33: { top: '517px', right: '290px' },
 };
 
+export const boothMarkerPositions = {
+  // FOOD_TRUCK markers
+  72: [{ top: '353px', left: '140px' }],
+  73: [{ top: '376px', left: '140px' }],
+  74: [{ top: '399px', left: '140px' }],
+  75: [{ top: '422px', left: '140px' }],
+  76: [{ top: '445px', left: '140px' }],
+  77: [{ top: '468px', left: '140px' }],
+  78: [{ top: '491px', left: '140px' }],
+  79: [{ top: '514px', left: '140px' }],
+  80: [{ top: '537px', left: '140px' }],
+  81: [{ top: '560px', left: '140px' }],
+  // HINT markers
+  98: [
+    { top: '170px', left: '115px' },
+    { top: '610px', left: '240px' },
+  ],
+  99: [{ top: '185px', right: '240px' }],
+  92: [{ top: '302px', right: '240px' }],
+  93: [{ top: '368px', right: '290px' }],
+  96: [
+    { top: '417px', left: '332px' },
+    { top: '498px', left: '332px' },
+  ],
+  95: [{ top: '545px', left: '240px' }],
+  97: [{ top: '610px', left: '140px' }],
+  94: [{ top: '655px', left: '240px' }],
+};
+
 export const boothMappingByTime = {
   '수요일 낮': {
     1: 34,

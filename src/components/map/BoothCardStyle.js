@@ -12,11 +12,8 @@ export const BoothCard = styled.div`
 `;
 
 export const BoothName = styled.p`
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.4px;
   margin: 0 0 8px;
 `;
@@ -37,10 +34,7 @@ export const Tag = styled.span`
   gap: 8px;
   border-radius: 16px;
 
-  font-family: Pretendard;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.3px;
 `;

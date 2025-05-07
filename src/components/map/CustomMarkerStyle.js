@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
 export const Bubble = styled.div`
   border-radius: 4px;
   border: 1px solid ${({ isHint }) => (isHint ? '#E87375' : palette.violet.violet500)};
-  background: var(--Grayscale-White, #fff);
+  background: ${palette.grayscale.white};
   padding: 2px 6px;
   font-size: 12px;
   margin-bottom: 4px;

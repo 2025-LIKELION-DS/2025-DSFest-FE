@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
-import * as M from '@map/MapStyle';
-import BoothDetailModal from '../../components/map/BoothDetailModal.jsx';
-import SlidingPanelSection from '../../components/map/Sliding.jsx';
-import Moving from '../../components/map/Moving.jsx';
-
 import axios from 'axios';
 import { useDragControls } from 'framer-motion';
+import * as M from '@map/MapStyle';
+import BoothDetailModal from '@components/map/BoothDetailModal.jsx';
+import SlidingPanelSection from '@components/map/Sliding.jsx';
+import Moving from '@components/map/Moving.jsx';
 
-import mapSmall from '../../assets/map/mapSmall.svg';
-import mapBig from '../../assets/map/mapBig.svg';
-import toggleDown from '../../assets/map/toggleDown.svg';
-import toggleUp from '../../assets/map/toggleUp.svg';
-import Minus from '../../assets/map/minus.svg';
-import Plus from '../../assets/map/plus.svg';
-import MinusB from '../../assets/map/minusblack.svg';
-import PlusB from '../../assets/map/plusblack.svg';
+import mapSmall from '@assets/map/mapSmall.svg';
+import mapBig from '@assets/map/mapBig.svg';
+import toggleDown from '@assets/map/toggleDown.svg';
+import toggleUp from '@assets/map/toggleUp.svg';
+import Minus from '@assets/map/minus.svg';
+import Plus from '@assets/map/plus.svg';
+import MinusB from '@assets/map/minusblack.svg';
+import PlusB from '@assets/map/plusblack.svg';
 
 function Map() {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -146,6 +145,14 @@ function Map() {
     setShowPanel(true);
   };
 
+  const handleDateSelect = (day) => {
+    setSelectedDay(day);
+    setIsDateOpen(false);
+  };
+
+  const handleZoomOut = () => setIsZoomed(false);
+  const handleZoomIn = () => setIsZoomed(true);
+
   return (
     <M.Map>
       <Moving
@@ -167,14 +174,15 @@ function Map() {
         onBoothSelect={() => {}}
         selectedDayTime={selectedDay}
         selectedTags={selectedTags}
+        onBackgroundClick={() => setIsDateOpen(false)}
       />
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>
-          <M.ZoomButton onClick={() => setIsZoomed(false)} disabled={!isZoomed}>
+          <M.ZoomButton onClick={handleZoomOut} disabled={!isZoomed}>
             <M.Minus src={isZoomed ? MinusB : Minus} alt="-" />
           </M.ZoomButton>
 
-          <M.ZoomButton onClick={() => setIsZoomed(true)} disabled={isZoomed}>
+          <M.ZoomButton onClick={handleZoomIn} disabled={isZoomed}>
             <M.Plus src={isZoomed ? Plus : PlusB} alt="+" />
           </M.ZoomButton>
         </M.ZoomButtonWrapper>
@@ -189,10 +197,7 @@ function Map() {
             {['수요일 낮', '수요일 밤', '목요일 낮', '목요일 밤', '금요일 낮', '금요일 밤'].map((day) => (
               <M.DateOption
                 key={day}
-                onClick={() => {
-                  setSelectedDay(day);
-                  setIsDateOpen(false);
-                }}
+                onClick={() => handleDateSelect(day)}
                 style={{ fontWeight: selectedDay === day ? 600 : 400 }}>
                 {day}
               </M.DateOption>
@@ -215,6 +220,7 @@ function Map() {
           handleBoothClick={handleBoothClick}
           setActiveMarkerId={setActiveMarkerId}
           setIsFoodTruckActive={setIsFoodTruckActive}
+          selectedDayTime={selectedDay}
         />
       )}
 
@@ -238,4 +244,3 @@ function Map() {
 }
 
 export default Map;
-//

@@ -12,11 +12,8 @@ export const FoodCard = styled.div`
 `;
 
 export const BoothName = styled.p`
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.4px;
   margin: 0 3px 12px;
 `;
@@ -39,9 +36,7 @@ export const Tag = styled.span`
 
   font-family: Pretendard;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.3px;
 `;
 
@@ -50,11 +45,8 @@ export const MenuLine = styled.div`
   color: ${palette.grayscale.text33};
   text-align: justify;
 
-  font-family: Pretendard;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -0.35px;
 
   margin: 0 3px 12px;
@@ -68,4 +60,3 @@ export const Menu = styled.div`
 export const Price = styled.div`
   display: flex;
 `;
-//

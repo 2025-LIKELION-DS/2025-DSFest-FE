@@ -79,11 +79,8 @@ export const BoothCard = styled.div`
 `;
 
 export const BoothName = styled.p`
-  font-family: Pretendard;
   font-size: 16px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.4px;
   margin: 0 0 8px;
 `;
@@ -106,9 +103,7 @@ export const Tag = styled.span`
 
   font-family: Pretendard;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.3px;
 `;
 
@@ -160,9 +155,7 @@ export const Plus = styled.img``;
 export const DaySelectButton = styled.button`
   font-family: Pretendard;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.3px;
   padding: 0 5px;
   color: ${palette.grayscale.black};
@@ -220,9 +213,7 @@ export const DateOption = styled.div`
   flex-direction: column;
   align-items: center;
 
-  font-family: Pretendard;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
 
   &:hover {
@@ -258,4 +249,11 @@ export const DraggableGroup = styled(motion.div)`
   transform: translate(-50%, -50%);
   user-select: none;
   pointer-events: all;
+`;
+
+export const FoodActive = styled.img`
+  position: absolute;
+  top: 320px;
+  left: 130px;
+  pointerevents: none;
 `;
