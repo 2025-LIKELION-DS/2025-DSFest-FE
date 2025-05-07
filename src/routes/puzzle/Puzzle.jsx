@@ -61,7 +61,7 @@ function Puzzle() {
   const hasCheckedRef = useRef(false);
 
   const [username, setUsername] = useState('');
-  const [userPuzzleCount, setPuzzleCount] = useState(0);
+  const [puzzleCount, setPuzzleCount] = useState(0);
   const [remainPuzzleCount, setRemainPuzzleCount] = useState(9);
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState('');
@@ -79,12 +79,40 @@ function Puzzle() {
   //경품 수령 완료했을 때
   const [end, setEnd] = useState(false);
 
+  //경품 수령 비밀번호 입력
+  const [goodsPW, setGoodsPW] = useState('');
+  const inputGoodsPw = (e) => {
+    setGoodsPW(e.target.value);
+  };
+
+  const handleGoods = async (goodsPW) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `${API_KEY}/bingo/reward`,
+        { managerPassword: goodsPW },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response.data);
+      if (response.data.code === 'SUCCESS_REWARD_RECEIVED') {
+        setShowModal('');
+        setEnd(true);
+        setCompleted(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //새로고침해도 로그인 유지
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setAuthorized(true);
-
       const userInfo = async () => {
         try {
           const response = await axios.get(`${API_KEY}/users/confirm`, {
@@ -93,6 +121,7 @@ function Puzzle() {
             },
           });
           setUsername(response.data.data.username);
+          await getPuzzleInfo();
         } catch (error) {
           console.error(error);
         }
@@ -101,6 +130,42 @@ function Puzzle() {
       userInfo();
     }
   }, []);
+
+  //퍼즐 상태 조회
+  const getPuzzleInfo = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${API_KEY}/bingo/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.data.code === 'SUCCESS_USER_BINGO_STATUS') {
+        setAuthorized(true);
+        console.log(response.data.data);
+        setPuzzleCount(response.data.data.filledCount);
+        setRemainPuzzleCount(response.data.data.remainingCount);
+        setEnd(response.data.data.prizeReceived);
+        const filledIndex = response.data.data.filledIndexes;
+
+        if (response.data.data.filledCount === 9) {
+          setSuccess(true);
+        }
+
+        setPuzzleValue((prev) => {
+          const updated = { ...prev };
+          for (let i = 1; i < 10; i++) {
+            if (filledIndex.includes(i)) {
+              updated[`index${i}`] = true;
+            }
+          }
+          return updated;
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
@@ -177,47 +242,13 @@ function Puzzle() {
         console.log(response.data);
         setLoginFailed(false);
         setAuthorized(true);
+        await getPuzzleInfo();
       }
     } catch (error) {
       console.log(error.response.data.message);
       setLoginFailed(true);
     }
   };
-
-  //퍼즐 상태 조회
-  useEffect(() => {
-    const getPuzzleInfo = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get(`${API_KEY}/bingo/user`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (response.data.code === 'SUCCESS_USER_BINGO_STATUS') {
-          setAuthorized(true);
-          console.log(response.data.message);
-          setPuzzleCount(response.data.data.filledCount);
-          setRemainPuzzleCount(response.data.data.remainingCount);
-          const filledIndex = response.data.data.filledIndexes;
-
-          setPuzzleValue((prev) => {
-            const updated = { ...prev };
-            for (let i = 1; i < 10; i++) {
-              if (filledIndex.includes(i)) {
-                updated[`index${i}`] = true;
-              }
-            }
-            return updated;
-          });
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getPuzzleInfo();
-  }, []);
 
   //QR
   const showQrCamera = () => {
@@ -315,6 +346,15 @@ function Puzzle() {
     setShowModal('');
   };
 
+  const handleSuccess = () => {
+    setSuccess(false);
+    setCompleted(true);
+  };
+
+  const handlecompleted = () => {
+    setShowModal('goodsModal');
+  };
+
   //지도 이동
   const goMap = () => {
     navigate('/map');
@@ -334,7 +374,7 @@ function Puzzle() {
               <>
                 <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
                 <P.puzzleInfo2>
-                  <P.goMap onClick={() => goMap}>
+                  <P.goMap onClick={() => goMap()}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -374,7 +414,7 @@ function Puzzle() {
                 </P.regular16>
                 <P.puzzleCount>
                   <P.glowPuzzleIcon src={glowPuzzleIcon} />
-                  <P.completedPuzzleCount>{userPuzzleCount}</P.completedPuzzleCount>
+                  <P.completedPuzzleCount>{puzzleCount}</P.completedPuzzleCount>
                   <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
                 </P.puzzleCount>
               </P.completedPuzzleBox>
@@ -425,7 +465,7 @@ function Puzzle() {
             completed ? (
               <>
                 <P.presentInfo>
-                  <P.goMap onClick={() => goMap}>
+                  <P.goMap onClick={() => goMap()}>
                     <P.boothIcon>
                       <img src={boothIcon} alt="총학생회 본부" />
                     </P.boothIcon>
@@ -554,12 +594,10 @@ function Puzzle() {
 
       <P.endButton>
         {completed ? (
-          <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} />
-        ) : //onClick={handlecompleted}
-        success ? (
-          <ButtonCommon text={'퍼즐 완성'} color={`${palette.mainPurple}`} />
+          <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
+        ) : success ? (
+          <ButtonCommon text={'퍼즐 완성'} color={`${palette.mainPurple}`} onClick={handleSuccess} />
         ) : (
-          //onClick={handleSuccess}
           <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
         )}
       </P.endButton>
@@ -571,6 +609,7 @@ function Puzzle() {
             number={modalProps.number}
             boothName={modalProps.boothName}
             boothInfo={modalProps.boothInfo}
+            boothHint={modalProps.boothHint}
             onClickR={() => showQrCamera()}
           />
         )}
@@ -594,6 +633,14 @@ function Puzzle() {
               onClickR={() => boothCheckHandler()}
             />
           ))}
+        {showModal === 'goodsModal' && (
+          <ModalPuzzleGoods
+            value={goodsPW}
+            onChange={inputGoodsPw}
+            onClickL={() => modalOffHandler()}
+            onClickR={() => handleGoods(goodsPW)}
+          />
+        )}
       </P.modal>
     </P.puzzlePage>
   );

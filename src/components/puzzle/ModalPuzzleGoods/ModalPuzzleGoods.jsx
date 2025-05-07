@@ -4,7 +4,6 @@ import Glow1 from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
 import Glow2 from '@assets/puzzle/puzzle-piece-glow-2-grain.svg';
 import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual';
 import InputCommon from '@components/InputCommon/InputCommon';
-import ButtonModalSingle from '../ButtonModalSingle/ButtonModalSingle';
 
 /**
  * 퍼즐 페이지에서 사용되는 모달 컴포넌트입니다.
@@ -12,12 +11,13 @@ import ButtonModalSingle from '../ButtonModalSingle/ButtonModalSingle';
  *
  * @param {string} value -- value 내용
  * @param {function} onChange -- input의 onChange 함수
- * @param {function} onClick -- 버튼 클릭 시 실행될 함수
+ * @param {function} onClickL -- 왼쪽 버튼(취소 버튼) 클릭 시 실행될 함수
+ * @param {function} onClickR -- 오른쪽 버튼(수령 완료 버튼) 클릭 시 실행될 함수
  *
  * @author 김진효
  * **/
 
-const ModalPuzzleGoods = ({ value, onChange, onClick }) => {
+const ModalPuzzleGoods = ({ value, onChange, onClickL, onClickR }) => {
   return (
     <>
       <M.ModalPuzzleSelect>
@@ -32,7 +32,8 @@ const ModalPuzzleGoods = ({ value, onChange, onClick }) => {
         <M.FlexContainer>
           <M.ModalContainer>
             <M.Text>
-              관계자가 아니시라면, <span>이전</span>으로 돌아가주세요.
+              총학생회 본부를 방문하여,
+              <br /> 해당 화면을 관계자에게 보여주세요.
             </M.Text>
           </M.ModalContainer>
           <M.FlexText>
@@ -43,7 +44,7 @@ const ModalPuzzleGoods = ({ value, onChange, onClick }) => {
               onChange={onChange}
             />
           </M.FlexText>
-          <ButtonModalSingle text={'수령 완료'} onClick={onClick} />
+          <ButtonModalDual contentL={'취소'} onClickL={onClickL} contentR={'수령 완료'} onClickR={onClickR} />
         </M.FlexContainer>
       </M.ModalPuzzleSelect>
     </>
