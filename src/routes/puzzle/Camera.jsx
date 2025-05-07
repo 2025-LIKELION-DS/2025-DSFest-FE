@@ -28,7 +28,7 @@ function Camera() {
         qrScanner.destroy();
       };
     }
-  }, []);
+  });
 
   return (
     <>

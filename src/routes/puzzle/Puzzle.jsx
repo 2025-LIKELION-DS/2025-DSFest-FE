@@ -312,6 +312,7 @@ function Puzzle() {
       ...prev,
       [`index${i}`]: true,
     }));
+    setShowModal('');
   };
 
   //지도 이동
@@ -563,7 +564,7 @@ function Puzzle() {
         )}
       </P.endButton>
 
-      <P.modal>
+      <P.modal onClick={(e) => e.stopPropagation()}>
         {/* 퍼즐 눌렀을 때 힌트 모달창 */}
         {showModal === 'hintModal' && modalProps && (
           <ModalPuzzleSelect
