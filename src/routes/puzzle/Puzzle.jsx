@@ -330,6 +330,7 @@ function Puzzle() {
           boothName: response.data.data.placeName,
         });
         setShowModal('qrCheckModal');
+        await getPuzzleInfo();
       }
     } catch (error) {
       console.log(error.response.data.message);
