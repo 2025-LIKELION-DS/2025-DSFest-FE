@@ -138,7 +138,7 @@ export const Menu = styled.p`
 
   cursor: pointer;
 
-  font-family: AppleSDGothicNeoR00;
+  font-family: AppleSDGothicNeo;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
