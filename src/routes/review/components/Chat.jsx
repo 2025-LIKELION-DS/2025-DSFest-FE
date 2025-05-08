@@ -7,6 +7,7 @@ const Chat = ({ message, autoPlayKeyword }) => {
   const [activeAnimation, setActiveAnimation] = useState(null);
   const hasAutoPlayed = useRef(false);
   const playerRef = useRef(null);
+  const overlayRef = useRef(null);
 
   useEffect(() => {
     if (!hasAutoPlayed.current && autoPlayKeyword && message.includes(autoPlayKeyword)) {
@@ -14,6 +15,22 @@ const Chat = ({ message, autoPlayKeyword }) => {
       hasAutoPlayed.current = true;
     }
   }, [autoPlayKeyword, message]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (overlayRef.current && !overlayRef.current.contains(e.target)) {
+        setActiveAnimation(null);
+      }
+    };
+
+    if (activeAnimation) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeAnimation]);
 
   const handleClick = (lottieFile) => {
     setActiveAnimation(lottieFile);
@@ -39,7 +56,7 @@ const Chat = ({ message, autoPlayKeyword }) => {
     <>
       <C.Message>{renderMessage()}</C.Message>
       {activeAnimation && (
-        <C.LottieOverlay>
+        <C.LottieOverlay ref={overlayRef}>
           <Player
             ref={playerRef}
             autoplay
