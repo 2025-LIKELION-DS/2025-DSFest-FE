@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as M from '@map/MapStyle';
 import BoothCard from './BoothCard';
 import FoodCard from './FoodCard';
@@ -58,13 +58,22 @@ function SlidingPanelSection({
   setIsZoomed,
   selectedDayTime,
 }) {
+  const contentRef = useRef(null);
+
   const handleDragEnd = () => {
-    if (panelHeight > 500) {
-      setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
-    } else if (panelHeight < 200) {
-      setPanelHeight(window.innerWidth <= 768 ? 105 : 93);
+    const isMobile = window.innerWidth <= 768;
+    const maxHeight = isMobile ? window.innerHeight * 0.83 : 740;
+    const midHeight = isMobile ? window.innerHeight * 0.55 : 490;
+    const minHeight = isMobile ? 105 : 93;
+
+    if ((isMobile && panelHeight > midHeight) || (!isMobile && panelHeight > 490)) {
+      setPanelHeight(maxHeight);
+    } else if ((isMobile && panelHeight > minHeight) || (!isMobile && panelHeight > minHeight)) {
+      setPanelHeight(midHeight);
+    } else if ((isMobile && panelHeight < midHeight) || (!isMobile && panelHeight < midHeight)) {
+      setPanelHeight(minHeight);
     } else {
-      setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+      setPanelHeight(midHeight);
     }
   };
 
@@ -103,11 +112,31 @@ function SlidingPanelSection({
       setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
     }
   }, [isFoodTruckActive]);
+
+  useEffect(() => {
+    const contentEl = contentRef.current;
+    if (!contentEl) return;
+
+    const handleScroll = () => {
+      const scrollTop = contentEl.scrollTop;
+
+      if (scrollTop > 400 && panelHeight < window.innerHeight * 0.8) {
+        setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
+      } else if (scrollTop < 1 && panelHeight > 500) {
+        setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+      }
+    };
+
+    contentEl.addEventListener('scroll', handleScroll);
+    return () => contentEl.removeEventListener('scroll', handleScroll);
+  }, [panelHeight, setPanelHeight]);
+
   return (
     <M.SlidingPanel
       drag="y"
       dragConstraints={{ top: 0, bottom: 0 }}
       dragElastic={0}
+      dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       onDrag={handleDrag}
@@ -118,7 +147,7 @@ function SlidingPanelSection({
         </M.BarContainer>
       </M.TouchSection>
 
-      <M.BoothContentArea>{renderPanelContent()}</M.BoothContentArea>
+      <M.BoothContentArea ref={contentRef}>{renderPanelContent()}</M.BoothContentArea>
     </M.SlidingPanel>
   );
 }
