@@ -32,7 +32,7 @@ function Camera() {
 
   return (
     <>
-      <video ref={videoRef} style={{ width: '100%', height: '100%' }}></video>
+      <video ref={videoRef} style={{ width: '100%', height: '100%', objectFit: 'cover' }}></video>
     </>
   );
 }
