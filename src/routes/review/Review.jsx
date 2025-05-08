@@ -101,9 +101,12 @@ function Review() {
   useEffect(() => {
     const loadInitial = async () => {
       await fetchReviews(0);
+
       requestAnimationFrame(() => {
-        scrollToBottom();
-        setIsLoading(false);
+        setTimeout(() => {
+          scrollToBottom();
+          setIsLoading(false);
+        }, 200);
       });
     };
 

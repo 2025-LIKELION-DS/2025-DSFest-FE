@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const Review = styled.div`
   width: calc(100% - 40px);
+  height: 100%;
   padding: 20px 20px;
   flex: 1;
   overflow-y: auto;
