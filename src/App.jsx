@@ -94,8 +94,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* 공통 컴포넌트 */}
-          <Route path="/test" element={<Test />} />
         </Route>
         <Route path="/*" element={<Error />} />
       </Routes>
