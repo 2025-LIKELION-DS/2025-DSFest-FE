@@ -18,7 +18,6 @@ import Preview from '@admin/puzzle/Preview';
 import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
-import Test from '@routes/Test';
 
 const Layout = () => {
   return (
