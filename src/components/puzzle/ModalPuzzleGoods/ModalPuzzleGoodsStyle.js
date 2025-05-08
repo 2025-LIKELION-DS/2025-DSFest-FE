@@ -3,8 +3,7 @@ import palette from '@styles/theme';
 
 export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
-  max-width: 345px;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 229px;
 
   border-radius: 24px;

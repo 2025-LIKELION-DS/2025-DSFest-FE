@@ -14,7 +14,6 @@ export const puzzlePage = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     @media (min-height: 852px) {
       position: relative;
-      height: 852px;
     }
   }
 `;
