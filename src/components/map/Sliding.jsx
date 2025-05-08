@@ -68,7 +68,7 @@ function SlidingPanelSection({
 
     if ((isMobile && panelHeight > midHeight) || (!isMobile && panelHeight > 490)) {
       setPanelHeight(maxHeight);
-    } else if ((isMobile && panelHeight > minHeight) || (!isMobile && panelHeight > minHeight)) {
+    } else if ((isMobile && panelHeight > minHeight + 30) || (!isMobile && panelHeight > minHeight + 30)) {
       setPanelHeight(midHeight);
     } else {
       setPanelHeight(minHeight);
@@ -117,8 +117,9 @@ function SlidingPanelSection({
 
     const handleScroll = () => {
       const scrollTop = contentEl.scrollTop;
+      const scrollThreshold = window.innerWidth <= 768 ? 1200 : 400;
 
-      if (scrollTop > 400 && panelHeight < window.innerHeight * 0.8) {
+      if (scrollTop > scrollThreshold && panelHeight < window.innerHeight * 0.8) {
         setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
       } else if (scrollTop < 1 && panelHeight > 500) {
         setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
