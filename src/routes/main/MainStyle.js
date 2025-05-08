@@ -8,6 +8,7 @@ import PuzzleGame from '@assets/main/puzzle-game.svg?react';
 
 export const Main = styled.div`
   width: 100%;
+  min-height: 500px;
   height: 100%;
   background-image: url(${(props) => props.$backgroundImg});
   background-repeat: no-repeat;
@@ -26,12 +27,18 @@ export const MoonImg = styled.img`
   right: 27px;
 `;
 
-export const LogoImg = styled.img`
-  display: block;
+export const LogoDiv = styled.div`
+  width: 90px;
+  height: 57px;
   margin: 0 auto;
-  margin-top: min(202px, 23.7vh);
+  margin-bottom: 45px;
+`;
 
+export const LogoImg = styled.img`
   cursor: pointer;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const CloudImg = styled.img`
@@ -79,10 +86,7 @@ export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 184px;
-
-  margin-top: 45px;
+  justify-content: center;
 
   flex: 1;
 
@@ -103,13 +107,17 @@ export const ImgDiv = styled.div`
     transform 0.5s ease-in-out,
     opacity 0.5s ease-in-out;
 
-  will-change: transform;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-
   &:hover {
     transform: scale(1.05) translateZ(0);
     opacity: 0.95;
+  }
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      will-change: transform;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
   }
 `;
 
@@ -138,7 +146,7 @@ export const Menu = styled.p`
 
   cursor: pointer;
 
-  font-family: AppleSDGothicNeoR00;
+  font-family: AppleSDGothicNeo;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

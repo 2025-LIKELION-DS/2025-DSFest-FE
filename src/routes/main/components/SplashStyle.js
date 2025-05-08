@@ -28,16 +28,22 @@ export const ImgDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22.5px;
-  margin-top: min(202px, 23.7vh);
+  justify-content: center;
+
+  height: 100%;
+`;
+
+export const LogoDiv = styled.div`
+  width: 90px;
+  height: 57px;
 `;
 
 export const LogoImg = styled.img`
   margin: 0 auto;
-`;
 
-export const ArrowImg = styled.img`
-  margin-top: 28.5px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const Text = styled.p`
@@ -49,6 +55,8 @@ export const Text = styled.p`
   line-height: normal;
   letter-spacing: -0.5px;
 
+  margin-top: 23px;
+
   span {
     color: ${palette.violet.violet100};
 
@@ -57,4 +65,15 @@ export const Text = styled.p`
     line-height: normal;
     letter-spacing: -0.5px;
   }
+`;
+
+export const CenterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 415px;
+`;
+
+export const ArrowDiv = styled.div`
+  margin-top: 51px;
 `;
