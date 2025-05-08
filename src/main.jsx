@@ -5,7 +5,7 @@ import App from '@/App.jsx';
 import * as C from '@styles/CommonStyle.js';
 import { register } from '@utils/serviceWorkerRegistration';
 
-import YeounLogo from '@assets/responsive/title-yeoun.svg';
+import YeounLogo from '@assets/main/title-yeoun.png';
 import YeounText from '@assets/responsive/text-yeoun.svg';
 
 const root = createRoot(document.getElementById('root'));
