@@ -6,11 +6,9 @@ import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    @media (min-height: 852px) {
-      position: relative;
-      width: 393px;
-      height: 796px;
-    }
+    position: relative;
+    width: 393px;
+    height: 796px;
   }
 `;
 
