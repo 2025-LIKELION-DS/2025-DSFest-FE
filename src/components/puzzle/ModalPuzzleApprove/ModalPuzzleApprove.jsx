@@ -1,8 +1,8 @@
 import * as B from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApproveStyle';
 
-import Complete from '@assets/puzzle/puzzle-piece-black-complete.svg';
-import Glow from '@assets/puzzle/puzzle-piece-glow1_1.svg';
-import Fail from '@assets/puzzle/puzzle-piece-black-fail.svg';
+import Complete from '@assets/puzzle/puzzle-piece-black-complete.png';
+import Glow from '@assets/puzzle/puzzle-piece-glow1_1.png';
+import Fail from '@assets/puzzle/puzzle-piece-black-fail.png';
 import Warning from '@assets/puzzle/icon-error-red.svg';
 
 import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalSingle';

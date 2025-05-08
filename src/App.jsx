@@ -18,7 +18,6 @@ import Preview from '@admin/puzzle/Preview';
 import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
-import Test from '@routes/Test';
 
 const Layout = () => {
   return (
@@ -94,8 +93,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* 공통 컴포넌트 */}
-          <Route path="/test" element={<Test />} />
         </Route>
         <Route path="/*" element={<Error />} />
       </Routes>
