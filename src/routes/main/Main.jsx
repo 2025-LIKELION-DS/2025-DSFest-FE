@@ -95,23 +95,24 @@ function Main() {
   // 날짜마다 다르게 렌더링
   useEffect(() => {
     const updateImg = () => {
-      if (today.getTime() <= day1.getTime()) {
-        // 5월 14일 이전은 Day1 이미지로
-        setMoonImg(MoonDay1);
-        setTreeImg(TreeDay1);
-        setCloudImg(CloudDay1);
-        setBackgroundImg(BackGroundDay1);
-      } else if (today.getTime() === day2.getTime()) {
+      if (today.getTime() === day2.getTime()) {
+        // 5월 15일은 Day2 이미지로
         setMoonImg(MoonDay2);
         setTreeImg(TreeDay2);
         setCloudImg(CloudDay2);
         setBackgroundImg(BackGroundDay2);
-      } else if (today.getTime() >= day3.getTime()) {
-        // 5월 16일 이후로는 Day3 이미지로
+      } else if (today.getTime() === day3.getTime()) {
+        // 5월 16일은 Day3 이미지로
         setMoonImg(MoonDay3);
         setTreeImg(TreeDay3);
         setCloudImg(CloudDay3);
         setBackgroundImg(BackGroundDay3);
+      } else {
+        // 이외에는 Day1 이미지로
+        setMoonImg(MoonDay1);
+        setTreeImg(TreeDay1);
+        setCloudImg(CloudDay1);
+        setBackgroundImg(BackGroundDay1);
       }
     };
 
