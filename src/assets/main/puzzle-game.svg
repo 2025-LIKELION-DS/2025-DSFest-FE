@@ -1,6 +1,6 @@
 <svg width="270" height="104" viewBox="11 11 270 104" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-<foreignObject x="-38" y="-38" width="368" height="202"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(25px);clip-path:url(#bgblur_0_517_1888_clip_path);height:100%;width:100%"></div></foreignObject><g filter="url(#filter0_d_517_1888)" data-figma-bg-blur-radius="50">
+<g filter="url(#filter0_d_517_1888)" data-figma-bg-blur-radius="50">
 <mask id="path-1-inside-1_517_1888" fill="white">
 <path d="M215 12C226.94 12 237.133 19.4749 241.159 30H264C272.837 30 280 37.1634 280 46V98C280 106.837 272.837 114 264 114H28C19.1634 114 12 106.837 12 98V46C12 37.1634 19.1634 30 28 30H188.841C192.867 19.4749 203.06 12 215 12Z"/>
 </mask>

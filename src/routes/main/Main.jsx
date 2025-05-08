@@ -183,7 +183,9 @@ function Main() {
         {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
 
         <M.MoonImg src={moonImg} alt="달" />
-        <M.TreeImg src={treeImg} alt="나무" />
+        <M.TreeDiv>
+          <M.TreeImg src={treeImg} alt="나무" />
+        </M.TreeDiv>
         <M.CloudImg src={cloudImg} alt="구름" />
 
         <M.MainDiv>
