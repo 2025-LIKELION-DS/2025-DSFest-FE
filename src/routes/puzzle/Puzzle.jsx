@@ -389,9 +389,9 @@ function Puzzle() {
                   <P.puzzleInfo2>
                     <P.goMap onClick={() => goMap()}>
                       <P.boothIcon>
-                        <img src={boothIcon} alt="총학생회 본부" />
+                        <img src={boothIcon} alt="총학 중앙본부" />
                       </P.boothIcon>
-                      <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
+                      <P.purplesemibold16>총학 중앙본부</P.purplesemibold16>
                     </P.goMap>
                     를 방문해 경품을 수령하세요!
                   </P.puzzleInfo2>
@@ -480,9 +480,9 @@ function Puzzle() {
                   <P.presentInfo>
                     <P.goMap onClick={() => goMap()}>
                       <P.boothIcon>
-                        <img src={boothIcon} alt="총학생회 본부" />
+                        <img src={boothIcon} alt="총학 중앙본부" />
                       </P.boothIcon>
-                      <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
+                      <P.purplesemibold16>총학 중앙본부</P.purplesemibold16>
                     </P.goMap>
                     를 방문해 경품을 수령하세요!
                   </P.presentInfo>
