@@ -20,7 +20,7 @@ function Map() {
   const [isZoomed, setIsZoomed] = useState(false);
   const controls = useDragControls();
   const isMobile = window.innerWidth <= 768;
-  const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.55 : 490);
+  const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.45 : 490);
 
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
