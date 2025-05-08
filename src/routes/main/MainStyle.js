@@ -19,6 +19,8 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   isolation: isolate;
+
+  overflow: hidden;
 `;
 
 export const MoonImg = styled.img`
