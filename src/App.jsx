@@ -1,5 +1,5 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
-import ScrollToTop from './hooks/ScrollToTop';
+import ScrollToTop from '@hooks/ScrollToTop';
 import GlobalStyle from '@styles/GlobalStyle';
 import Error from '@routes/Error';
 import Main from '@main/Main';
