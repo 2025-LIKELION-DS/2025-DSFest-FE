@@ -244,6 +244,7 @@ main ← 작업 브랜치
 
 - public
   - favicons - 파비콘
+  - lotties - 로티
   - fonts - 폰트
 - src
   - assets - 사용되는 모든 에셋
