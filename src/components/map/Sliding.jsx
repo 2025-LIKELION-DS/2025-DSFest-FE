@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as M from '@map/MapStyle';
 import BoothCard from './BoothCard';
 import FoodCard from './FoodCard';
@@ -59,6 +59,7 @@ function SlidingPanelSection({
   selectedDayTime,
 }) {
   const contentRef = useRef(null);
+  const prevHeightRef = useRef(null);
   const isMobile = window.innerWidth <= 768;
   const baseMinHeight = isMobile ? 105 : 93;
 
@@ -108,8 +109,15 @@ function SlidingPanelSection({
   };
 
   useEffect(() => {
+    const mobile = window.innerWidth <= 768;
+    const midHeight = mobile ? window.innerHeight * 0.55 : 490;
+
     if (isFoodTruckActive) {
-      setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+      prevHeightRef.current = panelHeight;
+      setPanelHeight(midHeight);
+    } else if (prevHeightRef.current !== null) {
+      setPanelHeight(prevHeightRef.current);
+      prevHeightRef.current = null;
     }
   }, [isFoodTruckActive]);
 
@@ -139,7 +147,7 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={{ type: 'spring', stiffness: 250, damping: 50 }}
+      transition={panelHeight === baseMinHeight ? { duration: 0 } : { type: 'spring', stiffness: 250, damping: 50 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
       <M.TouchSection onPointerDown={handlePointerDown} style={{ cursor: 'grab', paddingTop: 15 }}>
