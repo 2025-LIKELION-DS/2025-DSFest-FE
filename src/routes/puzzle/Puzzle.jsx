@@ -358,9 +358,8 @@ function Puzzle() {
   };
 
   //지도 이동
-  const goMap = (index) => {
-    index += 91;
-    navigate('/map', index);
+  const goMap = () => {
+    navigate('/map');
   };
 
   //기기가 모바일인지 확인
@@ -635,7 +634,7 @@ function Puzzle() {
             boothName={modalProps.boothName}
             boothInfo={modalProps.boothInfo}
             boothHint={modalProps.boothHint}
-            onClickL={() => goMap(modalProps.number)}
+            onClickL={() => goMap()}
             onClickR={() => puzzleBtnHandler()}
           />
         )}
