@@ -8,7 +8,16 @@ const renderBoothTimeTag = (booth) => {
   const allTimes = ['수요일 낮', '수요일 밤', '목요일 낮', '목요일 밤', '금요일 낮', '금요일 밤'];
   const isEveryDay = allTimes.every((time) => timesSet.has(time));
 
-  return <M.Tag>{isEveryDay ? '매일' : booth.times.join(' · ')}</M.Tag>;
+  const sortedTimes = [];
+  ['수요일', '목요일', '금요일'].forEach((day) => {
+    const parts = [];
+    if (booth.times.includes(`${day} 낮`)) parts.push('낮');
+    if (booth.times.includes(`${day} 밤`)) parts.push('밤');
+    if (parts.length > 0) {
+      sortedTimes.push(`${day} ${parts.join(' ')}`);
+    }
+  });
+  return <M.Tag>{isEveryDay ? '매일' : sortedTimes.join(' · ')}</M.Tag>;
 };
 
 const renderBoothDetailText = (details) =>
