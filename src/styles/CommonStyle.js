@@ -19,7 +19,7 @@ export const Page = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (min-width: 1300px) {
+    @media (min-width: 1301px) {
       justify-content: space-between;
     }
   }
