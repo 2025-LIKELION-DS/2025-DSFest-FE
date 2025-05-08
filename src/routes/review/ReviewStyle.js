@@ -24,7 +24,7 @@ export const Review = styled.div`
 export const Area = styled.div`
   display: flex;
   width: calc(100% - 24px);
-  padding: 12px;
+  padding: 15.5px 12px;
   align-items: flex-end;
   gap: 8px;
   background: ${palette.grayscale.white};
@@ -63,7 +63,7 @@ export const Empty = styled.div`
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 24px;
+  min-height: 21px;
   max-height: 140px;
   overflow-y: auto;
   scrollbar-width: none;
