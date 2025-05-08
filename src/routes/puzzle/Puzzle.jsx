@@ -367,247 +367,248 @@ function Puzzle() {
   };
 
   return (
-    <P.puzzlePage onClick={() => (showModal ? modalOffHandler() : undefined)}>
-      <P.currentPuzzleInfo>
-        <P.TopContainer>
-          <P.top>
-            {completed || end ? (
-              <P.celebration>
-                <P.semibold20>축하드립니다!</P.semibold20>
-                <P.semibold20>모든 퍼즐이 완성되었어요.</P.semibold20>
-              </P.celebration>
+    <>
+      <P.puzzlePage onClick={() => (showModal ? modalOffHandler() : undefined)}>
+        <P.currentPuzzleInfo>
+          <P.TopContainer>
+            <P.top>
+              {completed || end ? (
+                <P.celebration>
+                  <P.semibold20>축하드립니다!</P.semibold20>
+                  <P.semibold20>모든 퍼즐이 완성되었어요.</P.semibold20>
+                </P.celebration>
+              ) : (
+                <>
+                  <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
+                  <P.puzzleInfo2>
+                    <P.goMap onClick={() => goMap()}>
+                      <P.boothIcon>
+                        <img src={boothIcon} alt="총학생회 본부" />
+                      </P.boothIcon>
+                      <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
+                    </P.goMap>
+                    를 방문해 경품을 수령하세요!
+                  </P.puzzleInfo2>
+                </>
+              )}
+            </P.top>
+
+            {authorized ? (
+              <P.completedPuzzle>
+                <P.completedTitle>
+                  <P.userInfo>
+                    <P.userName>{username}</P.userName>
+                    <P.regular16>님의 퍼즐</P.regular16>
+                  </P.userInfo>
+                  <P.todoPuzzle>
+                    {end ? (
+                      <>
+                        <img src={check} alt="경품 수령 완료" />
+                        <P.purpleRegular14>경품 수령 완료</P.purpleRegular14>
+                      </>
+                    ) : (
+                      <>
+                        <P.regular14>남은 퍼즐</P.regular14>
+                        <P.todoPuzzleCount>{remainPuzzleCount}개</P.todoPuzzleCount>
+                      </>
+                    )}
+                  </P.todoPuzzle>
+                </P.completedTitle>
+
+                <P.completedPuzzleBox>
+                  <P.regular16>
+                    현재 <P.semibold16>완성한</P.semibold16> 퍼즐
+                  </P.regular16>
+                  <P.puzzleCount>
+                    <P.glowPuzzleIcon src={glowPuzzleIcon} />
+                    <P.completedPuzzleCount>{puzzleCount}</P.completedPuzzleCount>
+                    <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
+                  </P.puzzleCount>
+                </P.completedPuzzleBox>
+              </P.completedPuzzle>
+            ) : (
+              <P.login
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && isLoginEnabled) {
+                    handleLogin();
+                  }
+                }}>
+                <P.inputNickname>
+                  <InputLogin
+                    placeholder={'닉네임을 입력해주세요'}
+                    type={'text'}
+                    value={inputLoginID}
+                    onChange={inputLoginIDChange}
+                  />
+                </P.inputNickname>
+
+                <P.inputPassword>
+                  <InputLogin
+                    placeholder={'비밀번호를 입력해주세요'}
+                    type={'password'}
+                    value={inputLoginPWD}
+                    onChange={inputLoginPWDChange}
+                  />
+                </P.inputPassword>
+                <ButtonCommon
+                  text={'로그인'}
+                  color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
+                  onClick={() => handleLogin()}
+                />
+                {loginFailed ? (
+                  <P.loginFailed>
+                    <img src={redErrorIcon} />
+                    <P.loginFailedInfo>중복된 닉네임 혹은 틀린 비밀번호입니다.</P.loginFailedInfo>
+                  </P.loginFailed>
+                ) : (
+                  <></>
+                )}
+              </P.login>
+            )}
+          </P.TopContainer>
+
+          <P.puzzleGame>
+            {authorized ? (
+              completed ? (
+                <>
+                  <P.presentInfo>
+                    <P.goMap onClick={() => goMap()}>
+                      <P.boothIcon>
+                        <img src={boothIcon} alt="총학생회 본부" />
+                      </P.boothIcon>
+                      <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
+                    </P.goMap>
+                    를 방문해 경품을 수령하세요!
+                  </P.presentInfo>
+
+                  <P.CompletedInfo>
+                    <img src={lightIcon} style={{ marginBottom: '10px' }} />
+                    <P.regular14 style={{ marginBottom: '7px' }}>
+                      퍼즐을 다 맞춘 덕우에게는 행운의 기회가 주어집니다!
+                    </P.regular14>
+                    <P.regular14 style={{ marginBottom: '7px' }}>
+                      <P.bold14>총학생회 중앙본부</P.bold14>에 방문해 퍼즐 완성 화면을 보여주신다면, 총학생회 관계자가
+                      비밀번호를 입력하고 <P.bold14>스크래치 복권</P.bold14>을 드릴 거예요.
+                    </P.regular14>
+                    <P.regular14 style={{ marginBottom: '7px' }}>과연 복권에 적혀있는 행운은 무엇일까요?</P.regular14>
+                    <P.regular14 style={{ marginBottom: '3px' }}>1. 여운의 분위기를 가득 담은 실물 퍼즐✨</P.regular14>
+                    <P.regular14 style={{ marginBottom: '3px' }}>2. 운율의 상징인 라벤더 씨앗🪻</P.regular14>
+                    <P.regular14 style={{ marginBottom: '3px' }}>3. 잘 키우면 유용한 바질 씨앗🌱</P.regular14>
+                    <P.regular14>4. 꽝💣 하지만 퍼즐을 즐기며 만난 여운의 즐거움을 잊지 마세요!</P.regular14>
+                  </P.CompletedInfo>
+                </>
+              ) : end ? (
+                <>
+                  <P.successPuzzle>
+                    <P.alreadySuccessInfo>
+                      <P.whiteCheck src={whiteCheck} />
+                      <P.whiteRegular16>
+                        이미 <P.whiteSemibold16> 완성</P.whiteSemibold16>된 퍼즐입니다.
+                      </P.whiteRegular16>
+                    </P.alreadySuccessInfo>
+                  </P.successPuzzle>
+                </>
+              ) : (
+                <P.puzzle>
+                  <P.puzzleGrid>
+                    <P.puzzle1
+                      onClick={() => {
+                        puzzleValue.index1 ? null : puzzleHandler(0);
+                      }}
+                      onMouseOver={() => handleMouseOver('index1')}
+                      onMouseOut={() => handleMouseOut('index1')}
+                      src={puzzleValue.index1 ? puzzle1Complete : isPuzzleHover.index1 ? puzzle1Click : puzzle1Default}
+                    />
+                    <P.puzzle2
+                      onClick={() => {
+                        puzzleValue.index2 ? null : puzzleHandler(1);
+                      }}
+                      onMouseOver={() => handleMouseOver('index2')}
+                      onMouseOut={() => handleMouseOut('index2')}
+                      src={puzzleValue.index2 ? puzzle2Complete : isPuzzleHover.index2 ? puzzle2Click : puzzle2Default}
+                    />
+                    <P.puzzle3
+                      onClick={() => {
+                        puzzleValue.index3 ? null : puzzleHandler(2);
+                      }}
+                      onMouseOver={() => handleMouseOver('index3')}
+                      onMouseOut={() => handleMouseOut('index3')}
+                      src={puzzleValue.index3 ? puzzle3Complete : isPuzzleHover.index3 ? puzzle3Click : puzzle3Default}
+                    />
+                    <P.puzzle4
+                      onClick={() => {
+                        puzzleValue.index4 ? null : puzzleHandler(3);
+                      }}
+                      onMouseOver={() => handleMouseOver('index4')}
+                      onMouseOut={() => handleMouseOut('index4')}
+                      src={puzzleValue.index4 ? puzzle4Complete : isPuzzleHover.index4 ? puzzle4Click : puzzle4Default}
+                    />
+                    <P.puzzle5
+                      onClick={() => {
+                        puzzleValue.index5 ? null : puzzleHandler(4);
+                      }}
+                      onMouseOver={() => handleMouseOver('index5')}
+                      onMouseOut={() => handleMouseOut('index5')}
+                      src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
+                    />
+                    <P.puzzle6
+                      onClick={() => {
+                        puzzleValue.index6 ? null : puzzleHandler(5);
+                      }}
+                      onMouseOver={() => handleMouseOver('index6')}
+                      onMouseOut={() => handleMouseOut('index6')}
+                      src={puzzleValue.index6 ? puzzle6Complete : isPuzzleHover.index6 ? puzzle6Click : puzzle6Default}
+                    />
+                    <P.puzzle7
+                      onClick={() => {
+                        puzzleValue.index7 ? null : puzzleHandler(6);
+                      }}
+                      onMouseOver={() => handleMouseOver('index7')}
+                      onMouseOut={() => handleMouseOut('index7')}
+                      src={puzzleValue.index7 ? puzzle7Complete : isPuzzleHover.index7 ? puzzle7Click : puzzle7Default}
+                    />
+                    <P.puzzle8
+                      onClick={() => {
+                        puzzleValue.index8 ? null : puzzleHandler(7);
+                      }}
+                      onMouseOver={() => handleMouseOver('index8')}
+                      onMouseOut={() => handleMouseOut('index8')}
+                      src={puzzleValue.index8 ? puzzle8Complete : isPuzzleHover.index8 ? puzzle8Click : puzzle8Default}
+                    />
+                    <P.puzzle9
+                      onClick={() => {
+                        puzzleValue.index9 ? null : puzzleHandler(8);
+                      }}
+                      onMouseOver={() => handleMouseOver('index9')}
+                      onMouseOut={() => handleMouseOut('index9')}
+                      src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
+                    />
+                  </P.puzzleGrid>
+                </P.puzzle>
+              )
             ) : (
               <>
-                <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
-                <P.puzzleInfo2>
-                  <P.goMap onClick={() => goMap()}>
-                    <P.boothIcon>
-                      <img src={boothIcon} alt="총학생회 본부" />
-                    </P.boothIcon>
-                    <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
-                  </P.goMap>
-                  를 방문해 경품을 수령하세요!
-                </P.puzzleInfo2>
+                <P.emptyPuzzle style={loginFailed ? { marginTop: '0' } : {}}>
+                  <P.loginInfo>
+                    <P.whiteErrorIcon src={whiteErrorIcon} />
+                    로그인 후 이용가능합니다.
+                  </P.loginInfo>
+                </P.emptyPuzzle>
               </>
             )}
-          </P.top>
+          </P.puzzleGame>
+        </P.currentPuzzleInfo>
 
-          {authorized ? (
-            <P.completedPuzzle>
-              <P.completedTitle>
-                <P.userInfo>
-                  <P.userName>{username}</P.userName>
-                  <P.regular16>님의 퍼즐</P.regular16>
-                </P.userInfo>
-                <P.todoPuzzle>
-                  {end ? (
-                    <>
-                      <img src={check} alt="경품 수령 완료" />
-                      <P.purpleRegular14>경품 수령 완료</P.purpleRegular14>
-                    </>
-                  ) : (
-                    <>
-                      <P.regular14>남은 퍼즐</P.regular14>
-                      <P.todoPuzzleCount>{remainPuzzleCount}개</P.todoPuzzleCount>
-                    </>
-                  )}
-                </P.todoPuzzle>
-              </P.completedTitle>
-
-              <P.completedPuzzleBox>
-                <P.regular16>
-                  현재 <P.semibold16>완성한</P.semibold16> 퍼즐
-                </P.regular16>
-                <P.puzzleCount>
-                  <P.glowPuzzleIcon src={glowPuzzleIcon} />
-                  <P.completedPuzzleCount>{puzzleCount}</P.completedPuzzleCount>
-                  <P.completedPuzzleCountInfo>개</P.completedPuzzleCountInfo>
-                </P.puzzleCount>
-              </P.completedPuzzleBox>
-            </P.completedPuzzle>
+        <P.endButton>
+          {completed ? (
+            <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
+          ) : success ? (
+            <ButtonCommon text={'퍼즐 완성'} color={`${palette.mainPurple}`} onClick={handleSuccess} />
           ) : (
-            <P.login
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && isLoginEnabled) {
-                  handleLogin();
-                }
-              }}>
-              <P.inputNickname>
-                <InputLogin
-                  placeholder={'닉네임을 입력해주세요'}
-                  type={'text'}
-                  value={inputLoginID}
-                  onChange={inputLoginIDChange}
-                />
-              </P.inputNickname>
-
-              <P.inputPassword>
-                <InputLogin
-                  placeholder={'비밀번호를 입력해주세요'}
-                  type={'password'}
-                  value={inputLoginPWD}
-                  onChange={inputLoginPWDChange}
-                />
-              </P.inputPassword>
-              <ButtonCommon
-                text={'로그인'}
-                color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-                onClick={() => handleLogin()}
-              />
-              {loginFailed ? (
-                <P.loginFailed>
-                  <img src={redErrorIcon} />
-                  <P.loginFailedInfo>중복된 닉네임 혹은 틀린 비밀번호입니다.</P.loginFailedInfo>
-                </P.loginFailed>
-              ) : (
-                <></>
-              )}
-            </P.login>
+            <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
           )}
-        </P.TopContainer>
-
-        <P.puzzleGame>
-          {authorized ? (
-            completed ? (
-              <>
-                <P.presentInfo>
-                  <P.goMap onClick={() => goMap()}>
-                    <P.boothIcon>
-                      <img src={boothIcon} alt="총학생회 본부" />
-                    </P.boothIcon>
-                    <P.purplesemibold16>총학생회 본부</P.purplesemibold16>
-                  </P.goMap>
-                  를 방문해 경품을 수령하세요!
-                </P.presentInfo>
-
-                <P.CompletedInfo>
-                  <img src={lightIcon} style={{ marginBottom: '10px' }} />
-                  <P.regular14 style={{ marginBottom: '7px' }}>
-                    퍼즐을 다 맞춘 덕우에게는 행운의 기회가 주어집니다!
-                  </P.regular14>
-                  <P.regular14 style={{ marginBottom: '7px' }}>
-                    <P.bold14>총학생회 중앙본부</P.bold14>에 방문해 퍼즐 완성 화면을 보여주신다면, 총학생회 관계자가
-                    비밀번호를 입력하고 <P.bold14>스크래치 복권</P.bold14>을 드릴 거예요.
-                  </P.regular14>
-                  <P.regular14 style={{ marginBottom: '7px' }}>과연 복권에 적혀있는 행운은 무엇일까요?</P.regular14>
-                  <P.regular14 style={{ marginBottom: '3px' }}>1. 여운의 분위기를 가득 담은 실물 퍼즐✨</P.regular14>
-                  <P.regular14 style={{ marginBottom: '3px' }}>2. 운율의 상징인 라벤더 씨앗🪻</P.regular14>
-                  <P.regular14 style={{ marginBottom: '3px' }}>3. 잘 키우면 유용한 바질 씨앗🌱</P.regular14>
-                  <P.regular14>4. 꽝💣 하지만 퍼즐을 즐기며 만난 여운의 즐거움을 잊지 마세요!</P.regular14>
-                </P.CompletedInfo>
-              </>
-            ) : end ? (
-              <>
-                <P.successPuzzle>
-                  <P.alreadySuccessInfo>
-                    <P.whiteCheck src={whiteCheck} />
-                    <P.whiteRegular16>
-                      이미 <P.whiteSemibold16> 완성</P.whiteSemibold16>된 퍼즐입니다.
-                    </P.whiteRegular16>
-                  </P.alreadySuccessInfo>
-                </P.successPuzzle>
-              </>
-            ) : (
-              <P.puzzle>
-                <P.puzzleGrid>
-                  <P.puzzle1
-                    onClick={() => {
-                      puzzleValue.index1 ? null : puzzleHandler(0);
-                    }}
-                    onMouseOver={() => handleMouseOver('index1')}
-                    onMouseOut={() => handleMouseOut('index1')}
-                    src={puzzleValue.index1 ? puzzle1Complete : isPuzzleHover.index1 ? puzzle1Click : puzzle1Default}
-                  />
-                  <P.puzzle2
-                    onClick={() => {
-                      puzzleValue.index2 ? null : puzzleHandler(1);
-                    }}
-                    onMouseOver={() => handleMouseOver('index2')}
-                    onMouseOut={() => handleMouseOut('index2')}
-                    src={puzzleValue.index2 ? puzzle2Complete : isPuzzleHover.index2 ? puzzle2Click : puzzle2Default}
-                  />
-                  <P.puzzle3
-                    onClick={() => {
-                      puzzleValue.index3 ? null : puzzleHandler(2);
-                    }}
-                    onMouseOver={() => handleMouseOver('index3')}
-                    onMouseOut={() => handleMouseOut('index3')}
-                    src={puzzleValue.index3 ? puzzle3Complete : isPuzzleHover.index3 ? puzzle3Click : puzzle3Default}
-                  />
-                  <P.puzzle4
-                    onClick={() => {
-                      puzzleValue.index4 ? null : puzzleHandler(3);
-                    }}
-                    onMouseOver={() => handleMouseOver('index4')}
-                    onMouseOut={() => handleMouseOut('index4')}
-                    src={puzzleValue.index4 ? puzzle4Complete : isPuzzleHover.index4 ? puzzle4Click : puzzle4Default}
-                  />
-                  <P.puzzle5
-                    onClick={() => {
-                      puzzleValue.index5 ? null : puzzleHandler(4);
-                    }}
-                    onMouseOver={() => handleMouseOver('index5')}
-                    onMouseOut={() => handleMouseOut('index5')}
-                    src={puzzleValue.index5 ? puzzle5Complete : isPuzzleHover.index5 ? puzzle5Click : puzzle5Default}
-                  />
-                  <P.puzzle6
-                    onClick={() => {
-                      puzzleValue.index6 ? null : puzzleHandler(5);
-                    }}
-                    onMouseOver={() => handleMouseOver('index6')}
-                    onMouseOut={() => handleMouseOut('index6')}
-                    src={puzzleValue.index6 ? puzzle6Complete : isPuzzleHover.index6 ? puzzle6Click : puzzle6Default}
-                  />
-                  <P.puzzle7
-                    onClick={() => {
-                      puzzleValue.index7 ? null : puzzleHandler(6);
-                    }}
-                    onMouseOver={() => handleMouseOver('index7')}
-                    onMouseOut={() => handleMouseOut('index7')}
-                    src={puzzleValue.index7 ? puzzle7Complete : isPuzzleHover.index7 ? puzzle7Click : puzzle7Default}
-                  />
-                  <P.puzzle8
-                    onClick={() => {
-                      puzzleValue.index8 ? null : puzzleHandler(7);
-                    }}
-                    onMouseOver={() => handleMouseOver('index8')}
-                    onMouseOut={() => handleMouseOut('index8')}
-                    src={puzzleValue.index8 ? puzzle8Complete : isPuzzleHover.index8 ? puzzle8Click : puzzle8Default}
-                  />
-                  <P.puzzle9
-                    onClick={() => {
-                      puzzleValue.index9 ? null : puzzleHandler(8);
-                    }}
-                    onMouseOver={() => handleMouseOver('index9')}
-                    onMouseOut={() => handleMouseOut('index9')}
-                    src={puzzleValue.index9 ? puzzle9Complete : isPuzzleHover.index9 ? puzzle9Click : puzzle9Default}
-                  />
-                </P.puzzleGrid>
-              </P.puzzle>
-            )
-          ) : (
-            <>
-              <P.emptyPuzzle style={loginFailed ? { marginTop: '0' } : {}}>
-                <P.loginInfo>
-                  <P.whiteErrorIcon src={whiteErrorIcon} />
-                  로그인 후 이용가능합니다.
-                </P.loginInfo>
-              </P.emptyPuzzle>
-            </>
-          )}
-        </P.puzzleGame>
-      </P.currentPuzzleInfo>
-
-      <P.endButton>
-        {completed ? (
-          <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
-        ) : success ? (
-          <ButtonCommon text={'퍼즐 완성'} color={`${palette.mainPurple}`} onClick={handleSuccess} />
-        ) : (
-          <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
-        )}
-      </P.endButton>
-
+        </P.endButton>
+      </P.puzzlePage>
       <P.modal onClick={(e) => e.stopPropagation()}>
         {/* 퍼즐 눌렀을 때 힌트 모달창 */}
         {showModal === 'hintModal' && modalProps && (
@@ -648,7 +649,7 @@ function Puzzle() {
           />
         )}
       </P.modal>
-    </P.puzzlePage>
+    </>
   );
 }
 
