@@ -8,6 +8,7 @@ import PuzzleGame from '@assets/main/puzzle-game.svg?react';
 
 export const Main = styled.div`
   width: 100%;
+  min-height: 500px;
   height: 100%;
   background-image: url(${(props) => props.$backgroundImg});
   background-repeat: no-repeat;
