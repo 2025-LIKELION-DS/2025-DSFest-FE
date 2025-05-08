@@ -42,7 +42,7 @@ export const Map = styled.div`
   margin: 0;
   padding: 0;
   position: relative;
-  height: 94%;
+  height: ${() => (window.innerWidth <= 768 ? `${window.innerHeight - 56}px` : '94%')};
   background: #f4eef5;
 `;
 

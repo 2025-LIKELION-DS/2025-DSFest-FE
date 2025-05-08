@@ -102,6 +102,7 @@ function Map() {
       .then((res) => {
         const foodData = res.data?.data?.foodTrucks || [];
         setFoodTruckData(foodData);
+        // console.log('🚚 푸드트럭 데이터:', foodData);
       })
       .catch((err) => {
         console.error('푸드트럭 데이터 불러오기 실패:', err);
@@ -154,7 +155,7 @@ function Map() {
   const handleZoomIn = () => setIsZoomed(true);
 
   return (
-    <M.Map>
+    <M.Map isMobile={isMobile}>
       <Moving
         isZoomed={isZoomed}
         mapSmall={mapSmall}
