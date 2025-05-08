@@ -11,21 +11,22 @@ import YeounText from '@assets/responsive/text-yeoun.svg';
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  // <StrictMode>
-  <BrowserRouter>
-    <C.Page>
-      <C.LeftContainer>
-        <C.YeounLeft src={YeounLogo} alt="여운" />
-      </C.LeftContainer>
-      <C.Phone>
-        <App />
-      </C.Phone>
-      <C.RightContainer>
-        <C.YeounRight src={YeounText} alt="덕성여대 근화제" />
-      </C.RightContainer>
-    </C.Page>
-  </BrowserRouter>,
-  // </StrictMode>,
+  <StrictMode>
+    <BrowserRouter>
+      <C.Page>
+        <C.LeftContainer>
+          <C.YeounLeft src={YeounLogo} alt="여운" />
+        </C.LeftContainer>
+        <C.Phone>
+          <App />
+        </C.Phone>
+        <C.RightContainer>
+          <C.YeounRight src={YeounText} alt="덕성여대 근화제" />
+        </C.RightContainer>
+      </C.Page>
+    </BrowserRouter>
+    ,
+  </StrictMode>,
 );
 
 register();
