@@ -10,8 +10,6 @@ function Review() {
   const [reviews, setReviews] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
-  const [page, setPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const textareaRef = useRef(null);
   const reviewRef = useRef(null);
@@ -42,37 +40,14 @@ function Review() {
     }
   };
 
-  const fetchReviews = async (targetPage = 0) => {
+  const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews?page=${targetPage}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
       const fetched = res.data.data.reviewList;
       const ordered = [...fetched].sort((a, b) => a.reviewId - b.reviewId);
-      setReviews((prev) => {
-        if (targetPage === 0) {
-          return ordered;
-        } else {
-          return [...ordered, ...prev];
-        }
-      });
-      setHasMore(!res.data.data.last);
+      setReviews(ordered);
     } catch (err) {
       console.error('리뷰 조회 실패:', err);
-    }
-  };
-
-  const handleScroll = () => {
-    if (reviewRef.current.scrollTop === 0 && hasMore) {
-      const prevHeight = reviewRef.current.scrollHeight;
-      const nextPage = page + 1;
-      setPage(nextPage);
-
-      fetchReviews(nextPage).then(() => {
-        requestAnimationFrame(() => {
-          const newHeight = reviewRef.current.scrollHeight;
-          const delta = newHeight - prevHeight;
-          reviewRef.current.scrollTop = delta;
-        });
-      });
     }
   };
 
@@ -91,9 +66,8 @@ function Review() {
       });
       setInputValue('');
       if (textareaRef.current) textareaRef.current.style.height = 'auto';
-      setPage(0);
       setAutoPlayKeyword(matchedKeyword);
-      fetchReviews(0);
+      await fetchReviews();
       setTimeout(scrollToBottom, 200);
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
@@ -137,7 +111,7 @@ function Review() {
 
   return (
     <R.Container>
-      <R.Review ref={reviewRef} onScroll={handleScroll}>
+      <R.Review ref={reviewRef}>
         {isLoading ? (
           <R.Empty>후기 불러오는 중...</R.Empty>
         ) : reviews.length > 0 ? (
