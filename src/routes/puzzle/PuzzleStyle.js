@@ -262,6 +262,12 @@ export const whiteSemibold16 = styled.div`
   margin-left: 2px;
 `;
 
+export const whiteSemibold20 = styled.div`
+  font-weight: 600;
+  color: ${palette.grayscale.white};
+  font-size: 20px;
+`;
+
 export const puzzle = styled.div`
   width: 100%;
   display: flex;
@@ -416,5 +422,18 @@ export const endButton = styled.div`
 
 export const modal = styled.div`
   display: flex;
+  justify-content: center;
+`;
+
+export const ovelay = styled.div`
+  position: absolute;
+  z-index: 3000;
+  width: 100%;
+  height: 100%;
+  background-color: ${palette.grayscale.black70};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;

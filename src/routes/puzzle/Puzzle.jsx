@@ -12,6 +12,7 @@ import lightIcon from '@assets/puzzle/icon-tip-lightbulb.svg';
 import check from '@assets/puzzle/icon-check.svg';
 import whiteCheck from '@assets/puzzle/icon-white-check.svg';
 import redErrorIcon from '@assets/puzzle/icon-error-red.svg';
+import phoneIcon from '@assets/puzzle/icon-mobile.svg';
 
 import puzzle1Default from '@assets/puzzle/puzzle_default-1.png';
 import puzzle2Default from '@assets/puzzle/puzzle_default-2.png';
@@ -361,6 +362,18 @@ function Puzzle() {
     navigate('/map');
   };
 
+  //기기가 모바일인지 확인
+  const isMobile = /Mobi/i.test(window.navigator.userAgent);
+
+  const [cameraOverlay, setCameraOverlay] = useState(false);
+
+  const puzzleBtnHandler = () => {
+    if (!isMobile) {
+      setCameraOverlay(true);
+    } else {
+      showQrCamera();
+    }
+  };
   return (
     <>
       <P.puzzlePage onClick={() => (showModal ? modalOffHandler() : undefined)}>
@@ -603,7 +616,16 @@ function Puzzle() {
             <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
           )}
         </P.endButton>
+
+        {cameraOverlay && (
+          <P.ovelay onClick={() => setCameraOverlay(false)}>
+            <img src={phoneIcon} />
+            <P.whiteSemibold20>모바일에서만 지원되는 기능입니다.</P.whiteSemibold20>
+            <P.whiteSemibold20>모바일로 접속해주세요.</P.whiteSemibold20>
+          </P.ovelay>
+        )}
       </P.puzzlePage>
+
       <P.modal onClick={(e) => e.stopPropagation()}>
         {/* 퍼즐 눌렀을 때 힌트 모달창 */}
         {showModal === 'hintModal' && modalProps && (
@@ -612,7 +634,7 @@ function Puzzle() {
             boothName={modalProps.boothName}
             boothInfo={modalProps.boothInfo}
             boothHint={modalProps.boothHint}
-            onClickR={() => showQrCamera()}
+            onClickR={() => puzzleBtnHandler()}
           />
         )}
         {/* qr 인증 성공 or 실패 모달 */}
