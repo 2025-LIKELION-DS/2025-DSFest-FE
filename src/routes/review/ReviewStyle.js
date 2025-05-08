@@ -24,7 +24,7 @@ export const Review = styled.div`
 export const Area = styled.div`
   display: flex;
   width: calc(100% - 24px);
-  padding: 15.5px 12px;
+  padding: 12px;
   align-items: flex-end;
   gap: 8px;
   background: ${palette.grayscale.white};
@@ -33,7 +33,7 @@ export const Area = styled.div`
 
 export const Input = styled.div`
   width: calc(100% - 56px);
-  padding: 12px;
+  padding: 13.5px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
