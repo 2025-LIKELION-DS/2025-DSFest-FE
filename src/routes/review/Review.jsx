@@ -89,19 +89,15 @@ function Review() {
       setPage(0);
       setAutoPlayKeyword(matchedKeyword);
       fetchReviews(0);
-      setTimeout(scrollToBottom, 100);
+      setTimeout(scrollToBottom, 200);
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
     }
   };
 
   useEffect(() => {
-    const init = async () => {
-      await fetchReviews(0);
-      scrollToBottom();
-    };
-
-    init();
+    fetchReviews(0);
+    setTimeout(scrollToBottom, 200);
 
     const observer = new ResizeObserver(() => {
       scrollToBottom();
