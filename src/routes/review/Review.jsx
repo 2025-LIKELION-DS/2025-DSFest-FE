@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import axios from 'axios';
 import * as R from '@review/ReviewStyle';
 import Chat from '@review/components/Chat';
@@ -34,11 +34,7 @@ function Review() {
 
   const scrollToBottom = () => {
     if (reviewRef.current) {
-      try {
-        reviewRef.current.scrollTo({ top: reviewRef.current.scrollHeight, behavior: 'smooth' });
-      } catch {
-        reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
-      }
+      reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
     }
   };
 
@@ -70,7 +66,7 @@ function Review() {
       if (textareaRef.current) textareaRef.current.style.height = 'auto';
       setAutoPlayKeyword(matchedKeyword);
       await fetchReviews();
-      setTimeout(scrollToBottom, 200);
+      setTimeout(scrollToBottom, 100);
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
     }
@@ -84,25 +80,11 @@ function Review() {
         setTimeout(() => {
           scrollToBottom();
           setIsLoading(false);
-        }, 200);
+        }, 100);
       });
     };
 
     loadInitial();
-
-    const observer = new ResizeObserver(() => {
-      scrollToBottom();
-    });
-
-    if (reviewRef.current) {
-      observer.observe(reviewRef.current);
-    }
-
-    return () => {
-      if (reviewRef.current) {
-        observer.unobserve(reviewRef.current);
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -110,6 +92,10 @@ function Review() {
       wrapperRef.current.scrollTop = wrapperRef.current.scrollHeight;
     }
   }, [inputValue]);
+
+  useLayoutEffect(() => {
+    scrollToBottom();
+  }, [isLoading]);
 
   return (
     <R.Container>
