@@ -62,6 +62,14 @@ function SlidingPanelSection({
   const prevHeightRef = useRef(null);
   const isMobile = window.innerWidth <= 768;
   const baseMinHeight = isMobile ? 105 : 93;
+  const hasMountedRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      hasMountedRef.current = true;
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleDragEnd = () => {
     const isMobile = window.innerWidth <= 768;
@@ -151,11 +159,7 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={
-        panelHeight === baseMinHeight || panelHeight === (isMobile ? window.innerHeight * 0.45 : 490)
-          ? { duration: 0 }
-          : { type: 'spring', stiffness: 100, damping: 30 }
-      }
+      transition={hasMountedRef.current ? { type: 'spring', stiffness: 100, damping: 30 } : { duration: 0 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
       <M.TouchSection onPointerDown={handlePointerDown} style={{ cursor: 'grab', paddingTop: 15 }}>
