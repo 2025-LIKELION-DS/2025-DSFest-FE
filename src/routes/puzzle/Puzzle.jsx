@@ -97,7 +97,6 @@ function Puzzle() {
           },
         },
       );
-      console.log(response.data);
       if (response.data.code === 'SUCCESS_REWARD_RECEIVED') {
         setShowModal('');
         setEnd(true);
@@ -145,7 +144,6 @@ function Puzzle() {
       });
       if (response.data.code === 'SUCCESS_USER_BINGO_STATUS') {
         setAuthorized(true);
-        console.log(response.data.data);
         setPuzzleCount(response.data.data.filledCount);
         setRemainPuzzleCount(response.data.data.remainingCount);
         setEnd(response.data.data.prizeReceived);
@@ -242,7 +240,6 @@ function Puzzle() {
       if (response.data.code === 'SUCCESS_LOGIN') {
         localStorage.setItem('token', response.data.data.token);
         setUsername(response.data.data.user.username);
-        console.log(response.data);
         setLoginFailed(false);
         setAuthorized(true);
         await getPuzzleInfo();
@@ -263,7 +260,6 @@ function Puzzle() {
     if (!qrData || hasCheckedRef.current) return;
     hasCheckedRef.current = true;
 
-    console.log('받은 QR 데이터:', qrData);
     qrCheck(qrData);
   }, [qrData]);
 
@@ -280,7 +276,6 @@ function Puzzle() {
           },
         },
       );
-      console.log(response.data);
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
         setQrSuccess(true);
         setModalProps({
