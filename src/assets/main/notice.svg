@@ -1,5 +1,5 @@
 <svg width="130" height="148" viewBox="11 11 130 148" fill="none" xmlns="http://www.w3.org/2000/svg" >
-<foreignObject x="-38" y="-38" width="228" height="246"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(25px);clip-path:url(#bgblur_0_533_550_clip_path);height:100%;width:100%"></div></foreignObject><g filter="url(#filter0_d_533_550)" data-figma-bg-blur-radius="50">
+<g filter="url(#filter0_d_533_550)" data-figma-bg-blur-radius="50">
 <mask id="path-1-inside-1_533_550" fill="white">
 <path d="M12 46C12 37.1634 19.1634 30 28 30L49.8408 30C53.8667 19.4749 64.0595 12 76 12C87.9404 12 98.1322 19.4751 102.158 30L124 30C132.837 30 140 37.1634 140 46L140 62.2353C129.475 67.124 122 79.501 122 94C122 108.499 129.475 120.876 140 125.765L140 142C140 150.837 132.837 158 124 158L28 158C19.1634 158 12 150.837 12 142L12 46Z"/>
 </mask>
