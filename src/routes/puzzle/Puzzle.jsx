@@ -149,7 +149,9 @@ function Puzzle() {
         const filledIndex = response.data.data.filledIndexes;
 
         if (response.data.data.filledCount === 9) {
-          setSuccess(true);
+          if (!end) {
+            setSuccess(true);
+          }
         }
 
         setPuzzleValue((prev) => {
@@ -356,8 +358,9 @@ function Puzzle() {
   };
 
   //지도 이동
-  const goMap = () => {
-    navigate('/map');
+  const goMap = (i) => {
+    i += 91;
+    navigate('/map', { state: { i } });
   };
 
   //기기가 모바일인지 확인
@@ -387,7 +390,7 @@ function Puzzle() {
                 <>
                   <P.puzzleInfo1>아래 퍼즐을 완성하고</P.puzzleInfo1>
                   <P.puzzleInfo2>
-                    <P.goMap onClick={() => goMap()}>
+                    <P.goMap onClick={() => goMap(1)}>
                       <P.boothIcon>
                         <img src={boothIcon} alt="총학 중앙본부" />
                       </P.boothIcon>
@@ -478,7 +481,7 @@ function Puzzle() {
               completed ? (
                 <>
                   <P.presentInfo>
-                    <P.goMap onClick={() => goMap()}>
+                    <P.goMap onClick={() => goMap(1)}>
                       <P.boothIcon>
                         <img src={boothIcon} alt="총학 중앙본부" />
                       </P.boothIcon>
@@ -608,10 +611,14 @@ function Puzzle() {
         <P.endButton>
           {completed ? (
             <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
-          ) : success ? (
-            <ButtonCommon text={'퍼즐 완성'} color={`${palette.mainPurple}`} onClick={handleSuccess} />
+          ) : end ? (
+            <ButtonCommon text={'퍼즐 완성'} color={`${palette.grayscale.text88}`} />
           ) : (
-            <ButtonCommon text={'퍼즐 완성'} color={end ? `${palette.grayscale.text88}` : `${palette.grayscale.ca}`} />
+            <ButtonCommon
+              text={'퍼즐 완성'}
+              color={success ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
+              onClick={success ? handleSuccess : ''}
+            />
           )}
         </P.endButton>
 
@@ -632,7 +639,7 @@ function Puzzle() {
             boothName={modalProps.boothName}
             boothInfo={modalProps.boothInfo}
             boothHint={modalProps.boothHint}
-            onClickL={() => goMap()}
+            onClickL={() => goMap(modalProps.number)}
             onClickR={() => puzzleBtnHandler()}
           />
         )}
