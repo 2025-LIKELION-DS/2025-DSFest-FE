@@ -55,6 +55,10 @@ export const BoxCon = styled.div.attrs((props) => ({
     font-weight: 600;
     line-height: normal;
     letter-spacing: -0.35px;
+    /* 작은 화면에서만 폰트 축소 */
+    @media (max-width: 357px) {
+      font-size: ${(props) => (props.special ? '12px' : '14px')};
+    }
   }
 `;
 
