@@ -34,9 +34,11 @@ function Review() {
 
   const scrollToBottom = () => {
     if (reviewRef.current) {
-      requestAnimationFrame(() => {
+      try {
+        reviewRef.current.scrollTo({ top: reviewRef.current.scrollHeight, behavior: 'smooth' });
+      } catch {
         reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
-      });
+      }
     }
   };
 
