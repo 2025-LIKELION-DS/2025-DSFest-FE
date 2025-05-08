@@ -20,7 +20,6 @@ export const ModalPuzzleSelect = styled.div`
 
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     @media (min-height: 852px) {
-      bottom: 90px;
       width: 345px;
     }
   }

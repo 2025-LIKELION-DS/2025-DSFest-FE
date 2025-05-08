@@ -5,17 +5,21 @@ import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
 import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      position: relative;
+      width: 393px;
+      height: 796px;
+    }
+  }
+`;
+
+export const puzzleMain = styled.div`
   min-height: calc(100% - 56px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 46px;
-
-  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    @media (min-height: 852px) {
-      position: relative;
-    }
-  }
 `;
 
 export const currentPuzzleInfo = styled.div`

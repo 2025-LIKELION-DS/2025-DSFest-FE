@@ -3,7 +3,7 @@ import palette from '@styles/theme';
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import puzzleData from '../../data/puzzleData.json';
+import puzzleData from '@data/puzzleData.json';
 
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
@@ -46,8 +46,6 @@ import puzzle9Complete from '@assets/puzzle/puzzle_complete_9.png';
 
 import ButtonCommon from '@components/ButtonCommon/ButtonCommon.jsx';
 import InputLogin from '@components/puzzle/InputLogin/InputLogin';
-import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual';
-import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalSingle';
 import ModalPuzzleSelect from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleSelect';
 import ModalPuzzleApprove from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApprove';
 import ModalPuzzleGoods from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoods';
@@ -363,20 +361,20 @@ function Puzzle() {
   };
 
   //기기가 모바일인지 확인
-  const isMobile = /Mobi/i.test(window.navigator.userAgent);
+  const mobile = /Mobi/i.test(window.navigator.userAgent);
 
   const [cameraOverlay, setCameraOverlay] = useState(false);
 
   const puzzleBtnHandler = () => {
-    if (!isMobile) {
+    if (!mobile) {
       setCameraOverlay(true);
     } else {
       showQrCamera();
     }
   };
   return (
-    <>
-      <P.puzzlePage onClick={() => (showModal ? modalOffHandler() : undefined)}>
+    <P.puzzlePage>
+      <P.puzzleMain onClick={() => (showModal ? modalOffHandler() : undefined)}>
         <P.currentPuzzleInfo>
           <P.TopContainer>
             <P.top>
@@ -624,7 +622,7 @@ function Puzzle() {
             <P.whiteSemibold20>모바일로 접속해주세요.</P.whiteSemibold20>
           </P.ovelay>
         )}
-      </P.puzzlePage>
+      </P.puzzleMain>
 
       <P.modal onClick={(e) => e.stopPropagation()}>
         {/* 퍼즐 눌렀을 때 힌트 모달창 */}
@@ -667,7 +665,7 @@ function Puzzle() {
           />
         )}
       </P.modal>
-    </>
+    </P.puzzlePage>
   );
 }
 
