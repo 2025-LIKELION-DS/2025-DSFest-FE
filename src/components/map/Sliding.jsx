@@ -59,10 +59,12 @@ function SlidingPanelSection({
   selectedDayTime,
 }) {
   const contentRef = useRef(null);
+  const isMobile = window.innerWidth <= 768;
+  const baseMinHeight = isMobile ? 105 : 93;
 
   const handleDragEnd = () => {
     const isMobile = window.innerWidth <= 768;
-    const maxHeight = isMobile ? window.innerHeight * 0.83 : 740;
+    const maxHeight = isMobile ? window.innerHeight * 0.8 : 740;
     const midHeight = isMobile ? window.innerHeight * 0.55 : 490;
     const minHeight = isMobile ? 105 : 93;
 
@@ -137,7 +139,7 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ type: 'spring', stiffness: 250, damping: 50 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
       <M.TouchSection onPointerDown={handlePointerDown} style={{ cursor: 'grab', paddingTop: 15 }}>
@@ -146,7 +148,9 @@ function SlidingPanelSection({
         </M.BarContainer>
       </M.TouchSection>
 
-      <M.BoothContentArea ref={contentRef}>{renderPanelContent()}</M.BoothContentArea>
+      <M.BoothContentArea ref={contentRef} style={{ overflowY: panelHeight === baseMinHeight ? 'hidden' : 'auto' }}>
+        {renderPanelContent()}
+      </M.BoothContentArea>
     </M.SlidingPanel>
   );
 }
