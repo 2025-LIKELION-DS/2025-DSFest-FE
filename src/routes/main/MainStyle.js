@@ -47,9 +47,9 @@ export const CloudImg = styled.img`
 `;
 
 export const TreeImg = styled.img`
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 `;
 
 export const TimeTableImg = styled(TimeTable)`
@@ -183,4 +183,13 @@ export const Div = styled.div`
 
 export const DivMargin = styled(Div)`
   margin-top: -24px;
+`;
+
+export const TreeDiv = styled.div`
+  width: 212px;
+  height: 225px;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
 `;
