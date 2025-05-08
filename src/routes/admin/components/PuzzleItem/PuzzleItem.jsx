@@ -76,7 +76,6 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
 
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
-            title: `퍼즐 ${index}`,
             files: [file],
           });
         } else {
