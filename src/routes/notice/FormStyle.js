@@ -13,7 +13,7 @@ export const Input = styled.input`
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  caret-color: ${palette.mainPurple};
+  caret-color: ${palette.grayscale.text33};
   color: ${palette.grayscale.text33};
   text-overflow: ellipsis;
   font-family: Pretendard;
@@ -40,6 +40,9 @@ export const TextArea = styled.textarea`
   background: transparent;
   outline: none;
   resize: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Images = styled.div`
