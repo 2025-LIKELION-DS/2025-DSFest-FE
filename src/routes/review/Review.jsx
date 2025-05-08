@@ -96,8 +96,12 @@ function Review() {
   };
 
   useEffect(() => {
-    fetchReviews(0);
-    setTimeout(scrollToBottom, 100);
+    const init = async () => {
+      await fetchReviews(0);
+      scrollToBottom();
+    };
+
+    init();
 
     const observer = new ResizeObserver(() => {
       scrollToBottom();
