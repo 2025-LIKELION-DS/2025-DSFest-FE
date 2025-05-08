@@ -12,6 +12,7 @@ function Review() {
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const textareaRef = useRef(null);
   const reviewRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -35,7 +36,7 @@ function Review() {
 
   const scrollToBottom = () => {
     if (reviewRef.current) {
-      reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
+      reviewRef.current.scrollTo({ top: reviewRef.current.scrollHeight, behavior: 'smooth' });
     }
   };
 
@@ -62,10 +63,12 @@ function Review() {
       const prevHeight = reviewRef.current.scrollHeight;
       const nextPage = page + 1;
       setPage(nextPage);
+
       fetchReviews(nextPage).then(() => {
         requestAnimationFrame(() => {
           const newHeight = reviewRef.current.scrollHeight;
-          reviewRef.current.scrollTop = newHeight - prevHeight;
+          const delta = newHeight - prevHeight;
+          reviewRef.current.scrollTop = delta;
         });
       });
     }
@@ -96,8 +99,15 @@ function Review() {
   };
 
   useEffect(() => {
-    fetchReviews(0);
-    setTimeout(scrollToBottom, 200);
+    const loadInitial = async () => {
+      await fetchReviews(0);
+      requestAnimationFrame(() => {
+        scrollToBottom();
+        setIsLoading(false);
+      });
+    };
+
+    loadInitial();
 
     const observer = new ResizeObserver(() => {
       scrollToBottom();
@@ -123,7 +133,9 @@ function Review() {
   return (
     <R.Container>
       <R.Review ref={reviewRef} onScroll={handleScroll}>
-        {reviews.length > 0 ? (
+        {isLoading ? (
+          <R.Empty>후기 불러오는 중...</R.Empty>
+        ) : reviews.length > 0 ? (
           reviews.map((item, index) => (
             <Chat
               key={item.reviewId}
