@@ -45,7 +45,13 @@ function Camera() {
           </C.whiteRegular20>
         </C.qrInfo>
 
-        <C.video ref={videoRef}></C.video>
+        <C.videoBox>
+          <C.video ref={videoRef} />
+          <C.corner className="top-left" />
+          <C.corner className="top-right" />
+          <C.corner className="bottom-left" />
+          <C.corner className="bottom-right" />
+        </C.videoBox>
       </C.background>
     </>
   );
