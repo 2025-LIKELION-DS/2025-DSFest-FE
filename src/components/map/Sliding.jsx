@@ -68,7 +68,7 @@ function SlidingPanelSection({
 
     if ((isMobile && panelHeight > midHeight) || (!isMobile && panelHeight > 490)) {
       setPanelHeight(maxHeight);
-    } else if ((isMobile && panelHeight > minHeight + 30) || (!isMobile && panelHeight > minHeight + 30)) {
+    } else if ((isMobile && panelHeight > minHeight + 70) || (!isMobile && panelHeight > 163)) {
       setPanelHeight(midHeight);
     } else {
       setPanelHeight(minHeight);
