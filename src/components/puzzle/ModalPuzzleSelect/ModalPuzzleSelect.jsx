@@ -21,12 +21,8 @@ import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalS
  * @author 김진효
  * **/
 
-const ModalPuzzleSelect = ({ number, boothName, boothInfo, boothHint = '', onClickR }) => {
+const ModalPuzzleSelect = ({ number, boothName, boothInfo, boothHint = '', onClickL, onClickR }) => {
   const navigate = useNavigate();
-
-  const handleMap = () => {
-    navigate('/map');
-  };
 
   return (
     <M.ModalPuzzleSelect>
@@ -48,12 +44,7 @@ const ModalPuzzleSelect = ({ number, boothName, boothInfo, boothHint = '', onCli
       </M.ModalContainer>
 
       {number !== 9 && (
-        <ButtonModalDual
-          contentL={'퍼즐 위치 확인'}
-          onClickL={handleMap}
-          contentR={'퍼즐 채우기'}
-          onClickR={onClickR}
-        />
+        <ButtonModalDual contentL={'퍼즐 위치 확인'} onClickL={onClickL} contentR={'퍼즐 채우기'} onClickR={onClickR} />
       )}
       {number === 9 && <ButtonModalSingle text={'퍼즐 채우기'} onClick={onClickR} />}
     </M.ModalPuzzleSelect>

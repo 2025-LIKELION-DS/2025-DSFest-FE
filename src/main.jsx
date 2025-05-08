@@ -25,6 +25,7 @@ root.render(
         </C.RightContainer>
       </C.Page>
     </BrowserRouter>
+    ,
   </StrictMode>,
 );
 

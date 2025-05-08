@@ -3,8 +3,7 @@ import palette from '@styles/theme';
 
 export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
-  max-width: 345px;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 229px;
 
   border-radius: 24px;
@@ -17,6 +16,15 @@ export const ModalPuzzleSelect = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  position: absolute;
+  bottom: 33px;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      width: 345px;
+    }
+  }
 `;
 
 export const ModalContainer = styled.div`
