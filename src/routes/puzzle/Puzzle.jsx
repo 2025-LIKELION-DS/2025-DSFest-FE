@@ -515,7 +515,7 @@ function Puzzle() {
                   </P.successPuzzle>
                 </>
               ) : (
-                <P.puzzle>
+                <P.puzzle onClick={(e) => e.stopPropagation()}>
                   <P.puzzleGrid>
                     <P.puzzle1
                       onClick={() => {
