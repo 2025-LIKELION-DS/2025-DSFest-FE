@@ -1,11 +1,15 @@
 import * as T from '@timetable/TimetableStyle';
-
-function TimeTable() {
+import TimeTable from '@timetable/components/TimeTable';
+function Timetable() {
   return (
     <>
-      <T.TimeTable>타임테이블</T.TimeTable>
+      <T.TimeTableContainer>
+        <T.TimeTable>
+          <TimeTable />
+        </T.TimeTable>
+      </T.TimeTableContainer>
     </>
   );
 }
 
-export default TimeTable;
+export default Timetable;

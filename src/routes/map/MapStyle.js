@@ -42,7 +42,7 @@ export const Map = styled.div`
   margin: 0;
   padding: 0;
   position: relative;
-  height: ${() => (window.innerWidth <= 768 ? `${window.innerHeight - 56}px` : '94%')};
+  height: calc(100% - 56px);
   background: #f4eef5;
 `;
 
@@ -66,6 +66,13 @@ export const Bar = styled.div`
 export const BoothContentArea = styled.div`
   flex: 1;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const BoothCard = styled.div`
