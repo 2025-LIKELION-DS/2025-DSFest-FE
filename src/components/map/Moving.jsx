@@ -127,8 +127,8 @@ function Moving({
 
   const dragConstraints = isMobile
     ? {
-        left: window.innerWidth - imageWidth - 210,
-        right: window.innerWidth - imageWidth + 210,
+        left: window.innerWidth - imageWidth,
+        right: window.innerWidth - imageWidth + 300,
         top: window.innerHeight <= 600 ? -imageHeight * 0.8 : -imageHeight * 0.5,
         bottom: -imageHeight * 0.01,
       }
