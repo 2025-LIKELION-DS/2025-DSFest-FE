@@ -33,44 +33,12 @@ export const Area = styled.div`
 
 export const Input = styled.div`
   width: calc(100% - 56px);
-  min-height: 24px;
-  max-height: 140px;
   padding: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   background: ${palette.grayscale.ef};
-  & textarea {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: none;
-    padding: 0;
-    color: ${palette.grayscale.text33};
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.35px;
-    resize: none;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-  & textarea::placeholder {
-    color: ${palette.grayscale.text88};
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.35px;
-  }
-  & textarea:focus {
-    outline: none;
-  }
-  & textarea::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const Button = styled.div`
@@ -90,4 +58,75 @@ export const Empty = styled.div`
   color: #aaa;
   font-size: 14px;
   text-align: center;
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 21px;
+  max-height: 140px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const Highlighter = styled.div`
+  max-height: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  pointer-events: none;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  z-index: 5;
+  background: transparent;
+
+  .normal-text {
+    color: ${palette.grayscale.text33};
+    text-decoration: unset;
+  }
+
+  span {
+    color: ${palette.mainPurple};
+    text-decoration: underline;
+  }
+`;
+
+export const StyledTextarea = styled.textarea`
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  border: none;
+  background: none;
+  caret-color: ${palette.grayscale.text33};
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  resize: none;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  color: transparent;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.35px;
+  &::placeholder {
+    color: ${palette.grayscale.text88};
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.35px;
+  }
+  &:focus {
+    outline: none;
+  }
 `;

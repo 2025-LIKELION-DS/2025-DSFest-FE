@@ -1,0 +1,38 @@
+{
+  "여운": "firework.json",
+  "축제": "firework.json",
+  "근화제": "firework.json",
+
+  "멋사": "likelion.json",
+  "사자": "likelion.json",
+  "어흥": "likelion.json",
+  "멋쟁이사자처럼": "likelion.json",
+
+  "음식": "food.json",
+  "푸드트럭": "food.json",
+  "꼬치": "food.json",
+  "츄러스": "food.json",
+  "소고기": "food.json",
+  "닭강정": "food.json",
+  "아이스크림": "food.json",
+  "하이볼": "food.json",
+  "칵테일": "food.json",
+  "피자": "food.json",
+  "타꼬야끼": "food.json",
+
+  "예쁘다": "pretty.json",
+  "예쁨": "pretty.json",
+  "이쁨": "pretty.json",
+  "이쁘다": "pretty.json",
+  "사랑해": "pretty.json",
+  "사랑": "pretty.json",
+  "하트": "pretty.json",
+
+  "덕새": "duksung.json",
+  "덕우": "duksung.json",
+  "덕성": "duksung.json",
+  "덕성여대": "duksung.json",
+  "여대": "duksung.json",
+  "신나": "duksung.json",
+  "재밌다": "duksung.json"
+}
