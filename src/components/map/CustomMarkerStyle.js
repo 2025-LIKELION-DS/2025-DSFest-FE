@@ -7,11 +7,12 @@ export const MarkerImage = styled.img`
   cursor: pointer;
   user-select: none;
   pointer-events: auto;
-  top: ${({ top, isActive }) => (top ? `${isActive ? 'auto' : '9px'}` : 'auto')};
-  left: ${({ left, isActive }) => (left ? `${isActive ? 'auto' : '9px'}` : 'auto')};
-  right: ${({ right, isActive }) => (right ? `${isActive ? 'atuo' : '14px'}` : 'auto')};
+  top: ${({ top, isActive }) => (top ? `${isActive ? 'auto' : '3px'}` : 'auto')};
+  left: ${({ left, isActive }) => (left ? `${isActive ? 'auto' : '3px'}` : 'auto')};
+  right: ${({ right, isActive }) => (right ? `${isActive ? 'atuo' : '8px'}` : 'auto')};
   width: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
   height: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
+  padding: 6px;
 `;
 
 export const Wrapper = styled.div`
