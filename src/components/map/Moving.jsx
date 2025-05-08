@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import CustomMarker from './CustomMarker';
 import * as M from '@map/MapStyle';
@@ -113,6 +113,18 @@ function Moving({
 }) {
   const isMobile = window.innerWidth <= 768;
 
+  useEffect(() => {
+    if (!isZoomed && setDragOffset) {
+      if (isMobile) {
+        const centerX = (window.innerWidth - imageWidth) / 2 + 10;
+        const centerY = (window.innerHeight - imageHeight) / 2;
+        setDragOffset({ x: centerX, y: centerY });
+      } else {
+        setDragOffset({ x: -130, y: -50 });
+      }
+    }
+  }, [isZoomed, imageWidth, imageHeight, setDragOffset, isMobile]);
+
   const dragConstraints = isMobile
     ? {
         left: window.innerWidth - imageWidth,
@@ -157,6 +169,8 @@ function Moving({
       position: 'absolute',
       width: imageWidth,
       height: imageHeight,
+      x: dragOffset?.x || 0,
+      y: dragOffset?.y || 0,
     },
     onDrag: (info) => dragOffset && setDragOffset(info.offset),
   };
