@@ -9,6 +9,7 @@ export const video = styled.video`
   object-fit: cover;
   border-radius: 10px;
 `;
+
 export const background = styled.div`
   width: 100%;
   height: calc(100% - 56px);
@@ -21,19 +22,20 @@ export const background = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const qrImg = styled.img`
   width: 40px;
   height: 40px;
 `;
 
 export const whiteRegular20 = styled.div`
-  font-weight: 700;
+  font-weight: 400;
   color: ${palette.grayscale.white};
   font-size: 20px;
 `;
 
 export const whiteBold20 = styled.span`
-  font-weight: 400;
+  font-weight: 700;
   color: ${palette.grayscale.white};
   font-size: 20px;
 `;
@@ -51,6 +53,10 @@ export const videoBox = styled.div`
   width: 80%;
   height: 60svh;
   border-radius: 10px;
+
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    height: 570px;
+  }
 `;
 
 export const corner = styled.div`

@@ -6,11 +6,9 @@ import successPuzzleImg from '@assets/puzzle/completed_puzzle.png';
 
 export const puzzlePage = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    @media (min-height: 852px) {
-      position: relative;
-      width: 393px;
-      height: 796px;
-    }
+    position: relative;
+    width: 393px;
+    height: 796px;
   }
 `;
 
@@ -198,10 +196,9 @@ export const completedPuzzleCountInfo = styled.div`
 export const completedPuzzle = styled.div``;
 
 export const glowPuzzleIcon = styled.img`
-  transform: rotate(19.763deg);
   aspect-ratio: 61.17/60.32;
   position: relative;
-  left: 20px;
+  left: 10px;
 `;
 
 export const CompletedInfo = styled.div`
