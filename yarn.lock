@@ -10,6 +10,7 @@ __metadata:
   resolution: "2025-dsfest-fe@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.22.0"
+    "@lottiefiles/react-lottie-player": "npm:^3.6.0"
     "@types/react": "npm:^19.0.10"
     "@types/react-dom": "npm:^19.0.4"
     "@vitejs/plugin-react": "npm:^4.3.4"
@@ -22,6 +23,7 @@ __metadata:
     framer-motion: "npm:^12.9.7"
     globals: "npm:^16.0.0"
     html2canvas: "npm:^1.4.1"
+    lottie-react: "npm:^2.4.1"
     motion: "npm:^12.9.4"
     prettier: "npm:^3.5.3"
     qr-scanner: "npm:^1.4.2"
@@ -628,6 +630,17 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10c0/3d1ce6ebc69df9682a5a8896b414c6537e428a1d68b02fcc8363b04284a8ca0df04d0ee3013132252ab14f2527bc13bea6526a912ecb5658f0e39fd2860b4df4
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/react-lottie-player@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "@lottiefiles/react-lottie-player@npm:3.6.0"
+  dependencies:
+    lottie-web: "npm:^5.12.2"
+  peerDependencies:
+    react: 16 - 19
+  checksum: 10c0/a27e36b257bd44e208a027b5c91abee8a24682cd3cf168e32ec164006c01021a21df83dfc6e3350263b360d5b71b3e884ff8aca7886c5828bda69910360b85b4
   languageName: node
   linkType: hard
 
@@ -2412,6 +2425,25 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 10c0/655d110220983c1a4b9c0c679a2e8016d4b67f6e9c7b5435ff5979ecdb20d0813f4dec0a08674fcbdd4846a3f07edbb50a36811fd37930b94aaa0d9daceb017e
+  languageName: node
+  linkType: hard
+
+"lottie-react@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "lottie-react@npm:2.4.1"
+  dependencies:
+    lottie-web: "npm:^5.10.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/7f6a0a2cf2af25deabe7b4d4c9917e47d12016673613c59dcdd8ef52e10e914dd0c1f71d4a275d56aaba03fe9d85b333087f7c8d40a8f967ece4a0444c7a3cdf
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.10.2, lottie-web@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "lottie-web@npm:5.12.2"
+  checksum: 10c0/0aeaf631b10a76afd025df70c2a1486543530708e07a316946c08e55891dac483ffbaf2bf3648ae0b9c54c733118a0a086fd150aa76f7848606214c67ad72c30
   languageName: node
   linkType: hard
 
