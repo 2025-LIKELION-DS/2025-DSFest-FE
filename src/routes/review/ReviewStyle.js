@@ -63,7 +63,7 @@ export const Empty = styled.div`
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  min-height: 21px;
+  min-height: 24px;
   max-height: 140px;
   overflow-y: auto;
   scrollbar-width: none;
