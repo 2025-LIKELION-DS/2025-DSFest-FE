@@ -28,8 +28,10 @@ __metadata:
     prettier: "npm:^3.5.3"
     qr-scanner: "npm:^1.4.2"
     react: "npm:^19.0.0"
+    react-device-detect: "npm:^2.2.3"
     react-dom: "npm:^19.0.0"
     react-qr-code: "npm:^2.0.15"
+    react-responsive: "npm:^10.0.1"
     react-router-dom: "npm:^7.5.2"
     react-slick: "npm:^0.30.3"
     slick-carousel: "npm:^1.8.1"
@@ -1383,6 +1385,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-mediaquery@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "css-mediaquery@npm:0.1.2"
+  checksum: 10c0/b7825a78f52ce8a8198e004fcad0d7be1d3c9a0463ecd05ba31a0f2c94fb81468ad6f4d7bf715a6ca775696e7a17500c2a339b5216a6d0f789cbf78f9454d048
+  languageName: node
+  linkType: hard
+
 "css-to-react-native@npm:3.2.0":
   version: 3.2.0
   resolution: "css-to-react-native@npm:3.2.0"
@@ -2188,6 +2197,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hyphenate-style-name@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "hyphenate-style-name@npm:1.1.0"
+  checksum: 10c0/bfe88deac2414a41a0d08811e277c8c098f23993d6a1eb17f14a0f11b54c4d42865a63d3cfe1914668eefb9a188e2de58f38b55a179a238fd1fef606893e194f
+  languageName: node
+  linkType: hard
+
 "iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
@@ -2488,6 +2504,15 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^12.0.0"
   checksum: 10c0/c40efb5e5296e7feb8e37155bde8eb70bc57d731b1f7d90e35a092fde403d7697c56fb49334d92d330d6f1ca29a98142036d6480a12681133a0a1453164cb2f0
+  languageName: node
+  linkType: hard
+
+"matchmediaquery@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "matchmediaquery@npm:0.4.2"
+  dependencies:
+    css-mediaquery: "npm:^0.1.2"
+  checksum: 10c0/5a2d2621e18882f0a2854b830c9bf0b8e5d766cce680bd841274a37035429dc587bdf6093e70a5d04915a3f76f9e0cb2adf8582ef0dab2f56977dd5dbc88f58e
   languageName: node
   linkType: hard
 
@@ -2931,7 +2956,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.1, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -2972,6 +2997,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-device-detect@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "react-device-detect@npm:2.2.3"
+  dependencies:
+    ua-parser-js: "npm:^1.0.33"
+  peerDependencies:
+    react: ">= 0.14.0"
+    react-dom: ">= 0.14.0"
+  checksum: 10c0/396bbeeab0cb21da084c67434d204c9cf502fad6c683903313084d3f6487950a36a34f9bf67ccf5c1772a1bb5b79a2a4403fcfe6b51d93877db4c2d9f3a3a925
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^19.0.0":
   version: 19.1.0
   resolution: "react-dom@npm:19.1.0"
@@ -3006,6 +3043,20 @@ __metadata:
   version: 0.17.0
   resolution: "react-refresh@npm:0.17.0"
   checksum: 10c0/002cba940384c9930008c0bce26cac97a9d5682bc623112c2268ba0c155127d9c178a9a5cc2212d560088d60dfd503edd808669a25f9b377f316a32361d0b23c
+  languageName: node
+  linkType: hard
+
+"react-responsive@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "react-responsive@npm:10.0.1"
+  dependencies:
+    hyphenate-style-name: "npm:^1.0.0"
+    matchmediaquery: "npm:^0.4.2"
+    prop-types: "npm:^15.6.1"
+    shallow-equal: "npm:^3.1.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/978bb2dae949774af629fe2fb84df9ecd6076a9a11b3e3790324f466f7e6dcac6ab22f6f4f51a4f69341656d375f181e5ce5a2b945128a557d468afe88d244ec
   languageName: node
   linkType: hard
 
@@ -3193,6 +3244,13 @@ __metadata:
   version: 2.7.1
   resolution: "set-cookie-parser@npm:2.7.1"
   checksum: 10c0/060c198c4c92547ac15988256f445eae523f57f2ceefeccf52d30d75dedf6bff22b9c26f756bd44e8e560d44ff4ab2130b178bd2e52ef5571bf7be3bd7632d9a
+  languageName: node
+  linkType: hard
+
+"shallow-equal@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "shallow-equal@npm:3.1.0"
+  checksum: 10c0/57079f8741a86b25229b58b86df5d503414aca324e486ec7ddb2423db65914c80c8282149ef66a6803092847dc0d840da8fc338ea5027bbf4fc877f944df9bf6
   languageName: node
   linkType: hard
 
@@ -3463,6 +3521,15 @@ __metadata:
   dependencies:
     prelude-ls: "npm:^1.2.1"
   checksum: 10c0/7b3fd0ed43891e2080bf0c5c504b418fbb3e5c7b9708d3d015037ba2e6323a28152ec163bcb65212741fa5d2022e3075ac3c76440dbd344c9035f818e8ecee58
+  languageName: node
+  linkType: hard
+
+"ua-parser-js@npm:^1.0.33":
+  version: 1.0.40
+  resolution: "ua-parser-js@npm:1.0.40"
+  bin:
+    ua-parser-js: script/cli.js
+  checksum: 10c0/2b6ac642c74323957dae142c31f72287f2420c12dced9603d989b96c132b80232779c429b296d7de4012ef8b64e0d8fadc53c639ef06633ce13d785a78b5be6c
   languageName: node
   linkType: hard
 

@@ -2,9 +2,11 @@ import * as P from '@puzzle/PuzzleStyle';
 import palette from '@styles/theme';
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import puzzleData from '@data/puzzleData.json';
+import { useMediaQuery } from 'react-responsive';
 
+import axios from 'axios';
+
+import puzzleData from '@data/puzzleData.json';
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
 import glowPuzzleIcon from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
@@ -364,7 +366,9 @@ function Puzzle() {
   };
 
   //기기가 모바일인지 확인
-  const mobile = /Mobi/i.test(window.navigator.userAgent);
+  const mobile = useMediaQuery({
+    query: '(hover: none) and (pointer: coarse)',
+  });
 
   const [cameraOverlay, setCameraOverlay] = useState(false);
 
