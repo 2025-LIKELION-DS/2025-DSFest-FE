@@ -65,7 +65,7 @@ export const Phone = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  height: 100dvh;
+  height: 100svh;
 
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 393px;

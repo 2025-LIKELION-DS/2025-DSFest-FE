@@ -12,7 +12,7 @@ export const Review = styled.div`
   height: 100%;
   padding: 20px 20px;
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
