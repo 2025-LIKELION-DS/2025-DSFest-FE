@@ -111,7 +111,7 @@ function Moving({
   selectedTags,
   onBackgroundClick,
 }) {
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 600;
 
   useEffect(() => {
     if (!isZoomed && setDragOffset) {
@@ -127,15 +127,15 @@ function Moving({
 
   const dragConstraints = isMobile
     ? {
-        left: window.innerWidth - imageWidth,
-        right: 0,
-        top: window.innerHeight <= 600 ? -imageHeight * 0.35 : -imageHeight * 0.25,
+        left: window.innerWidth - imageWidth - 210,
+        right: window.innerWidth - imageWidth + 210,
+        top: window.innerHeight <= 600 ? -imageHeight * 0.8 : -imageHeight * 0.5,
         bottom: -imageHeight * 0.01,
       }
     : {
         left: -imageWidth * 0.4,
         right: -imageWidth * 0.005,
-        top: window.innerHeight <= 600 ? -imageHeight * 0.35 : -imageHeight * 0.2,
+        top: window.innerHeight <= 600 ? -imageHeight * 0.35 : -imageHeight * 0.5,
         bottom: -imageHeight * 0.01,
       };
 

@@ -8,11 +8,10 @@ export const MarkerImage = styled.img`
   user-select: none;
   pointer-events: auto;
   top: ${({ top, isActive }) => (top ? `${isActive ? 'auto' : '9px'}` : 'auto')};
-  left: ${({ left, isActive }) => (left ? `${isActive ? 'auto' : '10px'}` : 'auto')};
-  right: ${({ right, isActive }) => (right ? `${isActive ? 'atuo' : '15px'}` : 'auto')};
-  width: ${({ isActive }) => `${isActive ? '30px' : undefined}`};
-  height: ${({ isActive }) => `${isActive ? '30px' : undefined}`};
-  box-shadow: 0px 0px 8px 0px ${palette.styles.white50};
+  left: ${({ left, isActive }) => (left ? `${isActive ? 'auto' : '9px'}` : 'auto')};
+  right: ${({ right, isActive }) => (right ? `${isActive ? 'atuo' : '14px'}` : 'auto')};
+  width: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
+  height: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
 `;
 
 export const Wrapper = styled.div`

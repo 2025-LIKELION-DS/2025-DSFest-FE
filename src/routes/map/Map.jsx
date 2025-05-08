@@ -116,7 +116,7 @@ function Map() {
 
   // 퀴즈 props 받기
   const location = useLocation();
-  const boothIdFromPuzzle = location.state?.boothId;
+  const boothIdFromPuzzle = Number(location.state?.boothId);
 
   useEffect(() => {
     if (!isZoomed) {

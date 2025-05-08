@@ -21,7 +21,7 @@ export const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  margin-top: -50px;
+  margin-top: -57px;
   overflow: hidden;
   background-color: #f4eef5;
 `;
