@@ -90,6 +90,23 @@ function Review({ scrollTargetRef }) {
     };
 
     loadInitial();
+
+    const handleIOSKeyboard = () => {
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isKeyboardOpen = window.visualViewport && window.visualViewport.height < window.innerHeight;
+
+      if (isIOS && isKeyboardOpen && textareaRef.current) {
+        if (document.activeElement !== textareaRef.current) {
+          textareaRef.current.focus();
+        }
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleIOSKeyboard);
+
+    return () => {
+      window.visualViewport?.removeEventListener('resize', handleIOSKeyboard);
+    };
   }, []);
 
   useEffect(() => {
