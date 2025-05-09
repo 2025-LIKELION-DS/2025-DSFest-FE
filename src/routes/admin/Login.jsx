@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as L from '@admin/LoginStyle';
-import { loginAdmin } from '@utils/admin';
+import { loginAdmin, isAdminLoggedIn } from '@utils/admin';
 import Input from '@components/admin/InputAdmin/InputAdmin';
 import Button from '@components/admin/ButtonAdminSingle/ButtonAdminSingle';
 import palette from '@styles/theme';
@@ -10,6 +10,12 @@ function Login() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAdminLoggedIn()) {
+      navigate('/admin/menu', { replace: true });
+    }
+  }, [navigate]);
 
   const handleLogin = () => {
     if (loginAdmin(id, password)) {
