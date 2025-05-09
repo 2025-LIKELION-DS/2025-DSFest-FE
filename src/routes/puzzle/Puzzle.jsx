@@ -15,6 +15,7 @@ import check from '@assets/puzzle/icon-check.svg';
 import whiteCheck from '@assets/puzzle/icon-white-check.svg';
 import redErrorIcon from '@assets/puzzle/icon-error-red.svg';
 import phoneIcon from '@assets/puzzle/icon-mobile.svg';
+import modalIcon from '@assets/puzzle/icon-pupple.svg';
 
 import puzzle1Default from '@assets/puzzle/puzzle_default-1.png';
 import puzzle2Default from '@assets/puzzle/puzzle_default-2.png';
@@ -67,6 +68,9 @@ function Puzzle() {
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState('');
   const [qrSuccess, setQrSuccess] = useState(false);
+  const [puzzleNumber, setPuzzleNumber] = useState(0);
+  const [puzzleToast, setPuzzleToast] = useState(false);
+
   //qr 인증 성공 or 실패 모달 props
   const [value, setValue] = useState('');
   const [right, setRight] = useState(true);
@@ -105,6 +109,7 @@ function Puzzle() {
       }
     } catch (error) {
       console.log(error);
+      setRight(false);
     }
   };
 
@@ -170,6 +175,8 @@ function Puzzle() {
       console.error(error);
     }
   };
+
+  const [loginErrorMessage, setLoginErrorMessage] = useState('');
 
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
@@ -248,15 +255,28 @@ function Puzzle() {
         await getPuzzleInfo();
       }
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error.response.data);
       setLoginFailed(true);
+      if (error.response.data.error === 'DUPLICATE_USERNAME') {
+        setLoginErrorMessage('중복된 닉네임 혹은 틀린 비밀번호입니다.');
+      } else if (error.response.data.error === 'BAD_REQUEST') {
+        setLoginErrorMessage('닉네임은 최대 10자까지 입력 가능합니다.');
+      }
     }
   };
 
   //QR
   const showQrCamera = () => {
-    navigate('/camera');
+    navigate('/camera', {
+      state: { puzzleNumber: puzzleNumber },
+    });
   };
+
+  useEffect(() => {
+    if (location.state?.puzzleNumber !== undefined) {
+      setPuzzleNumber(location.state?.puzzleNumber);
+    }
+  }, [location.state]);
 
   //qr 데이터 받아오기
   useEffect(() => {
@@ -272,36 +292,38 @@ function Puzzle() {
       const token = localStorage.getItem('token');
       const response = await axios.post(
         `${API_KEY}/bingo/qr`,
-        { value: qrData },
+        { value: qrData, puzzleIndex: location.state?.puzzleNumber },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
       );
+      console.log(response.data);
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
-        setQrSuccess(true);
-        setModalProps({
-          state: true,
-          number: response.data.data.puzzleIndex,
-          boothName: response.data.data.placeName,
-        });
-        setShowModal('qrCheckModal');
+        if (response.data.data.success === false) {
+          console.log('이미 인증');
+        } else {
+          setQrSuccess(true);
+          setModalProps({
+            state: true,
+            number: response.data.data.puzzleIndex,
+            boothName: response.data.data.placeName,
+          });
+          setShowModal('qrCheckModal');
+        }
       }
-      if (response.data.isSuccess === false) {
+    } catch (error) {
+      console.log(error.response.data.error);
+      if (error.response.data.error) {
+        setPuzzleToast(true);
+      } else {
         setQrSuccess(false);
         setModalProps({
           state: false,
         });
         setShowModal('qrCheckModal');
       }
-    } catch (error) {
-      console.log(error);
-      setQrSuccess(false);
-      setModalProps({
-        state: false,
-      });
-      setShowModal('qrCheckModal');
     } finally {
       navigate(location.pathname, { replace: true, state: {} });
     }
@@ -321,14 +343,18 @@ function Puzzle() {
         },
       );
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
-        setQrSuccess(true);
-        setModalProps({
-          state: true,
-          number: response.data.data.puzzleIndex,
-          boothName: response.data.data.placeName,
-        });
-        setShowModal('qrCheckModal');
-        await getPuzzleInfo();
+        if (response.data.data.success === false) {
+          //이미 완성된 퍼즐
+        } else {
+          setQrSuccess(true);
+          setModalProps({
+            state: true,
+            number: response.data.data.puzzleIndex,
+            boothName: response.data.data.placeName,
+          });
+          setShowModal('qrCheckModal');
+          await getPuzzleInfo();
+        }
       }
     } catch (error) {
       console.log(error.response.data.message);
@@ -369,16 +395,28 @@ function Puzzle() {
   const mobile = useMediaQuery({
     query: '(hover: none) and (pointer: coarse)',
   });
+  const galaxy = /Android|Tablet/i.test(window.navigator.userAgent);
 
   const [cameraOverlay, setCameraOverlay] = useState(false);
 
   const puzzleBtnHandler = () => {
-    if (!mobile) {
+    if (!mobile && !galaxy) {
       setCameraOverlay(true);
     } else {
       showQrCamera();
     }
   };
+
+  //overlay 화면 3초 후 꺼지도록
+  useEffect(() => {
+    if (cameraOverlay) {
+      const timer = setTimeout(() => {
+        setCameraOverlay(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [cameraOverlay]);
+
   return (
     <P.puzzlePage>
       <P.puzzleMain onClick={() => (showModal ? modalOffHandler() : undefined)}>
@@ -466,12 +504,12 @@ function Puzzle() {
                 <ButtonCommon
                   text={'로그인'}
                   color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-                  onClick={() => handleLogin()}
+                  onClick={isLoginEnabled ? () => handleLogin() : null}
                 />
                 {loginFailed ? (
                   <P.loginFailed>
                     <img src={redErrorIcon} />
-                    <P.loginFailedInfo>중복된 닉네임 혹은 틀린 비밀번호입니다.</P.loginFailedInfo>
+                    <P.loginFailedInfo>{loginErrorMessage}</P.loginFailedInfo>
                   </P.loginFailed>
                 ) : (
                   <></>
@@ -527,6 +565,7 @@ function Puzzle() {
                     <P.puzzle1
                       onClick={() => {
                         puzzleValue.index1 ? null : puzzleHandler(0);
+                        setPuzzleNumber(1);
                       }}
                       onMouseOver={() => handleMouseOver('index1')}
                       onMouseOut={() => handleMouseOut('index1')}
@@ -535,6 +574,7 @@ function Puzzle() {
                     <P.puzzle2
                       onClick={() => {
                         puzzleValue.index2 ? null : puzzleHandler(1);
+                        setPuzzleNumber(2);
                       }}
                       onMouseOver={() => handleMouseOver('index2')}
                       onMouseOut={() => handleMouseOut('index2')}
@@ -542,6 +582,7 @@ function Puzzle() {
                     />
                     <P.puzzle3
                       onClick={() => {
+                        setPuzzleNumber(3);
                         puzzleValue.index3 ? null : puzzleHandler(2);
                       }}
                       onMouseOver={() => handleMouseOver('index3')}
@@ -550,6 +591,7 @@ function Puzzle() {
                     />
                     <P.puzzle4
                       onClick={() => {
+                        setPuzzleNumber(4);
                         puzzleValue.index4 ? null : puzzleHandler(3);
                       }}
                       onMouseOver={() => handleMouseOver('index4')}
@@ -558,6 +600,7 @@ function Puzzle() {
                     />
                     <P.puzzle5
                       onClick={() => {
+                        setPuzzleNumber(5);
                         puzzleValue.index5 ? null : puzzleHandler(4);
                       }}
                       onMouseOver={() => handleMouseOver('index5')}
@@ -566,6 +609,7 @@ function Puzzle() {
                     />
                     <P.puzzle6
                       onClick={() => {
+                        setPuzzleNumber(6);
                         puzzleValue.index6 ? null : puzzleHandler(5);
                       }}
                       onMouseOver={() => handleMouseOver('index6')}
@@ -574,6 +618,7 @@ function Puzzle() {
                     />
                     <P.puzzle7
                       onClick={() => {
+                        setPuzzleNumber(7);
                         puzzleValue.index7 ? null : puzzleHandler(6);
                       }}
                       onMouseOver={() => handleMouseOver('index7')}
@@ -582,6 +627,7 @@ function Puzzle() {
                     />
                     <P.puzzle8
                       onClick={() => {
+                        setPuzzleNumber(8);
                         puzzleValue.index8 ? null : puzzleHandler(7);
                       }}
                       onMouseOver={() => handleMouseOver('index8')}
@@ -590,6 +636,7 @@ function Puzzle() {
                     />
                     <P.puzzle9
                       onClick={() => {
+                        setPuzzleNumber(9);
                         puzzleValue.index9 ? null : puzzleHandler(8);
                       }}
                       onMouseOver={() => handleMouseOver('index9')}
@@ -616,12 +663,12 @@ function Puzzle() {
           {completed ? (
             <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
           ) : end ? (
-            <ButtonCommon text={'퍼즐 완성'} color={`${palette.grayscale.text88}`} />
+            <ButtonCommon text={'퍼즐 완성'} color={`${palette.grayscale.text88}`} onClick={null} />
           ) : (
             <ButtonCommon
               text={'퍼즐 완성'}
               color={success ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-              onClick={success ? handleSuccess : ''}
+              onClick={success ? handleSuccess : null}
             />
           )}
         </P.endButton>
@@ -645,6 +692,7 @@ function Puzzle() {
             boothHint={modalProps.boothHint}
             onClickL={() => goMap(modalProps.number)}
             onClickR={() => puzzleBtnHandler()}
+            onClose={() => modalOffHandler()}
           />
         )}
         {/* qr 인증 성공 or 실패 모달 */}
@@ -656,6 +704,7 @@ function Puzzle() {
               number={modalProps.number}
               boothName={modalProps.boothName}
               onClick={() => puzzleSuccessHandler(modalProps.number)}
+              onClose={() => modalOffHandler()}
             />
           ) : (
             <ModalPuzzleApprove
@@ -665,6 +714,7 @@ function Puzzle() {
               right={right}
               onClickL={() => showQrCamera()}
               onClickR={() => boothCheckHandler()}
+              onClose={() => modalOffHandler()}
             />
           ))}
         {showModal === 'goodsModal' && (
@@ -673,9 +723,22 @@ function Puzzle() {
             onChange={inputGoodsPw}
             onClickL={() => modalOffHandler()}
             onClickR={() => handleGoods(goodsPW)}
+            onClose={() => modalOffHandler()}
+            right={right}
           />
         )}
       </P.modal>
+      {puzzleToast && (
+        <P.ToastBox>
+          <P.ToastContent>
+            <img src={modalIcon} />
+            <P.ToastMessage>
+              <div>퍼즐 번호에 맞는</div>
+              <div>QR코드를 스캔해주세요</div>
+            </P.ToastMessage>
+          </P.ToastContent>
+        </P.ToastBox>
+      )}
     </P.puzzlePage>
   );
 }

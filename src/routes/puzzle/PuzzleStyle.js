@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import palette from '@styles/theme';
 
 import emptyPuzzleImg from '@assets/puzzle/empty_puzzle.png';
@@ -127,12 +127,17 @@ export const userInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 70%;
 `;
 
 export const userName = styled.div`
   color: ${palette.grayscale.black};
   font-weight: 600;
   font-size: 20px;
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const completedTitle = styled.div`
@@ -428,13 +433,73 @@ export const modal = styled.div`
 
 export const ovelay = styled.div`
   position: absolute;
-  z-index: 3000;
+  top: -56px;
+  z-index: 1000;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 56px);
   background-color: ${palette.grayscale.black70};
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const ToastShow = keyframes`
+  0%{
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  15%{
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  85%{
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100%{
+    transform: scaleX(0);
+    opacity: 0;
+  }
+`;
+
+export const ToastBox = styled.div`
+  padding: 0 56px;
+  box-sizing: border-box;
+
+  animation: ${ToastShow} 1.5s ease-in-out forwards;
+  transform-origin: center;
+
+  position: absolute;
+  bottom: 36px;
+
+  width: 100%;
+  z-index: 999;
+`;
+
+export const ToastContent = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  padding: 19px 4px;
+  border-radius: 60px;
+  background-color: ${palette.grayscale.white};
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  color: ${palette.grayscale.black};
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 130%;
+`;
+
+export const ToastMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
