@@ -1,5 +1,4 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
-import ScrollToTop from '@hooks/ScrollToTop';
 import GlobalStyle from '@styles/GlobalStyle';
 import Error from '@routes/Error';
 import Main from '@main/Main';
@@ -24,13 +23,12 @@ const Layout = () => {
   return (
     <>
       <Topbar />
-      <ScrollToTop />
       <Outlet />
     </>
   );
 };
 
-function App() {
+function App({ scrollTargetRef }) {
   return (
     <>
       <GlobalStyle />
@@ -40,7 +38,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/puzzle" element={<Puzzle />} />
           <Route path="/camera" element={<Camera />} />
-          <Route path="/review" element={<Review />} />
+          <Route path="/review" element={<Review scrollTargetRef={scrollTargetRef} />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/notice" element={<List />} />
           <Route path="/notice/:id" element={<Detail />} />
