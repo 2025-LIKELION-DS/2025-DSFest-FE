@@ -5,7 +5,7 @@ import TLMarker from '@timetable/components/TLMarker';
 import TimeLineScheduleBox from '@timetable/components/TLSchedule';
 import scheduleData from '@timetable/components/ScheduleData';
 // 이미지
-import Button from '@assets/timetable/Button.svg';
+import Button from '@assets/timetable/Button.png';
 import Lock from '@assets/timetable/Lock.svg';
 
 const TimeLineHeader = ({ selectedDate }) => {

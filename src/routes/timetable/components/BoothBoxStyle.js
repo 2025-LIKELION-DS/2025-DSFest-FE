@@ -56,8 +56,14 @@ export const BoxCon = styled.div.attrs((props) => ({
     line-height: normal;
     letter-spacing: -0.35px;
     /* 작은 화면에서만 폰트 축소 */
-    @media (max-width: 357px) {
+    @media (max-width: 372px) {
       font-size: ${(props) => (props.special ? '12px' : '14px')};
+    }
+    @media (max-width: 340px) {
+      font-size: ${(props) => (props.special ? '11px' : '13px')};
+    }
+    @media (max-width: 324px) {
+      font-size: ${(props) => (props.special ? '9px' : '11px')};
     }
   }
 `;
@@ -78,6 +84,12 @@ export const Time = styled.div`
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.25px;
+    @media (max-width: 340px) {
+      font-size: ${(props) => (props.special ? '8px' : '10px')};
+    }
+    @media (max-width: 324px) {
+      font-size: ${(props) => (props.special ? '6px' : '8px')};
+    }
   }
 `;
 
