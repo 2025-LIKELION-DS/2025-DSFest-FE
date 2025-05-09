@@ -27,7 +27,7 @@ const eventsByDate = {
         timeRange: '15:00 - 17:00',
         top: 173.5,
         height: 72,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
 
@@ -36,7 +36,7 @@ const eventsByDate = {
         timeRange: '17:30 - 20:00',
         top: 264,
         height: 88,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
       {
@@ -44,7 +44,7 @@ const eventsByDate = {
         timeRange: '20:00 - 21:30',
         top: 353,
         height: 55.8,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
     ],
@@ -75,7 +75,7 @@ const eventsByDate = {
         timeRange: '12:00 - 13:30',
         top: 64,
         height: 55.5,
-        left: 50,
+        left: 52,
         borderColor: palette.puzzle.default,
       },
       {
@@ -83,7 +83,7 @@ const eventsByDate = {
         timeRange: '14:00 - 15:30',
         top: 136,
         height: 55.5,
-        left: 50,
+        left: 52,
         borderColor: palette.puzzle.default,
       },
       {
@@ -91,7 +91,7 @@ const eventsByDate = {
         timeRange: '18:00 - 20:00',
         top: 280,
         height: 73.5,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
       {
@@ -99,7 +99,7 @@ const eventsByDate = {
         timeRange: '18:30 - 20:00',
         top: 352,
         height: 20,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
     ],
@@ -129,7 +129,7 @@ const eventsByDate = {
         title: '여운의 조각',
         top: 208,
         height: 18.5,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
       {
@@ -137,7 +137,7 @@ const eventsByDate = {
         timeRange: '16:30 -19:00',
         top: 227,
         height: 90,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
       {
@@ -145,7 +145,7 @@ const eventsByDate = {
         timeRange: '19:00 - 20:00',
         top: 317.5,
         height: 35,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
       {
@@ -153,7 +153,7 @@ const eventsByDate = {
         timeRange: '20:00 - 21:30',
         top: 352,
         height: 55.8,
-        left: 50,
+        left: 52,
         borderColor: palette.violet.violet200,
       },
     ],
