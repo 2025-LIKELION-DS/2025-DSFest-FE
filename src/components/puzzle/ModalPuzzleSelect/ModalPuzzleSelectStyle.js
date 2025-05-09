@@ -92,3 +92,17 @@ export const Hint = styled(Info)`
 
   margin-top: -1px;
 `;
+
+export const CloseDiv = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    cursor: pointer;
+  }
+`;

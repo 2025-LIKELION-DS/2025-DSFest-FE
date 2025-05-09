@@ -140,3 +140,17 @@ export const Warning = styled.div`
     margin: 0;
   }
 `;
+
+export const CloseDiv = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    cursor: pointer;
+  }
+`;
