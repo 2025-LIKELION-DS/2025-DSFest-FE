@@ -11,10 +11,6 @@ export const Review = styled.div`
   width: calc(100% - 40px);
   padding: 20px 20px 76px;
   flex: 1;
-  /* overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  } */
 `;
 
 export const Area = styled.div`
