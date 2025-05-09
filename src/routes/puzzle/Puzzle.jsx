@@ -109,6 +109,7 @@ function Puzzle() {
       }
     } catch (error) {
       console.log(error);
+      setRight(false);
     }
   };
 
@@ -723,6 +724,7 @@ function Puzzle() {
             onClickL={() => modalOffHandler()}
             onClickR={() => handleGoods(goodsPW)}
             onClose={() => modalOffHandler()}
+            right={right}
           />
         )}
       </P.modal>
