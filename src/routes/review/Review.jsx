@@ -11,9 +11,11 @@ function Review({ scrollTargetRef }) {
   const [inputValue, setInputValue] = useState('');
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFocus, setIsFocus] = useState(false);
   const textareaRef = useRef(null);
   const reviewRef = useRef(null);
   const wrapperRef = useRef(null);
+  const initialScrollY = useRef(0);
 
   const highlightKeywords = (text) => {
     const keywords = Object.keys(keywordMap);
@@ -100,6 +102,32 @@ function Review({ scrollTargetRef }) {
     if (!isLoading) scrollToBottom();
   }, [isLoading]);
 
+  useEffect(() => {
+    const handleScrollLock = () => {
+      const currentY = window.scrollY;
+
+      if (isFocus) {
+        if (!initialScrollY.current) {
+          initialScrollY.current = currentY;
+        }
+
+        if (currentY > initialScrollY.current) {
+          window.scrollTo(0, initialScrollY.current);
+        }
+      } else {
+        initialScrollY.current = 0;
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleScrollLock);
+    window.addEventListener('scroll', handleScrollLock);
+
+    return () => {
+      window.visualViewport?.removeEventListener('resize', handleScrollLock);
+      window.removeEventListener('scroll', handleScrollLock);
+    };
+  }, [isFocus]);
+
   return (
     <>
       <R.Review ref={reviewRef}>
@@ -127,6 +155,8 @@ function Review({ scrollTargetRef }) {
               value={inputValue}
               onInput={handleInput}
               placeholder="후기를 작성해주세요!"
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
             />
           </R.Wrapper>
         </R.Input>
