@@ -1,6 +1,6 @@
 import * as M from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoodsStyle';
 
-import Glow1 from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
+import Glow1 from '@assets/puzzle/puzzle-piece-glow-1-grain.png';
 import Glow2 from '@assets/puzzle/puzzle-piece-glow-2-grain.svg';
 import Close from '@assets/puzzle/Modal-close.svg';
 import Warning from '@assets/puzzle/icon-error-red.svg';
@@ -26,11 +26,11 @@ const ModalPuzzleGoods = ({ value, onChange, onClickL, onClickR, onClose, right 
   return (
     <>
       <M.ModalPuzzleSelect>
-        <M.ImgContainer width={'115px'} $top={'-5%'} $left={'-5%'}>
+        <M.ImgContainer width={'115px'} $top={'-10px'} $left={'-10px'}>
           <img src={Glow1} alt="퍼즐1" />
         </M.ImgContainer>
 
-        <M.ImgContainer width={'75px'} $top={'8%'} $left={'13%'}>
+        <M.ImgContainer width={'75px'} $top={'20px'} $left={'55px'}>
           <img src={Glow2} alt="퍼즐2" />
         </M.ImgContainer>
 
