@@ -732,7 +732,10 @@ function Puzzle() {
         <P.ToastBox>
           <P.ToastContent>
             <img src={modalIcon} />
-            <P.ToastMessage>퍼즐 번호에 맞는 QR코드를 스캔해주세요</P.ToastMessage>
+            <P.ToastMessage>
+              <div>퍼즐 번호에 맞는</div>
+              <div>QR코드를 스캔해주세요</div>
+            </P.ToastMessage>
           </P.ToastContent>
         </P.ToastBox>
       )}

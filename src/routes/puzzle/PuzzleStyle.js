@@ -471,15 +471,11 @@ export const ToastBox = styled.div`
   animation: ${ToastShow} 1.5s ease-in-out forwards;
   transform-origin: center;
 
-  position: ${(props) => props.position};
+  position: absolute;
   bottom: 36px;
 
   width: 100%;
   z-index: 999;
-
-  @media (max-height: 830px) {
-    position: sticky;
-  }
 `;
 
 export const ToastContent = styled.div`
@@ -491,9 +487,10 @@ export const ToastContent = styled.div`
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 6px;
+  gap: 20px;
 
   color: ${palette.grayscale.black};
   font-size: 17px;
@@ -501,4 +498,8 @@ export const ToastContent = styled.div`
   line-height: 130%;
 `;
 
-export const ToastMessage = styled.div``;
+export const ToastMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
