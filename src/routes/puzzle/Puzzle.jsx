@@ -15,6 +15,7 @@ import check from '@assets/puzzle/icon-check.svg';
 import whiteCheck from '@assets/puzzle/icon-white-check.svg';
 import redErrorIcon from '@assets/puzzle/icon-error-red.svg';
 import phoneIcon from '@assets/puzzle/icon-mobile.svg';
+import modalIcon from '@assets/puzzle/icon-pupple.svg';
 
 import puzzle1Default from '@assets/puzzle/puzzle_default-1.png';
 import puzzle2Default from '@assets/puzzle/puzzle_default-2.png';
@@ -68,6 +69,7 @@ function Puzzle() {
   const [modalProps, setModalProps] = useState('');
   const [qrSuccess, setQrSuccess] = useState(false);
   const [puzzleNumber, setPuzzleNumber] = useState(0);
+  const [puzzleToast, setPuzzleToast] = useState(false);
 
   //qr 인증 성공 or 실패 모달 props
   const [value, setValue] = useState('');
@@ -264,8 +266,16 @@ function Puzzle() {
 
   //QR
   const showQrCamera = () => {
-    navigate('/camera');
+    navigate('/camera', {
+      state: { puzzleNumber: puzzleNumber },
+    });
   };
+
+  useEffect(() => {
+    if (location.state?.puzzleNumber !== undefined) {
+      setPuzzleNumber(location.state?.puzzleNumber);
+    }
+  }, [location.state]);
 
   //qr 데이터 받아오기
   useEffect(() => {
@@ -281,16 +291,17 @@ function Puzzle() {
       const token = localStorage.getItem('token');
       const response = await axios.post(
         `${API_KEY}/bingo/qr`,
-        { value: qrData },
+        { value: qrData, puzzleIndex: location.state?.puzzleNumber },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
       );
+      console.log(response.data);
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
         if (response.data.data.success === false) {
-          //이미 완성된 퍼즐
+          console.log('이미 인증');
         } else {
           setQrSuccess(true);
           setModalProps({
@@ -301,20 +312,17 @@ function Puzzle() {
           setShowModal('qrCheckModal');
         }
       }
-      if (response.data.isSuccess === false) {
+    } catch (error) {
+      console.log(error.response.data.error);
+      if (error.response.data.error) {
+        setPuzzleToast(true);
+      } else {
         setQrSuccess(false);
         setModalProps({
           state: false,
         });
         setShowModal('qrCheckModal');
       }
-    } catch (error) {
-      console.log(error);
-      setQrSuccess(false);
-      setModalProps({
-        state: false,
-      });
-      setShowModal('qrCheckModal');
     } finally {
       navigate(location.pathname, { replace: true, state: {} });
     }
@@ -703,6 +711,14 @@ function Puzzle() {
           />
         )}
       </P.modal>
+      {puzzleToast && (
+        <P.ToastBox>
+          <P.ToastContent>
+            <img src={modalIcon} />
+            <P.ToastMessage>퍼즐 번호에 맞는 QR코드를 스캔해주세요</P.ToastMessage>
+          </P.ToastContent>
+        </P.ToastBox>
+      )}
     </P.puzzlePage>
   );
 }
