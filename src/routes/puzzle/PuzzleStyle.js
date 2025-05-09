@@ -127,12 +127,17 @@ export const userInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 70%;
 `;
 
 export const userName = styled.div`
   color: ${palette.grayscale.black};
   font-weight: 600;
   font-size: 20px;
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const completedTitle = styled.div`

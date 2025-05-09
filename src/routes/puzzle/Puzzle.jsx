@@ -67,6 +67,8 @@ function Puzzle() {
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState('');
   const [qrSuccess, setQrSuccess] = useState(false);
+  const [puzzleNumber, setPuzzleNumber] = useState(0);
+
   //qr 인증 성공 or 실패 모달 props
   const [value, setValue] = useState('');
   const [right, setRight] = useState(true);
@@ -171,6 +173,8 @@ function Puzzle() {
     }
   };
 
+  const [loginErrorMessage, setLoginErrorMessage] = useState('');
+
   const [inputLoginID, setInputLoginID] = useState('');
   const inputLoginIDChange = (e) => {
     setInputLoginID(e.target.value);
@@ -248,8 +252,13 @@ function Puzzle() {
         await getPuzzleInfo();
       }
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error.response.data);
       setLoginFailed(true);
+      if (error.response.data.error === 'DUPLICATE_USERNAME') {
+        setLoginErrorMessage('중복된 닉네임 혹은 틀린 비밀번호입니다.');
+      } else if (error.response.data.error === 'BAD_REQUEST') {
+        setLoginErrorMessage(error.response.data.errors.username);
+      }
     }
   };
 
@@ -480,7 +489,7 @@ function Puzzle() {
                 {loginFailed ? (
                   <P.loginFailed>
                     <img src={redErrorIcon} />
-                    <P.loginFailedInfo>중복된 닉네임 혹은 틀린 비밀번호입니다.</P.loginFailedInfo>
+                    <P.loginFailedInfo>{loginErrorMessage}</P.loginFailedInfo>
                   </P.loginFailed>
                 ) : (
                   <></>
@@ -536,6 +545,7 @@ function Puzzle() {
                     <P.puzzle1
                       onClick={() => {
                         puzzleValue.index1 ? null : puzzleHandler(0);
+                        setPuzzleNumber(1);
                       }}
                       onMouseOver={() => handleMouseOver('index1')}
                       onMouseOut={() => handleMouseOut('index1')}
@@ -544,6 +554,7 @@ function Puzzle() {
                     <P.puzzle2
                       onClick={() => {
                         puzzleValue.index2 ? null : puzzleHandler(1);
+                        setPuzzleNumber(2);
                       }}
                       onMouseOver={() => handleMouseOver('index2')}
                       onMouseOut={() => handleMouseOut('index2')}
@@ -551,6 +562,7 @@ function Puzzle() {
                     />
                     <P.puzzle3
                       onClick={() => {
+                        setPuzzleNumber(3);
                         puzzleValue.index3 ? null : puzzleHandler(2);
                       }}
                       onMouseOver={() => handleMouseOver('index3')}
@@ -559,6 +571,7 @@ function Puzzle() {
                     />
                     <P.puzzle4
                       onClick={() => {
+                        setPuzzleNumber(4);
                         puzzleValue.index4 ? null : puzzleHandler(3);
                       }}
                       onMouseOver={() => handleMouseOver('index4')}
@@ -567,6 +580,7 @@ function Puzzle() {
                     />
                     <P.puzzle5
                       onClick={() => {
+                        setPuzzleNumber(5);
                         puzzleValue.index5 ? null : puzzleHandler(4);
                       }}
                       onMouseOver={() => handleMouseOver('index5')}
@@ -575,6 +589,7 @@ function Puzzle() {
                     />
                     <P.puzzle6
                       onClick={() => {
+                        setPuzzleNumber(6);
                         puzzleValue.index6 ? null : puzzleHandler(5);
                       }}
                       onMouseOver={() => handleMouseOver('index6')}
@@ -583,6 +598,7 @@ function Puzzle() {
                     />
                     <P.puzzle7
                       onClick={() => {
+                        setPuzzleNumber(7);
                         puzzleValue.index7 ? null : puzzleHandler(6);
                       }}
                       onMouseOver={() => handleMouseOver('index7')}
@@ -591,6 +607,7 @@ function Puzzle() {
                     />
                     <P.puzzle8
                       onClick={() => {
+                        setPuzzleNumber(8);
                         puzzleValue.index8 ? null : puzzleHandler(7);
                       }}
                       onMouseOver={() => handleMouseOver('index8')}
@@ -599,6 +616,7 @@ function Puzzle() {
                     />
                     <P.puzzle9
                       onClick={() => {
+                        setPuzzleNumber(9);
                         puzzleValue.index9 ? null : puzzleHandler(8);
                       }}
                       onMouseOver={() => handleMouseOver('index9')}
