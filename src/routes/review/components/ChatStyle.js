@@ -14,6 +14,7 @@ export const Message = styled.div`
   line-height: normal;
   letter-spacing: -0.35px;
   white-space: pre-wrap;
+  margin-bottom: 16px;
 `;
 
 export const Highlight = styled.span`

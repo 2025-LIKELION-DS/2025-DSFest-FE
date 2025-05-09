@@ -9,14 +9,9 @@ export const Container = styled.div`
 
 export const Review = styled.div`
   width: calc(100% - 40px);
-  height: 100%;
-  padding: 20px 20px;
+  padding: 20px 20px 4px;
   flex: 1;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 16px;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -25,6 +20,7 @@ export const Review = styled.div`
 export const Area = styled.div`
   display: flex;
   width: calc(100% - 24px);
+  height: 48px;
   padding: 12px;
   align-items: flex-end;
   gap: 8px;
