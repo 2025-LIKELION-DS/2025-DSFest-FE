@@ -94,9 +94,6 @@ export const Hint = styled(Info)`
 `;
 
 export const CloseDiv = styled.div`
-  width: 25px;
-  height: 25px;
-
   position: absolute;
   top: 15px;
   right: 15px;
@@ -107,6 +104,6 @@ export const CloseDiv = styled.div`
     object-fit: contain;
 
     cursor: pointer;
-    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+    /* filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1)); */
   }
 `;
