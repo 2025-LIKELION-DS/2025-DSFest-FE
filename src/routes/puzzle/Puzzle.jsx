@@ -405,6 +405,17 @@ function Puzzle() {
       showQrCamera();
     }
   };
+
+  //overlay 화면 3초 후 꺼지도록
+  useEffect(() => {
+    if (cameraOverlay) {
+      const timer = setTimeout(() => {
+        setCameraOverlay(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [cameraOverlay]);
+
   return (
     <P.puzzlePage>
       <P.puzzleMain onClick={() => (showModal ? modalOffHandler() : undefined)}>
@@ -680,6 +691,7 @@ function Puzzle() {
             boothHint={modalProps.boothHint}
             onClickL={() => goMap(modalProps.number)}
             onClickR={() => puzzleBtnHandler()}
+            onClose={() => modalOffHandler()}
           />
         )}
         {/* qr 인증 성공 or 실패 모달 */}
@@ -691,6 +703,7 @@ function Puzzle() {
               number={modalProps.number}
               boothName={modalProps.boothName}
               onClick={() => puzzleSuccessHandler(modalProps.number)}
+              onClose={() => modalOffHandler()}
             />
           ) : (
             <ModalPuzzleApprove
@@ -700,6 +713,7 @@ function Puzzle() {
               right={right}
               onClickL={() => showQrCamera()}
               onClickR={() => boothCheckHandler()}
+              onClose={() => modalOffHandler()}
             />
           ))}
         {showModal === 'goodsModal' && (
@@ -708,6 +722,7 @@ function Puzzle() {
             onChange={inputGoodsPw}
             onClickL={() => modalOffHandler()}
             onClickR={() => handleGoods(goodsPW)}
+            onClose={() => modalOffHandler()}
           />
         )}
       </P.modal>

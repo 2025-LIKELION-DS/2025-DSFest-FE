@@ -433,9 +433,10 @@ export const modal = styled.div`
 
 export const ovelay = styled.div`
   position: absolute;
-  z-index: 3000;
+  top: -56px;
+  z-index: 1000;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 56px);
   background-color: ${palette.grayscale.black70};
 
   display: flex;
