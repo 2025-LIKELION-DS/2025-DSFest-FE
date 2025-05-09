@@ -1,16 +1,7 @@
 import * as T from '@main/components/ToastMsgStyle';
-import { useEffect } from 'react';
 
-const ToastMsg = ({ boothName, onClose }) => {
+const ToastMsg = ({ boothName }) => {
   const nameLength = String(boothName).length;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, [onClose]);
 
   return (
     <T.ToastMsg>
