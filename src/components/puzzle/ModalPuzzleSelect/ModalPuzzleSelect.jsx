@@ -4,7 +4,7 @@ import Puzzle from '@assets/puzzle/puzzle-piece-2-grain@3x.png';
 import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual';
 import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalSingle';
 
-import Close from '@assets/puzzle/Modal_puzzle_select-close.svg';
+import Close from '@assets/puzzle/Modal-close.svg';
 
 /**
  * 퍼즐 페이지에서 사용되는 모달 컴포넌트입니다.

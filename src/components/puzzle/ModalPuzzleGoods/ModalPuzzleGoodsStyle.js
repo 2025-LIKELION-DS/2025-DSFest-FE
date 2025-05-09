@@ -79,3 +79,17 @@ export const FlexText = styled(Text)`
   width: 100%;
   margin-bottom: 7px;
 `;
+
+export const CloseDiv = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
+    cursor: pointer;
+  }
+`;
