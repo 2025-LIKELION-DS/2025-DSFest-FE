@@ -6,7 +6,7 @@ import SendImg from '@assets/review/icon-send.svg';
 import SendImg2 from '@assets/review/icon-send-white.svg';
 import keywordMap from '@data/keywords.json';
 
-function Review() {
+function Review({ scrollTargetRef }) {
   const [reviews, setReviews] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
@@ -33,8 +33,11 @@ function Review() {
   };
 
   const scrollToBottom = () => {
-    if (reviewRef.current) {
-      reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
+    const el = scrollTargetRef?.current || window;
+    if (el === window) {
+      window.scrollTo({ top: document.body.scrollHeight });
+    } else {
+      el.scrollTop = el.scrollHeight;
     }
   };
 
@@ -94,11 +97,11 @@ function Review() {
   }, [inputValue]);
 
   useLayoutEffect(() => {
-    scrollToBottom();
+    if (!isLoading) scrollToBottom();
   }, [isLoading]);
 
   return (
-    <R.Container>
+    <>
       <R.Review ref={reviewRef}>
         {isLoading ? (
           <R.Empty>후기 불러오는 중...</R.Empty>
@@ -131,7 +134,7 @@ function Review() {
           <img src={inputValue.trim() !== '' ? SendImg2 : SendImg} alt="send" />
         </R.Button>
       </R.Area>
-    </R.Container>
+    </>
   );
 }
 
