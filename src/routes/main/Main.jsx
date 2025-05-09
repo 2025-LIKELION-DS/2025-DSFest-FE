@@ -31,7 +31,7 @@ function Main() {
   const timeRef = useRef(null);
 
   const [firstVisit, setFirstVisit] = useState(() => {
-    const hasVisited = sessionStorage.getItem('hasVisited');
+    const hasVisited = localStorage.getItem('hasVisited');
     return !hasVisited; // 방문한 적 없으면 return true
   });
 
@@ -79,7 +79,7 @@ function Main() {
   };
 
   const onClickHideSplash = () => {
-    sessionStorage.setItem('hasVisited', true);
+    localStorage.setItem('hasVisited', true);
     setFirstVisit(false);
   };
 
