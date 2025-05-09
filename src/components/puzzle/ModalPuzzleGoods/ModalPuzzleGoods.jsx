@@ -3,6 +3,7 @@ import * as M from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoodsStyle';
 import Glow1 from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
 import Glow2 from '@assets/puzzle/puzzle-piece-glow-2-grain.svg';
 import Close from '@assets/puzzle/Modal-close.svg';
+import Warning from '@assets/puzzle/icon-error-red.svg';
 
 import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual';
 import InputCommon from '@components/InputCommon/InputCommon';
@@ -16,11 +17,12 @@ import InputCommon from '@components/InputCommon/InputCommon';
  * @param {function} onClickL -- 왼쪽 버튼(취소 버튼) 클릭 시 실행될 함수
  * @param {function} onClickR -- 오른쪽 버튼(수령 완료 버튼) 클릭 시 실행될 함수
  * @param {function} onClose -- 모달 닫을 때 사용될 함수
+ * @param {boolean} right -- 비밀번호가 일치하는지 나타내는 state 값 (true or false)
  *
  * @author 김진효
  * **/
 
-const ModalPuzzleGoods = ({ value, onChange, onClickL, onClickR, onClose }) => {
+const ModalPuzzleGoods = ({ value, onChange, onClickL, onClickR, onClose, right }) => {
   return (
     <>
       <M.ModalPuzzleSelect>
@@ -50,6 +52,12 @@ const ModalPuzzleGoods = ({ value, onChange, onClickL, onClickR, onClose }) => {
               value={value}
               onChange={onChange}
             />
+            {!right && (
+              <M.Warning>
+                <img src={Warning} alt="오류" />
+                <p>비밀번호를 다시 확인해주세요.</p>
+              </M.Warning>
+            )}
           </M.FlexText>
           <ButtonModalDual contentL={'취소'} onClickL={onClickL} contentR={'수령 완료'} onClickR={onClickR} />
         </M.FlexContainer>

@@ -4,7 +4,7 @@ import palette from '@styles/theme';
 export const ModalPuzzleSelect = styled.div`
   box-sizing: border-box;
   width: calc(100% - 50px);
-  height: 229px;
+  height: 252px;
 
   border-radius: 24px;
   background-color: ${palette.grayscale.white};
@@ -77,7 +77,13 @@ export const FlexContainer = styled.div`
 
 export const FlexText = styled(Text)`
   width: 100%;
-  margin-bottom: 7px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+
+  flex: 1;
 `;
 
 export const CloseDiv = styled.div`
@@ -91,5 +97,22 @@ export const CloseDiv = styled.div`
     object-fit: contain;
 
     cursor: pointer;
+  }
+`;
+
+export const Warning = styled.div`
+  padding: 0px 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  p {
+    color: ${palette.system.alert};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.35px;
+    margin: 0;
   }
 `;
