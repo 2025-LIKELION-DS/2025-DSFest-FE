@@ -56,7 +56,7 @@ const Chat = ({ message, autoPlayKeyword }) => {
     <>
       <C.Message>{renderMessage()}</C.Message>
       {activeAnimation && (
-        <C.LottieOverlay ref={overlayRef}>
+        <C.LottieOverlay ref={overlayRef} isStill={activeAnimation === 'still.json'}>
           <Player
             ref={playerRef}
             autoplay
