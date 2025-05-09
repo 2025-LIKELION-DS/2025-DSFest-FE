@@ -6,12 +6,14 @@ const EntranceLineWrapper = styled.div`
   position: absolute;
   top: ${({ top }) => `${top - 4}px`};
   left: 75%;
-  transform: translateX(-50%);
   width: 50%;
-  font-size: clamp(9px, 1.2vw, 11px);
+  transform: translateX(-50%);
+  //반응형 폰트 사이즈
+  font-size: clamp(7.5px, 2vw, 11.5px);
   color: ${palette.grayscale.text33};
   pointer-events: none;
   z-index: 10000;
+  text-align: center;
 
   /* 서서히 나타나도록 */
   opacity: 0;
@@ -24,6 +26,15 @@ const EntranceLineWrapper = styled.div`
       transform: translateX(-50%) translateY(0);
     }
   }
+  /* @media (max-width: 334px) {
+    font-size: 8.5px;
+  }
+  @media (max-width: 323px) {
+    font-size: 7.5px;
+  }
+  @media (max-width: 302px) {
+    font-size: 7px;
+  } */
 `;
 
 const TopLine = styled.div`
@@ -36,32 +47,10 @@ const TopLine = styled.div`
 `;
 
 const LabelBlock = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-
-  @media (max-width: 340px) {
-    display: block;
-    white-space: normal;
-  }
-`;
-
-const FirstLine = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-`;
-
-const SecondLine = styled.div`
-  margin-left: 18px;
-  margin-top: 2px;
-
-  @media (min-width: 340px) {
-    display: inline-block;
-    margin-left: 4px;
-    margin-top: 0;
-  }
 `;
 
 const EntranceLine = ({ top, label }) => {
@@ -71,11 +60,9 @@ const EntranceLine = ({ top, label }) => {
     <EntranceLineWrapper top={top}>
       <TopLine />
       <LabelBlock>
-        <FirstLine>
-          <p style={{ margin: 0 }}>↓</p>
-          <span>{text}</span>
-        </FirstLine>
-        <SecondLine>{`(${time}`}</SecondLine>
+        <p style={{ margin: 0 }}>↓</p>
+        <span>{text}</span>
+        <span> {`(${time}`}</span>
       </LabelBlock>
     </EntranceLineWrapper>
   );

@@ -77,7 +77,6 @@ const TimeTable = () => {
             ))}
           </T.TableLineCon>
         </T.TimeTable>
-
         {/* 부스 info */}
         <T.SpaceInfo>
           <T.SpaceBox>

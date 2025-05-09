@@ -30,11 +30,13 @@ export const Time = styled.div`
 `;
 
 export const Button = styled.div`
-  width: 39px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  img {
+    width: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 `;
 
 export const ScrollCon = styled.div`
