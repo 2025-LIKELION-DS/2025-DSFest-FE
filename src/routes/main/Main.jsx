@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import * as M from '@main/MainStyle';
@@ -28,7 +28,7 @@ function Main() {
   const navigate = useNavigate();
 
   const [showToast, setShowToast] = useState(false);
-  const timeRef = useRef(null);
+  const [isToastVisible, setIsToastVisible] = useState(false);
 
   const [firstVisit, setFirstVisit] = useState(() => {
     const hasVisited = localStorage.getItem('hasVisited');
@@ -65,10 +65,7 @@ function Main() {
   };
 
   const handleShowToast = () => {
-    // 이전에 설정된 타이머 있다면 취소
-    if (timeRef.current) {
-      clearTimeout(timeRef.current);
-    }
+    if (isToastVisible) return;
 
     if (booths.length > 0) {
       const newRandom = pickRandomBooth(booths);
@@ -76,6 +73,12 @@ function Main() {
     }
 
     setShowToast(true);
+    setIsToastVisible(true);
+
+    setTimeout(() => {
+      setShowToast(false); // 3초 후 토스트 숨기기
+      setIsToastVisible(false);
+    }, 3000);
   };
 
   const onClickHideSplash = () => {
@@ -193,7 +196,7 @@ function Main() {
       <M.Main key={resizeKey} $backgroundImg={backgroundImg}>
         {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
 
-        {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
+        {showToast && <ToastMsg boothName={random} />}
 
         <M.MoonImg src={moonImg} alt="달" />
         <M.TreeDiv>
