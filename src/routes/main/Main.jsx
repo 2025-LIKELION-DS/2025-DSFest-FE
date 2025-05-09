@@ -84,10 +84,22 @@ function Main() {
   };
 
   useEffect(() => {
-    // 창 크기 변경시 리렌더링
+    const mediaQuery = window.matchMedia(
+      '(min-width: 768px) and (hover: hover) and (pointer: fine) and (min-height: 852px)',
+    );
+
+    // 조건 안 맞으면 리사이즈 X
+    if (!mediaQuery.matches) return;
+
+    // 창 크기 변경시 리렌더링 -> 미디어 쿼리 만족할 때에만
     const onResize = () => {
+      if (!mediaQuery.matches) {
+        return; // 조건 안 맞으면 리사이즈 X
+      }
+
       setResizeKey((k) => k + 1);
     };
+
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
