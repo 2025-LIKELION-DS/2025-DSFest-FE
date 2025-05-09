@@ -280,13 +280,17 @@ function Puzzle() {
         },
       );
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
-        setQrSuccess(true);
-        setModalProps({
-          state: true,
-          number: response.data.data.puzzleIndex,
-          boothName: response.data.data.placeName,
-        });
-        setShowModal('qrCheckModal');
+        if (response.data.data.success === false) {
+          //이미 완성된 퍼즐
+        } else {
+          setQrSuccess(true);
+          setModalProps({
+            state: true,
+            number: response.data.data.puzzleIndex,
+            boothName: response.data.data.placeName,
+          });
+          setShowModal('qrCheckModal');
+        }
       }
       if (response.data.isSuccess === false) {
         setQrSuccess(false);
@@ -321,14 +325,18 @@ function Puzzle() {
         },
       );
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
-        setQrSuccess(true);
-        setModalProps({
-          state: true,
-          number: response.data.data.puzzleIndex,
-          boothName: response.data.data.placeName,
-        });
-        setShowModal('qrCheckModal');
-        await getPuzzleInfo();
+        if (response.data.data.success === false) {
+          //이미 완성된 퍼즐
+        } else {
+          setQrSuccess(true);
+          setModalProps({
+            state: true,
+            number: response.data.data.puzzleIndex,
+            boothName: response.data.data.placeName,
+          });
+          setShowModal('qrCheckModal');
+          await getPuzzleInfo();
+        }
       }
     } catch (error) {
       console.log(error.response.data.message);
@@ -369,11 +377,12 @@ function Puzzle() {
   const mobile = useMediaQuery({
     query: '(hover: none) and (pointer: coarse)',
   });
+  const galaxy = /Android|Tablet/i.test(window.navigator.userAgent);
 
   const [cameraOverlay, setCameraOverlay] = useState(false);
 
   const puzzleBtnHandler = () => {
-    if (!mobile) {
+    if (!mobile && !galaxy) {
       setCameraOverlay(true);
     } else {
       showQrCamera();
@@ -616,12 +625,12 @@ function Puzzle() {
           {completed ? (
             <ButtonCommon text={'경품 수령'} color={`${palette.mainPurple}`} onClick={handlecompleted} />
           ) : end ? (
-            <ButtonCommon text={'퍼즐 완성'} color={`${palette.grayscale.text88}`} />
+            <ButtonCommon text={'퍼즐 완성'} color={`${palette.grayscale.text88}`} onClick={null} />
           ) : (
             <ButtonCommon
               text={'퍼즐 완성'}
               color={success ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-              onClick={success ? handleSuccess : ''}
+              onClick={success ? handleSuccess : null}
             />
           )}
         </P.endButton>
