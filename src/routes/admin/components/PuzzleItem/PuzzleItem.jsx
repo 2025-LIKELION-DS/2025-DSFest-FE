@@ -76,8 +76,6 @@ const PuzzleItem = ({ index, name, uuid, password, onShowToast, onDelete }) => {
 
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
-            title: `퍼즐 ${index}`,
-            text: `${name} 퍼즐 QR 이미지입니다.`,
             files: [file],
           });
         } else {

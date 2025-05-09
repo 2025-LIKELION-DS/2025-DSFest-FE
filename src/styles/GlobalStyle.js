@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     overflow-x: hidden;
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: 100dvh;
 
     @supports (-webkit-touch-callout: none) {
       min-height: -webkit-fill-available;

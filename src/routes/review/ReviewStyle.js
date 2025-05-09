@@ -9,22 +9,24 @@ export const Container = styled.div`
 
 export const Review = styled.div`
   width: calc(100% - 40px);
-  padding: 20px 20px;
+  padding: 20px 20px 76px;
   flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 16px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const Area = styled.div`
+  position: fixed;
+  bottom: 0;
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    width: 369px;
+    @media (min-height: 852px) {
+      bottom: calc(50% - 426px);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
   display: flex;
   width: calc(100% - 24px);
-  padding: 15.5px 12px;
+  padding: 12px;
   align-items: flex-end;
   gap: 8px;
   background: ${palette.grayscale.white};
@@ -33,7 +35,7 @@ export const Area = styled.div`
 
 export const Input = styled.div`
   width: calc(100% - 56px);
-  padding: 12px;
+  padding: 13.5px 12px;
   display: flex;
   justify-content: center;
   align-items: center;

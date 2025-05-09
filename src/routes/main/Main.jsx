@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import * as M from '@main/MainStyle';
@@ -28,10 +28,10 @@ function Main() {
   const navigate = useNavigate();
 
   const [showToast, setShowToast] = useState(false);
-  const timeRef = useRef(null);
+  const [isToastVisible, setIsToastVisible] = useState(false);
 
   const [firstVisit, setFirstVisit] = useState(() => {
-    const hasVisited = sessionStorage.getItem('hasVisited');
+    const hasVisited = localStorage.getItem('hasVisited');
     return !hasVisited; // 방문한 적 없으면 return true
   });
 
@@ -65,10 +65,7 @@ function Main() {
   };
 
   const handleShowToast = () => {
-    // 이전에 설정된 타이머 있다면 취소
-    if (timeRef.current) {
-      clearTimeout(timeRef.current);
-    }
+    if (isToastVisible) return;
 
     if (booths.length > 0) {
       const newRandom = pickRandomBooth(booths);
@@ -76,18 +73,36 @@ function Main() {
     }
 
     setShowToast(true);
+    setIsToastVisible(true);
+
+    setTimeout(() => {
+      setShowToast(false); // 3초 후 토스트 숨기기
+      setIsToastVisible(false);
+    }, 3000);
   };
 
   const onClickHideSplash = () => {
-    sessionStorage.setItem('hasVisited', true);
+    localStorage.setItem('hasVisited', true);
     setFirstVisit(false);
   };
 
   useEffect(() => {
-    // 창 크기 변경시 리렌더링
+    const mediaQuery = window.matchMedia(
+      '(min-width: 768px) and (hover: hover) and (pointer: fine) and (min-height: 852px)',
+    );
+
+    // 조건 안 맞으면 리사이즈 X
+    if (!mediaQuery.matches) return;
+
+    // 창 크기 변경시 리렌더링 -> 미디어 쿼리 만족할 때에만
     const onResize = () => {
+      if (!mediaQuery.matches) {
+        return; // 조건 안 맞으면 리사이즈 X
+      }
+
       setResizeKey((k) => k + 1);
     };
+
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
@@ -181,7 +196,7 @@ function Main() {
       <M.Main key={resizeKey} $backgroundImg={backgroundImg}>
         {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
 
-        {showToast && <ToastMsg boothName={random} onClose={() => setShowToast(false)} />}
+        {showToast && <ToastMsg boothName={random} />}
 
         <M.MoonImg src={moonImg} alt="달" />
         <M.TreeDiv>

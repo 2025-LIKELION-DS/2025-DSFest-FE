@@ -14,6 +14,7 @@ export const Message = styled.div`
   line-height: normal;
   letter-spacing: -0.35px;
   white-space: pre-wrap;
+  margin-bottom: 16px;
 `;
 
 export const Highlight = styled.span`
@@ -33,7 +34,7 @@ export const LottieOverlay = styled.div`
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  width: 200px;
+  width: ${({ isStill }) => (isStill ? '356px' : '200px')};
   height: 200px;
   border-radius: 16px;
   overflow: hidden;

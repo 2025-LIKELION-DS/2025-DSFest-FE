@@ -29,13 +29,12 @@ function FoodCard({ foodBooth, selectedDayTime }) {
   const renderCard = (booth) => {
     const { id, boothName, boothType = [], boothRole, scheduleDescription = [], menus = [] } = booth;
 
-    const [selectedDay, selectedTime] = selectedDayTime.split(' ');
-    const flattened = scheduleDescription.flatMap((desc) => desc.split(' ')).filter(Boolean);
+    const [selectedDay] = selectedDayTime.split(' ');
 
-    if (
-      (!flattened.includes(selectedDay) || !flattened.includes(selectedTime)) &&
-      !scheduleDescription.includes('매일')
-    ) {
+    const matchesSchedule =
+      scheduleDescription.includes('매일') || scheduleDescription.some((desc) => desc.includes(selectedDay));
+
+    if (!matchesSchedule) {
       return null;
     }
 

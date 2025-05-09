@@ -58,14 +58,22 @@ export const TimeTable = styled.div`
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  max-height: 370px; //스크롤 영역 높이 설정
+  /* max-height: 360px; */
   overflow-y: auto;
-
+  overflow-x: hidden;
+  height: auto;
+  flex: 1 1 auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+export const TimeTableWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const TableTimeCon = styled.div`
@@ -78,7 +86,7 @@ export const TableTime = styled.div`
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
-  margin: 20px 15px 0 15px;
+  margin: 19px 15px 0 15px;
 `;
 
 // 타임테이블 시간 표시선 영역
@@ -88,6 +96,7 @@ export const TableLineCon = styled.div`
   z-index: 100;
   width: 100%;
   box-sizing: border-box;
+  margin-right: 15px;
 `;
 
 export const TableLine = styled.div.withConfig({
@@ -105,10 +114,20 @@ export const TableLine = styled.div.withConfig({
 
 /* 장소 정보 */
 export const SpaceInfo = styled.div`
+  position: relative;
+  bottom: 0;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   gap: 7px;
+  padding-bottom: 70px;
+  border-top: 1px solid #eee;
+  background-color: ${palette.grayscale.white};
 `;
+
 export const SpaceBox = styled.div`
   display: flex;
   gap: 5px;

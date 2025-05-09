@@ -18,7 +18,6 @@ import Preview from '@admin/puzzle/Preview';
 import PuzzleList from '@admin/puzzle/PuzzleList';
 import ProtectedRoute from '@components/ProtectedRoute';
 import Topbar from '@components/Topbar/Topbar';
-import Test from '@routes/Test';
 
 const Layout = () => {
   return (
@@ -29,7 +28,7 @@ const Layout = () => {
   );
 };
 
-function App() {
+function App({ scrollTargetRef }) {
   return (
     <>
       <GlobalStyle />
@@ -39,7 +38,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/puzzle" element={<Puzzle />} />
           <Route path="/camera" element={<Camera />} />
-          <Route path="/review" element={<Review />} />
+          <Route path="/review" element={<Review scrollTargetRef={scrollTargetRef} />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/notice" element={<List />} />
           <Route path="/notice/:id" element={<Detail />} />
@@ -94,8 +93,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* 공통 컴포넌트 */}
-          <Route path="/test" element={<Test />} />
         </Route>
         <Route path="/*" element={<Error />} />
       </Routes>

@@ -1,7 +1,18 @@
 {
-  "여운": "firework.json",
-  "축제": "firework.json",
-  "근화제": "firework.json",
+  "공연": "firework.json",
+  "무대": "firework.json",
+  "연예인": "firework.json",
+  "아티스트": "firework.json",
+  "노래": "firework.json",
+
+  "여운": "still.json",
+  "축제": "still.json",
+  "근화제": "still.json",
+  "오늘": "still.json",
+  "운율": "still.json",
+  "총학": "still.json",
+  "생회": "still.json",
+  "학생회": "still.json",
 
   "멋사": "likelion.json",
   "사자": "likelion.json",

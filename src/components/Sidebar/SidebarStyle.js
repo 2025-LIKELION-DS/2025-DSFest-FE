@@ -201,7 +201,7 @@ export const Part = styled.p`
 
   color: ${palette.grayscale.text33};
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.3px;
 `;
 
@@ -210,7 +210,7 @@ export const Name = styled.p`
 
   color: ${palette.grayscale.text33};
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 130%;
   letter-spacing: -0.3px;
 `;

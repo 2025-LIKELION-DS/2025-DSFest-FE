@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as M from '@map/MapStyle';
 import BoothCard from './BoothCard';
 import FoodCard from './FoodCard';
@@ -59,18 +59,27 @@ function SlidingPanelSection({
   selectedDayTime,
 }) {
   const contentRef = useRef(null);
+  const prevHeightRef = useRef(null);
   const isMobile = window.innerWidth <= 768;
   const baseMinHeight = isMobile ? 105 : 93;
+  const hasMountedRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      hasMountedRef.current = true;
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleDragEnd = () => {
     const isMobile = window.innerWidth <= 768;
     const maxHeight = isMobile ? window.innerHeight * 0.8 : 740;
-    const midHeight = isMobile ? window.innerHeight * 0.55 : 490;
+    const midHeight = isMobile ? window.innerHeight * 0.45 : 490;
     const minHeight = isMobile ? 105 : 93;
 
     if ((isMobile && panelHeight > midHeight) || (!isMobile && panelHeight > 490)) {
       setPanelHeight(maxHeight);
-    } else if ((isMobile && panelHeight > minHeight + 70) || (!isMobile && panelHeight > 163)) {
+    } else if ((isMobile && panelHeight > minHeight + 130) || (!isMobile && panelHeight > 223)) {
       setPanelHeight(midHeight);
     } else {
       setPanelHeight(minHeight);
@@ -79,7 +88,7 @@ function SlidingPanelSection({
 
   const handleDrag = (e, info) => {
     const deltaY = info.delta.y;
-    const minHeight = isFoodTruckActive ? (window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490) : 93;
+    const minHeight = isFoodTruckActive ? (window.innerWidth <= 768 ? window.innerHeight * 0.45 : 490) : 93;
     const newHeight = Math.min(window.innerHeight * 0.92, Math.max(minHeight, panelHeight - deltaY));
     setPanelHeight(newHeight);
   };
@@ -108,8 +117,19 @@ function SlidingPanelSection({
   };
 
   useEffect(() => {
+    const mobile = window.innerWidth <= 768;
+    const midHeight = mobile ? window.innerHeight * 0.45 : 490;
+    const minHeight = mobile ? 105 : 93;
+
     if (isFoodTruckActive) {
-      setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+      prevHeightRef.current = panelHeight;
+      setPanelHeight(midHeight);
+    } else if (
+      prevHeightRef.current !== null &&
+      (Math.abs(panelHeight - midHeight) < 5 || Math.abs(panelHeight - minHeight) < 5)
+    ) {
+      setPanelHeight(prevHeightRef.current);
+      prevHeightRef.current = null;
     }
   }, [isFoodTruckActive]);
 
@@ -124,7 +144,7 @@ function SlidingPanelSection({
       if (scrollTop > scrollThreshold && panelHeight < window.innerHeight * 0.8) {
         setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
       } else if (scrollTop < 1 && panelHeight > 500) {
-        setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.55 : 490);
+        setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.45 : 490);
       }
     };
 
@@ -139,7 +159,7 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={{ type: 'spring', stiffness: 250, damping: 50 }}
+      transition={hasMountedRef.current ? { type: 'spring', stiffness: 100, damping: 30 } : { duration: 0 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
       <M.TouchSection onPointerDown={handlePointerDown} style={{ cursor: 'grab', paddingTop: 15 }}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import axios from 'axios';
 import * as R from '@review/ReviewStyle';
 import Chat from '@review/components/Chat';
@@ -6,15 +6,16 @@ import SendImg from '@assets/review/icon-send.svg';
 import SendImg2 from '@assets/review/icon-send-white.svg';
 import keywordMap from '@data/keywords.json';
 
-function Review() {
+function Review({ scrollTargetRef }) {
   const [reviews, setReviews] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
-  const [page, setPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFocus, setIsFocus] = useState(false);
   const textareaRef = useRef(null);
   const reviewRef = useRef(null);
   const wrapperRef = useRef(null);
+  const initialScrollY = useRef(0);
 
   const highlightKeywords = (text) => {
     const keywords = Object.keys(keywordMap);
@@ -34,40 +35,22 @@ function Review() {
   };
 
   const scrollToBottom = () => {
-    if (reviewRef.current) {
-      reviewRef.current.scrollTop = reviewRef.current.scrollHeight;
+    const el = scrollTargetRef?.current || window;
+    if (el === window) {
+      window.scrollTo({ top: document.body.scrollHeight });
+    } else {
+      el.scrollTop = el.scrollHeight;
     }
   };
 
-  const fetchReviews = async (targetPage = 0) => {
+  const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews?page=${targetPage}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
       const fetched = res.data.data.reviewList;
       const ordered = [...fetched].sort((a, b) => a.reviewId - b.reviewId);
-      setReviews((prev) => {
-        if (targetPage === 0) {
-          return ordered;
-        } else {
-          return [...ordered, ...prev];
-        }
-      });
-      setHasMore(!res.data.data.last);
+      setReviews(ordered);
     } catch (err) {
       console.error('리뷰 조회 실패:', err);
-    }
-  };
-
-  const handleScroll = () => {
-    if (reviewRef.current.scrollTop === 0 && hasMore) {
-      const prevHeight = reviewRef.current.scrollHeight;
-      const nextPage = page + 1;
-      setPage(nextPage);
-      fetchReviews(nextPage).then(() => {
-        requestAnimationFrame(() => {
-          const newHeight = reviewRef.current.scrollHeight;
-          reviewRef.current.scrollTop = newHeight - prevHeight;
-        });
-      });
     }
   };
 
@@ -86,9 +69,8 @@ function Review() {
       });
       setInputValue('');
       if (textareaRef.current) textareaRef.current.style.height = 'auto';
-      setPage(0);
       setAutoPlayKeyword(matchedKeyword);
-      fetchReviews(0);
+      await fetchReviews();
       setTimeout(scrollToBottom, 100);
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
@@ -96,21 +78,34 @@ function Review() {
   };
 
   useEffect(() => {
-    fetchReviews(0);
-    setTimeout(scrollToBottom, 100);
+    const loadInitial = async () => {
+      await fetchReviews(0);
 
-    const observer = new ResizeObserver(() => {
-      scrollToBottom();
-    });
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          scrollToBottom();
+          setIsLoading(false);
+        }, 100);
+      });
+    };
 
-    if (reviewRef.current) {
-      observer.observe(reviewRef.current);
-    }
+    loadInitial();
+
+    const handleIOSKeyboard = () => {
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isKeyboardOpen = window.visualViewport && window.visualViewport.height < window.innerHeight;
+
+      if (isIOS && isKeyboardOpen && textareaRef.current) {
+        if (document.activeElement !== textareaRef.current) {
+          textareaRef.current.focus();
+        }
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleIOSKeyboard);
 
     return () => {
-      if (reviewRef.current) {
-        observer.unobserve(reviewRef.current);
-      }
+      window.visualViewport?.removeEventListener('resize', handleIOSKeyboard);
     };
   }, []);
 
@@ -120,10 +115,42 @@ function Review() {
     }
   }, [inputValue]);
 
+  useLayoutEffect(() => {
+    if (!isLoading) scrollToBottom();
+  }, [isLoading]);
+
+  useEffect(() => {
+    const handleScrollLock = () => {
+      const currentY = window.scrollY;
+
+      if (isFocus) {
+        if (!initialScrollY.current) {
+          initialScrollY.current = currentY;
+        }
+
+        if (currentY > initialScrollY.current) {
+          window.scrollTo(0, initialScrollY.current);
+        }
+      } else {
+        initialScrollY.current = 0;
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleScrollLock);
+    window.addEventListener('scroll', handleScrollLock);
+
+    return () => {
+      window.visualViewport?.removeEventListener('resize', handleScrollLock);
+      window.removeEventListener('scroll', handleScrollLock);
+    };
+  }, [isFocus]);
+
   return (
-    <R.Container>
-      <R.Review ref={reviewRef} onScroll={handleScroll}>
-        {reviews.length > 0 ? (
+    <>
+      <R.Review ref={reviewRef}>
+        {isLoading ? (
+          <R.Empty>후기 불러오는 중...</R.Empty>
+        ) : reviews.length > 0 ? (
           reviews.map((item, index) => (
             <Chat
               key={item.reviewId}
@@ -145,6 +172,8 @@ function Review() {
               value={inputValue}
               onInput={handleInput}
               placeholder="후기를 작성해주세요!"
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
             />
           </R.Wrapper>
         </R.Input>
@@ -152,7 +181,7 @@ function Review() {
           <img src={inputValue.trim() !== '' ? SendImg2 : SendImg} alt="send" />
         </R.Button>
       </R.Area>
-    </R.Container>
+    </>
   );
 }
 

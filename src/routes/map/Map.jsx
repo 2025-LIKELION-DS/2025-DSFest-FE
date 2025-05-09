@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useDragControls } from 'framer-motion';
 import * as M from '@map/MapStyle';
@@ -19,7 +20,7 @@ function Map() {
   const [isZoomed, setIsZoomed] = useState(false);
   const controls = useDragControls();
   const isMobile = window.innerWidth <= 768;
-  const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.55 : 490);
+  const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.45 : 490);
 
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
@@ -113,11 +114,28 @@ function Map() {
   const [showPanel, setShowPanel] = useState(true);
   const [isFoodTruckActive, setIsFoodTruckActive] = useState(false);
 
+  // 퀴즈 props 받기
+  const location = useLocation();
+  const boothIdFromPuzzle = Number(location.state?.i);
+
   useEffect(() => {
     if (!isZoomed) {
       setIsFoodTruckActive(false);
     }
   }, [isZoomed]);
+
+  useEffect(() => {
+    if (boothIdFromPuzzle && booths.length > 0) {
+      const target = booths.find((b) => b.id === boothIdFromPuzzle);
+      if (target) {
+        setSelectedBooth(target);
+        setActiveMarkerId(boothIdFromPuzzle);
+        setIsZoomed(true);
+        setShowPanel(false);
+        setIsFoodTruckActive(false);
+      }
+    }
+  }, [boothIdFromPuzzle, booths]);
 
   const handleBoothClick = (boothId, boothRole) => {
     if (boothRole === 'FOOD_TRUCK') {

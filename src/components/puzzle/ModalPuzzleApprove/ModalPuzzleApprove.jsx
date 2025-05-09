@@ -1,9 +1,10 @@
 import * as B from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApproveStyle';
 
-import Complete from '@assets/puzzle/puzzle-piece-black-complete.svg';
-import Glow from '@assets/puzzle/puzzle-piece-glow1_1.svg';
-import Fail from '@assets/puzzle/puzzle-piece-black-fail.svg';
+import Complete from '@assets/puzzle/puzzle-piece-black-complete.png';
+import Glow from '@assets/puzzle/puzzle-piece-glow1_1.png';
+import Fail from '@assets/puzzle/puzzle-piece-black-fail.png';
 import Warning from '@assets/puzzle/icon-error-red.svg';
+import Close from '@assets/puzzle/Modal-close.svg';
 
 import ButtonModalSingle from '@components/puzzle/ButtonModalSingle/ButtonModalSingle';
 import InputCommon from '@components/InputCommon/InputCommon';
@@ -26,6 +27,7 @@ import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual'
  * @param {boolean} right -- 비밀번호가 일치하는지 나타내는 state 값 (true or false)
  * @param {function} onClickL -- QR코드 재인증 버튼 누를 때 실행될 함수
  * @param {function} onClickR -- 비밀번호 입력 버튼 누를 때 실행될 함수
+ * @param {function} onClose -- 모달 닫을 때 사용될 함수
  *
  * ex) <ModalPuzzleApprove state={false} number={1} boothName={"멋쟁이사자처럼"} onClick={onClick} value={value} onChange={(e)=>setValue(e.target.value)} right={right} onClickL={onclickL} onClickR={onClickR}  />
  * state true 일 때 -> state, number, boothName, onClick 넘기면 되고,
@@ -34,7 +36,18 @@ import ButtonModalDual from '@components/puzzle/ButtonModalDual/ButtonModalDual'
  * @author 김진효
  * **/
 
-const ModalPuzzleApprove = ({ state, number, boothName, onClick, value, onChange, right, onClickL, onClickR }) => {
+const ModalPuzzleApprove = ({
+  state,
+  number,
+  boothName,
+  onClick,
+  value,
+  onChange,
+  right,
+  onClickL,
+  onClickR,
+  onClose,
+}) => {
   return (
     <>
       {/* 인증 완료 */}
@@ -49,6 +62,10 @@ const ModalPuzzleApprove = ({ state, number, boothName, onClick, value, onChange
                 <B.Complete>인증 완료</B.Complete>
               </div>
             </B.BoothContainer>
+
+            <B.CloseDiv onClick={onClose}>
+              <img src={Close} alt="모달 닫기" />
+            </B.CloseDiv>
 
             <B.PaddingContainer>
               <B.ColLine></B.ColLine>
@@ -80,6 +97,10 @@ const ModalPuzzleApprove = ({ state, number, boothName, onClick, value, onChange
               </div>
             </B.BoothContainer>
           </B.ModalContainer>
+
+          <B.CloseDiv onClick={onClose}>
+            <img src={Close} alt="모달 닫기" />
+          </B.CloseDiv>
 
           <B.InputDiv>
             <InputCommon
