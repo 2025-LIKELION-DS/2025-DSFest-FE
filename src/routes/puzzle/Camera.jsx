@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import QrScanner from 'qr-scanner';
 import * as C from '@puzzle/CameraStyle';
 
 import qrIcon from '@assets/puzzle/icon-qr.svg';
 
 function Camera() {
+  const location = useLocation();
+
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const qrScannerRef = useRef(null);
@@ -13,9 +15,8 @@ function Camera() {
   const handleScan = (result) => {
     const data = result?.data;
     if (!data) return;
-    console.log('QR 스캔 결과:', data);
     qrScannerRef.current?.stop(); // 스캐너 멈춤
-    navigate('/puzzle', { state: { qrData: data } });
+    navigate('/puzzle', { state: { qrData: data, puzzleNumber: location.state?.puzzleNumber } }, { replace: true });
   };
 
   useEffect(() => {
