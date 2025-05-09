@@ -123,7 +123,7 @@ export const SpaceInfo = styled.div`
   display: flex;
   justify-content: center;
   gap: 7px;
-  padding-bottom: 10px;
+  padding-bottom: 70px;
   border-top: 1px solid #eee;
   background-color: ${palette.grayscale.white};
 `;

@@ -1,12 +1,11 @@
-import React from 'react';
 import styled from 'styled-components';
 import palette from '@styles/theme';
 
 const EntranceLineWrapper = styled.div`
   position: absolute;
   top: ${({ top }) => `${top - 4}px`};
-  left: 75%;
-  width: 50%;
+  left: 76%;
+  width: 47%;
   transform: translateX(-50%);
   //반응형 폰트 사이즈
   font-size: clamp(7.5px, 2vw, 11.5px);
@@ -15,7 +14,7 @@ const EntranceLineWrapper = styled.div`
   z-index: 10000;
   text-align: center;
 
-  /* 서서히 나타나도록 */
+  // 서서히 나타나도록
   opacity: 0;
   transform: translateX(-50%) translateY(10px);
   animation: fadeInUp 0.5s ease-out forwards;
@@ -40,7 +39,7 @@ const EntranceLineWrapper = styled.div`
 const TopLine = styled.div`
   position: absolute;
   top: -1px;
-  left: 0;
+  left: 0px;
   width: 100%;
   height: 1px;
   background-color: ${palette.grayscale.black};
@@ -50,7 +49,7 @@ const LabelBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 1px;
 `;
 
 const EntranceLine = ({ top, label }) => {
