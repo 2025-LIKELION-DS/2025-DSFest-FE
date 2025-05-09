@@ -259,7 +259,7 @@ function Puzzle() {
       if (error.response.data.error === 'DUPLICATE_USERNAME') {
         setLoginErrorMessage('중복된 닉네임 혹은 틀린 비밀번호입니다.');
       } else if (error.response.data.error === 'BAD_REQUEST') {
-        setLoginErrorMessage(error.response.data.errors.username);
+        setLoginErrorMessage('닉네임은 최대 10자까지 입력 가능합니다.');
       }
     }
   };
@@ -492,7 +492,7 @@ function Puzzle() {
                 <ButtonCommon
                   text={'로그인'}
                   color={isLoginEnabled ? `${palette.mainPurple}` : `${palette.grayscale.ca}`}
-                  onClick={() => handleLogin()}
+                  onClick={isLoginEnabled ? () => handleLogin() : null}
                 />
                 {loginFailed ? (
                   <P.loginFailed>
