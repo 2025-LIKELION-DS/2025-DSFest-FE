@@ -57,13 +57,13 @@ export const BoxCon = styled.div.attrs((props) => ({
     letter-spacing: -0.35px;
     /* 작은 화면에서만 폰트 축소 */
     @media (max-width: 372px) {
-      font-size: ${(props) => (props.special ? '12px' : '14px')};
+      font-size: ${(props) => (props.special || props.lalaland ? '12px' : '14px')};
     }
     @media (max-width: 340px) {
-      font-size: ${(props) => (props.special ? '11px' : '13px')};
+      font-size: ${(props) => (props.special || props.lalaland ? '11px' : '13px')};
     }
     @media (max-width: 324px) {
-      font-size: ${(props) => (props.special ? '9px' : '11px')};
+      font-size: ${(props) => (props.special || props.lalaland ? '9px' : '11px')};
     }
   }
 `;
@@ -75,7 +75,6 @@ export const Time = styled.div`
     height: 11px;
     margin-right: 2px;
   }
-
   div {
     color: ${palette.grayscale.text88};
     font-family: Pretendard;

@@ -170,10 +170,17 @@ const BoothBoxGroup = ({ selectedDate }) => {
           {...e}
           compact={e.height <= 20}
           special={e.title === '보라; 보이는 라디오'} // 특정 타이틀일 때만 true
+          lalaland={e.title === '<라라랜드> 상영'}
         />
       ))}
       {right.map((e, i) => (
-        <BoothBox key={`right-${i}`} {...e} compact={e.height <= 20} special={e.title === '보라; 보이는 라디오'} />
+        <BoothBox
+          key={`right-${i}`}
+          {...e}
+          compact={e.height <= 20}
+          special={e.title === '보라; 보이는 라디오'}
+          lalaland={e.title === '<라라랜드> 상영'}
+        />
       ))}
     </>
   );
