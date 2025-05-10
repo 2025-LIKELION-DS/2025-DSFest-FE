@@ -265,7 +265,7 @@ export const whiteSemibold16 = styled.div`
   font-weight: 600;
   color: ${palette.grayscale.white};
   font-size: 16px;
-  margin-left: 2px;
+  margin-left: 4px;
 `;
 
 export const whiteSemibold20 = styled.div`
@@ -372,7 +372,7 @@ export const regular14 = styled.div`
 `;
 
 export const bold14 = styled.span`
-  color: ${palette.grayscale.black};
+  color: ${palette.grayscale.text33};
   font-weight: 700;
   font-size: 14px;
 `;
@@ -498,8 +498,4 @@ export const ToastContent = styled.div`
   line-height: 130%;
 `;
 
-export const ToastMessage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const ToastMessage = styled.div``;
