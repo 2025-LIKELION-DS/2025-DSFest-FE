@@ -1,8 +1,8 @@
 import palette from '@styles/theme';
 
 const GAP = 45; // 30분당 45px
-const START_X = 21.5; // 9시 시작 좌표
-const START_HOUR = 9;
+const START_X = 21.5; // 7시 시작 좌표
+const START_HOUR = 7;
 
 const getMinutes = ([h, m]) => h * 60 + m;
 

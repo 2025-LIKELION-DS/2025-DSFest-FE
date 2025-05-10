@@ -8,16 +8,20 @@ const EntranceLineWrapper = styled.div`
   width: 47%;
   transform: translateX(-50%);
   //반응형 폰트 사이즈
-  font-size: clamp(11px, 2vw, 11.5px); //수정 //<라라랜드> 상영
+  font-size: clamp(11px, 2vw, 11.5px);
   color: ${palette.grayscale.text33};
   pointer-events: none;
   z-index: 10000;
   text-align: center;
 
+  transition:
+    top 0.6s ease-in-out,
+    opacity 0.3s ease;
+
   // 서서히 나타나도록
   opacity: 0;
-  transform: translateX(-50%) translateY(10px);
-  animation: fadeInUp 0.5s ease-out forwards;
+  transform: translateX(-50%) translateY(7px);
+  animation: fadeInUp 1s ease-out forwards;
 
   @keyframes fadeInUp {
     to {
@@ -82,7 +86,11 @@ const EntranceLine = ({ top, label }) => {
   const [text, time] = label.split(' ('); // ex: '덕우왕국 입장', '15:00 - )'
 
   return (
-    <EntranceLineWrapper top={top}>
+    <EntranceLineWrapper
+      style={{
+        top: `${top - 4}px`,
+        opacity: top < 0 ? 0 : 1,
+      }}>
       <TopLine />
       <LabelBlock>
         <p style={{ margin: 0 }}>↓</p>
