@@ -14,6 +14,7 @@ export const Message = styled.div`
   letter-spacing: -0.35px;
   white-space: pre-wrap;
   margin-bottom: 16px;
+  max-height: 999999px; /* 안드로이드 크롬 폰트 사이즈 이슈 */
 `;
 
 export const Highlight = styled.span`
