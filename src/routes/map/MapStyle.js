@@ -47,7 +47,10 @@ export const Map = styled.div`
   background: #f4eef5;
 `;
 
-export const TouchSection = styled.div``;
+export const TouchSection = styled.div`
+  cursor: grab;
+  padding-top: 15px;
+`;
 
 export const BarContainer = styled.div`
   display: flex;

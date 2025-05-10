@@ -139,7 +139,7 @@ function SlidingPanelSection({
 
     const handleScroll = () => {
       const scrollTop = contentEl.scrollTop;
-      const scrollThreshold = window.innerWidth <= 768 ? 1200 : 400;
+      const scrollThreshold = window.innerWidth <= 768 ? 800 : 400;
 
       if (scrollTop > scrollThreshold && panelHeight < window.innerHeight * 0.8) {
         setPanelHeight(window.innerWidth <= 768 ? window.innerHeight * 0.83 : 740);
@@ -159,10 +159,10 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={hasMountedRef.current ? { type: 'spring', stiffness: 100, damping: 30 } : { duration: 0 }}
+      transition={hasMountedRef.current ? { type: 'spring', stiffness: 60, damping: 10 } : { duration: 0 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
-      <M.TouchSection onPointerDown={handlePointerDown} style={{ cursor: 'grab', paddingTop: 15 }}>
+      <M.TouchSection onPointerDown={handlePointerDown} style={{}}>
         <M.BarContainer>
           <M.Bar />
         </M.BarContainer>
