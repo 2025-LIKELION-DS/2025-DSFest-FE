@@ -159,7 +159,7 @@ function SlidingPanelSection({
       dragElastic={0}
       dragTransition={{ power: 0.2 }}
       animate={{ height: panelHeight }}
-      transition={hasMountedRef.current ? { type: 'spring', stiffness: 100, damping: 20 } : { duration: 0 }}
+      transition={hasMountedRef.current ? { type: 'spring', stiffness: 250, damping: 45 } : { duration: 0 }}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}>
       <M.TouchSection onPointerDown={handlePointerDown}>
