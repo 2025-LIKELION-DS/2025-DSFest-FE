@@ -15,6 +15,7 @@ export const SlidingPanel = styled(motion.div)`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 5;
 `;
 
 export const ImageWrapper = styled.div`

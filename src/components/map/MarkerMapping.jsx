@@ -31,6 +31,7 @@ export const fixedMarkers = {
   31: { top: '467px', right: '290px' },
   32: { top: '492px', right: '290px' },
   33: { top: '517px', right: '290px' },
+  34: { top: '598px', left: '180px' },
 };
 
 export const boothMarkerPositions = {
@@ -102,6 +103,8 @@ export const boothMappingByTime = {
     31: 10,
     32: 12,
     33: 5,
+
+    34: 102,
   },
   '수요일 밤': {
     1: 34,
@@ -142,6 +145,8 @@ export const boothMappingByTime = {
     31: 35,
     32: 30,
     33: 37,
+
+    34: 102,
   },
   '목요일 낮': {
     1: 0,
@@ -182,6 +187,8 @@ export const boothMappingByTime = {
     31: 30,
     32: 52,
     33: 18,
+
+    34: 102,
   },
   '목요일 밤': {
     1: 0,
@@ -222,6 +229,8 @@ export const boothMappingByTime = {
     31: 60,
     32: 65,
     33: 18,
+
+    34: 102,
   },
   '금요일 낮': {
     1: 0,
@@ -262,6 +271,8 @@ export const boothMappingByTime = {
     31: 58,
     32: 49,
     33: 18,
+
+    34: 102,
   },
   '금요일 밤': {
     1: 0,
@@ -302,5 +313,7 @@ export const boothMappingByTime = {
     31: 20,
     32: 52,
     33: 32,
+
+    34: 102,
   },
 };

@@ -114,7 +114,7 @@ function Moving({
   const isMobile = window.innerWidth <= 600;
 
   useEffect(() => {
-    if (!isZoomed && setDragOffset) {
+    if (isZoomed && setDragOffset) {
       if (isMobile) {
         const centerX = (window.innerWidth - imageWidth) / 2 + 10;
         const centerY = (window.innerHeight - imageHeight) / 2;
