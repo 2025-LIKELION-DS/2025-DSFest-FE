@@ -4,6 +4,7 @@ import * as R from '@review/ReviewStyle';
 import Chat from '@review/components/Chat';
 import SendImg from '@assets/review/icon-send.svg';
 import SendImg2 from '@assets/review/icon-send-white.svg';
+import errorIcon from '@assets/puzzle/icon-pupple.svg';
 import keywordMap from '@data/keywords.json';
 
 function Review({ scrollTargetRef }) {
@@ -12,6 +13,7 @@ function Review({ scrollTargetRef }) {
   const [autoPlayKeyword, setAutoPlayKeyword] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFocus, setIsFocus] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
   const textareaRef = useRef(null);
   const reviewRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -74,6 +76,11 @@ function Review({ scrollTargetRef }) {
       setTimeout(scrollToBottom, 100);
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
+      if (err.response?.status === 500) {
+        setToastMessage('255자 이내로 작성해주세요.');
+      } else {
+        setToastMessage('오류가 발생했습니다.');
+      }
     }
   };
 
@@ -160,6 +167,16 @@ function Review({ scrollTargetRef }) {
           ))
         ) : (
           <R.Empty>2025 근화제 여운의 후기를 남겨주세요!</R.Empty>
+        )}
+        {toastMessage && (
+          <R.ToastBox>
+            <R.ToastContent>
+              <img src={errorIcon} alt="error" />
+              <R.ToastMessage>
+                <div>{toastMessage}</div>
+              </R.ToastMessage>
+            </R.ToastContent>
+          </R.ToastBox>
         )}
       </R.Review>
       <R.Area>
