@@ -4,7 +4,7 @@ import * as C from '@notice/components/ContentStyle';
 function Content({ title, preview, previewImg, onClick }) {
   return (
     <C.Content onClick={onClick}>
-      <C.Left>
+      <C.Left hasImage={!!previewImg}>
         <C.Title>{title}</C.Title>
         <C.Preview>{preview}</C.Preview>
       </C.Left>
