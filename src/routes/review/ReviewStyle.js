@@ -156,7 +156,7 @@ const ToastShow = keyframes`
 
 export const ToastBox = styled.div`
   box-sizing: border-box;
-  width: calc(100% - 152px);
+  width: calc(100% - 95px);
   animation: ${ToastShow} 1.5s ease-in-out forwards;
   transform-origin: center;
 
