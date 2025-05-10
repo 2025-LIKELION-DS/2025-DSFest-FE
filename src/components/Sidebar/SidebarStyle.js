@@ -42,7 +42,7 @@ export const Sidebar = styled.div`
 
   z-index: 1000;
 
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
 
