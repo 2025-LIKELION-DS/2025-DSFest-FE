@@ -3,7 +3,6 @@ import palette from '@styles/theme';
 
 export const Message = styled.div`
   width: fit-content;
-  max-width: 100%;
   padding: 12px;
   border-radius: 12px;
   background: ${palette.mainPurple10};

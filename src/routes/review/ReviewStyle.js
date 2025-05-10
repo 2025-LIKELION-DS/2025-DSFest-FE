@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import palette from '@styles/theme';
 
 export const Container = styled.div`
@@ -19,6 +19,7 @@ export const Area = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 369px;
     @media (min-height: 852px) {
+      position: absolute;
       bottom: calc(50% - 426px);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
@@ -131,4 +132,69 @@ export const StyledTextarea = styled.textarea`
   &:focus {
     outline: none;
   }
+`;
+
+const ToastShow = keyframes`
+  0%{
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  15%{
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  85%{
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100%{
+    transform: scaleX(0);
+    opacity: 0;
+  }
+`;
+
+export const ToastBox = styled.div`
+  box-sizing: border-box;
+  width: calc(100% - 152px);
+  animation: ${ToastShow} 1.5s ease-in-out forwards;
+  transform-origin: center;
+
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    width: 300px;
+    @media (min-height: 852px) {
+      top: calc(50% - 350px);
+      width: 300px;
+    }
+  }
+`;
+
+export const ToastContent = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  padding: 17px 32px;
+  border-radius: 60px;
+  background-color: ${palette.grayscale.white};
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  color: ${palette.grayscale.black};
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 130%;
+`;
+
+export const ToastMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
