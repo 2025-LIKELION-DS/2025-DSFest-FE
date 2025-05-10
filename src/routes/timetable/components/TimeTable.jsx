@@ -73,12 +73,15 @@ const TimeTable = () => {
 
           {/* 일정 박스 */}
           <T.TableLineCon>
-            <B.BoothCon key={selectedDate} animate={true}>
+            <B.BoothCon animate={true}>
               {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
               <BoothBoxGroup selectedDate={selectedDate} />
               {/* 덕우왕국 입장 시간선 */}
               {selectedTime && (
-                <EntranceLine top={calculateTopFromTime(selectedTime)} label={`덕우왕국 입장 (${selectedTime} - )`} />
+                <EntranceLine
+                  top={selectedTime ? calculateTopFromTime(selectedTime) : -100}
+                  label={selectedTime ? `덕우왕국 입장 (${selectedTime} - )` : ''}
+                />
               )}
             </B.BoothCon>
 

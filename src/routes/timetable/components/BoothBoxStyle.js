@@ -30,6 +30,11 @@ export const BoxCon = styled.div.attrs((props) => ({
   flex-direction: column;
   gap: 2px;
 
+  /* ease-in-out 적용 */
+  transition:
+    top 0.6s ease-in-out,
+    opacity 0.3s ease;
+
   /* 투명도 배경 설정 */
   background: ${palette.styles.white20};
   backdrop-filter: blur(2px);
