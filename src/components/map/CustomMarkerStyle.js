@@ -12,7 +12,6 @@ export const MarkerImage = styled.img`
   right: ${({ right, isActive }) => (right ? `${isActive ? 'atuo' : '7px'}` : 'auto')};
   width: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
   height: ${({ isActive }) => `${isActive ? '30px' : '11px'}`};
-  // padding: 0 6px 6px;
   padding: ${({ isActive }) => (isActive ? undefined : '6px')};
 `;
 
