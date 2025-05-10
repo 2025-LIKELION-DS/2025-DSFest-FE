@@ -2,7 +2,7 @@
 import * as B from '@timetable/components/BoothBoxStyle.js';
 import TimeIcon from '@assets/timetable/Time.svg';
 
-const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColor, compact, special }) => {
+const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColor, compact, special, lalaland }) => {
   const getLeftPercent = (side) => {
     if (side === 'left') return 0;
     if (side === 'right') return 50;
@@ -18,6 +18,7 @@ const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColo
       borderColor={borderColor}
       compact={compact}
       special={special}
+      lalaland={lalaland}
       animate={true}>
       {title.split('\n').map((line, idx) => (
         <h2 key={idx}>{line}</h2>
