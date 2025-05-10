@@ -26,7 +26,7 @@ const eventsByDate = {
         title: '<라라랜드> 상영',
         timeRange: '15:40 - 17:30',
         top: 197.5,
-        height: 72,
+        height: 64.5,
         left: 52,
         borderColor: palette.violet.violet200,
       },
