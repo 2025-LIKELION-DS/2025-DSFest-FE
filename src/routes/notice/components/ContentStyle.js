@@ -18,7 +18,8 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
-  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 84px)' : '100%')};
+  padding-right: 4px;
+  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 88px)' : 'calc(100% - 4px)')};
 `;
 
 export const Right = styled.div`
@@ -35,6 +36,8 @@ export const Title = styled.div`
 
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0;
+  word-break: break-word;
 
   max-width: 100%;
   color: ${palette.grayscale.text33};
@@ -53,6 +56,8 @@ export const Preview = styled.div`
 
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: 0;
+  word-break: break-word;
 
   max-width: 100%;
   color: ${palette.grayscale.text33};
