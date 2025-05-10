@@ -8,6 +8,7 @@ import SidebarAdmin from '@components/Sidebar/SidebarAdmin';
 import Left from '@assets/topbar/icon-left.svg';
 import Menu from '@assets/topbar/icon-menu.svg';
 import { isAdminLoggedIn } from '@utils/admin';
+import usePreviousPath from '@hooks/usePreviousPath';
 
 /**
  * 페이지의 헤더를 나타내는 컴포넌트입니다.
@@ -21,6 +22,7 @@ const Topbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isAdmin = isAdminLoggedIn();
+  const prevPath = usePreviousPath();
 
   if (pathname === '/admin' || pathname === '/admin/menu' || pathname === '/notice/image' || pathname === '/') {
     return null;
@@ -78,7 +80,11 @@ const Topbar = () => {
   };
 
   const handleLeft = () => {
-    navigate(-1);
+    if (prevPath === '/camera') {
+      navigate(-3);
+    } else {
+      navigate(-1);
+    }
   };
 
   return (

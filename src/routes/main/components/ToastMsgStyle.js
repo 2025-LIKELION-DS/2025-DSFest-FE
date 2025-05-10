@@ -44,7 +44,7 @@ export const MsgDiv = styled.div`
   border-radius: 40px;
   background-color: ${palette.styles.white50};
   box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 
   font-size: 16px;
   font-weight: 400;
