@@ -184,14 +184,6 @@ function Review({ scrollTargetRef }) {
             </R.ToastContent>
           </R.ToastBox>
         )}
-        <R.ToastBox>
-          <R.ToastContent>
-            <img src={errorIcon} alt="error" />
-            <R.ToastMessage>
-              <div>{toastMessage}</div>
-            </R.ToastMessage>
-          </R.ToastContent>
-        </R.ToastBox>
       </R.Review>
       <R.Area>
         <R.Input>
