@@ -14,12 +14,10 @@ export const Review = styled.div`
 `;
 
 export const Area = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 369px;
-    position: absolute;
-    bottom: 0;
     @media (min-height: 852px) {
       bottom: calc(50% - 426px);
       border-bottom-left-radius: 10px;
