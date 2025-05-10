@@ -18,8 +18,8 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
-  padding-right: 6px;
-  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 90px)' : 'calc(100% - 6px)')};
+  padding-right: 8px;
+  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 92px)' : 'calc(100% - 8px)')};
 `;
 
 export const Right = styled.div`
