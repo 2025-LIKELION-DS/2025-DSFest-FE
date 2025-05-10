@@ -19,6 +19,7 @@ export const Area = styled.div`
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
     width: 369px;
     @media (min-height: 852px) {
+      position: absolute;
       bottom: calc(50% - 426px);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
