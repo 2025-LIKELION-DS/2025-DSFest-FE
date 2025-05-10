@@ -18,8 +18,7 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
-  padding-right: 8px;
-  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 92px)' : 'calc(100% - 8px)')};
+  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 84px)' : 'calc(100%)')};
 `;
 
 export const Right = styled.div`
@@ -46,7 +45,8 @@ export const Title = styled.div`
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
-  letter-spacing: -0.4px;
+  letter-spacing: 0;
+  padding-right: 4px;
 `;
 
 export const Preview = styled.div`
@@ -62,10 +62,11 @@ export const Preview = styled.div`
   max-width: 100%;
   color: ${palette.grayscale.text33};
   font-family: Pretendard;
-  text-align: justify;
+  text-align: left;
   text-overflow: ellipsis;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
-  letter-spacing: -0.35px;
+  letter-spacing: 0;
+  padding-right: 4px;
 `;
