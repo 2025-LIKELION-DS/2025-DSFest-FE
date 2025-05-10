@@ -42,7 +42,7 @@ export const Images = styled.div`
 export const Image = styled.img`
   width: 152px;
   height: 190px;
-  aspect-ratio: 4/5;
+  object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
 `;

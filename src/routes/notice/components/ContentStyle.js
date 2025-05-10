@@ -18,12 +18,12 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 8px;
+  width: ${({ hasImage }) => (hasImage ? 'calc(100% - 84px)' : '100%')};
 `;
 
 export const Right = styled.div`
-  width: 67px;
-  height: 67px;
-  aspect-ratio: 1/1;
+  width: 64px;
+  height: 80px;
   border-radius: 4px;
   background: ${({ $img }) => `url(${$img})`} lightgray 50% / cover no-repeat;
 `;
