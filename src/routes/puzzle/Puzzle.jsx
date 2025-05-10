@@ -9,7 +9,7 @@ import axios from 'axios';
 import puzzleData from '@data/puzzleData.json';
 import boothIcon from '@assets/puzzle/icon-booth.svg';
 import whiteErrorIcon from '@assets/puzzle/icon-error-white.svg';
-import glowPuzzleIcon from '@assets/puzzle/puzzle-piece-glow-1-grain.svg';
+import glowPuzzleIcon from '@assets/puzzle/puzzle-piece-glow-1-grain.png';
 import lightIcon from '@assets/puzzle/icon-tip-lightbulb.svg';
 import check from '@assets/puzzle/icon-check.svg';
 import whiteCheck from '@assets/puzzle/icon-white-check.svg';
@@ -299,7 +299,6 @@ function Puzzle() {
           },
         },
       );
-      console.log(response.data);
       if (response.data.code === 'SUCCESS_BINGO_FILL') {
         if (response.data.data.success === false) {
           console.log('이미 인증');
@@ -311,6 +310,7 @@ function Puzzle() {
             boothName: response.data.data.placeName,
           });
           setShowModal('qrCheckModal');
+          await getPuzzleInfo();
         }
       }
     } catch (error) {
@@ -358,12 +358,18 @@ function Puzzle() {
       }
     } catch (error) {
       console.log(error.response.data.message);
-      setQrSuccess(false);
-      setRight(false);
-      setModalProps({
-        state: false,
-      });
-      setShowModal('qrCheckModal');
+      if (error.response.data.error) {
+        setPuzzleToast(true);
+      } else {
+        setQrSuccess(false);
+        setRight(false);
+        setModalProps({
+          state: false,
+        });
+        setShowModal('qrCheckModal');
+      }
+    } finally {
+      navigate(location.pathname, { replace: true, state: {} });
     }
   };
 
