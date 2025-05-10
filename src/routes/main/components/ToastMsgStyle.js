@@ -25,7 +25,6 @@ export const ToastMsg = styled.div`
   box-sizing: border-box;
   text-align: center;
 
-  animation: ${ToastShow} 3s ease-in-out forwards;
   transform-origin: center;
 
   position: absolute;
@@ -36,15 +35,18 @@ export const ToastMsg = styled.div`
 `;
 
 export const MsgDiv = styled.div`
+  animation: ${ToastShow} 3s ease-in-out forwards;
+
   box-sizing: border-box;
   width: 100%;
-
   padding: 13px 0;
 
   border-radius: 40px;
   background-color: ${palette.styles.white50};
+
   box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   font-size: 16px;
   font-weight: 400;
