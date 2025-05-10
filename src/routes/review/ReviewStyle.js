@@ -154,28 +154,32 @@ const ToastShow = keyframes`
 
 export const ToastBox = styled.div`
   box-sizing: border-box;
-  width: calc(100% - 95px);
+  width: 100%;
   animation: ${ToastShow} 1.5s ease-in-out forwards;
   transform-origin: center;
-
   position: absolute;
-  top: 80px;
-  left: calc(50% - 150px);
-  transform: translateX(-50%);
-  z-index: 999;
+  top: 70px;
+  left: 0;
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
-    width: 300px;
     @media (min-height: 852px) {
-      top: calc(50% - 350px);
-      width: 300px;
+      top: calc(50% - 355px);
     }
   }
+  z-index: 999;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ToastContent = styled.div`
   box-sizing: border-box;
-  width: 100%;
-  padding: 17px 32px;
+  width: calc(100% - 80px);
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    width: 313px;
+    @media (min-height: 852px) {
+      width: 313px;
+    }
+  }
+  padding: 17px 20px;
   border-radius: 60px;
   background-color: ${palette.grayscale.white};
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
