@@ -17,7 +17,7 @@ import MinusB from '@assets/map/minusblack.svg';
 import PlusB from '@assets/map/plusblack.svg';
 
 function Map() {
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(true);
   const controls = useDragControls();
   const isMobile = window.innerWidth <= 768;
   const [panelHeight, setPanelHeight] = useState(isMobile ? window.innerHeight * 0.45 : 490);
@@ -50,7 +50,7 @@ function Map() {
   const [booths, setBooths] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [foodTruckData, setFoodTruckData] = useState(null);
+  const [foodTruckData, setFoodTruckData] = useState(false);
 
   const boothsByRole = {
     FOOD_TRUCK: booths.filter((b) => b.boothRole === 'FOOD_TRUCK'),
@@ -173,27 +173,29 @@ function Map() {
 
   return (
     <M.Map>
-      <Moving
-        isZoomed={isZoomed}
-        mapSmall={mapSmall}
-        mapBig={mapBig}
-        imageWidth={imageWidth}
-        imageHeight={imageHeight}
-        activeMarkerId={activeMarkerId}
-        setActiveMarkerId={setActiveMarkerId}
-        handleBoothClick={handleBoothClick}
-        setDragOffset={setDragOffset}
-        dragOffset={dragOffset}
-        closeDetail={closeDetail}
-        boothsByRole={boothsByRole}
-        booths={booths}
-        isFoodTruckActive={isFoodTruckActive}
-        setIsFoodTruckActive={setIsFoodTruckActive}
-        onBoothSelect={() => {}}
-        selectedDayTime={selectedDay}
-        selectedTags={selectedTags}
-        onBackgroundClick={() => setIsDateOpen(false)}
-      />
+      {booths.length > 0 && (
+        <Moving
+          isZoomed={isZoomed}
+          mapSmall={mapSmall}
+          mapBig={mapBig}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          activeMarkerId={activeMarkerId}
+          setActiveMarkerId={setActiveMarkerId}
+          handleBoothClick={handleBoothClick}
+          setDragOffset={setDragOffset}
+          dragOffset={dragOffset}
+          closeDetail={closeDetail}
+          boothsByRole={boothsByRole}
+          booths={booths}
+          isFoodTruckActive={isFoodTruckActive}
+          setIsFoodTruckActive={setIsFoodTruckActive}
+          onBoothSelect={() => {}}
+          selectedDayTime={selectedDay}
+          selectedTags={selectedTags}
+          onBackgroundClick={() => setIsDateOpen(false)}
+        />
+      )}
       <>
         <M.ZoomButtonWrapper onClick={closeDetail}>
           <M.ZoomButton onClick={handleZoomOut} disabled={!isZoomed}>
@@ -224,7 +226,7 @@ function Map() {
         )}
       </>
 
-      {showPanel && (
+      {showPanel && booths.length > 0 && (
         <SlidingPanelSection
           panelHeight={panelHeight}
           setPanelHeight={setPanelHeight}
@@ -242,7 +244,7 @@ function Map() {
         />
       )}
 
-      {selectedBooth && (
+      {selectedBooth && booths.length > 0 && (
         <BoothDetailModal
           booth={{
             id: selectedBooth?.id,
