@@ -37,5 +37,8 @@ export const Bubble = styled.div`
   font-size: 12px;
   margin-bottom: 4px;
   white-space: nowrap;
-  margin-top: -20px;
+  margin-top: -26px;
+  height: 21px;
+  display: flex;
+  align-items: center;
 `;
