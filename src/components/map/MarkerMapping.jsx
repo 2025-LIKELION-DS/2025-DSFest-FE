@@ -31,7 +31,7 @@ export const fixedMarkers = {
   31: { top: '467px', right: '290px' },
   32: { top: '492px', right: '290px' },
   33: { top: '517px', right: '290px' },
-  34: { top: '598px', left: '180px' },
+  34: { top: '655px', left: '155px' },
 };
 
 export const boothMarkerPositions = {
@@ -49,7 +49,7 @@ export const boothMarkerPositions = {
   // HINT markers
   98: [
     { top: '170px', left: '115px' },
-    { top: '610px', left: '240px' },
+    { top: '592px', left: '240px' },
   ],
   99: [{ top: '185px', right: '240px' }],
   92: [{ top: '302px', right: '240px' }],
@@ -59,7 +59,7 @@ export const boothMarkerPositions = {
     { top: '498px', left: '332px' },
   ],
   95: [{ top: '545px', left: '240px' }],
-  97: [{ top: '610px', left: '140px' }],
+  97: [{ top: '630px', left: '140px' }],
   94: [{ top: '655px', left: '240px' }],
 };
 
