@@ -56,10 +56,18 @@ export const Button = styled.div`
 `;
 
 export const Empty = styled.div`
-  margin: auto;
   color: #aaa;
   font-size: 14px;
-  text-align: center;
+  width: 100%;
+  height: calc(100dvh - 56px - 72px);
+  @media (min-width: 768px), (hover: hover) and (pointer: fine) {
+    @media (min-height: 852px) {
+      height: calc(852px - 56px - 72px);
+    }
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Wrapper = styled.div`
