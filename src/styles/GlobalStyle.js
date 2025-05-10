@@ -51,6 +51,10 @@ const GlobalStyle = createGlobalStyle`
     @supports (-webkit-touch-callout: none) {
       min-height: -webkit-fill-available;
     }
+
+    /* 안드로이드 크롬 폰트 사이즈 이슈 */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   a {
