@@ -28,7 +28,7 @@ const slideRight = keyframes`
 export const Overlay = styled.div`
   width: 100%;
   height: 100dvh;
-  position: fixed;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
