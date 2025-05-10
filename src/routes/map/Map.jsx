@@ -154,6 +154,7 @@ function Map() {
         setIsZoomed(true);
         setShowPanel(false);
         setIsFoodTruckActive(false);
+        window.history.replaceState({}, document.title);
       }
     }
   }, [boothIdFromPuzzle, booths]);

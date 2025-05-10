@@ -82,7 +82,8 @@ const renderFoodTruckMarkers = ({ boothsByRole, boothMarkerPositions, handleMark
   return null;
 };
 
-const renderHintMarkers = ({ boothsByRole, boothMarkerPositions, activeMarkerId, handleMarkerClick }) => {
+const renderHintMarkers = ({ boothsByRole, boothMarkerPositions, activeMarkerId, handleMarkerClick, selectedTags }) => {
+  if (!selectedTags?.includes('전체')) return null;
   return boothsByRole?.['HINT']?.flatMap((booth) =>
     (boothMarkerPositions[booth.id] || []).map((pos, idx) => (
       <CustomMarker
@@ -209,6 +210,7 @@ function Moving({
                 boothMarkerPositions,
                 activeMarkerId,
                 handleMarkerClick,
+                selectedTags,
               })}
             </>
           )}
