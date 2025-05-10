@@ -201,7 +201,9 @@ export const completedPuzzleCountInfo = styled.div`
 export const completedPuzzle = styled.div``;
 
 export const glowPuzzleIcon = styled.img`
+  width: 85px;
   aspect-ratio: 61.17/60.32;
+  transform: rotate(19.763deg);
   position: relative;
   left: 10px;
 `;
