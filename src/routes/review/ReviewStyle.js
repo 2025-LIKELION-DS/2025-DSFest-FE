@@ -161,7 +161,7 @@ export const ToastBox = styled.div`
 
   position: absolute;
   top: 80px;
-  left: 50%;
+  left: calc(50% - 150px);
   transform: translateX(-50%);
   z-index: 999;
   @media (min-width: 768px), (hover: hover) and (pointer: fine) {
