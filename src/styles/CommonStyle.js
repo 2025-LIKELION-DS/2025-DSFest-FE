@@ -22,6 +22,9 @@ export const Page = styled.div`
     @media (min-width: 1301px) {
       justify-content: space-between;
     }
+    @media (min-height: 852px) {
+      position: relative;
+    }
   }
 `;
 

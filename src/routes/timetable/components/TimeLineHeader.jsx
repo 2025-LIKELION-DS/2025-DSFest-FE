@@ -62,10 +62,23 @@ const TimeLineHeader = ({ selectedDate }) => {
   const isFestivalTime = () => {
     const now = new Date();
 
-    const start = new Date('2025-05-14T09:30:00');
-    const end = new Date('2025-05-16T23:00:00');
+    // 축제 전체 기간
+    const startDate = new Date('2025-05-14');
+    const endDate = new Date('2025-05-16');
 
-    return now >= start && now <= end;
+    // 날짜가 범위 안에 있는지 확인
+    const isInDateRange = now >= startDate && now <= endDate;
+
+    if (!isInDateRange) return false;
+
+    // 매일 운영 시간: 09:30 ~ 23:00
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+
+    const afterOpening = hour > 9 || (hour === 9 && minute >= 30);
+    const beforeClosing = hour < 23;
+
+    return afterOpening && beforeClosing;
   };
 
   return (

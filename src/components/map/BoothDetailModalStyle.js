@@ -38,6 +38,7 @@ export const Link = styled.a`
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.3px;
+  margin: 0 3px 12px;
 `;
 
 export const LinkWrapper = styled.div`
@@ -70,7 +71,7 @@ export const BoothTags = styled.div`
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 12px 0 0;
+  margin: 0;
 `;
 
 export const Tag = styled.span`
