@@ -28,7 +28,7 @@ export const BoxCon = styled.div.attrs((props) => ({
   width: 48%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 
   /* 투명도 배경 설정 */
   background: ${palette.styles.white20};
@@ -37,7 +37,7 @@ export const BoxCon = styled.div.attrs((props) => ({
 
   /* 조건부 렌더링 */
   border-left: 5px solid ${(props) => props.borderColor || palette.violet.violet200};
-  padding: ${({ compact, special }) => (special ? '1px 0 0 8px' : compact ? '0 0 0 8px' : '8px 0 0 13px')};
+  padding: ${({ compact, special }) => (special ? '1px 0 0 12px' : compact ? '1px 0 0 12px' : '8px 0 0 12px')};
   justify-content: ${(props) => (props.compact ? 'center' : 'flex-start')};
 
   /* 아래에서 위로 올라오는 애니메이션 */
@@ -50,26 +50,53 @@ export const BoxCon = styled.div.attrs((props) => ({
   h2 {
     margin: 0;
     font-family: Pretendard;
+    /* font-size: clamp(11px, 2vw, 14px); */
     font-size: 14px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.35px;
-    /* 작은 화면에서만 폰트 축소 */
-    @media (max-width: 372px) {
-      font-size: ${(props) => (props.special || props.lalaland ? '12px' : '14px')};
+    margin-right: 5px;
+    ${(props) => props.special && `margin-right: 0px;`}
+
+    @media (max-width: 389px) {
+      font-size: 13.5px !important;
     }
-    @media (max-width: 340px) {
-      font-size: ${(props) => (props.special || props.lalaland ? '11px' : '13px')};
+    @media (max-width: 379px) {
+      font-size: 13x !important;
     }
-    @media (max-width: 324px) {
-      font-size: ${(props) => (props.special || props.lalaland ? '9px' : '11px')};
+    @media (max-width: 379px) {
+      font-size: 12.5px !important;
     }
+    @media (max-width: 360px) {
+      font-size: 12px !important;
+    }
+
+    @media (max-width: 353px) {
+      font-size: 11px !important;
+    }
+    @media (max-width: 336px) {
+      font-size: 10.5px !important;
+    }
+    @media (max-width: 328px) {
+      font-size: 10px !important;
+    }
+    @media (max-width: 320px) {
+      font-size: 9.5px !important;
+    }
+    @media (max-width: 312px) {
+      font-size: 9px !important;
+    }
+  }
+
+  @media (max-width: 400px) {
+    padding-left: 10px !important;
   }
 `;
 
 export const Time = styled.div`
   display: flex;
+  margin-top: 4px;
+  //보라; 보이는 라디오시 마진 없음
+  ${(props) => props.special && `margin-top: 0px;`}
+
   img {
     width: 11px;
     height: 11px;
@@ -79,15 +106,10 @@ export const Time = styled.div`
     color: ${palette.grayscale.text88};
     font-family: Pretendard;
     font-size: 10px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: -0.25px;
-    @media (max-width: 340px) {
-      font-size: ${(props) => (props.special ? '8px' : '10px')};
-    }
-    @media (max-width: 324px) {
-      font-size: ${(props) => (props.special ? '6px' : '8px')};
+    @media (max-width: 362px) {
+      ${(props) => props.special && `  font-size: 9px;`}
     }
   }
 `;

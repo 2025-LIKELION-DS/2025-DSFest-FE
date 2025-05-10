@@ -22,9 +22,9 @@ const Marker = styled.div`
   }
 `;
 
-export function getLeftFromTime(timeStr, startHour = 9, gapPerHalfHour = 45, startLeft = 21.5) {
+export function getLeftFromTime(timeStr, startHour = 7, gapPerHalfHour = 45, startLeft = 21.5) {
   const [hour, minute] = timeStr.split(':').map(Number);
-  const totalMinutes = Math.max(0, (hour - startHour) * 60 + minute);
+  const totalMinutes = (hour === 0 ? 24 : hour) * 60 + minute - startHour * 60;
   const adjustedMinutes = Math.round(totalMinutes / 5) * 5;
   const pxPerMinute = gapPerHalfHour / 30;
   return startLeft + adjustedMinutes * pxPerMinute;
