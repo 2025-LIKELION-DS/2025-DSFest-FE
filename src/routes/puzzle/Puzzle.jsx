@@ -542,9 +542,9 @@ function Puzzle() {
                       비밀번호를 입력하고 <P.bold14>스크래치 복권</P.bold14>을 드릴 거예요.
                     </P.regular14>
                     <P.regular14 style={{ marginBottom: '7px' }}>과연 복권에 적혀있는 행운은 무엇일까요?</P.regular14>
-                    <P.regular14 style={{ marginBottom: '3px' }}>1. 여운의 분위기를 가득 담은 실물 퍼즐✨</P.regular14>
-                    <P.regular14 style={{ marginBottom: '3px' }}>2. 운율의 상징인 라벤더 씨앗🪻</P.regular14>
-                    <P.regular14 style={{ marginBottom: '3px' }}>3. 잘 키우면 유용한 바질 씨앗🌱</P.regular14>
+                    <P.regular14 style={{ marginBottom: '1px' }}>1. 여운의 분위기를 가득 담은 실물 퍼즐✨</P.regular14>
+                    <P.regular14 style={{ marginBottom: '1px' }}>2. 운율의 상징인 라벤더 씨앗🪻</P.regular14>
+                    <P.regular14 style={{ marginBottom: '1px' }}>3. 잘 키우면 유용한 바질 씨앗🌱</P.regular14>
                     <P.regular14>4. 꽝💣 하지만 퍼즐을 즐기며 만난 여운의 즐거움을 잊지 마세요!</P.regular14>
                   </P.CompletedInfo>
                 </>
