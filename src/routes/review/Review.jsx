@@ -77,9 +77,15 @@ function Review({ scrollTargetRef }) {
     } catch (err) {
       console.error('리뷰 작성 실패:', err);
       if (err.response?.status === 500) {
-        setToastMessage('255자 이내로 작성해주세요.');
+        setToastMessage('');
+        setTimeout(() => {
+          setToastMessage('255자 이내로 작성해주세요.');
+        }, 50);
       } else {
-        setToastMessage('오류가 발생했습니다.');
+        setToastMessage('');
+        setTimeout(() => {
+          setToastMessage('오류가 발생했습니다.');
+        }, 50);
       }
     }
   };

@@ -16,7 +16,7 @@ function Camera() {
     const data = result?.data;
     if (!data) return;
     qrScannerRef.current?.stop(); // 스캐너 멈춤
-    navigate('/puzzle', { state: { qrData: data, puzzleNumber: location.state?.puzzleNumber } }, { replace: true });
+    navigate('/puzzle', { state: { qrData: data, puzzleNumber: location.state?.puzzleNumber } });
   };
 
   useEffect(() => {
