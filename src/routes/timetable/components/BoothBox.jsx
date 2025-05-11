@@ -1,4 +1,3 @@
-// @components/TimeTable/BoothBox.jsx
 import * as B from '@timetable/components/BoothBoxStyle.js';
 import TimeIcon from '@assets/timetable/Time.svg';
 
