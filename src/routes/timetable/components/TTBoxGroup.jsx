@@ -41,9 +41,9 @@ const eventsByDate = {
       },
       {
         title: '아티스트 공연',
-        timeRange: '20:00 - 21:30',
+        timeRange: '20:00 - 21:00',
         top: 352,
-        height: 55.8,
+        height: 39,
         left: 52,
         borderColor: palette.violet.violet200,
       },
@@ -172,6 +172,7 @@ const BoothBoxGroup = ({ selectedDate }) => {
           special={e.title === '보라; 보이는 라디오'} // 특정 타이틀일 때만 true
           lalaland={e.title === '<라라랜드> 상영'}
           highlight={e.title === '재학생 및\n동아리 공연' && e.top === 251}
+          artist={e.title === '아티스트 공연' && e.height === 39}
         />
       ))}
       {right.map((e, i) => (
@@ -182,6 +183,7 @@ const BoothBoxGroup = ({ selectedDate }) => {
           special={e.title === '보라; 보이는 라디오'}
           lalaland={e.title === '<라라랜드> 상영'}
           highlight={e.title === '재학생 및\n동아리 공연' && e.top === 251}
+          artist={e.title === '아티스트 공연' && e.height === 39}
         />
       ))}
     </>

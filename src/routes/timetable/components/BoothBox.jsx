@@ -1,4 +1,3 @@
-// @components/TimeTable/BoothBox.jsx
 import * as B from '@timetable/components/BoothBoxStyle.js';
 import TimeIcon from '@assets/timetable/Time.svg';
 
@@ -14,6 +13,7 @@ const BoothBox = ({
   special,
   lalaland,
   highlight,
+  artist,
 }) => {
   const getLeftPercent = (side) => {
     if (side === 'left') return 0;
@@ -32,6 +32,7 @@ const BoothBox = ({
       special={special}
       lalaland={lalaland}
       highlight={highlight}
+      artist={artist}
       animate={true}>
       {title.split('\n').map((line, idx) => (
         <h2 key={idx}>{line}</h2>

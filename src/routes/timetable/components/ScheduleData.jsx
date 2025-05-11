@@ -36,7 +36,7 @@ const rawSchedule = {
     {
       label: '아티스트\n공연',
       start: [20, 0],
-      end: [21, 30],
+      end: [21, 0],
       top: 27.75,
       color: palette.violet.violet200,
     },
