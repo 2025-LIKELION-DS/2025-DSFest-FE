@@ -29,7 +29,7 @@ export const BoxCon = styled.div.attrs((props) => ({
   display: flex;
   flex-direction: column;
   gap: 2px;
-
+  ${(props) => props.highlight && ` gap: 0;`}
   /* ease-in-out 적용 */
   transition:
     top 0.6s ease-in-out,
@@ -42,7 +42,9 @@ export const BoxCon = styled.div.attrs((props) => ({
 
   /* 조건부 렌더링 */
   border-left: 5px solid ${(props) => props.borderColor || palette.violet.violet200};
-  padding: ${({ compact, special }) => (special ? '1px 0 0 12px' : compact ? '1px 0 0 12px' : '8px 0 0 12px')};
+  padding: ${({ compact, special, highlight }) =>
+    highlight ? '3px 0 0 12px' : special || compact ? '1px 0 0 12px' : '8px 0 0 12px'};
+
   justify-content: ${(props) => (props.compact ? 'center' : 'flex-start')};
 
   /* 아래에서 위로 올라오는 애니메이션 */
@@ -101,7 +103,7 @@ export const Time = styled.div`
   margin-top: 4px;
   //보라; 보이는 라디오시 마진 없음
   ${(props) => props.special && `margin-top: 0px;`}
-
+  ${(props) => props.highlight && `margin-top: 0px;`}
   img {
     width: 11px;
     height: 11px;

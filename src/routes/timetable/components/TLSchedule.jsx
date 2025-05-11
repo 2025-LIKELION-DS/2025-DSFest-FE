@@ -17,9 +17,9 @@ const ScheduleBox = styled.div`
   display: flex;
   align-items: center;
   /* 연예인 공연 박스만 중앙정렬 / 나머지 모두 좌측정렬 + 마진 */
-  justify-content: ${(props) => (props.width <= 45 ? 'center' : 'flex-start')};
-  text-align: ${(props) => (props.width <= 45 ? 'center' : 'left')};
-  padding-left: ${(props) => (props.width <= 45 ? '0' : '17.5px')};
+  justify-content: ${(props) => (props.width <= 60 ? 'center' : 'flex-start')};
+  text-align: ${(props) => (props.width <= 60 ? 'center' : 'left')};
+  padding-left: ${(props) => (props.width <= 60 ? '0' : '17.5px')};
   white-space: ${(props) => (props.width <= 90 ? 'pre-line' : 'nowrap')};
   box-sizing: border-box; //박스 사이즈 고정
   z-index: 2;

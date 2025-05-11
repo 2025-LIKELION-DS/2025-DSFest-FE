@@ -13,9 +13,9 @@ const TimeTable = () => {
 
   //덕우왕국 추가 부분
   const entranceTimes = {
-    '14(WED)': '17:00',
+    '14(WED)': '17:30',
     '15(THU)': '17:30',
-    '16(FRI)': '15:30',
+    '16(FRI)': '16:00',
   };
 
   const label = '덕우왕국 입장';
