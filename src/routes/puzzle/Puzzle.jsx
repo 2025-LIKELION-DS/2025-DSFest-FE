@@ -282,7 +282,6 @@ function Puzzle() {
   useEffect(() => {
     if (!qrData || hasCheckedRef.current) return;
     hasCheckedRef.current = true;
-
     qrCheck(qrData);
   }, [qrData]);
 
@@ -315,14 +314,14 @@ function Puzzle() {
       }
     } catch (error) {
       console.log(error.response.data.error);
-      if (error.response.data.error) {
-        setPuzzleToast(true);
-      } else {
+      if (error.response.data.error === 'BINGO_PLACE_NOT_FOUND') {
         setQrSuccess(false);
         setModalProps({
           state: false,
         });
         setShowModal('qrCheckModal');
+      } else {
+        setPuzzleToast(true);
       }
     } finally {
       navigate(location.pathname, { replace: true, state: {} });
@@ -335,7 +334,7 @@ function Puzzle() {
       const token = localStorage.getItem('token');
       const response = await axios.post(
         `${API_KEY}/bingo/password`,
-        { value },
+        { value, puzzleIndex: puzzleNumber },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -357,16 +356,16 @@ function Puzzle() {
         }
       }
     } catch (error) {
-      console.log(error.response.data.message);
-      if (error.response.data.error) {
-        setPuzzleToast(true);
-      } else {
+      console.log(error.response.data);
+      if (error.response.data.error === 'BINGO_PLACE_NOT_FOUND') {
         setQrSuccess(false);
         setRight(false);
         setModalProps({
           state: false,
         });
         setShowModal('qrCheckModal');
+      } else {
+        setPuzzleToast(true);
       }
     } finally {
       navigate(location.pathname, { replace: true, state: {} });
