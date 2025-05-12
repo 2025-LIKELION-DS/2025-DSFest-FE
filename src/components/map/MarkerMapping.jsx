@@ -276,8 +276,8 @@ export const boothMappingByTime = {
   },
   '금요일 밤': {
     1: 0,
-    2: 44,
-    3: 44,
+    2: 0,
+    3: 0,
 
     4: 16,
     5: 16,
