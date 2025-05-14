@@ -44,6 +44,7 @@ export const BoxCon = styled.div.attrs((props) => ({
   border-left: 5px solid ${(props) => props.borderColor || palette.violet.violet200};
   padding: ${({ compact, special, highlight }) =>
     highlight ? '3px 0 0 12px' : special || compact ? '1px 0 0 12px' : '8px 0 0 12px'};
+  ${(props) => props.artist && `padding: 3px 0 0 12px;`}
 
   justify-content: ${(props) => (props.compact ? 'center' : 'flex-start')};
 
