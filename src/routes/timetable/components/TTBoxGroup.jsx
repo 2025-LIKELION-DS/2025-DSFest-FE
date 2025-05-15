@@ -127,7 +127,7 @@ const eventsByDate = {
     right: [
       {
         title: '여운의 조각',
-        top: 153,
+        top: 208,
         height: 18.5,
         left: 50,
         borderColor: palette.violet.violet200,

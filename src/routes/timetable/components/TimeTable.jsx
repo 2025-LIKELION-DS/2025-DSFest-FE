@@ -34,66 +34,68 @@ const TimeTable = () => {
 
   return (
     <>
-      {/* 타임라인 헤더 (타임라인 그리드 + 마커 포함) */}
-      <TimeLineHeader selectedDate={selectedDate} />
-      <T.TimeTableH2>타임 테이블</T.TimeTableH2>
+      <T.TimeTableWrapper>
+        {/* 타임라인 헤더 (타임라인 그리드 + 마커 포함) */}
+        <TimeLineHeader selectedDate={selectedDate} />
+        <T.TimeTableH2>타임 테이블</T.TimeTableH2>
 
-      {/* 타임테이블 바(요일별) */}
-      <T.DateBar>
-        {dates.map((date) => (
-          <T.DateCell
-            key={date}
-            onClick={() => setSelectedDate(date)}
-            className={selectedDate === date ? 'selected' : ''}>
-            {date}
-          </T.DateCell>
-        ))}
-      </T.DateBar>
-
-      {/* 타임테이블 */}
-      <T.TimeTable>
-        {/* 좌측 시간 표시 */}
-        <T.TableTimeCon>
-          {['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(
-            (time, i) => (
-              <T.TableTime key={time}>{time}</T.TableTime>
-            ),
-          )}
-        </T.TableTimeCon>
-        {/* 타임라인 및 일정 박스 */}
-        <T.TableLineCon>
-          <B.BoothCon key={selectedDate} animate={true}>
-            {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
-            <BoothBoxGroup selectedDate={selectedDate} />
-            {/* 덕우왕국 입장 시간선 */}
-            {selectedTime && (
-              <EntranceLine top={calculateTopFromTime(selectedTime)} label={`덕우왕국 입장 (${selectedTime} - )`} />
-            )}
-          </B.BoothCon>
-
-          {Array.from({ length: 6 }).map((_, idx, arr) => (
-            <T.TableLine key={idx} first={idx === 0} last={idx === arr.length - 1} />
+        {/* 타임테이블 바(요일별) */}
+        <T.DateBar>
+          {dates.map((date) => (
+            <T.DateCell
+              key={date}
+              onClick={() => setSelectedDate(date)}
+              className={selectedDate === date ? 'selected' : ''}>
+              {date}
+            </T.DateCell>
           ))}
-        </T.TableLineCon>
-      </T.TimeTable>
+        </T.DateBar>
 
-      {/* 부스 info */}
-      <T.SpaceInfo>
-        <T.SpaceBox>
-          <T.Circle booth />
-          부스 존
-        </T.SpaceBox>
-        <T.SpaceBox>
-          <T.Circle />
-          중앙 무대
-        </T.SpaceBox>
-        {selectedDate === '15(THU)' && (
+        {/* 타임테이블 */}
+        <T.TimeTable>
+          {/* 좌측 시간 표시 */}
+          <T.TableTimeCon>
+            {['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(
+              (time, i) => (
+                <T.TableTime key={time}>{time}</T.TableTime>
+              ),
+            )}
+          </T.TableTimeCon>
+          {/* 타임라인 및 일정 박스 */}
+          <T.TableLineCon>
+            <B.BoothCon key={selectedDate} animate={true}>
+              {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
+              <BoothBoxGroup selectedDate={selectedDate} />
+              {/* 덕우왕국 입장 시간선 */}
+              {selectedTime && (
+                <EntranceLine top={calculateTopFromTime(selectedTime)} label={`덕우왕국 입장 (${selectedTime} - )`} />
+              )}
+            </B.BoothCon>
+
+            {Array.from({ length: 6 }).map((_, idx, arr) => (
+              <T.TableLine key={idx} first={idx === 0} last={idx === arr.length - 1} />
+            ))}
+          </T.TableLineCon>
+        </T.TimeTable>
+
+        {/* 부스 info */}
+        <T.SpaceInfo>
           <T.SpaceBox>
-            <T.Circle className="ilsimdukche" />
-            일심덕체
+            <T.Circle booth />
+            부스 존
           </T.SpaceBox>
-        )}
-      </T.SpaceInfo>
+          <T.SpaceBox>
+            <T.Circle />
+            중앙 무대
+          </T.SpaceBox>
+          {selectedDate === '15(THU)' && (
+            <T.SpaceBox>
+              <T.Circle className="ilsimdukche" />
+              일심덕체
+            </T.SpaceBox>
+          )}
+        </T.SpaceInfo>
+      </T.TimeTableWrapper>
     </>
   );
 };
