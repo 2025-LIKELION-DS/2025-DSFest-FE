@@ -88,7 +88,7 @@ const EntranceLine = ({ top, label }) => {
   return (
     <EntranceLineWrapper
       style={{
-        top: `${top - 4}px`,
+        top: `${top - 6}px`,
         opacity: top < 0 ? 0 : 1,
       }}>
       <TopLine />
