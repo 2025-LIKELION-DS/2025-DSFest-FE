@@ -1,7 +1,6 @@
 // @components/TimeTable/BoothBox.jsx
-
-import * as B from '@components/TimeTable/BoothBoxStyle.js';
-import TimeIcon from '@components/TimeTable/img/Time.svg';
+import * as B from '@timetable/components/BoothBoxStyle.js';
+import TimeIcon from '@assets/timetable/Time.svg';
 
 const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColor, compact, special }) => {
   const getLeftPercent = (side) => {

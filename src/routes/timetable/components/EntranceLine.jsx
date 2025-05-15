@@ -1,4 +1,4 @@
-import palette from '../../styles/theme';
+import palette from '@styles/theme';
 
 const EntranceLine = ({ top, label }) => (
   <div

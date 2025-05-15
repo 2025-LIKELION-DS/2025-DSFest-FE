@@ -1,11 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
-import * as L from '@components/TimeTable/TimeLineStyle.js';
-import Button from '@components/TimeTable/img/Button.svg';
-import TimeLineGrid from '@components/TimeTable/TLGrid';
-import TLMarker from '@components/TimeTable/TLMarker';
-import TimeLineScheduleBox from '@components/TimeTable/TLSchedule';
-import scheduleData from '@components/TimeTable/ScheduleData';
-import Lock from '@components/TimeTable/img/Lock.svg';
+import * as L from '@timetable/components/TimeLineStyle.js';
+import TimeLineGrid from '@timetable/components/TLGrid';
+import TLMarker from '@timetable/components/TLMarker';
+import TimeLineScheduleBox from '@timetable/components/TLSchedule';
+import scheduleData from '@timetable/components/ScheduleData';
+// 이미지
+import Button from '@assets/timetable/Button.svg';
+import Lock from '@assets/timetable/Lock.svg';
 
 const TimeLineHeader = ({ selectedDate }) => {
   const scrollRef = useRef(null);

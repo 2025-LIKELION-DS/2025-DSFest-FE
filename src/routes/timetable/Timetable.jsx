@@ -1,5 +1,5 @@
 import * as T from '@timetable/TimetableStyle';
-import TimeTable from '@components/TimeTable/TimeTable';
+import TimeTable from '@timetable/components/TimeTable';
 function Timetable() {
   return (
     <>

@@ -1,4 +1,4 @@
-import BoothBox from '@components/TimeTable/BoothBox';
+import BoothBox from '@timetable/components/BoothBox';
 import palette from '@styles/theme';
 
 const eventsByDate = {
