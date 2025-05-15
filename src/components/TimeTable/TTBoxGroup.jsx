@@ -24,9 +24,9 @@ const eventsByDate = {
     right: [
       {
         title: '<라라랜드> 상영',
-        timeRange: '15:30 - 17:30',
-        top: 190,
-        height: 74,
+        timeRange: '15:00 - 17:00',
+        top: 173.5,
+        height: 72,
         left: 50,
         borderColor: palette.violet.violet200,
       },
@@ -88,9 +88,9 @@ const eventsByDate = {
       },
       {
         title: '운현가요제',
-        timeRange: '18:30 - 20:00',
-        top: 297,
-        height: 55,
+        timeRange: '18:00 - 20:00',
+        top: 280,
+        height: 73.5,
         left: 50,
         borderColor: palette.violet.violet200,
       },
@@ -127,9 +127,8 @@ const eventsByDate = {
     right: [
       {
         title: '여운의 조각',
-        timeRange: '14:30 - 16:30',
         top: 153,
-        height: 73,
+        height: 18.5,
         left: 50,
         borderColor: palette.violet.violet200,
       },

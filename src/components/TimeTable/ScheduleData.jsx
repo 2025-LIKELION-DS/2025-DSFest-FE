@@ -21,8 +21,8 @@ const rawSchedule = {
   '14(WED)': [
     {
       label: '<라라랜드> 상영',
-      start: [15, 30],
-      end: [17, 30],
+      start: [15, 0],
+      end: [17, 0],
       top: 27.75,
       color: palette.violet.violet200,
     },
@@ -73,7 +73,7 @@ const rawSchedule = {
     },
     {
       label: '운현가요제',
-      start: [18, 30],
+      start: [18, 0],
       end: [20, 0],
       top: 27.75,
       color: palette.violet.violet200,

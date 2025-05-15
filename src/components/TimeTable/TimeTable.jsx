@@ -3,12 +3,34 @@ import * as T from '@components/TimeTable/TimeTableStyle.js';
 import * as B from '@components/TimeTable/BoothBoxStyle.js';
 import BoothBoxGroup from '@components/TimeTable/TTBoxGroup';
 import TimeLineHeader from '@components/TimeTable/TimeLineHeader';
+import EntranceLine from '@components/TimeTable/EntranceLine';
 
 const TimeTable = () => {
   const dates = ['14(WED)', '15(THU)', '16(FRI)']; // 날짜 목록
   const today = new Date().getDate().toString(); // 현재 날짜 확인
   const defaultDate = dates.find((dateStr) => dateStr.startsWith(today)) || dates[0]; //현재 날짜에 (요일)도 추가해서 전달
   const [selectedDate, setSelectedDate] = useState(defaultDate); // 기본 날짜 선택
+
+  //덕우왕국 추가 부분
+  const entranceTimes = {
+    '14(WED)': '17:00',
+    '15(THU)': '17:30',
+    '16(FRI)': '15:30',
+  };
+
+  const label = '덕우왕국 입장';
+  const selectedTime = entranceTimes[selectedDate];
+
+  const calculateTopFromTime = (timeStr) => {
+    const [hour, minute] = timeStr.split(':').map(Number);
+    const startHour = 11;
+    const minutesFromStart = (hour - startHour) * 60 + minute;
+    const pixelsPerMinute = 37 / 60; // 약 0.6167px
+
+    return 29 + minutesFromStart * pixelsPerMinute; // 시작 마진 + 경과 px
+  };
+
+  const top = selectedTime ? calculateTopFromTime(selectedTime) : null;
 
   return (
     <>
@@ -43,6 +65,10 @@ const TimeTable = () => {
           <B.BoothCon key={selectedDate} animate={true}>
             {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
             <BoothBoxGroup selectedDate={selectedDate} />
+            {/* 덕우왕국 입장 시간선 */}
+            {selectedTime && (
+              <EntranceLine top={calculateTopFromTime(selectedTime)} label={`덕우왕국 입장 (${selectedTime} - )`} />
+            )}
           </B.BoothCon>
 
           {Array.from({ length: 6 }).map((_, idx, arr) => (
