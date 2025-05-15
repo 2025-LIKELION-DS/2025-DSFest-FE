@@ -64,7 +64,7 @@ export const LockOverlay = styled.div`
   border-radius: 8px;
   background-color: ${palette.grayscale.black70}; // 반투명 배경
   backdrop-filter: blur(2px); //블러 처리
-  z-index: 999;
+  z-index: 10;
 
   display: flex;
   flex-direction: column;
