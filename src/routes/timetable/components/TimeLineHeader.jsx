@@ -63,8 +63,8 @@ const TimeLineHeader = ({ selectedDate }) => {
     const now = new Date();
 
     // 축제 전체 기간
-    const startDate = new Date('2025-05-14');
-    const endDate = new Date('2025-05-16');
+    const startDate = new Date('2025-05-14T09:30:00');
+    const endDate = new Date('2025-05-16T23:00:00');
 
     // 날짜가 범위 안에 있는지 확인
     const isInDateRange = now >= startDate && now <= endDate;

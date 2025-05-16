@@ -8,7 +8,7 @@ const EntranceLineWrapper = styled.div`
   width: 47%;
   transform: translateX(-50%);
   //반응형 폰트 사이즈
-  font-size: clamp(7.5px, 2vw, 11.5px);
+  font-size: clamp(11px, 2vw, 11.5px); //수정 //<라라랜드> 상영
   color: ${palette.grayscale.text33};
   pointer-events: none;
   z-index: 10000;
@@ -25,15 +25,41 @@ const EntranceLineWrapper = styled.div`
       transform: translateX(-50%) translateY(0);
     }
   }
-  /* @media (max-width: 334px) {
+
+  // 덕우왕국 입장 반응형
+  @media (max-width: 379px) {
+    font-size: 10.5px;
+  }
+  @media (max-width: 367px) {
+    font-size: 10.2px;
+  }
+  @media (max-width: 363px) {
+    font-size: 10px;
+  }
+  @media (max-width: 356px) {
+    font-size: 9.5px;
+  }
+  @media (max-width: 345px) {
+    font-size: 9.3px;
+  }
+  @media (max-width: 341px) {
+    font-size: 9px;
+  }
+  @media (max-width: 334px) {
+    font-size: 8.7px;
+  }
+  @media (max-width: 327px) {
     font-size: 8.5px;
   }
   @media (max-width: 323px) {
-    font-size: 7.5px;
+    font-size: 8.3px;
   }
-  @media (max-width: 302px) {
-    font-size: 7px;
-  } */
+  @media (max-width: 318px) {
+    font-size: 8px !important;
+  }
+  @media (max-width: 312px) {
+    font-size: 7px !important;
+  }
 `;
 
 const TopLine = styled.div`

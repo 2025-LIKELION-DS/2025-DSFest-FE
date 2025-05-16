@@ -108,7 +108,7 @@ export const TableLine = styled.div.withConfig({
   width: 100%; // TableLineCon(부모)에 맞춰 유동적으로 늘어남
   height: 35px;
   margin-top: ${(props) => (props.first ? '29px' : '37px')};
-  border-bottom: ${(props) => (props.last ? 'none' : '1px solid #ccc')};
+
   box-sizing: border-box; //패딩 포함 계산
 `;
 
@@ -123,8 +123,7 @@ export const SpaceInfo = styled.div`
   display: flex;
   justify-content: center;
   gap: 7px;
-  padding-bottom: 70px;
-  border-top: 1px solid #eee;
+  padding-bottom: 60px;
   background-color: ${palette.grayscale.white};
 `;
 

@@ -26,7 +26,7 @@ const BoothBox = ({ title, timeRange, top, height, left, width = 120, borderColo
 
       {/* 시계 이미지 compact 아닐 때만 출력 */}
       {timeRange && !compact && (
-        <B.Time>
+        <B.Time special={special}>
           <img src={TimeIcon} alt="time" />
           <div>{timeRange}</div>
         </B.Time>

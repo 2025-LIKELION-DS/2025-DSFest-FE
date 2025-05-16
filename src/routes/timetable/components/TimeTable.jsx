@@ -37,9 +37,9 @@ const TimeTable = () => {
       <T.TimeTableWrapper>
         {/* 타임라인 헤더 (타임라인 그리드 + 마커 포함) */}
         <TimeLineHeader selectedDate={selectedDate} />
-        <T.TimeTableH2>타임 테이블</T.TimeTableH2>
+        <T.TimeTableH2>타임테이블</T.TimeTableH2>
 
-        {/* 타임테이블 바(요일별) */}
+        {/* 타임테이블 */}
         <T.DateBar>
           {dates.map((date) => (
             <T.DateCell
@@ -51,17 +51,27 @@ const TimeTable = () => {
           ))}
         </T.DateBar>
 
-        {/* 타임테이블 */}
         <T.TimeTable>
-          {/* 좌측 시간 표시 */}
           <T.TableTimeCon>
-            {['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'].map(
-              (time, i) => (
-                <T.TableTime key={time}>{time}</T.TableTime>
-              ),
-            )}
+            {[
+              '11:00',
+              '12:00',
+              '13:00',
+              '14:00',
+              '15:00',
+              '16:00',
+              '17:00',
+              '18:00',
+              '19:00',
+              '20:00',
+              '21:00',
+              '22:00',
+            ].map((time, i) => (
+              <T.TableTime key={time}>{time}</T.TableTime>
+            ))}
           </T.TableTimeCon>
-          {/* 타임라인 및 일정 박스 */}
+
+          {/* 일정 박스 */}
           <T.TableLineCon>
             <B.BoothCon key={selectedDate} animate={true}>
               {/* 선택된 날짜의 스케쥴 박스 띄우기 */}
@@ -73,7 +83,11 @@ const TimeTable = () => {
             </B.BoothCon>
 
             {Array.from({ length: 6 }).map((_, idx, arr) => (
-              <T.TableLine key={idx} first={idx === 0} last={idx === arr.length - 1} />
+              <T.TableLine
+                key={idx}
+                first={idx === 0}
+                last={idx === arr.length - 1} // 마지막 줄엔 border-bottom 제거
+              />
             ))}
           </T.TableLineCon>
         </T.TimeTable>
