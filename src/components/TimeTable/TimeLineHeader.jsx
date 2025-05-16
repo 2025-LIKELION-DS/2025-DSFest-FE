@@ -11,15 +11,37 @@ const TimeLineHeader = ({ selectedDate }) => {
   const scrollRef = useRef(null);
   const [markerLeft, setMarkerLeft] = useState(null); // 마커 위치 처음에는 null로
 
+  //easeIn 함수 추가
+  const easeIn = (t) => t * t;
+  const smoothScrollTo = (element, to, duration = 300) => {
+    const start = element.scrollLeft;
+    const change = to - start;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime) => {
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeIn(progress); // ease-in 적용
+
+      element.scrollLeft = start + change * ease;
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
   //마커 스크롤 하다가 Button 클릭 시 -> 현재 시간 중앙 정렬
   const handleScrollToMarker = () => {
-    if (scrollRef.current) {
+    if (scrollRef.current && markerLeft !== null) {
       const scrollContainer = scrollRef.current;
       const centerOffset = scrollContainer.clientWidth / 2;
-      scrollContainer.scrollTo({
-        left: markerLeft - centerOffset,
-        behavior: 'smooth', //부드럽게 움직이도록
-      });
+      const target = markerLeft - centerOffset;
+
+      //smoothScrollTo 호출
+      smoothScrollTo(scrollContainer, target, 200);
     }
   };
 
