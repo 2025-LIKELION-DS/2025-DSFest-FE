@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import BackGround from '@assets/main/puzzle-scene-stars-grain.jpg';
 import TimeTable from '@assets/main/time-table.svg?react';
 import Map from '@assets/main/map.svg?react';
 import Notice from '@assets/main/notice.svg?react';
@@ -10,7 +9,7 @@ import PuzzleGame from '@assets/main/puzzle-game.svg?react';
 export const Main = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${BackGround});
+  background-image: url(${(props) => props.$backgroundImg});
   background-repeat: no-repeat;
   background-size: cover;
 

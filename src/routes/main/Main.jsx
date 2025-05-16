@@ -5,10 +5,23 @@ import * as M from '@main/MainStyle';
 import ToastMsg from '@main/components/ToastMsg';
 import Splash from '@main/components/Splash';
 
-import Moon from '@assets/main/moon-crescent.png';
+import MoonDay1 from '@assets/main/main-moon-day1.png';
+import MoonDay2 from '@assets/main/main-moon-day2.png';
+import MoonDay3 from '@assets/main/main-moon-day3.png';
+
 import Logo from '@assets/main/icon-title-yeoun.svg';
-import Cloud from '@assets/main/cloud-textured-purple_80_.png';
-import Tree from '@assets/main/tree-shadow-grain_80_.png';
+
+import CloudDay1 from '@assets/main/main-cloud-day1.png';
+import CloudDay2 from '@assets/main/main-cloud-day2.png';
+import CloudDay3 from '@assets/main/main-cloud-day3.png';
+
+import TreeDay1 from '@assets/main/main-tree-day1.png';
+import TreeDay2 from '@assets/main/main-tree-day2.png';
+import TreeDay3 from '@assets/main/main-tree-day3.png';
+
+import BackGroundDay1 from '@assets/main/main-background-day1.png';
+import BackGroundDay2 from '@assets/main/main-background-day2.png';
+import BackGroundDay3 from '@assets/main/main-background-day3.png';
 
 const BOOTH = {
   booths: [
@@ -89,6 +102,12 @@ function Main() {
 
   const [resizeKey, setResizeKey] = useState(0);
 
+  // 날짜마다 다르게 렌더링
+  const [moonImg, setMoonImg] = useState(MoonDay1);
+  const [treeImg, setTreeImg] = useState(TreeDay1);
+  const [cloudImg, setCloudImg] = useState(CloudDay1);
+  const [backgroundImg, setBackgroundImg] = useState(BackGroundDay1);
+
   const handleMenuClick = (path) => {
     navigate(path);
   };
@@ -116,17 +135,61 @@ function Main() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  // 날짜마다 다르게 렌더링
+  useEffect(() => {
+    const updateImg = () => {
+      const date = new Date();
+      const festDay1 = new Date(2025, 4, 14);
+      const festDay2 = new Date(2025, 4, 15);
+      const festDay3 = new Date(2025, 4, 16);
+
+      const toDateOnly = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+      const today = toDateOnly(date);
+      const day1 = toDateOnly(festDay1);
+      const day2 = toDateOnly(festDay2);
+      const day3 = toDateOnly(festDay3);
+
+      if (today.getTime() <= day1.getTime()) {
+        // 5월 14일 이전은 Day1 이미지로
+        setMoonImg(MoonDay1);
+        setTreeImg(TreeDay1);
+        setCloudImg(CloudDay1);
+        setBackgroundImg(BackGroundDay1);
+      } else if (today.getTime() === day2.getTime()) {
+        setMoonImg(MoonDay2);
+        setTreeImg(TreeDay2);
+        setCloudImg(CloudDay2);
+        setBackgroundImg(BackGroundDay2);
+      } else if (today.getTime() >= day3.getTime()) {
+        // 5월 16일 이후로는 Day3 이미지로
+        setMoonImg(MoonDay3);
+        setTreeImg(TreeDay3);
+        setCloudImg(CloudDay3);
+        setBackgroundImg(BackGroundDay3);
+      }
+    };
+
+    updateImg();
+
+    const interval = setInterval(() => {
+      updateImg();
+    }, 5000); // 5초마다 반복되게
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
-      <M.Main key={resizeKey}>
+      <M.Main key={resizeKey} $backgroundImg={backgroundImg}>
         {firstVisit && <Splash onClickHideSplash={onClickHideSplash} />}
 
         {showToast && <ToastMsg boothName={randomBooth.boothName} onClose={() => setShowToast(false)} />}
 
-        <M.MoonImg src={Moon} alt="달" />
+        <M.MoonImg src={moonImg} alt="달" />
         <M.LogoImg src={Logo} alt="로고" onClick={handleShowToast} />
-        <M.TreeImg src={Tree} alt="나무" />
-        <M.CloudImg src={Cloud} alt="구름" />
+        <M.TreeImg src={treeImg} alt="나무" />
+        <M.CloudImg src={cloudImg} alt="구름" />
 
         <M.MainDiv>
           <M.Div>
