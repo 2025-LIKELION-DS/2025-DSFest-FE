@@ -6,7 +6,9 @@ import TimeLineHeader from '@components/TimeTable/TimeLineHeader';
 
 const TimeTable = () => {
   const dates = ['14(WED)', '15(THU)', '16(FRI)']; // 날짜 목록
-  const [selectedDate, setSelectedDate] = useState('14(WED)'); // 기본 날짜 선택
+  const today = new Date().getDate().toString(); // 현재 날짜 확인
+  const defaultDate = dates.find((dateStr) => dateStr.startsWith(today)) || dates[0]; //현재 날짜에 (요일)도 추가해서 전달
+  const [selectedDate, setSelectedDate] = useState(defaultDate); // 기본 날짜 선택
 
   return (
     <>
