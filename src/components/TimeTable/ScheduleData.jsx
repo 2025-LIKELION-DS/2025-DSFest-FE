@@ -20,7 +20,7 @@ const getWidth = (start, end) => {
 const rawSchedule = {
   '14(WED)': [
     {
-      label: '영화 상영',
+      label: '<라라랜드> 상영',
       start: [15, 30],
       end: [17, 30],
       top: 27.75,
@@ -34,19 +34,13 @@ const rawSchedule = {
       color: palette.violet.violet200,
     },
     {
-      label: '연예인\n공연',
+      label: '아티스트\n공연',
       start: [20, 0],
-      end: [20, 30],
+      end: [21, 30],
       top: 27.75,
       color: palette.violet.violet200,
     },
-    {
-      label: '연예인\n공연',
-      start: [20, 30],
-      end: [21, 0],
-      top: 27.75,
-      color: palette.violet.violet200,
-    },
+
     {
       label: '낮 부스 (수익사업)',
       start: [11, 0],
@@ -85,7 +79,7 @@ const rawSchedule = {
       color: palette.violet.violet200,
     },
     {
-      label: '연예인\n공연',
+      label: '아티스트\n공연',
       start: [20, 0],
       end: [20, 30],
       top: 27.75,
@@ -108,8 +102,8 @@ const rawSchedule = {
   ],
   '16(FRI)': [
     {
-      label: '총학\n콘텐츠1',
-      start: [14, 30],
+      label: '여운의 조각',
+      start: [16, 0],
       end: [16, 30],
       top: 27.75,
       color: palette.violet.violet200,
@@ -122,26 +116,20 @@ const rawSchedule = {
       color: palette.violet.violet200,
     },
     {
-      label: '총학\n콘텐츠2',
+      label: '보라; 보이는 라디오',
       start: [19, 0],
       end: [20, 0],
       top: 27.75,
       color: palette.violet.violet200,
     },
     {
-      label: '연예인\n공연',
+      label: '아티스트\n공연',
       start: [20, 0],
-      end: [20, 30],
+      end: [21, 30],
       top: 27.75,
       color: palette.violet.violet200,
     },
-    {
-      label: '연예인\n공연',
-      start: [20, 30],
-      end: [21, 0],
-      top: 27.75,
-      color: palette.violet.violet200,
-    },
+
     {
       label: '낮 부스 (수익사업)',
       start: [11, 0],

@@ -23,7 +23,7 @@ const eventsByDate = {
     ],
     right: [
       {
-        title: '영화상영',
+        title: '<라라랜드> 상영',
         timeRange: '15:30 - 17:30',
         top: 190,
         height: 74,
@@ -40,16 +40,10 @@ const eventsByDate = {
         borderColor: palette.violet.violet200,
       },
       {
-        title: '연예인 공연',
+        title: '아티스트 공연',
+        timeRange: '20:00 - 21:30',
         top: 353,
-        height: 18.5,
-        left: 50,
-        borderColor: palette.violet.violet200,
-      },
-      {
-        title: '연예인 공연',
-        top: 372,
-        height: 18.5,
+        height: 55.8,
         left: 50,
         borderColor: palette.violet.violet200,
       },
@@ -101,7 +95,7 @@ const eventsByDate = {
         borderColor: palette.violet.violet200,
       },
       {
-        title: '연예인 공연',
+        title: '아티스트 공연',
         timeRange: '18:30 - 20:00',
         top: 352,
         height: 20,
@@ -132,7 +126,7 @@ const eventsByDate = {
     ],
     right: [
       {
-        title: '총학생회 콘텐츠1',
+        title: '여운의 조각',
         timeRange: '14:30 - 16:30',
         top: 153,
         height: 73,
@@ -148,24 +142,18 @@ const eventsByDate = {
         borderColor: palette.violet.violet200,
       },
       {
-        title: '총학생회 콘텐츠2',
+        title: '보라; 보이는 라디오',
         timeRange: '19:00 - 20:00',
         top: 317,
-        height: 35,
+        height: 37,
         left: 50,
         borderColor: palette.violet.violet200,
       },
       {
-        title: '연예인 공연',
+        title: '아티스트 공연',
+        timeRange: '20:00 - 21:30',
         top: 352,
-        height: 18.5,
-        left: 50,
-        borderColor: palette.violet.violet200,
-      },
-      {
-        title: '연예인 공연',
-        top: 371,
-        height: 18.5,
+        height: 55.8,
         left: 50,
         borderColor: palette.violet.violet200,
       },
@@ -182,11 +170,11 @@ const BoothBoxGroup = ({ selectedDate }) => {
           key={`left-${i}`}
           {...e}
           compact={e.height <= 20}
-          special={e.title === '총학생회 콘텐츠2'} // 특정 타이틀일 때만 true
+          special={e.title === '보라; 보이는 라디오'} // 특정 타이틀일 때만 true
         />
       ))}
       {right.map((e, i) => (
-        <BoothBox key={`right-${i}`} {...e} compact={e.height <= 20} special={e.title === '총학생회 콘텐츠2'} />
+        <BoothBox key={`right-${i}`} {...e} compact={e.height <= 20} special={e.title === '보라; 보이는 라디오'} />
       ))}
     </>
   );
