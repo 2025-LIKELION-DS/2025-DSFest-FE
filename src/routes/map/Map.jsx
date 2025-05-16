@@ -28,7 +28,28 @@ function Map() {
   const imageHeight = 852;
 
   const [isDateOpen, setIsDateOpen] = useState(false);
-  const [selectedDay, setSelectedDay] = useState('수요일 낮');
+
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  const isBefore1430 = hour < 14 || (hour === 14 && minute < 30);
+
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const day1 = new Date(2025, 4, 14);
+  const day2 = new Date(2025, 4, 15);
+  const day3 = new Date(2025, 4, 16);
+
+  let initialDay = '수요일 낮';
+
+  if (today.getTime() === day1.getTime()) {
+    initialDay = isBefore1430 ? '수요일 낮' : '수요일 밤';
+  } else if (today.getTime() === day2.getTime()) {
+    initialDay = isBefore1430 ? '목요일 낮' : '목요일 밤';
+  } else if (today.getTime() === day3.getTime()) {
+    initialDay = isBefore1430 ? '금요일 낮' : '금요일 밤';
+  }
+
+  const [selectedDay, setSelectedDay] = useState(initialDay);
 
   const [selectedTags, setSelectedTags] = useState(['전체']);
   const handleTagClick = (tag) => {
@@ -114,7 +135,7 @@ function Map() {
   const [showPanel, setShowPanel] = useState(true);
   const [isFoodTruckActive, setIsFoodTruckActive] = useState(false);
 
-  // 퀴즈 props 받기
+  // 퀴즈 props
   const location = useLocation();
   const boothIdFromPuzzle = Number(location.state?.i);
 
