@@ -1,0 +1,225 @@
+{
+  "data": {
+    "foodTrucks": [
+      {
+        "id": 72,
+        "boothName": "테이크원",
+        "scheduleDescription": ["금요일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 1,
+            "menu": "프리미엄 수제 닭다리살 직화구이 꼬치",
+            "price": "5,000원"
+          },
+          {
+            "id": 2,
+            "menu": "(비건) 소세지",
+            "price": "3,000원"
+          }
+        ]
+      },
+      {
+        "id": 73,
+        "boothName": "야미",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 3,
+            "menu": "소고기 불초밥(8pc)",
+            "price": "10,000원"
+          },
+          {
+            "id": 4,
+            "menu": "(비건) 새우초밥(10pc)",
+            "price": "10,000원"
+          }
+        ]
+      },
+      {
+        "id": 74,
+        "boothName": "얌얌츄러스",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 5,
+            "menu": "수제찹쌀츄러스",
+            "price": "4,000원"
+          },
+          {
+            "id": 6,
+            "menu": "젤라또아이스크림",
+            "price": "4,000원"
+          },
+          {
+            "id": 7,
+            "menu": "아이스크림 + 츄러스",
+            "price": "6,000원"
+          }
+        ]
+      },
+      {
+        "id": 75,
+        "boothName": "꺼리분식",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 8,
+            "menu": "어묵(3꼬치)",
+            "price": "3,000원"
+          },
+          {
+            "id": 9,
+            "menu": "떡볶이",
+            "price": "5,000원"
+          },
+          {
+            "id": 10,
+            "menu": "순대",
+            "price": "6,000원"
+          }
+        ]
+      },
+      {
+        "id": 76,
+        "boothName": "타우라푸드",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 11,
+            "menu": "수제닭강정(중/대)",
+            "price": "10,000원/15,000원"
+          },
+          {
+            "id": 12,
+            "menu": "(비건) 떡꼬치",
+            "price": "3,000원"
+          }
+        ]
+      },
+      {
+        "id": 77,
+        "boothName": "이태원케밥",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 13,
+            "menu": "터키 아이스크림",
+            "price": "4,000원"
+          },
+          {
+            "id": 14,
+            "menu": "닭고기 양고기 케밥",
+            "price": "7,000원 - 9,000원"
+          }
+        ]
+      },
+      {
+        "id": 78,
+        "boothName": "세븐",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 15,
+            "menu": "타코야끼(10개)",
+            "price": "6,000원"
+          },
+          {
+            "id": 16,
+            "menu": "회오리감자",
+            "price": "4,000원"
+          }
+        ]
+      },
+      {
+        "id": 79,
+        "boothName": "커피볶는 낭만곰",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 17,
+            "menu": "커피/음료/하이볼/무알콜칵테일",
+            "price": "4,000원 - 6,000원"
+          }
+        ]
+      },
+      {
+        "id": 80,
+        "boothName": "짱가곱창",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 18,
+            "menu": "야채곱창/양념막창/막창소금구이",
+            "price": "13,000원 - 17,000원"
+          },
+          {
+            "id": 19,
+            "menu": "(비건) 볶음우동",
+            "price": "7,000원"
+          }
+        ]
+      },
+      {
+        "id": 81,
+        "boothName": "골든키즈",
+        "scheduleDescription": ["매일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 20,
+            "menu": "피자3종/(비건)치즈피자 - 라지",
+            "price": "20,000원"
+          },
+          {
+            "id": 21,
+            "menu": "피자3종/(비건)치즈피자 - 미디움",
+            "price": "15,000원"
+          },
+          {
+            "id": 22,
+            "menu": "피자3종/(비건)치즈피자 - 떠먹는피자",
+            "price": "7,000원"
+          }
+        ]
+      },
+      {
+        "id": 82,
+        "boothName": "로드 2022",
+        "scheduleDescription": ["수요일", "목요일"],
+        "boothRole": "FOOD_TRUCK",
+        "boothType": [],
+        "menus": [
+          {
+            "id": 23,
+            "menu": "수제닭꼬치",
+            "price": "5,000원"
+          },
+          {
+            "id": 24,
+            "menu": "(비건) 소세지",
+            "price": "3,000원"
+          }
+        ]
+      }
+    ]
+  }
+}
