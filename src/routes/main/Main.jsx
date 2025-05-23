@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import * as M from '@main/MainStyle';
 
 import ToastMsg from '@main/components/ToastMsg';
@@ -23,6 +22,8 @@ import TreeDay3 from '@assets/main/main-tree-day3.png';
 import BackGroundDay1 from '@assets/main/main-background-day1.png';
 import BackGroundDay2 from '@assets/main/main-background-day2.png';
 import BackGroundDay3 from '@assets/main/main-background-day3.png';
+
+import BOOTH from '@data/booths.json';
 
 function Main() {
   const navigate = useNavigate();
@@ -137,9 +138,8 @@ function Main() {
   useEffect(() => {
     const getBoothList = async () => {
       try {
-        const boothList = await axios.get(`${import.meta.env.VITE_API_URL}/booths/all`);
-        const boothData = boothList.data.data;
-        const boothNameList = boothData.booths.filter((booth) => {
+        const boothData = BOOTH.data.booths;
+        const boothNameList = boothData.filter((booth) => {
           return booth.boothRole === 'BOOTH';
         });
         setBooths(boothNameList);
