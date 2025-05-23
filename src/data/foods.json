@@ -1,7 +1,4 @@
 {
-  "status": 200,
-  "code": "SUCCESS_RETRIEVE_BOOTH",
-  "message": "부스를 성공적으로 조회했습니다.",
   "data": {
     "foodTrucks": [
       {
