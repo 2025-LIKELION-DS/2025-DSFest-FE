@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as M from '@map/MapStyle';
 import BoothCard from './BoothCard';
 import FoodCard from './FoodCard';

@@ -1,0 +1,2066 @@
+{
+  "data": {
+    "booths": [
+      {
+        "id": 1,
+        "boothName": "“배리어프리 휴게소“ 운율X옐로우블록",
+        "boothOperator": "서포터즈",
+        "boothIntroduce": "💛총학생회 운율과 장애인식개선 서포터즈 옐로우블록이 함께하는 배리어프리 부스에 놀러오세요💛",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://www.instagram.com/dswu_yellowblock?igsh=Z3FmbzF0MWNjN3N0&utm_source=qr"],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 2,
+        "boothName": "[Whd발신] 자기야, 농구하러 올래?",
+        "boothOperator": "동아리",
+        "boothIntroduce": "농구부에서 널 기다려...\n덕성여대 농구동아리 WHD입니다! 다양한 농구게임과 퀴즈, 폴라로이드 촬영 등을 통해 농구를 즐겨봐요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://everytime.kr/255745/v/378829306"],
+        "scheduleDescription": ["수요일 낮", "목요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 3,
+        "boothName": "˗ˋˏ槿花 祭りˎˊ˗ ",
+        "boothOperator": "전공",
+        "boothIntroduce": "오미쿠지와 오마모리 거기에 다양한 일문과의 굿즈들과 추억을 기록할 수 있는 폴라로이드 사진까지, 근화제에서 만날 수 있는 작은 마츠리!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 4,
+        "boothName": "<리츠> 부스 게임판 포토부스 (~16:00)",
+        "boothOperator": "외부 업체",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 5,
+        "boothName": "가나디 고냐니 그리고 시디",
+        "boothOperator": "전공",
+        "boothIntroduce": "“ 저희 디자인과 맞아요 ”\n이상한 찌라시스티커부터 예쁜 타투스티커까지!\n재미있는 게임 이벤트도 함께하는 시디과의 특별한 팬시샵 ",
+        "boothType": ["판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 6,
+        "boothName": "가상현실 공작소",
+        "boothOperator": "전공",
+        "boothIntroduce": "작은 상상들이 모여 만드는, 당신만의 새로운 세계 - '가상현실 공작소' (•̀ᴗ•́)و ̑̑☄",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [
+          "https://everytime.kr/534682/v/378796242",
+          "https://www.instagram.com/p/DJGbNokTu9o/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        ],
+        "scheduleDescription": ["목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 7,
+        "boothName": "가족오락관",
+        "boothOperator": "전공",
+        "boothIntroduce": "즐거운 게임이 가득한 아동 가족오락관으로 놀러오세요 ~ !\n1. 스파이더맨 오래 버티기\n2. 탁구공 계란 판\n3. 동요 이어서 부르기\n학생회가 준비한 포토카드, 비즈 팔찌도 판매합니다.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 8,
+        "boothName": "강남브랜드안과",
+        "boothOperator": "제휴 업체",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 9,
+        "boothName": "건축봉사동아리 \"지음\" 페이스페인팅",
+        "boothOperator": "동아리",
+        "boothIntroduce": "덕성사회봉사단, 해비타트 학생동아리 CCYP 소속 건축봉사동아리 \"지음\"입니다. 예대생의 섬세함이 담긴 페이스페인팅과 함께 축제를 즐겨보세요!",
+        "boothType": ["체험부스"],
+        "boothSite": [
+          "https://www.instagram.com/dswu_zieum?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        ],
+        "scheduleDescription": ["목요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 10,
+        "boothName": "겜덕(GemDuck)",
+        "boothOperator": "창업동아리/소모임",
+        "boothIntroduce": "덕성여대 학생들이 모여 게임을 개발했습니다.\n게임 플레이하고 귀여운 굿즈도 받아가세요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 11,
+        "boothName": "국제처",
+        "boothOperator": "교내 부처",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 12,
+        "boothName": "글로벌융합대학",
+        "boothOperator": "단과대학",
+        "boothIntroduce": "여러분을 제5회 (주)녹음상사 야유회에 초대합니다. 게임의 재미, 체험의 감동, 굿즈의 푸짐함까지~ 즐거움 가득한 종합선물세트로 모십니다!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/dswu_global/"],
+        "scheduleDescription": ["수요일 낮", "목요일 밤", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 13,
+        "boothName": "꼬물꼬물 행방찾기",
+        "boothOperator": "창업동아리/소모임",
+        "boothIntroduce": "행금이를 웃게 만들자! 덕우들의 힘이 필요해",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 14,
+        "boothName": "꽃신을 신고",
+        "boothOperator": "창업동아리/소모임",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "목요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 15,
+        "boothName": "너의 뇌는",
+        "boothOperator": "전공",
+        "boothIntroduce": "좌뇌? 우뇌? 나의 뇌는 어느 쪽을 잘 사용할까! 좌뇌(이성 영역)와 우뇌(감성 영역)로 나누어 진행하는 부스게임 그리고 심리학전공만의 굿즈들",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 16,
+        "boothName": "대학일자리센터",
+        "boothOperator": "교내 부처",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 17,
+        "boothName": "덕불",
+        "boothOperator": "동아리",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 18,
+        "boothName": "덕성검도부",
+        "boothOperator": "준동아리",
+        "boothIntroduce": "검도부 부스에서 타격게임, 검도 퀴즈, 검도부를 잡아라, 도복 입고 사진 찍기 등 다양한 이벤트에 참여하시고 상품도 받아가세요!",
+        "boothType": ["체험부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮 밤", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 19,
+        "boothName": "덕성약국",
+        "boothOperator": "단과대학",
+        "boothIntroduce": "안녕하세요, “덕성약국”입니다. 오늘 하루 나에게 어떤 운이 찾아올 지 궁금하지 않으신가요? 너에게 딱 drug 맞음! 덕성약국으로 오세요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/dswu_pharm?igsh=MXIwN2V1ZTRhYnJlbA=="],
+        "scheduleDescription": ["수요일 밤", "목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 20,
+        "boothName": "덕우야❗️ 잡화점💫",
+        "boothOperator": "개인",
+        "boothIntroduce": "☝️잡화 판매: 키링, 비즈반지, 비즈팔찌, 타투스티커, 책갈피\n✌️추억의 뽑기: 1등 인형, 2등 키링, 3등 비즈 반지, 4등 타투스티커",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 21,
+        "boothName": "도담도담",
+        "boothOperator": "동아리",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 22,
+        "boothName": "도봉경찰서",
+        "boothOperator": "교내 부처",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 23,
+        "boothName": "두근두근! 운명연결부",
+        "boothOperator": "개인",
+        "boothIntroduce": "두근두근! 여기는 운명연결부 ⊹ㅤ𝜗𝜚\n타로로 미래를 점쳐봐요. 결과가 마음에 들지 않더라도 걱정은 금물. 행운의 소품이 기다리고 있답니다!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/unmayrangets?igsh=YzBrOWU4dnkzNHFm&utm_source=qr"],
+        "scheduleDescription": ["목요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 24,
+        "boothName": "래디어스 <내 손 안에 작은 비혼마을>",
+        "boothOperator": "준동아리",
+        "boothIntroduce": "당신이 원하는 비혼의 삶은 어떤 모습인가요?\n래디어스의 비혼마을에서 나만의 비혼 라이프를 담은 캡슐 키링을 만들어 보아요.",
+        "boothType": ["체험부스"],
+        "boothSite": ["https://www.instagram.com/ds_radius"],
+        "scheduleDescription": ["수요일 낮", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 25,
+        "boothName": "몰(mol)루 잡화점",
+        "boothOperator": "전공",
+        "boothIntroduce": "화학적 원리를 이용한 슈링클스 체험 및 다양한 잡화 물품을 파는 “몰(mol)루 잡화점”으로 여러분을 초대합니다!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://everytime.kr/410730/v/378844379"],
+        "scheduleDescription": ["수요일 밤", "목요일 밤", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 26,
+        "boothName": "문헌정보학전공",
+        "boothOperator": "전공",
+        "boothIntroduce": "지금 이 순간도, 언젠가 문헌으로 남는다✨ - 문헌정보학전공 굿즈 판매와 전공 용어를 활용한 뽑기 게임 예정! 지식도 얻고 추억도 뽑아가세요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/mun_jeong1979?igsh=c2plaDNwY3lhdHBh&utm_source=qr"],
+        "scheduleDescription": ["수요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 27,
+        "boothName": "물 만난 덕우들",
+        "boothOperator": "동아리",
+        "boothIntroduce": "안녕하세요, 수영동아리 언더덕씨 입니다😊 이번 근화제에 언더덕씨 부스는 축제 1일차와 2일차 낮 동안 운영할 예정이며, 수영 용품을 이용한 엑티비티 게임과 추억을 남길 수 있는 포토키링, 스타일있는 타투 등을 준비했습니다🤗 덕우들이 축제의 추억을 더욱 재밌고 ! 예쁘고 ! 귀엽게 ! 간직할 수 있도록 언더덕씨가 열심히 준비 중이니 많은 관심 가져주세요~!!🙌",
+        "boothType": ["판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 28,
+        "boothName": "물리학과",
+        "boothOperator": "단과대학",
+        "boothIntroduce": "[Web 발신] 물리학과 제1대 학생회 <Delta>가 근화제 부스를 준비했습니다. 지금까지 볼 수 없었던 특별한 물리학의 매력에 빠져보세요.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [
+          "https://www.instagram.com/p/DJasNpUhA7r/?igsh=anF3Mzh4eml5NjYy",
+          "https://everytime.kr/544137/v/379438810"
+        ],
+        "scheduleDescription": ["수요일 밤", "목요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 29,
+        "boothName": "미래인재대학",
+        "boothOperator": "단과대학",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 밤", "금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 30,
+        "boothName": "버그맞은문방구",
+        "boothOperator": "전공",
+        "boothIntroduce": "25년 만에 돌아온 그 문방구 … \n이번엔 버그를 맞았다 ⚡️\n풍선, 뽑기, 굿즈까지 이상한 재미가 쏟아진다!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "목요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 31,
+        "boothName": "법꽃엔딩",
+        "boothOperator": "전공",
+        "boothIntroduce": "\"정의는 법으로, 위로는 꽃으로” 사람을 지키는 법, 마음을 지키는 꽃! 법학도들이 준비한 ‘어쩌다 꽃집’이 하루의 위로가 되길 바랍니다.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/law__ds.univ"],
+        "scheduleDescription": ["수요일 밤", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 32,
+        "boothName": "비즈와 실 엮어",
+        "boothOperator": "개인",
+        "boothIntroduce": "비즈와 실 엮어'에서는 두 재료를 이용하여 팔찌를 만들 수 있습니다. 키링 판매 역시 하고 있으니, 관심이 있으시다면 들려주세요.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 33,
+        "boothName": "사회봉사과",
+        "boothOperator": "교내 부처",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 34,
+        "boothName": "신비의 타로카드",
+        "boothOperator": "외부 업체",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 35,
+        "boothName": "야작하다 뛰쳐나온 사람들",
+        "boothOperator": "전공",
+        "boothIntroduce": "야 작 시작, 완전 크게 시작, 야작 빵빠레 불면서 시작, 야작 축제 시작, 야작 클럽 오픈, 야작 클럽 할인 이벤트 시작, 블랙야작데이 이벤트",
+        "boothType": ["판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 36,
+        "boothName": "영자신문사 VISTA",
+        "boothOperator": "동아리",
+        "boothIntroduce": "취준? 어학연수? 무슨 소리야 너.. 영자신문사 VISTA 부스 안 올거야?🤔 VISTA 부스에서 영어퀴즈 풀고 경품 받아가세요🕹️❤️‍🔥",
+        "boothType": ["체험부스"],
+        "boothSite": ["https://www.instagram.com/duksung_vista?igsh=bWZzOTdqMTJwbGZo"],
+        "scheduleDescription": ["목요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 37,
+        "boothName": "예운",
+        "boothOperator": "동아리",
+        "boothIntroduce": "유화의 매력을 느낄 수 있는 체험부스와 판매부스 모두 다 준비했습니다.\n다채로운 유화의 매력을 예운과 함께 느껴봐요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 38,
+        "boothName": "오묘한상점 ",
+        "boothOperator": "개인",
+        "boothIntroduce": "저희 상점은 비즈 및 레진 악세사리, 자체 제작 키링 등을 판매할 예정입니다. 저희 상점의 특징은 모두 '핸드메이드'라는 점입니다! (오직 이세상에 단 하나뿐!!!)\n",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://everytime.kr/255745/v/343751933"],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 39,
+        "boothName": "오세요잡화점",
+        "boothOperator": "개인",
+        "boothIntroduce": "오세요잡화점은 소품 판매와 주문 제작을 통해 개인의 취향을 나타낼 수 있도록 돕는 핸드메이드 잡화점입니다. 오세요잡화점에 어서 오세요🤗",
+        "boothType": ["판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 40,
+        "boothName": "오타쿠가 아무거나 팝니다",
+        "boothOperator": "개인",
+        "boothIntroduce": "다양한 수제 굿즈와 악세사리를 팝니다.\n직접 만들어보는 체험 행사도 진행합니다.(maybe?)\nwelcome",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 41,
+        "boothName": "와글와글 예대 벼룩시장",
+        "boothOperator": "개인",
+        "boothIntroduce": "막학기 예대생들이 실,원단,부자재,비즈 등 A급중고 공예재료,도구를 저렴하게 판매합니다❤︎4학년의 한마디 조언뽑기,야광팔찌,타투스티커도 있어요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://everytime.kr/255745/v/378828735"],
+        "scheduleDescription": ["수요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 42,
+        "boothName": "운지가 한국문학을 낋여왔다고 전하여라",
+        "boothOperator": "동아리",
+        "boothIntroduce": "운지문학회의 학형들이 직접 쓴 시와 굿즈들을 전시하고 판매합니다! 또한 한강 작가님의 노벨문학상 수상 기념으로 한국문학 체험을 낋여왔습니다.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 43,
+        "boothName": "운현극화점",
+        "boothOperator": "동아리",
+        "boothIntroduce": "정기공연 준비과정을 녹여낸 부스입니다!\n부원들의 긴장감은 미니게임을 통해, 연극 속 캐릭터로 녹아드는 과정은 특별한 헤어 세팅으로 느껴보세요~",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/unhyeon1967?igsh=a2Zpd2p3ZmRqcXc5"],
+        "scheduleDescription": ["수요일 밤", "목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 44,
+        "boothName": "운현방송국",
+        "boothOperator": "운현방송국",
+        "boothIntroduce": "‘나의 소울메이트’, ‘운현사진관’체험부터 머리핀·책갈피 판매가 운현방송국 부스에서 진행됩니다! 제42회 운현가요제의 열기도 함께 느껴보세요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/dswbs1967?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="],
+        "scheduleDescription": ["수요일 낮 밤", "목요일 낮", "금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 45,
+        "boothName": "유교과는 이러고 놀아요?",
+        "boothOperator": "전공",
+        "boothIntroduce": "덕성반 친구들, 어서와! 오늘은 선생님이랑 핸드벨로 동요를 연주하는 게임을 해볼 거야~ 폴라로이드 사진도 찍고, 비즈놀이도 하자! 준비됐나요~♬",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 46,
+        "boothName": "이건희",
+        "boothOperator": "개인",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 47,
+        "boothName": "이실직고",
+        "boothOperator": "개인",
+        "boothIntroduce": "부스명: 이실직고\n\n판매 물품: \n1. 실을 이용한 악세사리(가격:6~7000원)\n2. 수제 파우치 또는 미니백(가격:9~12000원)\n3. 수제 미니 펠트 인형(가격:3~5000원)\n\n이벤트(럭키드로우) 프로그램:\n구매자에 한해서 뽑기 이벤트",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 48,
+        "boothName": "이오",
+        "boothOperator": "동아리",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 49,
+        "boothName": "임채린",
+        "boothOperator": "개인",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 50,
+        "boothName": "제가 좀 패션에 욕심이 있어서요☆",
+        "boothOperator": "개인",
+        "boothIntroduce": "미메시스 아카이브 × 이끼스튜디오 콜라보!\n감성적인 옷과 악세사리, 축제 한정으로 만나보세요✨\n부스 이름은… 제가 좀 패션에 욕심이 있어서요☆",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://www.instagram.com/mimesisarchive.store", "https://www.instagram.com/ikki__.studio"],
+        "scheduleDescription": ["수요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 51,
+        "boothName": "지역협업센터",
+        "boothOperator": "교내 부처",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 52,
+        "boothName": "찾아라 명탐정",
+        "boothOperator": "전공",
+        "boothIntroduce": "두 개의 랜덤박스 중 하나를 선택하여 종이를 하나 뽑는다. 종이에 적혀있는 퀴즈나, 미션을 수행하면 끝. 랜덤박스는 쉬운 것과 어려운 것으로 나뉘어져있고, 어려운 문제가 들어간 박스는 추후 추첨을 통해 참가자에게 상품을 증정할 예정. ",
+        "boothType": ["체험부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 53,
+        "boothName": "청록빛 광합성 실험실",
+        "boothOperator": "전공",
+        "boothIntroduce": "바이오공학전공 학생회 <청람>에서 근화제를 청록빛으로 수놓아봅니다. 직접 만든 끈갈피와 키링 판매 및 체험 운영, 전공특성을 담은 게임을 진행합니다.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/duksung_biotech?igsh=MTU3bjZ6eXJ5dmN3eg%3D%3D&utm_source=qr"],
+        "scheduleDescription": ["수요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 54,
+        "boothName": "카페 fetty",
+        "boothOperator": "개인",
+        "boothIntroduce": "커피 대신 귀여운 굿즈를 내리는 카페 fetty!\n오늘의 추천 메뉴는 엽서, 키링, 양말입니다!\n취향에 따라 골라보세요!",
+        "boothType": ["판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 55,
+        "boothName": "쿠라쿠라 잡화점",
+        "boothOperator": "개인",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 56,
+        "boothName": "키킴",
+        "boothOperator": "개인",
+        "boothIntroduce": "직접 만든 비즈 반지, 비즈 키링 등의 비즈 공예품 판매와 키킴만의 특별한 ‘반지 오마카세’ 프로그램이 준비되어 있습니다. 부스에서 만나요!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://everytime.kr/367427/v/378847541"],
+        "scheduleDescription": ["목요일 낮"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 57,
+        "boothName": "털실이네 소품점",
+        "boothOperator": "개인",
+        "boothIntroduce": "🧵털실이네 소품점!🪡 니팅·소잉·비즈 소품 판매, 키링·줄감개 커스터마이징 체험, 디카 감성 사진까지!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 58,
+        "boothName": "팔레트마켓",
+        "boothOperator": "개인",
+        "boothIntroduce": "각종 미술재료를 체험해 볼수 있고, 개성있는 세상에 하나뿐인 스티커를 만나보실 수 있습니다.",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 59,
+        "boothName": "폭닥폭닥🧶",
+        "boothOperator": "개인",
+        "boothIntroduce": "저번 근화제 푸딩 해파리와 거북이들 기억하시나요?\n폭닥폭닥이 더 귀여운 키링들과 함께 돌아왔습니다!ꪔ̤̫\n5월 14일 많이 놀러와주세요 ~ ⋆◡̎⋆",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://www.instagram.com/s2_knitting_club_s2?igsh=N3N5c3MwaW84eHE2"],
+        "scheduleDescription": ["수요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 60,
+        "boothName": "필소굿: 필름소피 굿즈 팝니다",
+        "boothOperator": "동아리",
+        "boothIntroduce": "필소굿(film so good); 영상영화제작동아리 필름소피에서 제작한 영화 관련 굿즈를 판매합니다! ",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://www.instagram.com/filmsophy20?igsh=MTBiODhxdWxmM3k5Yg%3D%3D&utm_source=qr"],
+        "scheduleDescription": ["수요일 밤", "목요일 밤", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 61,
+        "boothName": "학생 홍보대사 빛내미",
+        "boothOperator": "빛내미",
+        "boothIntroduce": "❗️꽃반지 만들기🌸💍\n❗️건식 타투 스티커 판매🦋\n❗️나만의 야광봉 만들기🪄\n\n덕성여자대학교 학생 홍보대사 빛내미 부스로 놀러오세요🤍",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮 밤", "목요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 62,
+        "boothName": "한빛사진관",
+        "boothOperator": "동아리",
+        "boothIntroduce": "한빛과 함께 근화제 200% 즐기는 법\n1. 한빛 부스에서 근화제 스냅 촬영 및 폴꾸하기\n2. 사진을 활용한 다양한 게임에 도전 + 뽑기까지!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 밤", "목요일 밤", "금요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 63,
+        "boothName": "홈메이드",
+        "boothOperator": "개인",
+        "boothIntroduce": "실내디자인과 4학년들이 직접 만든 인테리어 소품 판매점 뽀ㄷHㄴr｡.:*☆",
+        "boothType": ["판매부스"],
+        "boothSite": ["https://everytime.kr/255745/v/378828188"],
+        "scheduleDescription": ["목요일 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 64,
+        "boothName": "황수빈",
+        "boothOperator": "개인",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 65,
+        "boothName": "AD⚡️HD",
+        "boothOperator": "개인",
+        "boothIntroduce": "I❤️ 정병 뱃지, AD⚡️HD 티셔츠, 정신아픔이의 사진까지! ADHD빙고 완성시 할인! 정신수용하고 광명찾자🌟",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [],
+        "scheduleDescription": ["목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 66,
+        "boothName": "CODE Lab & Café",
+        "boothOperator": "전공",
+        "boothIntroduce": "<근화제에서 내가 연구원?!> AI 신약개발 체험과\n<여기가 아아 맛집> 시원한 아아와 에이드도 함께 !\n다양하고 알찬 이벤트도 즐겨보세요🎁",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [
+          "https://everytime.kr/546385/v/376386461",
+          "https://www.instagram.com/dswu_ai.drug?igsh=MWJ3MnJvN21vbjQ0cw%3D%3D&utm_source=qr"
+        ],
+        "scheduleDescription": ["수요일 밤", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 67,
+        "boothName": "fairy.sys",
+        "boothOperator": "개인",
+        "boothIntroduce": "인터넷 히어로 ••• 우리를 지켜줘! 인터넷 세상을 뛰어넘어 덕성으로 온 히어로 소녀들을 경험해 보세요 .ᐟ",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://everytime.kr/255745/v/378841030"],
+        "scheduleDescription": ["수요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 68,
+        "boothName": "I Fork U...",
+        "boothOperator": "동아리",
+        "boothIntroduce": "I Fork U...💥 덕성여대 유일무이 중앙 락밴드 포크의 락스피릿을 담은 굿즈! 목걸이부터 스티커까지 쿨하게 겟!🎸",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [
+          "https://www.instagram.com/forourrock_ds/profilecard/?igsh=MXA0a2Ryb2E5a3Bs",
+          "https://youtube.com/@forourrock_ds?si=-5eveN3Bx42SRWRv"
+        ],
+        "scheduleDescription": ["수요일 밤", "목요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 69,
+        "boothName": "ISSUE",
+        "boothOperator": "동아리",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 70,
+        "boothName": "LIFE PROJECT",
+        "boothOperator": "개인",
+        "boothIntroduce": "업사이클링 경험을 선사합니다 :> 병뚜껑 키링 만들기 체험과 데님을 활용한 소품·가방 판매!",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": ["https://www.instagram.com/lpworkspace?igsh=MXhrN3ZicXRpbTN6eQ%3D%3D&utm_source=qr"],
+        "scheduleDescription": ["수요일 낮", "목요일 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 71,
+        "boothName": "TAKE A LOOK",
+        "boothOperator": "동아리",
+        "boothIntroduce": "🔮🐈‍⬛덕냥이와 함께하는 간단한 타로 체험과 냥BTI 체험을 통해 나의 운명의 덕냥이를 만나는 특별한 기회를 제공하려고 합니다🐈🔮",
+        "boothType": ["체험부스", "판매부스"],
+        "boothSite": [
+          "https://everytime.kr/255745/v/378799821",
+          "https://www.instagram.com/duknyangdang?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        ],
+        "scheduleDescription": ["수요일 낮", "금요일 낮"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          }
+        ],
+        "boothRole": "BOOTH"
+      },
+      {
+        "id": 72,
+        "boothName": "테이크원",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["금요일 밤"],
+        "schedules": [
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 73,
+        "boothName": "야미",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 74,
+        "boothName": "얌얌츄러스",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 75,
+        "boothName": "꺼리분식",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 76,
+        "boothName": "타우라푸드",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 77,
+        "boothName": "이태원케밥",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 78,
+        "boothName": "세븐",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 79,
+        "boothName": "커피볶는 낭만곰",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 80,
+        "boothName": "짱가곱창",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 81,
+        "boothName": "골든키즈",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 82,
+        "boothName": "로드 2022",
+        "boothOperator": "푸드트럭",
+        "boothIntroduce": null,
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["수요일 낮 밤", "목요일 낮 밤"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "FOOD_TRUCK"
+      },
+      {
+        "id": 92,
+        "boothName": "총학 중앙본부",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "우리의 목소리를 모아, 단절 없는 흐름을 그리다",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 93,
+        "boothName": "총학 수익사업 부스",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "덕우가 뭘 좋아할지 몰라서 다 준비했어\n\n※구매하지 않아도 퍼즐 수집이 가능합니다. 자유롭게 구경해 주세요!",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 94,
+        "boothName": "포토부스",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "여운을 종이로 남기고 싶은 순간(✌️ 🧀 😁)\n\n※ 사진을 찍기 위해 줄을 서 있을 경우 질서를 유지할 수 있게 도와주세요. 퍼즐을 수집하는 경우 스태프의 안내에 따라 옆쪽에서 QR 코드를 찾아 주세요!",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 95,
+        "boothName": "정문 덕새 엉덩이(혹은 등)",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "소원을 들어주는 흰까치 엉덩이\n\n※ 먼저 흰까치와 함께하는 학우분이 계시다면 조금 기다려 주세요!",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 96,
+        "boothName": "정문~학관 게시판",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "부스와 길을 따라 걷다 보면 보이는 여운의 흔적\n\n※ 부착된 포스터, QR 코드 등을 훼손하지 마세요.",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 97,
+        "boothName": "근화제 포토월",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "여운을 추억할 수 있는 조각 제작소\n\n※ 사진을 찍고 있는 학우분들이 계시다면, 조금만 기다려 주세요! 순서에 따라 서로 배려해 주세요.",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 98,
+        "boothName": "손목띠 부스",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "근화제 '여운'을 즐기기 위해 반드시 거쳐야 하는 곳\n\n※ 인파가 자주 몰리는 만큼, 혼잡하지 않도록 유의해 주세요. 손목띠 착용에 피해가 가지 않도록 옆쪽에서 퍼즐을 수집해 주세요.",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 99,
+        "boothName": "간식마을(취식존)",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "한가로운 소영근터에 마을이 생겼다고요?\n\n※ 돗자리를 깔고 쉴 수 있는 마을에서 잠시 쉬었다 가셔도 좋습니다!",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 100,
+        "boothName": "부스 전체",
+        "boothOperator": "운영본부",
+        "boothIntroduce": "부스 마을로 놀러 오세요!\n\n※ 모든 부스에서 동일한 퍼즐 한 조각만을 모을 수 있습니다. 가급적이면 부스를 잘 즐긴 후 퍼즐을 수집해 주세요!",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": [],
+        "schedules": [],
+        "boothRole": "HINT"
+      },
+      {
+        "id": 102,
+        "boothName": "드로잉존",
+        "boothOperator": null,
+        "boothIntroduce": "드로잉존",
+        "boothType": [],
+        "boothSite": [],
+        "scheduleDescription": ["매일"],
+        "schedules": [
+          {
+            "day": "수요일",
+            "time": "낮"
+          },
+          {
+            "day": "수요일",
+            "time": "밤"
+          },
+          {
+            "day": "금요일",
+            "time": "낮"
+          },
+          {
+            "day": "목요일",
+            "time": "낮"
+          },
+          {
+            "day": "금요일",
+            "time": "밤"
+          },
+          {
+            "day": "목요일",
+            "time": "밤"
+          }
+        ],
+        "boothRole": "BOOTH"
+      }
+    ]
+  }
+}

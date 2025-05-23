@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
+import foodTruckJson from '@data/foods.json';
+import boothsData from '@data/booths.json';
+
 import { useDragControls } from 'framer-motion';
 import * as M from '@map/MapStyle';
 import BoothDetailModal from '@components/map/BoothDetailModal.jsx';
@@ -69,7 +71,7 @@ function Map() {
   };
 
   const [booths, setBooths] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [setIsLoading] = useState(true);
 
   const [foodTruckData, setFoodTruckData] = useState(false);
 
@@ -104,30 +106,22 @@ function Map() {
     });
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/booths/all`)
-
-      .then((res) => {
-        const boothData = res.data?.data?.booths || [];
-        setBooths(boothData);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error('부스 데이터 불러오기 실패:', err);
-      });
+    try {
+      const boothData = boothsData?.data?.booths || [];
+      setBooths(boothData);
+      setIsLoading(false);
+    } catch (err) {
+      console.error('로컬 부스 데이터 불러오기 실패:', err);
+    }
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/booths/food-truck`)
-
-      .then((res) => {
-        const foodData = res.data?.data?.foodTrucks || [];
-        setFoodTruckData(foodData);
-      })
-      .catch((err) => {
-        console.error('푸드트럭 데이터 불러오기 실패:', err);
-      });
+    try {
+      const foodData = foodTruckJson?.data.foodTrucks || [];
+      setFoodTruckData(foodData);
+    } catch (err) {
+      console.error('로컬 푸드트럭 데이터 불러오기 실패:', err);
+    }
   }, []);
 
   const [selectedBooth, setSelectedBooth] = useState(null);
