@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "placeName": "총학 중앙본부",
+      "puzzleIndex": 1,
+      "qrValue": "ae54d2c5-9691-4c9f-af04-2c545834f21a",
+      "placePassword": "IEQSVI"
+    },
+    {
+      "placeName": "총학 수익사업 부스",
+      "puzzleIndex": 2,
+      "qrValue": "db97f998-ac60-4751-b61d-4773cff69267",
+      "placePassword": "XYSECJ"
+    },
+    {
+      "placeName": "포토부스",
+      "puzzleIndex": 3,
+      "qrValue": "09a172f8-ca06-49fb-87b1-698fdebb1a6d",
+      "placePassword": "NZQHNK"
+    },
+    {
+      "placeName": "정문 덕새 엉덩이(혹은 등)",
+      "puzzleIndex": 4,
+      "qrValue": "c579c085-b4df-48df-bb25-2ba38313abe5",
+      "placePassword": "F0CTFL"
+    },
+    {
+      "placeName": "정문~학관 게시판",
+      "puzzleIndex": 5,
+      "qrValue": "9a03035b-5a48-45cb-b519-9e72c3bc76a9",
+      "placePassword": "UZJEVP"
+    },
+    {
+      "placeName": "근화제 포토월",
+      "puzzleIndex": 6,
+      "qrValue": "a3a3c2a4-8394-4e46-8664-ecb748f6185c",
+      "placePassword": "MEJPTN"
+    },
+    {
+      "placeName": "손목띠 부스",
+      "puzzleIndex": 7,
+      "qrValue": "b4702adf-0d4c-466e-9f25-11418998c3a8",
+      "placePassword": "K710AT"
+    },
+    {
+      "placeName": "간식마을",
+      "puzzleIndex": 8,
+      "qrValue": "08b0ba0d-c680-4dbc-a093-24e95e6f92a5",
+      "placePassword": "UKCHAM"
+    },
+    {
+      "placeName": "부스 전체",
+      "puzzleIndex": 9,
+      "qrValue": "88b64fc8-dd67-4deb-b67a-71133f280a8a",
+      "placePassword": "T3Q7YD"
+    }
+  ]
+}
