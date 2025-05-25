@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import * as P from '@admin/puzzle/PuzzleListStyle';
 import palette from '@styles/theme';
 import ButtonAdminSingle from '@components/admin/ButtonAdminSingle/ButtonAdminSingle';
 import PuzzleItem from '@admin/components/PuzzleItem/PuzzleItem';
 import CopyToast from '@admin/components/CopyToast/CopyToast';
+import puzzleData from '@data/puzzlePlace.json';
 
 function PuzzleList() {
   const [showToast, setShowToast] = useState(false);
@@ -27,6 +28,7 @@ function PuzzleList() {
     setShowToast(true);
   };
 
+  /*
   useEffect(() => {
     const fetchPuzzleList = async () => {
       try {
@@ -40,6 +42,13 @@ function PuzzleList() {
     };
 
     fetchPuzzleList();
+  }, []);
+  */
+
+  useEffect(() => {
+    if (puzzleData?.data) {
+      setPuzzleList(puzzleData.data);
+    }
   }, []);
 
   const handleDelete = (deletedIndex) => {
