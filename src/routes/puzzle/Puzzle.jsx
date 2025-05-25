@@ -52,11 +52,13 @@ import InputLogin from '@components/puzzle/InputLogin/InputLogin';
 import ModalPuzzleSelect from '@components/puzzle/ModalPuzzleSelect/ModalPuzzleSelect';
 import ModalPuzzleApprove from '@components/puzzle/ModalPuzzleApprove/ModalPuzzleApprove';
 import ModalPuzzleGoods from '@components/puzzle/ModalPuzzleGoods/ModalPuzzleGoods';
+import endGameImg from '@assets/puzzle/icon-endevent.svg';
 
 const API_KEY = import.meta.env.VITE_API_URL;
 
 function Puzzle() {
   const navigate = useNavigate();
+  const EndGame = true;
 
   const location = useLocation();
   const qrData = location.state?.qrData;
@@ -235,7 +237,11 @@ function Puzzle() {
   };
 
   //로그인
-  const handleLogin = async () => {
+  const handleLogin = () => {
+    setLoginFailed(true);
+    setLoginErrorMessage('종료된 이벤트입니다.');
+  };
+  /*async () => {
     try {
       const response = await axios.post(
         `${API_KEY}/users/login`,
@@ -264,6 +270,7 @@ function Puzzle() {
       }
     }
   };
+  */
 
   //QR
   const showQrCamera = () => {
@@ -425,7 +432,7 @@ function Puzzle() {
   return (
     <P.puzzlePage>
       <P.puzzleMain onClick={() => (showModal ? modalOffHandler() : undefined)}>
-        <P.currentPuzzleInfo>
+        <P.currentPuzzleInfo style={{ gap: loginFailed ? '0px' : '46px' }}>
           <P.TopContainer>
             <P.top>
               {completed || end ? (
@@ -524,7 +531,18 @@ function Puzzle() {
           </P.TopContainer>
 
           <P.puzzleGame>
-            {authorized ? (
+            {EndGame ? (
+              <>
+                <P.successPuzzle>
+                  <P.alreadySuccessInfo>
+                    <P.whiteCheck src={endGameImg} />
+                    <P.whiteRegular16>
+                      <P.whiteSemibold16>종료</P.whiteSemibold16>된 이벤트입니다.
+                    </P.whiteRegular16>
+                  </P.alreadySuccessInfo>
+                </P.successPuzzle>
+              </>
+            ) : authorized ? (
               completed ? (
                 <>
                   <P.presentInfo>
