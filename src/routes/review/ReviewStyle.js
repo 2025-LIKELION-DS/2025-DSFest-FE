@@ -141,6 +141,17 @@ export const StyledTextarea = styled.textarea`
   }
 `;
 
+export const Done = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: ${palette.grayscale.text88};
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.35px;
+`;
+
 const ToastShow = keyframes`
   0%{
     transform: scaleX(0);

@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import * as R from '@review/ReviewStyle';
 import Chat from '@review/components/Chat';
 import SendImg from '@assets/review/icon-send.svg';
 import SendImg2 from '@assets/review/icon-send-white.svg';
 import errorIcon from '@assets/puzzle/icon-pupple.svg';
 import keywordMap from '@data/keywords.json';
+import reviewData from '@data/reviews.json';
 
 function Review({ scrollTargetRef }) {
   const [reviews, setReviews] = useState([]);
@@ -47,10 +48,11 @@ function Review({ scrollTargetRef }) {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
-      const fetched = res.data.data.reviewList;
-      const ordered = [...fetched].sort((a, b) => a.reviewId - b.reviewId);
-      setReviews(ordered);
+      // const res = await axios.get(`${import.meta.env.VITE_API_URL}/reviews`);
+      // const fetched = res.data.data.reviewList;
+      // const ordered = [...fetched].sort((a, b) => a.reviewId - b.reviewId);
+      // setReviews(ordered);
+      setReviews(reviewData);
     } catch (err) {
       console.error('리뷰 조회 실패:', err);
     }
@@ -189,7 +191,7 @@ function Review({ scrollTargetRef }) {
         <R.Input>
           <R.Wrapper ref={wrapperRef}>
             <R.Highlighter dangerouslySetInnerHTML={{ __html: highlightKeywords(inputValue) + '\u200B' }} />
-            <R.StyledTextarea
+            {/* <R.StyledTextarea
               ref={textareaRef}
               rows={1}
               value={inputValue}
@@ -197,10 +199,14 @@ function Review({ scrollTargetRef }) {
               placeholder="후기를 작성해주세요!"
               onFocus={() => setIsFocus(true)}
               onBlur={() => setIsFocus(false)}
-            />
+            /> */}
+            <R.Done>2025 근화제 '여운'이 종료되었습니다!</R.Done>
           </R.Wrapper>
         </R.Input>
-        <R.Button $active={inputValue.trim() !== ''} onClick={postReview}>
+        {/* <R.Button $active={inputValue.trim() !== ''} onClick={postReview}>
+          <img src={inputValue.trim() !== '' ? SendImg2 : SendImg} alt="send" />
+        </R.Button> */}
+        <R.Button $active={inputValue.trim() !== ''} style={{ cursor: 'unset' }}>
           <img src={inputValue.trim() !== '' ? SendImg2 : SendImg} alt="send" />
         </R.Button>
       </R.Area>
