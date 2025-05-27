@@ -1,51 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { isAdminLoggedIn } from '@utils/admin';
+// import axios from 'axios';
+// import { isAdminLoggedIn } from '@utils/admin';
 import * as D from '@notice/DetailStyle';
-import Button from '@components/admin/ButtonAdminDual/ButtonAdminDual';
-import Modal from '@components/admin/ModalAdmin/ModalAdmin';
+// import Button from '@components/admin/ButtonAdminDual/ButtonAdminDual';
+// import Modal from '@components/admin/ModalAdmin/ModalAdmin';
 import palette from '@styles/theme';
+import noticeData from '@data/notices.json';
 
 function Detail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [notice, setNotice] = useState(null);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  // const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/notices/${id}`)
-      .then((response) => {
-        setNotice(response.data.data);
-      })
-      .catch((error) => {
-        console.error('공지사항을 불러오는 중 오류 발생:', error);
-      });
+    const foundNotice = noticeData.find((item) => String(item.id) === id);
+    if (foundNotice) {
+      setNotice(foundNotice);
+    } else {
+      console.error('해당 ID의 공지사항을 찾을 수 없습니다.');
+    }
   }, [id]);
 
-  const handleEdit = () => {
-    if (isAdminLoggedIn()) {
-      navigate(`/notice/${id}/edit`);
-    }
-  };
+  // const handleEdit = () => {
+  //   if (isAdminLoggedIn()) {
+  //     navigate(`/notice/${id}/edit`);
+  //   }
+  // };
 
-  const handleDelete = () => {
-    setIsDeleteModalOpen(true);
-  };
+  // const handleDelete = () => {
+  //   setIsDeleteModalOpen(true);
+  // };
 
-  const confirmDelete = () => {
-    axios
-      .delete(`${import.meta.env.VITE_API_URL}/notices/${id}`)
-      .then(() => {
-        alert('공지사항이 삭제되었습니다.');
-        navigate('/notice');
-      })
-      .catch((error) => {
-        console.error('삭제 중 오류 발생:', error);
-        alert('공지사항 삭제에 실패했습니다.');
-      });
-  };
+  // const confirmDelete = () => {
+  //   axios
+  //     .delete(`${import.meta.env.VITE_API_URL}/notices/${id}`)
+  //     .then(() => {
+  //       alert('공지사항이 삭제되었습니다.');
+  //       navigate('/notice');
+  //     })
+  //     .catch((error) => {
+  //       console.error('삭제 중 오류 발생:', error);
+  //       alert('공지사항 삭제에 실패했습니다.');
+  //     });
+  // };
 
   const renderContentWithLinks = (content) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -93,7 +92,7 @@ function Detail() {
           ))}
         </D.Images>
       )}
-      {isAdminLoggedIn() && (
+      {/* {isAdminLoggedIn() && (
         <Button
           contentL={'수정'}
           colorL={palette.grayscale.white}
@@ -102,8 +101,8 @@ function Detail() {
           colorR={palette.grayscale.white}
           onClickR={handleDelete}
         />
-      )}
-      {isDeleteModalOpen && (
+      )} */}
+      {/* {isDeleteModalOpen && (
         <div
           style={{
             position: 'fixed',
@@ -125,7 +124,7 @@ function Detail() {
             onConfirm={confirmDelete}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
